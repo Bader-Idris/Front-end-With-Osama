@@ -1,0 +1,115 @@
+/* 61st lesson 7:21:17
+  Grid Child:
+    Column and Row
+      If you remember colspan attribute to mix cells in tables in html it'll be easy to you
+  [Grid-column] is a shorthand for grid-column-start and grid-column-end.
+    if we do it with JS or any programming language it'll take slicing and ranging, 
+      and it won't include the last element as in arrays, [it doesn't consider grid-column-end]
+  1/5 means from 1 to end of 4, stops beside 5[it's for child element]  in our e.g: 1/7 [all]
+    [span 4] is to tell grid-column to take 4 column's space. and if not it'll go down
+    when starting from 2nd column use:[2/ span 3], first column is called offset, it was made with margin and tough in prior tools
+  [grid-row] is same as its sibling
+  if not with grid-row and grid-column making a good looking squares, they'll use many positions and get angry🤯😒🤯
+*/
+
+* {
+  box-sizing: border-box;
+  /* padding: 0;
+  margin: 0; */
+}
+body {
+  font-family:fantasy;
+  background-color: #333;
+  color:rgb(207, 207, 207);
+  letter-spacing: 0.7px;
+}
+.parent {
+  margin: 20px auto;
+  width: 800px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px 10px;
+  
+}
+.parent div {
+  background-color: red;
+  color: aliceblue;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.parent .uno {
+  grid-column: 1/7; /* if we add more it''ll spoil it */
+}
+
+/*62nd lesson 7:28:28
+  Grid child: 
+    Area and trainings [[[IMPORTANT]]]
+  grid-area: [Grid Row Start][Grid Column Start][Grid Row End][Grid Column End]
+
+*/
+
+.padre {
+  margin: 20px auto;
+  width: 800px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px 10px;
+  background-color: grey;
+}
+.padre div {
+  background-color: red;
+  color: aliceblue;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.padre .nueve {
+  /* grid-column: 2/ span 5; */
+  background-color: green;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-row-end: 5;
+  grid-column-end: 6;
+  grid-area: 2 / 2 / 5 / 6;/*same as above*/
+}
+
+/*Example two*/
+
+.padre-two {
+  margin: 20px auto;
+  width: 800px;
+  height: 500px;
+  display: grid;
+  /* grid-template-columns: repeat(6, 1fr); we stop it to add grid-template-areas, and give the child [grid-area]*/
+  grid-template-areas: "head head nav nav nav"
+    "cont cont cont cont cont"
+    "foot foot foot foot foot";
+  gap: 10px 10px;
+  background-color: grey;
+  
+}
+
+.padre-two div {
+  background-color: red;
+  color: aliceblue;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.uno {
+  grid-area: head;
+}
+.dos {
+  grid-area: nav;
+}
+.tres {
+  grid-area: cont;
+}
+
+/*63rd lesson
+  GRID: MinMax And Auto-Fill [Advanced Level] Responsive design[to be good with each monitor type][with @media query]
+  to be continued 💁🏿‍♀️
+*/

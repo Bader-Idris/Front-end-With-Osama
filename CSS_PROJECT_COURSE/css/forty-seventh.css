@@ -1,0 +1,426 @@
+/*47th lesson
+  Flex Box - Parent 5:35:57
+  Justify Content
+
+  prior flex properties:
+  For Parent
+  - display:flex => To Start A Flexible Box
+  - flex-direction: row => Default Value
+  - flex-wrap: nowrap=> Default Value
+  - flex-flow: [Flex-Direction] + [Flex-wrap]
+  ---This lesson ---5:36:13
+  - justify-content: flex-start => Default Value
+  - justify-content: space-between; 
+  - justify-content: space-around; for before and after element 
+  - justify-content: space-evenly; uses both [between and around] 
+  ---48th lesson 5:46:18
+      align-items [vertically not as horizontally upwards]
+      align-items: stretch => Default Value, self-end/self-start/center
+  ---49th lesson 5:51:00
+  - flex-box-parent
+  -Align-content: stretch => Default Value
+  ---50th lesson 5:56:19
+  - flex-box- Child => Grow, Shrink, Order
+  -flex-grow: 0 => Default Value, 1 fills content evenly, but if 2 it takes 2 spaces as in tables
+  -flex-shrink: 1 => Default Value, when 3 it starts shrinking initially
+  -order:0 => Default Value ,when 1 element's number is 5 it goes to fifth space [A great feature] 
+  [😲بدونها حتتشألط حرفيا]
+  ---51st lesson 6:03:00
+  -Flex Box - Child => Flex-basis,Flex shorthand
+  -flex-basis: auto => Default Value [it distribute content] Respect max-width
+  shorthand: flex: [flex-grow][flex-shrink][flex-basis] 0 1 auto => Default Values
+    To add items beside flex we make its parent's display: inline-flex
+    ---51st lesson 6:11:39
+    continuing Child => Align self, Games & Tasks within
+    -align-self: auto => Default Value, flex-end/flex-start/center
+    solve these two games as CSS challenges[flexboxfroggy.com][mastery.games/flexboxzombies/chapter/1/level/3]
+      learn [Holy grail] web design with flexbox, then share it into codePen
+      Holy grail without flex-box was a hell path🤯
+
+
+      
+ without align-item [line-height:200px]was used
+ or using position with making div as span 
+
+ we use order in creating a puzzle game as this:[elzero.org/lab-create-memory-game/]
+ looks like only for premium 
+*/
+
+
+body{
+  font-family:fantasy;
+  background-color: #333;
+  color:rgb(207, 207, 207);
+  letter-spacing: 0.6px;
+}
+.flexy {
+  color: rgb(255, 255, 255);
+  background-color: #eee;
+  width: 600px;
+  padding: 20px;
+  margin: 20px auto;
+
+  display: flex;
+  /* flex-direction: row;
+  flex-wrap: wrap; we added the shorthand down*/
+  flex-flow: row wrap;
+  /*This is the cause of fifth one*/
+  justify-content: center;/* here, second row starts at right instead of left as default,
+    we can't do that with float because all first row goes to right, not just second one/ the outer one*/
+    /* justify-content: space-between; [for one row]*/
+}
+/* justify-content: flex-end; /center /flex-start */
+
+.son-flexy {
+  background-color: red;
+  width: calc(100%/3);/*after calculating width 95%/5, 5% is left, we only add space-between,
+    instead of adding a class to center one then margin left||right with float, EVERY TIME*/
+  color: inherit;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+}
+
+.shitty{
+  background-color: #eee;
+  padding: 10px;
+  overflow: hidden;
+  width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+.shitty .son-shitty{
+  padding: 20px;
+  text-align: center;
+  background-color: #f00;
+  width: calc(100%/3);
+  float:left;
+  text-align: center;
+  box-sizing: border-box;/*His results are even worse so flex is better*/
+}
+.clean{
+  clear: both;
+}
+p{
+  text-align: center;
+  font-size: 25px;
+}
+/* real results with crazy bugs in float comparing to flex*/
+
+
+.mi-hr-yo{
+  margin: 0 0 100px 0;
+}
+.center{
+  background-color: #0049B7;
+  color: gold;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: center;/*these two lines go together*/
+  align-items: center;/*2nd line*/ /*if flex-start Up, if flex-end Down*/
+  margin: 20px auto;/*this is for putting it in middle*/
+  margin-bottom: 50px;
+}
+
+.flexy2{
+  color: rgb(255, 255, 255);
+  background-color: #eee;
+  width: 600px;
+  padding: 20px;
+  margin: 20px auto;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.son-flexy2{
+  background-color: red;
+  width: calc(100%/3);
+  color: inherit;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+}
+
+.shitty2{
+  background-color: #eee;
+  padding: 10px;
+  overflow: hidden;
+  width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+.shitty2 .son-shitty2{
+  padding: 20px;
+  text-align: center;
+  background-color: #f00;
+  width: calc(100%/3);
+  float:left;
+  text-align: center;
+  box-sizing: border-box;
+}
+.clean2{
+  clear: both;
+} 
+.flexy3{
+  background-color: #eee;
+  width: 600px;
+  height: 400px;
+  padding: 20px;
+  margin: 20px auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;/*center/ flex-end*/ /*not needed after box-sizing */
+  align-content: center;/*space-between and vertical elements can be added as space-between/space-around/ space-evenly*/
+/* align-content takes all content to its dir*/
+}
+.son-flexy3{
+  padding: 20px;
+  text-align: center;
+  background-color: #f00;
+  width: calc(100%/3);
+  float:left;
+  text-align: center;
+  box-sizing: border-box;
+}
+.flex-basis{
+  background-color: #eee;
+  width: 80%;
+  padding: 20px;
+  margin: 20px auto;
+  overflow: hidden;
+  text-align: center;
+  display: flex;/* Crucial addition*/
+}
+.son-flex-basis{
+  padding: 20px;
+  text-align: center;
+  background-color: #f00;
+  float:left;
+  text-align: center;
+  box-sizing: border-box;
+  flex-grow: 6;
+}
+.son-5{
+  flex-basis: 300px;/* Instead of adding width we add this, 
+  so it works with columns, [it work only with flex items]
+  [we add display flex in its parent]*/
+}
+
+.align_self_parent{
+  background-color: #eee;
+  width: 80%;
+  height: 300px;
+  padding: 20px;
+  margin: 20px auto;
+  /* overflow: hidden; */
+  text-align: center;
+  display: flex;
+  align-self: flex-start;
+}
+.align_self{
+  background-color: #f00;
+  color: white;
+  width: 80px;
+  text-align: center;
+  padding: 20px;
+  margin-right: 5px;
+  /* height: calc(100%/1.5); */
+  align-self: flex-start;
+}
+.part1{
+  align-self:flex-end;
+  justify-content: center;
+ 
+}
+
+
+.align_self_parent {
+  display: flex;
+  /* flex-direction: row-reverse; row is default */
+  align-items:center;
+  justify-content: space-evenly;
+  }
+
+/*
+  some examples of flex-box, after playing the cute games!
+
+  .flex-parent {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  }
+  .yellow-frog{
+    order:2;
+  }
+  another align item is align-self, for specific item as down, and we can mix it with order.
+  .yellow {
+  align-self:flex-end;
+  }
+
+  for shorthand wrapping and flex direction use:
+  
+  #pond {
+  display: flex;
+  flex-flow:column wrap;
+  }
+*/
+/*53rd lesson 6:14:48
+  I Played The Games, So No Need To It.
+*/
+/*54th lesson 6:26:08
+    Filers 
+      filters are as photo filtering in Photoshop and other graphical apps
+        [Not Supported by many browsers]
+    3 popular filters!:
+      grayscale(100%) and when hovered at, zero grayscale(0)
+      filter: blur(4px);
+      filter:invert(100%); inverts colors as yellow becomes oily[less popular]
+      
+    [check browsers compatibility]
+*/
+.image{
+  margin:20px auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  
+  transition: 0.3s;
+  filter: grayscale(100%);
+}
+.image:hover{
+  filter: grayscale(0);
+}
+* {
+  box-sizing: border-box;
+}
+/*55th lesson 6:29:47
+    Gradients
+      linear-gradient(Direction || Angle, color stop 1, color stop 2, add many colors as wished); 
+      we can make a color stop more percentage as red 80% or green 35px
+
+material design colors are used for UI websites
+*/
+.color-gradient{
+  text-align: center;
+  background-color: #eee;
+  /* background-image: linear-gradient(to right, red, green);/*to left, to right, to top, to bottom,
+   #deg as 75deg[it's lovely]*/ 
+  width: 90%;
+  height:150px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px;
+  color: orange;
+  caret-color: #f00;
+}
+.color-gradient::before{
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0%;
+  width: 100%;
+  background-color: blue;
+  height: 10px;
+  background-image: linear-gradient(to right, #2980b9 20%, #27ae60 20%, #27ae60 100%);
+}
+/*56th lesson 6:41:54
+  Pointer Events and Caret  Color
+      Usage cases, because they're simple when getting 'em from CSS documentation
+    [Caret color] changes the flashing symbol | when writing 
+      caret-color: red; or transparent bad usage
+    [pointer-events] when none, links as anchor do not get changed color, 
+      e.g: click here!   pointer-events:none
+        we use it when bottoms are clicked as hangman game, Osama created with JS
+          so it's useful with JavaScript appending
+
+ HTML contenteditable="true" element
+*/
+
+/*57th lesson 6:46:20
+  Grid Parent:
+    Template Columns it's as flex with differences
+    Parent
+    -display: grid | inline-grid [when having sth aside]
+    -grid-template-columns => Number Of Columns In =>[Px, %, Auto, Repeat(), Mix, fraction[1fr]].[Incredibly adorable]
+e.g:grid-template-columns: 100px 100px 100px 200px; it has 4 columns; rem, em etc are valid
+2nd e.g: grid-template-columns: 25% 50% 25%; three columns 
+3rd e.g: grid-template-columns: auto auto auto ; many columns 
+4th e.g: grid-template-columns: repeat(5, auto) ; smart usage, 5 columns, repeat(2, 1fr)/repeat(2, auto)
+5th mixing 'em together as:100px repeat(3, 50px) 25% auto
+    Fraction is greedy, and auto is shy, e.g: auto auto 1fr 1fr[auto will barely survive, for its content]
+
+    we can see grid inside inspect elements beside the parent div
+
+Important syntax: Grid system, it's a pseudo network system to separate items/layouts neat and tidy as pseudo columns 
+  we can use it exactly with our copywriting pages!
+Grid system is differ than Grid as both JS and Java
+*/
+
+/*58th lesson 6:57:38
+  Continuing Grid Parent:
+    Template rows and Gap
+    grid-template-rows: as columns are.
+    row-gap: #px [Was grid-row-gap]
+    row-gap: #px
+    Short-hand: gap => row, column => 10px 10px;
+*/
+.display-Grid{
+  margin: 20px auto;
+  width: 90%;
+  height: 500px;
+  background-color: antiquewhite;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto 1fr ;
+  row-gap: 10px;
+  column-gap: 10px;
+  text-align: center;
+}
+.display-Grid-child{
+  background-color: #2980b9;
+  color: snow;
+  padding: 20px;
+  font-size: 30px;
+  display: inherit;
+}
+
+/*59th lesson 7:05:16
+  Grid Parent: 
+    Justify and Align Content
+    align-content: center; Looks like it's differences than flex with this 
+  grid is better than flex with align-content and justify-content.
+*/
+
+.display-Grid-boy{
+  margin: 20px auto;
+  width: 90%;
+  height: 500px;
+  background-color: antiquewhite;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(3, auto);
+  gap: 10px 10px;
+  justify-content: space-between;
+  align-content: space-between;
+  text-align: center;/*by me*/
+}
+.display-Grid-childish{
+  background-color: #2980b9;
+  color: snow;
+  padding: 20px;
+  font-size: 30px;
+  display: inherit;
+}
+
+/*60th lesson 7:09:40 open a new file for it!
+  Grid Parent - fully Layout 
+    With Grid Template Areas
+  sth
+*/

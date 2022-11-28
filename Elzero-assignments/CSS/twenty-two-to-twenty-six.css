@@ -1,0 +1,45 @@
+body {
+  font-size: 20px;
+}
+div {
+  border: 2px orangered solid;
+  background-color: #fff;
+  margin: 15;
+  padding: 10px 20px;
+  text-align: center;
+}
+div p {
+  background-color:#DDD ;
+  padding: inherit;
+  border: inherit;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Jomhuria&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&display=swap');
+.texto {
+  text-align: center;
+  border: 2px solid black;
+  padding: 20px;
+  margin: 10px;
+}
+.texto :nth-child(1) {
+  font-family:'Open Sans' ;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 2.5rem;
+}
+.texto :nth-child(2) {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+}
+.texto :nth-child(3) {
+  font-family: 'Jomhuria', cursive;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+.texto > p {
+  padding:inherit;
+  margin:inherit;
+  border: inherit;
+}

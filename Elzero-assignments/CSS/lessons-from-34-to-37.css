@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  line-height: 60px;          /* Extremely important*/
+}
+.rey > div {
+  height: 60px;
+  width: 300px;
+  background-color: #eee;
+  text-align: center;
+  margin: 20px auto;
+  font-size:30px ;
+}
+
+/* .rey > div:nth-last-of-type(2) {
+  background-color: #f6001b;
+} */
+div:empty {
+  background-color: #f6001b; /* I was forgetting this one*/
+}
+
+/* div:last-of-type::before {
+  content: "1";
+  height: 80%;
+  width: 15px;
+  color: #fff;
+  background-color: #f6001b;
+} */
+.nino {
+  width: 400px;
+  height: 60px;
+  background-color: #eee;
+  text-align: center;
+  margin: 20px auto;
+  position: relative;
+  padding: 0; /* I forgot to add this padding [No need to it] 🤯😡*/
+}
+.nino::first-letter {
+  height:20px;
+  width: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  background-color: #f6001b;
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  margin-top: -4px;
+  border-top-width: 5px;
+  /* border-right-width: 10px; */
+  /* border-bottom-width: 5px; */
+  /* border-left-width: 10px; */
+  border-style: solid;
+  border-color: #f6001b;
+  float: left;/* It didn't work because of not adding it 🥳🤯😡*/
+  padding:0px 10px;
+}
+
+/* ----------------------------------------------------------------- */
+#third {
+  width: 350px;
+  height: 60px;
+  text-align: center;
+  margin: 20px auto;
+  position: relative;
+  background-color: #eee;
+  font-weight: bold;
+  border-left: 5px  solid #f6001b;
+}
+#third::before {
+  content: "";
+  /* width: 20px; */
+  height:3px;
+  background-color:transparent;
+  position: absolute;
+  left: -32px;
+  top: 42%;
+  margin-top: -10px;
+  border-width: 10px;
+  border: 15px solid;
+  border-color: transparent #f6001b transparent transparent;
+}
+#third::after {
+  content: attr(data-person);/*in html we can create personal attributes and call it here 
+  as pseudo elements*/
+  left: -100px;
+  position: absolute;
+  width:  60px;
+  height: 60px;
+  background-color: #f6001b;
+  color: whitesmoke;
+  font-weight: bold;
+  /* line-height: 60px; */
+}
+#fourth p {
+  width: 350px;
+  height: 60px;
+  text-align: center;
+  margin: 20px auto;
+  position: relative;
+  background-color: #eee;
+  font-weight: bold;
+  border-right: 5px  solid #f6001b;
+  counter-increment: new-idea;
+}
+/* #fourth::before {
+  content: "";
+  
+  
+} */
+#fourth p::after {
+  content: counter(new-idea);
+  left: -20px;
+  position: absolute;
+  width:  60px;
+  height: 60px;
+  background-color: #f6001b;
+  color: whitesmoke;
+  font-weight: bold;
+}

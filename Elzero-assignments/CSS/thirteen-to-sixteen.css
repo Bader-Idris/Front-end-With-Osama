@@ -1,0 +1,28 @@
+div > span:first-child {
+  background-color: red;
+}
+div > span:nth-child(2) {
+  background-color: blue;
+}
+p,body > div:nth-child(2) {
+  background-color: green;
+  width: fit-content;
+}
+
+.contento {
+  color: aliceblue;
+  
+  max-width: 400px;
+  /* margin-top: 20px ; */
+  /* padding: 20px; */
+  width: 100%;
+  
+}
+.stylesboy {
+  box-sizing: border-box;
+  margin: 15px;
+  padding: 20px;
+  overflow: auto;
+  background-color: brown;
+  max-height: 50px;
+}

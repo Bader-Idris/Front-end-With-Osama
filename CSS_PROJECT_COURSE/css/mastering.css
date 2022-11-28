@@ -1,0 +1,298 @@
+/* @import url(/CSS_PROJECT_COURSE/index.html); */
+
+/*
+if we have problems like missing the pct place/sth we go inside the browser and open the 
+inspector then see [console]
+
+*Declaration => selector{
+    Property: Value;
+    PropertyTwo: value;
+}
+*/
+* { text-align: center;/*justify,left,right*/
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-style:normal;
+}
+p { color: black;
+    background-color: aliceblue;
+    border: 2px solid rgb(0, 0, 0);/*lovely for making thick borders*/
+}
+.h1 {
+    border: 3xp solid rgb(13, 12, 115);/* rgb colors have 255 in each, 
+    rgba last one is Alpha channel, for transparency (20 255 0 /50%)
+    we can study [hex codes in computer science]e.g: #00ff00 that means green. */
+    background-color: rgb(158, 157, 157);
+    color: #000;
+}
+kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+    color: #333;
+    display: inline-block;
+    font-size: .85em;
+    font-weight: 700;
+    line-height: 1;
+    padding: 2px 4px;
+    white-space: nowrap;
+   }
+/* 
+    [*] is to select all elements 
+*   priority of styles is:
+*   inline,internal, external.
+*   html goes though [building it, and templating it] so we make only external styles.
+*   we can't start any identifier in any lang with NOs, in css we can start with - or _ e.g: class="-sth" .-sth{}.
+*   there ary many typing cases, and we care for two: camelCase and Kebab-case, as is, differences are appearing, css prefer Kebab
+        see elzero.org/css-formatting-guide/
+*   background attachment, position,Size #006 css elzero ----- fixed is lovely here-----
+*/
+#txta{
+    background-image: url(../images/pattern-bg.jpg);
+    background-repeat: repeat;  /*we can add no-repeat,repeat-x for horizontal, repeat-y for vertical*/
+    /* background-attachment: fixed;//it doesn't scroll as default */
+    background-position: left top;/* there are 9 positions: left top, left center, left bottom, center 1/2/3 right 1/2/3 */
+    background-size:contain;/*[cover is great],contain is fully visible*/
+    
+}
+/*7th lesson: padding is similar to word pages
+*   if we cut the dash of a property as background the browser will shorten things we didn't add to; {e.g: background: #DDD;}
+*   padding[هامش داخلي] counts as clock hand[عقرب الساعة]:top, right, bottom, left;
+        padding: 10px; means 10 to all 4D; if we add top and left it will add 3rd likewise top, and 4th likewise right
+            to add an only side we write: padding-bottom: 20px;
+                padding doesn't accept negative numbers
+    margin is[هامش خارجي] initially, it accepts negative values as -20px
+    we connect width with margin, e.g: p{ width:70%; margin:auto;} or we can specify it as: margin-left/right ...
+
+*9th lesson:
+    borders[edges]
+        we must care after 3 values in every border: size, color,and type;
+            e.g: border-width:10px; 
+                 border-color: red;
+                 border-style: solid;// Extremely important, most common is solid then dashed
+    and border values are 4D as well, so we can make color as 4 colors   
+            we can mix them together: e.g: border: 10px solid red;
+*10th lesson: 
+    outline
+        the problem with border was that it takes space from the element;
+        but in css3 they added box sizing as a solution, and it comes on behalf of outline though.
+            outlines many cause problems so experts decease using it
+            outlines can't add 4 line styles as solid or dotted
+        {important advice}: use borders and box sizing always instead of outline
+
+*/
+.tenth-lesson{
+    background-color: #DDD;
+    width: 300px;   
+    padding: 10px;
+    border: 10px solid #ff0000;
+    outline: 10px solid aqua;
+}
+/*
+*11th lesson
+    display: Block, inline, inline-block
+        block:
+        *when width not added, it fills it. e.g:div{background-color:#EEE;}
+        *adds line break before and after
+        *Respects padding, margin,width, height
+                we call it THE PRINCE, not rubbles
+
+        inline:
+        *  
+        *Does not add line break before and after
+        *Does not Respects width, height;
+        **Respects left and right padding/margin
+            *to make it Respects them all, we do this e.g:span{display:block;}
+
+        inline-block:
+        * it mix them, and does the work
+
+*12th lesson
+    Element visibility and usages/use cases
+        to hide an element we add: div{display:none;}
+          we use this property with JavaScript in e-commerce sites to activate/not 
+          *other important way to use it, is with appearing lists or hiding it, when asking many options
+    visibility default value is visible
+    ** difference between visibility and display is that 1st preserve its place when hidden
+        we use it more in motions, for smooth movement
+            e.g:wowjs.uk
+*/
+/*
+*13th lesson
+    Grouping multiple Selectors
+    instead of adding every selector for properties we use this:[commas between every selector]
+        .one,.two,.three{}
+*/
+/* .one{
+    padding: 10px;
+    border-bottom: 2 px solid red;
+    color: red;
+    margin: 10px 0;
+    background-color: #EEE;
+}*/
+.one{
+    border-bottom: 2px solid red;
+    color: red;
+}
+.two{
+    border-bottom: 2px solid green;
+    color: green;
+}
+.three{
+    border-bottom: 2px solid blue;
+    color: blue;
+}
+.four{
+    border-bottom: 2px solid black;
+    color: black;
+}
+.one,
+.two,
+.three,
+.four{
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #eee;
+}
+/* 14th lesson
+    Nesting: THE MOST IMPORTANT OBJECT IS CSS 
+      instead of changing every p (in-outside divs) we use nesting,
+      e.g: div p{} or .another-div p{} same with ids inside ids, classes inside classes
+    IT'S IMPORTANT BECAUSE OF NOT OVERWRITING DIVS AND OTHER ELEMENTS IN WEBSITES
+
+
+*/
+.another-div p{
+    background-color: #333;
+}
+/* 15th lesson
+        Dimensions Width and Height
+            if we wanna increase the width automatically, we do this
+            div{
+                display: inline-block;
+                min-width: 300px; // as an e.g. 
+            }
+        [min-width]
+        [max-width] we add both when acquired to fix it, so neither longer nor shorter.but it's prefer to say width 400
+        so we use them when ranging between two distances
+        if [height] we do likewise, min and max
+        [inline-block is not the best practice when arranging many blocks beside each other]
+        [width:fit-content;] is to make text fit in the content
+
+*/
+/* 16th lesson
+        Overflow X and Y
+            when height is set to fixed as 150px, if we add lorem sentence, it's gonna overflow💧
+                default value for overflow is: visible; so instead of make it hidden we use [scroll]as: overflow:scroll;
+                    its problem is that it need to be overwhelmed 
+                so we use [overflow:auto;] instead. IT'S GREAT. we can use x/y overflow
+            overflow-x is great for cellphones to stop moving horizontally
+*/
+/*
+    17th lesson
+    TEXT:Color, Shadow 1:54:46
+        SYNTAX => text-shadow: H-shadow v-shadow Blur Color
+            it's not a trend he says 
+        so we move the shadow by adding ordinary/negative numbers
+        *{text-shadow: 1px 1px 2px red ;} 1st is horizontal, 2nd is vertical, 3rd is blurity 4th is the color,
+         we can change color's transparency
+
+*/
+.paragraphy{
+    overflow-x: auto;
+    height: 400px;
+    
+}
+/* 18th lesson
+      TEXT:Alignment
+            as we know the normal approach is to type:
+            {text-align: center/left/right;}
+        Although a crucial way for Arabic is the [Direction:ltr/rtl]
+        the dot as an e.g. will be on the left instead of right
+    Vertical align: top/middle/bottom it's to adjust alignment when photos or object are with text
+*/
+/*19th lesson
+    Text: Decoration, Transform
+        [text-decoration: line-through;] there are many types, we took some above when we mixed them as [2px solid red;]
+        more examples: underline/overline
+        "pseudo-elements is easier and better" Osama said.
+                although we use it more in links especially to remove underline
+    text transformation is as capitalize,lowercase,uppercase and so on
+            it might become a huge problem to adjust it with html instead of css, the reason why is: templating etc.
+
+*20th lesson 2:07:00
+    Text: Spacing 
+    letter-spacing:2px; instead of 1 as default[normal] or we can add negative values
+        some fonts need some scaling in/out 
+    text-indent: 60px; it's for the first line in the paragraph or some coding presentation, 
+        or with some plugins in Jquery when adding numerous PXs for hiding it
+    line-height: 1; 1 means 100% and 1.5 grows; 1.6/1.7 are preferred in common
+    
+    word-spacing: same as letter-spacing but with words, we'll not use it much
+
+    white-space: nowrap; when normal it disallow text from exiting the edge of text, 
+        we stop rapping it with titles to add ... instead of making it in two lines 
+    word-break: break-word; we use it with titles to separate its length to two lines or so
+        and more importantly with links, its function is alike wbr in html
+*/
+/*21st lesson
+    TEXT: Overflow And Usage Cases
+    text-overflow:ellipsis; we use it with overflow:hidden; to make the rest letters in three dots [...]
+        , without it the text attive at the edge of the padding
+    instead of adding div:hover{overflow:visible} we add title element in html to add all text
+
+*/
+/*22nd lesson 
+    Inheritance[التوريث]
+        there are logics of not heritage values [e.g:from body to div] such as padding
+            when we add property values inside divs as specified, it automatically stops the heritage from body
+*/
+.heritage-div{
+    text-align: center;
+    padding: 20px;
+    background-color: #eee;
+    font-size: 20px;
+    border: 2px solid rgb(121, 121, 7);
+}
+.heritage-div p,h2{
+    border: 2px solid;
+    border-color: inherit;/* Just by adding inherit we bring many attributes inside the inheritor */
+    cursor: grab, move;
+}
+/*23rd lesson
+    Typography: 
+        Font Family 2:25:40
+            Web safe fonts are these with no problems in most usages[nowadays it's not crucial to care after]
+                if not safe it means that many machines are not compatible with it. 
+                so to fix the problem we use web fonts [such as in google fonts]
+        when we use font:family as :['Courier New', Courier, monospace;] these choices means 
+          if the browser doesn't see the first type as courier new, it [falls back] to next Name
+    [sans serif & serif] two typefaces in French means without edges or with. 
+        Cairo font is great Osama said, [it's alike helvetica] Via Google fonts
+            we can either use it directly by google url or by downloading it[which is preferred] then uploading it on the server
+        to do that: search or wait for practical lectures
+*/
+/*24rd lesson
+    Typography: Font Size & CSS Units
+        concentrate here
+            1em is not 16px[😲] it's multiplication, so if 2em for 20px it's 40px
+            The Web page default font size is 16px[You can test it yourself]
+            rem =>Root Time , it takes its value from HTML, not its father nor body
+            percentage 150%, 1.5em 2rem all are valid
+            vw view port width its greatness comes from flexibility, when we scale in/out the page it changes
+        Read more about: vmin and vh
+
+*/
+/*25th lesson
+    Typography-Font: 
+        style, variant, weight
+            font-style: normal, italic [we use html elements instead]
+            font-variant: small-caps; [It's useless because we use text-transform instead]
+        font-weight: 100, 200 until 900 then bold, bolder, lighter[IT'S USEFUL]
+                we might reset value to  bold weight fonts, as: font-weight: normal; especially for h1 elements  
+*/
+/*26th lesson 2:49:##
+    Mouse Cursor[مؤشر]
+        cursor: pointer; or move or grab, these are for showing users that they can act with the text when hovered on  
+*/

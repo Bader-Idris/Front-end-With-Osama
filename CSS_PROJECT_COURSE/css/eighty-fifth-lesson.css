@@ -1,0 +1,102 @@
+/*85th lesson 10:28:26
+  Media Queries
+    Responsive design
+    - Mobile First
+    - Test Devices
+    
+    firstly for mobiles we add meta view  port in HTML 
+    then we add media:vp in the head
+*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+.parent  {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.parent div {
+  padding: 20px;
+  background-color: red;
+  color: whitesmoke;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  /* flex-basis:100% instead of width */
+  margin-bottom: 5px;
+}
+
+/* Mobile */
+@media (max-width:767px) {
+  
+}
+/* Small Screens */
+
+@media (min-width:768px) and (max-width:991px) {
+  .parent div {
+    width: calc(50% - 10px);
+  }
+}
+/* Medium Screens */
+@media (min-width:992px) { /* in Frameworks they do it like this, don't stop until next one do*/
+  .parent div {
+    width: calc(25% - 5px); /* with real biz, [Grid system] calculates these maths automatically
+    in a container, search for [grid bootstrap layout]*/
+  }
+}
+/* Large Screens */
+@media (min-width:1200px) {
+  s{
+    width: ;
+  }
+}
+
+/*86th lesson 10:39:55
+    Create Your Framework
+      [Bootstrap] is one of the most popular frameworks in the marketplace
+      it has many components that saves you time.
+      [tailwindcss.com] is the second most popular framework in CSS
+
+  with classes they save us a huge amount of time
+  [CAUTION] don't make every normal value as a class inside HTML, only things 
+  You Use frequently
+*/
+
+/*87th lesson 10:49:38 
+  Global Values
+    there in each element, with edge inspector, each element was displayed as inline
+      but browsers specialized some as block, see some resources [w3.org, md5]w3 is not w3schools
+    - initial [Element goes as its name => Default] 
+    - inherit 
+    - unset [works as inherit if exists, when not works as initial] [many explain it incorrectly]
+    - revert [CSS level [4] he wrote] [it goes back to user agent settings]
+    - all [except for [unicode-bidi direction] and custom variables]
+        an example on [all] in HTML: <button style="all: unset;">
+        so with [all] instead of changing color, font-size, etc... it sets them all
+
+    one of the uses to this lesson is when we have [*] that sets all margin to 0 
+    instead of changing each element, we type all: inherit; or whatever we want
+    , and revert is good for that as: [margin:revert;]
+*/
+
+
+/*88th lesson 11:00:07 Last lesson
+  The End And How To Master HTML && CSS
+    
+ ========================
+ ===== what's Next ======
+ ========================
+
+ -4 Practical Designs
+ - HTML + CSS Tutorials
+ - CSS Battle [https://cssbattle.dev/battle/1]
+ - Front-end Mentors, go to [https://www.frontendmentor.io/solutions] great he said
+ - Elzero Challenges
+ - Practice Practice Practice 
+  - go to trending codepen here [https://codepen.io/trending]
+
+  to add our works in front-end mentor website, we need to learn how to use git, Osama has it on his channel
+  with pro version they get the job by [SKETCH] && [FIGMA] 
+*/

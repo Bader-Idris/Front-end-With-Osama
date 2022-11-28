@@ -1,0 +1,67 @@
+/*60th lesson 7:09:40 open a new file for it!
+  Grid Parent - fully Layout 
+    With Grid Template Areas
+  sth
+*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family:fantasy;
+  background-color: #333;
+  color:rgb(207, 207, 207);
+  letter-spacing: 0.7px;
+}
+ul {
+  list-style: none; /*for working with grid*/
+}
+ul li {
+  display: inline-block;
+}
+.page {
+  height:100vh;/* vh => viewport height || vh => viewport width*/
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);/* Column First*/
+  grid-template-rows: 50px auto 50px;/* We'll Postpone Rows For Now Osama says [looks like he meant 1fr]*/
+  grid-template-areas:
+  " logo logo nav nav nav nav nav nav nav nav"
+  "cont cont cont cont cont cont cont side side side"
+  "foot foot foot foot foot foot foot foot foot foot";/* EXTREMELY IMPORTANT, we'll make 3 main rows and 10 columns*/
+  /* to add a free space between columns we add . instead of nav or logo
+  we use it when we want to empty a column*/
+}
+h2 {
+  grid-area: logo;/* extremely important to connect it with grid-template-area name*/
+  background-color:#f00;
+  color: #fff;
+}
+nav {
+  grid-area: nav;/* Same as h2*/
+  background-color: #00f;
+  color: #fff;
+}
+section {
+  grid-area: cont;
+  background-color: yellowgreen;
+  color: #fff;
+}
+
+aside {
+  grid-area: side;
+  background-color: green;
+  color: #000;
+}
+footer {
+  grid-area: foot;
+  background-color: aqua;
+  color: #000;
+}
+
+/*61st lesson 7:21:17
+  Grid Child:
+    Column and Row
+  If you remember colspan attribute to mix cells in tables in html it'll be easy to you
+    [Grid-column] is a shorthand for grid-column-start and grid-column-end.
+*/

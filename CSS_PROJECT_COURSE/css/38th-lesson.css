@@ -1,0 +1,313 @@
+body{
+  color: aqua;
+  background-color: black;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 300;
+}
+::selection{
+  color: #32de84;
+  background-color: #014421;
+}
+/*38th lesson 4:23:34
+  Vendor Prefixes
+  [بائع]  [بادئة] each to its above meaning
+  Vendors here:
+  Chrome
+  IE, edge
+  Firefox
+  Opera
+  Safari
+
+  Osama says, these steps for prefixes
+  [1] New CSS Features Appeared
+  [2] Browsers Test Features In Version X
+  [3] Browsers Add Prefix To Give Developers Usage Ability
+  [4] Features Get Fully Supported In [y] Version [after x], So No Need To Prefix Any More
+
+  For Instance:
+  -webkit- => Chrome, safari, New Opera Version
+  -moz- => Firefox
+  -ms-  => IE, Edge
+  -o-   => Old Versions  Of Opera
+  If it's used in each, we don't need these Vendor prefixes
+*/      
+.class{
+  -webkit-border-radius: 10px; /*Here we add 4 prefixes in order with -webkit- -moz- -o- -ms- Normal feature*/
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+/* There Are Many Web Sites To Inform Us If To use 
+  For Instance: https://caniuse.com/   
+  
+  Notices:
+  Vs code  has add-ons To Add The Prefix, so we must not care much
+  Osama scanned for prefix in extensions bar inside Vs
+  [Notice] [Task Runner] is sth We'll learn in future
+  this feature brings data from market share to apply on features for versions of user browsers
+
+*/
+/* 39th lesson 4:32:28
+    Border radius
+      Radius means half centre[نصف القطر]
+
+
+*/
+.f-class{
+  width: 100px;
+  height: 100px;
+  background-color: red ;
+  margin: 20px auto;
+  border-radius:50% ;/*its default is 0 and many sits makes it 6px with cards or boxes
+  and instead of measuring sides as top, right etc it's measured by angles as top-right-radius
+  [EVERY INCREMENT OF PXs decreases edges of object] and (2/height + width) makes it a circle as if we code 50% 
+  we can manipulate each side when specify any 1/4 radius as down: , so we add two values for each of 4
+  search for: [css button radius] 
+  */
+  border-top-left-radius: 10px 20px;
+  z-index: 99;
+}
+/*40th lesson
+    Box shadows with Examples 
+      we previously spoke about text-shadow and it has many same values 
+
+
+*/
+.shade-box{
+/* Values of Shadow:  H-Shadow | V-Shadow | Blur | spread | Color | Inset  */
+  padding: 20px;
+  background-color: rgb(104, 103, 103);
+  margin: 20px auto;
+  width: 300px;
+  box-shadow:  0 0 10px 0 rgba(221, 221, 221, 0.28) ,
+   0 0 25px 0 rgba(45, 8, 175, 0.28); /* last one if insert it's inside if default it's outside*/
+  /*we can add many shadows by multiplying them inside box/ text shadow then adding [,] a comma between each
+  and we can make crazy things with shadows*/
+}
+/* some developers made famous mona lisa painting only by shadows, long long shadows, with programmes
+  look here "https://codepen.io/jaysalvat/pen/kazzOj"
+  We will use it may times if correctly [BOX SHADOW]
+
+*/
+
+/*41st lesson 4:45:45
+    Box Model And  Box Sizing
+      Extremely important
+        Its default value is content-box
+        div{box-sizing:content-box;} meaning: when we add padding and margin 10 for each,
+          it counts them inside parent space
+      So the Problem is that if two elements needed beside one another, it sucks! 
+          [We need to disable counting padding, margin, and border]solution: [[border-box]]
+
+*/
+.thirty-eight-parent{
+  width: 600px;
+  overflow: hidden;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ddd;
+  color: black;
+}
+.thirty-eight-son{
+  background-color: #eee;
+  width: 300px;
+  float: left;
+  color: inherit;
+  box-sizing: border-box;/*It affects height though amend aligning horizontally*/
+  padding: 10px;
+  border: 10px solid red;
+}
+/*
+      What we see in inspect sidebar in style box the shape that has:
+          element, padding,border, and margin is called
+      [Box Model]
+      
+*/
+/* 
+      So we make  box-sizing: border-box; as default by including [*] 
+*/
+
+/*
+
+ *{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*/
+
+/*********************************************************************************************************
+42nd lesson 4:52:28 MOST IMPORTANT EVER IN CSS ***********************************************************
+    Transition[الانتقال وهو التحكم بالعنصر عند الانتقال من حال لأخر] 
+      Transition =>
+      Property: [Default:all][preferred: specific property as margin]
+      Duration: 1s; 1ms 1 second or 1 millie second [1k ms = 1s]
+      Delay: [IMPORTANT] when many objects move in a row
+      Timing Function: [it's for controlling speed curve][Default:ease its order is slowly, speed, slow]
+            It has linear, ease-in, ease,ease-out, ease-in-out
+
+      Shorthand: div{transition: width 3s, height 1s;}[all 1s 0.5s linear]
+
+    Search for [animatable css properties] for detailed info
+transition-delay: transition-duration: transition-timing-function transition-property: 
+**********************************************************************************************************
+*/
+.one-millie{
+  text-align: center;
+    width: 250px;
+    padding-left: 10px;
+    margin-left: 41%;
+    border-radius: 45px;
+    height: 56px;
+    transition-property: height, border-radius,width;
+    transition-timing-function: linear;
+}
+.one-millie:hover{
+  transition-duration: 0.3s;
+  transition-delay: .1s;
+  transform: scale(1.04);
+  font-weight: 400;
+  width: 300px;
+  height: 300px;
+  border-radius: 50% ;
+}
+/*43rd lesson 5:05:46
+    !Important declaration And Use Cases
+      it might come as important flag
+
+      Some JS affect style properties as inline style is stronger than external one
+      some frameworks sa sharepoint by microsoft might has crazy place for an anchor 
+      link as inside the body that has external CSS styles
+      
+      some workframes will make you fill the css file with !important especially sharepoint
+      So to solve these crazy issues we use [important property] div{color:red !important;}
+    example on .para
+*/
+.para{
+  background-color: inherit !important;
+  color: inherit !important;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin: 20px auto;
+}
+.hr{
+  width: 860px;
+  border-radius: 5%;
+  height: 5px;
+  margin-bottom: 30px;
+  border:ridge
+}
+/*44th lesson 5:11:00
+    The Margin 
+        Collapse 
+*/
+.parentparent{
+  width: 400px;
+  height: 200px;
+  float: left;
+  background-color: purple;
+  margin: 0 35% 0;
+  overflow: hidden;
+  padding: 10px;
+}
+.sonson1{
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+.sonson2{
+  width: 50%;
+  height: 90%;
+  float: left;
+  background-color: #aaa;
+}
+.up{
+  background-color: #ff0000;
+  height: 90px;
+  margin-bottom: 20px;
+  color: #eee;
+}
+.down{
+  background-color: #014421;
+  height: 90px;
+  margin-top: 20px;/* Because there's a vertical contact between both divs this margin is not valid
+  The reason why here is that it [Collapse] with margin button up there, so one of both is only necessary */
+}
+/* Osama called Collapses as you see:
+      [1]  Vertical Margin Only Collapses
+      [2] Bigger margin wins
+      [3] If An Element Comes Between [No contact happens] no collapse
+      [4] Nesting doesn't prevent collapsing
+*/
+/*45th lesson 5:18
+  Variables
+      It's useful using variables with CSS
+        coloring is an example.
+  types of variables in CSS:
+    Global and Local variables[professionally scopes not variables]
+      Global are at system phase and local are exclusive for a selector
+  Defining Variables
+      [:root{--varName: blue;}] CSS Variables are case sensitive
+      local one: a property inside [--anyVar:black] we can make it as same name as Global one
+
+      var(Variable Name, Fallback Value) 2nd is a spare condition 
+*/
+:root{
+  --pattern: #00ff00;
+  --mainpadding: 10px;
+}
+.var-testing{
+  --anyVar: 0%;
+  background-color: var(--pattern, black);
+  color: white;
+  padding: calc(20px + var(--mainpadding));
+  display: inline-block;
+  margin: 5px;
+  position:unset;
+  text-decoration: bold;
+  text-align: left;
+  border-radius: var(--anyVar); 
+  
+}
+/*46th lesson 5:26:48
+    Flex Box - Parent
+    Direction, wrap, Flow
+    
+    Some attributes are for parents and others for child
+      - display:flex => [to start a flex box] it doesn't need overflow: hidden nor float element
+      - flex-direction: row => [Default value]
+      - flex-wrap: wrap;[Responsible for extra content] [default nowrap]
+          when adding 5 elemens with fraction of 4 we add wrap to not include 5th one, [wrap-reverse]
+          [flex-wrap: nowrap;]
+
+
+        [flex-direction: row-reverse;] it's appearing by its name, used for same language unlike RTL direction 
+        [flex-direction: column;] 
+        [flex-direction: column-reverse], it saves hours of choking yourself🤯
+
+  With normal hidden overflow it keeps elements consist together
+  float is having an epic bug with writing right to left, because of [needing to change every div by: float:right;]
+  but with flex-direction just by changing body [direction: rtl]
+*/
+.flexy{
+  color: rgb(255, 255, 255);
+  background-color: #eee;
+  width: 600px;
+  padding: 20px;
+  margin: 20px auto;
+  
+  display: flex;
+  /* flex-direction: row;
+  flex-wrap: wrap; we added the shorthand down*/
+  flex-flow: row wrap;    /*This is the cause of fifth one*/
+}
+.son-flexy{
+  background-color: red;
+  width: 25%;
+  color: inherit;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+}

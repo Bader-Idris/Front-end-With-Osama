@@ -1,0 +1,430 @@
+<!DOCTYPE html><!-- there are 2 types servers to render pages,1st standard; 2nd quirks[مراوغ] -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--this is called a (نوع ترميز)-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="this is how google sees the desc underneath its title">
+    <!-- [name="description"]-->
+    <!--elzero explains a lot about meta in his website -->
+    <title>Document</title>
+    <link rel="stylesheet" href="cssindex.css">
+</head>
+
+<body class="body">
+    <h1>for edge styles[book store]</h1>
+    <!-- it comes down the panel in inspect; the browser ignores spaces in h1 as e.g-->
+    <h2>Chapter title inside book store</h2>
+    <h3>Story title inside chapter</h3>
+    <img src="https://via.placeholder.com/300x250/F00/FFF?text=Bader or Pedro" alt="placeholder website,it's colored pictures">
+    <hr>
+    <input type="search"><!-- there are url,month, time  types though -->
+
+    <div>
+        <label for="">date</label>
+        <input type="date" name="" id=""><!--  before having the date, we were using JS for calendaring it-->
+    </div>
+
+    <!--we can change the closing tag by F2 on opening/closing tag
+                ;It's called Rename Symbol command,or we can enable linked editing in file then sittings  -->
+    <p class="nigga">a little <mark>test</mark> document</p>
+    <p>to assure that p with p means p+br+p</p>
+    <p hidden>there are global attributes like class & hidden and specific ones like src in links </p>
+    <!-- we write ctrl + /(beside r-shift) to add a comment,
+    re-clicking removes comment 
+    Alt + shift + ⬇️/⬆️copies the line -->
+    <p>there are inline elements and block ones, the 1st doesn't break the line
+        <br>the id attribute sends us to an interior place as a link
+    </p>
+    <a href="#" target="_blank" title="go to website">placeholder</a>
+    <nav style="text-align: center;">link - 
+        <a href="https://via.placeholder.com/300x250/F00/FFF?text=Bader" target="_blank" >link</a>  - link</nav>
+    <span>when we use navigation bars, sections,asides,footers,figures,figcaptions, and new  Semantic Elements as blocks,
+        we spare memory not using many div as tunnels [html5]</span>
+    <article>we use articles in html5 for articles instead of bringing many divs with many classes</article>
+    <div class="header">
+        <h2> <s>logo</s></h2><!--we can put <del> instead-->
+        <ul style="list-style-type:square">
+            <li>home</li>
+            <li>PHP</li>
+            <li>About Me</li>
+            <li>services</li>
+            <li>Contact Us</li>
+        </ul>
+    </div>
+    <hr>
+    <p>
+        called<a href="#downwards" style="text-decoration:none;"> anchor </a>to go down in same page,
+        <mark>to remove underline from links we add this[inspect to see]</mark>>⬇️
+    </p>
+    <div class="content">
+        <a href="#" target="_blank">
+            <img class="me" src="../withhtmlcss/me_2019.jpg" alt="me nigga" title="my personal picture">
+        </a>
+    </div>
+    <hr>
+    <ul class="navigation">
+        <li>Link</li>
+        <li>Link</li>
+        <li>Link</li>
+        <li>Link</li>
+        <li>Link</li>
+        <li>Link</li>
+    </ul>
+    <hr>
+    <div class="Sidebar">
+        Sidebar
+    </div>
+    <hr>
+    <div class="Footer">
+        Footer
+    </div>
+    <audio value="hidden" controls loop>
+        <!-- many attributes: autoplay, muted, loop; videos are the same  -->
+        <source src="media/ring_test.mp3" type="mpeg">
+        <source src="media/ring_test.ogg" type="ogg">
+        <source src="file_s_done.wav" type="wav">
+        this text means that you'll need to update your browser
+    </audio>
+    <!-- videos also have posters, thus it's created for lack of time, unitl the video is uploaded; it's a thumbnail
+            ; tracks are for translating, especially for blinded or deaf people; it's extension is vtt as a source 
+            ; there is [kind] attribute though
+        accessibility is designed for disabled people such as blinded, deaf, etc; there are useful apps as screen reader,voice over, magnifier
+        so we install the live server and then go inside inspect and look for lighthouse near network
+        then we can[analize page load]for many great features as seo, besides accessibility-->
+    <video value:"hidden">
+        <source src="media/ring_test.mp4" type="video/mp4">
+        blab blab blab
+        <track src="media_en.vtt" kind="subtitles" srclang="en" label="English">
+        <track src="media_es.vtt" kind="subtitles" srclang="es" label="Espanol">
+
+    </video>
+    <form action="" method="post">
+        <!-- here is where we send the data for its database as php for instance [action] 
+            and we name every input for it as name, subject, password, mail, etc ; e.g: ⬇️-->
+        <div class="user">
+            <label for="fname">user name:</label>
+            <input type="text" name="" id="fname" placeholder="Fuck yourself please" required>
+            <!--there are required attributes in input element, and it was [required="required"]-->
+        </div>
+        <div class="user">
+            <label for="email">user name:</label>
+            <input type="email" name="" id="email" placeholder="Enter A valid Email" required value="E@gmail.com"
+                name="mail">
+            <!--✅-->
+        </div>
+        <div class="pwd">
+            <label for="pwd">password:</label>
+            <input type="password" name="" id="pwd" min="10" required>
+            <!--search for more meter attributes-->
+        </div>
+        <input type="reset">
+        <input type="submit" value="save it, pal">
+
+    </form><!-- I DO NOT KNOW WHY IT MIGHT HAVE SOME PROBLEMS NOT MAKING ITS DIVS AS FORMS-->
+    <p>both h<sub>2</sub>o &amp; E= mc<sup>2</sup> are fun to learn by Enki</p>
+    <p>
+        HTML&amp;CSS progress: <meter min="0" max="100" value="68">68= Grade B </meter>
+    </p> 
+    <textarea name="textarea" 
+    placeholder="Enter Your Text Here" 
+    cols="30" rows="10"
+    style="float:right;">
+    </textarea>
+    <br>
+    <hr>
+    <!-- tables have
+        caption
+        thead
+        tbody
+        tfoot
+            it's the best way for appearing info 
+        tr => Table Row
+          td => Table Data cell
+              th=> table header cell
+        if we use head, body and foot and move tfoot upwards arbitrarily, it works though it's crap, DON'T;
+        we can remove tfoot though
+                to add border as html inside the table we write:<table border="1"> 
+                    although, it's not preferred to do;when added it's red in VS code, so discoursed from
+                     instead we add in css: 
+                    [table td{
+                        border:1px solid #CCC;
+                    } ]
+        and to full the width, we write in css: width:100%;
+                    to manage space between cells we add cellpadding inside table 
+                    
+                        so we add: caption alone,[it's the title] 
+                    tr then inside td
+        to merge table elements as td we remove one and add [colspan="2"]
+            but to merge table header [th] we add rowspan
+        -->
+    <table border="1">
+       <caption>
+        what a lovely table
+       </caption>
+       <tr>
+        <td>data1</td>
+        <td>data2</td>
+        <td>data3</td>
+       </tr>
+       <tr>
+        <td>data1</td>
+        <td>data2</td>
+        <td>data3</td>
+       </tr>
+    </table>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Year</th>
+                <th>decade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>01</th>
+                <th>2000</th>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>22</th>
+                <th>yeas old</th>
+            </tr>
+        </tfoot>
+    </table>
+      <div>
+    <label for=" books">Choose your book: </label><!--we call selectbox as drop down list-->
+            <select name="books" id="books">
+                <optgroup label="romantic books">
+                    <option value="bo1">Book 1</option>
+                    <option value="bo2">Book 2</option>
+                    <option value="bo3">Book 3</option>
+                </optgroup>
+                <optgroup label="police books">
+                    <option value="bo4">Book 4</option>
+                    <option value="bo5" selected>Book 5</option>
+                    <option value="bo6">Book 6</option>
+                </optgroup>
+                <optgroup label="code-textbooks">
+                    <option value="bo7">Book 7</option>
+                    <option value="bo8">Book 8</option>
+                    <option value="bo9">Book 9</option>
+                </optgroup>
+            </select>
+            </div>
+
+            <table border="1px" style="width:30% ;"><!--an e.g of rowspan with table header <th>:⬇️ -->
+                <tr>
+                    <th>Name</th>
+                    <td>Jill Smith</td>
+                </tr>
+                <tr>
+                    <th rowspan="3">Phone</th>
+                    <td>555-77854</td>
+                </tr>
+                <tr>
+                    <td>555-77854</td>
+                </tr>
+            </table>
+
+            <style>
+                h1 {
+                    margin: auto;
+                    background-color: black;
+                    color: aliceblue;
+                }
+
+                .nigga {
+                    background-color: aqua;
+                }
+            </style>
+
+            <p><br> using &gl; &copy; is called entity</p>
+            <div>
+                <input id="windows" type="radio" name="os" value="windows" checked>
+                <!--we need to attach each label to its input by adding[for]to id [in] input-->
+                <label for="windows">windows</label>
+                <!--label in divs should be after radio -->
+            </div>
+            <div>
+                <input id="mac" type="radio" name="os" value="mac">
+                <label for="mac">mac</label>
+                <!--label in divs should be after radio -->
+            </div>
+            <div>
+                <input id="linux" type="radio" name="os" value="linux">
+                <label for="linux">linux</label>
+                <!--label in divs should be after radio -->
+            </div>
+            <form action="">
+                <legend>Choose your operating system</legend>
+                <div>
+                    <input id="windows1" type="checkbox" name="os" value="windows" checked>
+                    <!--we need to attach each label to its input by adding[for]to id [in] input-->
+                    <label for="windows1">windows</label>
+                    <!--label in divs should be after radio -->
+                </div>
+                <div>
+                    <input id="mac1" type="checkbox" name="os" value="mac">
+                    <label for="mac1">mac</label>
+                    <!--label in divs should be after radio -->
+                </div>
+                <div>
+                    <input id="linux1" type="checkbox" name="os" value="linux">
+                    <label for="linux1">linux</label>
+                    <!--label in divs should be after radio -->
+                </div>
+                <div>
+                    <input id="othercheckbox" type="checkbox" name="os" value="othercheckbox">
+                    <label for="othercheckbox">other</label>
+                    <input type="text" id="otherValue" name="other">
+                </div>
+            </form>
+            <input list="programming" name="prog" id=""><!--  the great advantage upon select box here
+            is that you can search inside it-->
+            <datalist id="programming"><!--[selectbox with searching ability]-->
+                <option value="python">
+                <option value="PHP">
+                <option value="C#">
+                <option value="C">
+                <option value="C++">
+                <option value="Scala">
+            </datalist>
+
+            <br>
+            <q>this is for quotes </q>
+            <blockquote cite="http://www.worldwildlife.org/who/index.html">
+                and this is a block quote,<br> as for wise quotes
+                For 50 years, WWF has been protecting the future of nature. 
+                The world's leading conservation organization,
+                WWF works in 100 countries and is supported by 1.2 million members 
+                in the United States and close to 5 million globally.<br>
+                <mark>we added a cite instead of href as a reference</mark>
+            </blockquote>
+            <button>we use this button in javascript</button>
+            <div id="downwards">
+                <!-- <wbr> is for breaking links -->
+                <p>هلا وغلا 2 shit</p>
+                <p><bdi>هلا وغلا</bdi>2 shit</p>
+                <p><bdo dir="rtl">هلا وغلا</bdo>2 shit, <mark>the professional way</mark></p>
+
+                <p>The <abbr title="World Health Organization"> WHO</abbr> was founded in 1948.</p>
+                
+                <!-- pre and code elements are good for explaining specific codes -->
+                <iframe src="https://elzero.org/" frameborder="0" width="800px" height="300px"></iframe><!-- we can remove px here-->
+                <!--  so we can add entire pages inside, but many big Co.s disable this feature;thus API is much better;
+                [ARIA]accessible rich internet application, and  [screen readers] 
+                Jaws is a program designed as a screen reader
+                both of them are useful for disabled people
+                and we should pich good colors for it though, just able to be checked as [contrast ratio]when live server is on-->
+                <h5>
+                    this is where the anchor goes😒⬆️
+                </h5>
+                <dl class="decorated-list">
+                    <dt>Coffee description list</dt>
+                    <dd>black hot drink</dd>
+                    <dt>Milk</dt>
+                    <dd>white cold drink</dd>
+                </dl>  
+                <p class="cl1 cl2 cl3"><mark>adding multiple classes</mark></p>
+
+            </div>
+            <input type="file">
+            <!-- because we're unable to change it by default, we involve CSS and change its decorations-->
+            
+            <!-- This script is for the form downward-->
+            <script>
+                function validate(){
+                    var name    = document.getElementById('name');
+                    var email    = document.getElementById('email');
+                    var adress  = document.getElementById('adress');
+                    if(name.value == ''){
+                        alert('please enter your name');
+                        return false;
+                    }
+                    if (email.value == ''){
+                        alert('please enter your e-mail');
+                        return false;
+                    }
+                    if (adress.value == ''){
+                        alert('please enter your adress');
+                        return false;
+                    }
+                }
+            </script>
+            <br>
+            <form  method="get" onsubmit="return validate()" action="/action_page.php">
+                <label for="name">Name: </label>
+                <input type="text" name="name" id="name" maxlength="40"><!-- here we set the maximum number of the name-->
+                <br>
+                <label for="email">Email: </label>
+                <input type="Email" name="email" id="email">
+                <!--to make the email only to read, we add [readonly] inside the element, as an attribute-->
+                <br>
+                <label for="adress">Adress: </label>
+                <input type="text" name="adress" id="adress">
+                <br>
+                <input type="submit" name="submit" id="submit" value="Click here">
+            </form>
+<form action="">
+    <input type="number" placeholder="نمبرها" min="1" max="5">
+</form>
+<hr>
+<p>Audio settings:</p>
+
+<div>
+  <input type="range" id="volume" name="volume"
+         min="0" max="11">
+  <label for="volume">Volume</label>
+</div>
+
+<div>
+  <input type="range" id="cowbell" name="cowbell" 
+         min="0" max="100" value="90" step="10">
+  <label for="cowbell">Cowbell</label>
+</div>
+<span> if I wanna take the certificate in w3schools this is the 
+    <a href="https://campus.w3schools.com/collections/certifications/products/html-certificate" target="_blank">
+link</a>  with $95 cost</span>
+</body>
+<!-- comments 
+*   look up about the connection between query and action and php for sending data as users
+*   search for [methods of sending data: get, post and dialog html] but the last one is having a long story
+*   in numbers we can add [step] for specifying how many numbers do we change by an act 
+*   useful attributes for form: novalidate, target"_blank"[we can use this one for testing, to not lose data] 
+** we need to learn about role, aria-checked,aria-labelby , and tabindex attributes in divs for giving professional working
+* although [tabindex] attribute is useful for clicking on tab, especially useful to disabled people
+*   to stop an element we add disabled, especially for input fields
+        ** When I click on ctrl + [] it adds tabs automatically, same as tab or tab + shift, but not connected with selector
+ -->
+<!-- 
+    input types are:
+    <input type="button">
+<input type="checkbox">
+<input type="color">
+<input type="date">
+<input type="datetime-local">
+<input type="email">
+<input type="file">
+<input type="hidden">
+<input type="image">
+<input type="month">
+<input type="number">
+<input type="password">
+<input type="radio">
+<input type="range">
+<input type="reset">
+<input type="search">
+<input type="submit">
+<input type="tel">
+<input type="text">
+<input type="time">
+<input type="url">
+<input type="week">
+  -->
+</html>

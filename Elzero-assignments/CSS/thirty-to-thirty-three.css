@@ -1,0 +1,173 @@
+.first {
+  width: 100px;
+  height: 100px;
+  /* background: tomato; */
+  margin: 20px ;
+  position: fixed;
+}
+/*
+    We can use simple elements as: 
+      top:10px;
+      right:10px;
+      bottom:10px;
+      left:10px;
+    Although it's used more with [relative] positioning, so it's independent
+    its [start-point] is its first place
+*/
+.green {
+  background-color: #289787;
+  /* position: absolute; */
+  z-index: 2;
+  margin: 30px;
+}
+.red {
+  background-color: #EC403D;
+  /* position: relative; */
+  z-index: 3;
+  margin: 40px ;
+}
+.blue {
+  background-color: #3EA6F3;
+  /* position: fixed; */
+  z-index: 1;
+}
+.black {
+  background-color: #333333;
+  /* position: static; */
+  z-index: -1;
+  margin-top: 30px;
+}
+hr {
+  visibility: hidden;
+}
+
+
+.sec {
+  width: 400px;
+  margin: 40% auto auto 20px;
+  /* list-style-type: none; */
+  background-color: #eee;
+  height: 100px;
+  position: relative;
+  padding: 20px;
+  border: 2px solid ;
+  border-color: #F06865 #3EA6F3 ;
+  line-height: 1.6;
+  text-align: justify;
+  letter-spacing: 0.9px;
+  margin: 20px auto;
+  margin-top: 40%;
+}
+.top-left {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  text-align: center;
+  top: -8px;
+  left: -13px;
+  background-color: #4492F2;
+  border-right: 5px solid #F06865;
+  color: white;
+}
+.bottom-left {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  text-align: center;
+  bottom: -8px;
+  left: -13px;
+  background-color: #4492F2;
+  border-right: 5px solid #F06865;
+  color: white;
+}
+.top-right {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  text-align: center;
+  top:-8px;
+  right: -13px;
+  background-color: #4492F2;
+  border-left: 5px solid #F06865;
+  color: white;
+}
+.bottom-right {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  text-align: center;
+  bottom: -8px;
+  right: -13px;
+  background-color: #4492F2;
+  border-left: 5px solid #F06865;
+  color: white;
+}
+
+/* --------------------------------------------------------- */
+
+.سكشنها {
+  width: 400px;
+  margin: 20px auto;
+}
+.سكشنها > ul > li {
+  background-color: #ccc;
+  padding: 10px ;
+  /* list-style: armenian inside; */
+  margin-bottom: 20px ;
+  list-style:none;
+}
+.سكشنها > ul > li {
+  background-color: #ccc;
+  margin: 10px;
+  padding: 10px;
+}
+.bg {
+  padding: 5px;
+  margin: 20px;
+}
+.bg > li {
+  background-color: #ffffff;
+  padding: 5px;
+  margin: 10px auto; 
+}
+.js {
+  list-style-position: inside;
+}
+
+/* --------------------------------------------------------------------- */
+
+table {
+  width: 700px;
+  border-bottom: 5px solid #289787;
+  font-family: Arial, Helvetica, sans-serif;
+  border-spacing: 2px;
+  margin: 20px auto;
+}
+thead td {
+  background-color: #404040;
+  color: whitesmoke;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+}
+colgroup {
+  color: black;
+  font-weight: bold;
+}
+tbody tr {
+  background-color: #eeeeee;
+  margin: 20px;
+}
+tbody td {
+  text-align: center;
+}
+
+.view, 
+.delete {
+  color: whitesmoke;
+  padding: 10px;
+  background-color: #3EA6F3;
+}
+.delete {
+  background-color: #e20d66;
+}

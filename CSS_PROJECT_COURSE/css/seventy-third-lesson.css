@@ -1,0 +1,319 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #2f2f2f;
+}
+
+/*73rd lesson 8:47:00
+  3D Transform - backface
+    visibility And Flip Product
+    backface-visibility: hidden; [default => visible]
+    [transform-style:preserve-3d;] in second parent[IMPORTANT]
+*/
+.container {
+  margin: 40px auto;
+  width: 200px;
+  perspective: 600px;/*making it logical and smoothy, 600 is great*/
+}
+.box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style:preserve-3d ;/*[Extremely important to append][default => flat ]
+  and this is important*/ transition: transform 1s;
+
+}
+.box:hover {
+  transform: rotateY(-180deg);/*the lesson is about THIS*/
+}
+
+.box .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  backface-visibility: hidden;/*the lecture's topic, green back vanished because of it*/
+}
+.box .front {
+  background-color: red;
+}
+.box .back {
+  background-color: green;
+  transform: rotateY(180deg);/*with hidden it vanish after 90 deg*/
+}
+
+/*74th lesson 8:56:00
+  Animation 
+    Keyframes, Name, Duration
+    we need to use vendors prefixes as [-webkit-] with animation
+  [animation-name: function-name;][animation-duration:6s;] we add these two elements inside the div
+*/
+@keyframes change-color {/* after we added 2 elements inside the div we function this animate*/
+  from { /*instead of [from] we can add [%]*/
+    background-color: red;
+}
+to {/*so [to] here means 100%, we can add many steps instead of two*/
+  background-color: blue;
+}
+}
+/* Search for these loading animations on codepen, And there are many more
+https://codepen.io/Alexisw81/pen/YzqGKrw
+Patrik Hjelm CSS loading animation
+
+codepen.io/dissimulate/pen/vlfyA
+loading dissimulate
+
+codepen.io/tholman/pen/yenku
+Authentic Weather Loader
+*/
+
+/*75th lesson 9:02:45
+  Animation - Iteration
+    count, Timing Function
+  [spinner loading] our today's example 
+*/
+hr {
+  margin-top: 30px;
+  margin-top: 30px;
+}
+
+#spinner{
+  width: 100px;
+  height: 100px;
+  background-color:#e8e3e3;
+  position: absolute;
+  left: 50%;
+  top:75%;
+  margin-left: -50px;
+  margin-top: -50px;
+  animation-duration:6s;
+  border-radius:50%;
+  border:5px solid #e91e63;
+  border-left-color: transparent;
+
+  animation-name: spinner-loading;
+  animation-duration:1s ;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;/*this is for making it smooth*/
+}
+@keyframes spinner-loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+/*76th lesson 9:07
+    Animation - 
+      Direction, Delay, Fill Mode, Play State
+    - Direction [Normal => default][reverse, alternate ,alternate-reverse]
+    - Delay 
+    - Fill-Mode[none => default][forwards, backwards , both]
+    - Play-State [running => default] we can make it stops/paused when hovered
+    - Shorthand
+
+*/
+
+/* Examples
+  animation-direction: reverse;
+  animation-delay: -2s; when minus it means to start after this period as -2 two sec
+  animation-fill-mode: forwards; this one stops the motion at last step as 100% keyframe
+  animation-play-state: running; when [:hover] paused, it stops the motion
+  shorthand => animation: its-name 3s linear infinite reverse; as below
+  name duration timing-function delay iteration-count direction fill-mode;
+*/
+
+/*77th lesson 9:17:48
+  Animation - Up and Down
+    Animation trainings 
+
+*/
+.hrr {
+  margin: 280px 0;
+}
+
+.load {
+  display: flex;
+  justify-content: center;
+  margin: 50% auto;
+}
+.load div {
+  width: 20px ;
+  height:20px ;
+  background-color: orchid;
+  border-radius: 50%;
+  margin: -32% 5px 5%;
+  animation-name: up-and-down;
+  animation-duration:0.9s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;/*this is the love of impacting it*/
+}
+.load .two {
+  animation-delay: 0.3s;
+}
+.load .three {
+  animation-delay: 0.6s;
+}
+@keyframes up-and-down {
+  to {
+    opacity: 0.2;
+    transform: translateY(-20px);
+  }
+}
+
+/*78th lesson 9:23:32
+    Selectors Reference  Part 1[EXTREMELY IMPORTANT]
+      - *
+      - Element => [p, div, h2]
+      - Element AnotherElement=> div p [there might be other elements in between]
+      - .className 
+      - #id-Name 
+      - .parent .child
+      - .class-one.class-two [selector that has both class-one and two] **A NEW ONE**
+      - .class-name div, .class-name p [Grouping many classes by commas then \n]
+      - Element.class-name [Element Must be Specific and has our-class]
+      - .class-name > .child [Direct Child] [[[MOST IMPORTANT ONE]]][Nothing is between]
+  =============================================
+  ===== 79th lesson Part 2  9:32:45 ===========
+  =============================================
+      - Element + Another Element => [div + p] Must be div and P Next to it in same parent [one Next another]
+      - Element ~ Other Elements => [p + div][call ~ as siblings] , so if a div is inside a section it won't effect it
+      - [Attribute] ,any element that has a title will be affected 
+      - Element[Attribute]
+      - [Attribute=Value]
+      - Element[Attribute=Value] => input[type="search"]
+      - [Attribute~=Value] => Contains A word
+      - [Attribute*=Value] => Contains A String
+      - [Attribute^=Value] => Starts With A String
+  =============================================
+  ===== 80th lesson Part 3  9:41:50 ===========
+  =============================================
+  ===== The Most Important Selectors ==========
+  =============================================
+      - :first-child
+      - :last-child
+      - :first-of-type
+      - :last-of-type [it sees the first type then take the last element of it]
+      - :only-child[Must be lonely]
+      - :only-of-type[must have of of its type as 1 p]
+  =============================================
+  ===== 81th lesson Part 4  9:51:48 ===========
+  =============================================
+      - :not(Selectors)
+      - nth-child(n) => number th as 5th 7th etc.
+      - nth-child(even) only even NO as 2 4 6 etc.
+      - nth-child(odd) only odd NO as 1 3 5 etc.
+      - :nth-last-child(n)[opposite to nth-child]
+      - :nth-of-type(n)
+      - :nth-last-of-type(n)
+  =============================================
+  ===== 82th lesson Part 5  10:00:45 ==Least===
+  =============================================
+      - :root
+      - :checked 
+      - :empty
+      - :disabled
+      - :required
+      - :focus :before :after :hover :first-letter :first-line ::selection [we took them priory] 
+      - ::placeholder
+
+ To master nth go to [nthmaster.com]
+*/
+[title] {
+  background-color: #2f2f2f;
+}
+footer[title] {
+  color: aliceblue;
+}
+div[title*="s01"] {
+  color: red;
+}
+div[title~="div"] {
+  color: red;
+}
+div[title*="bad"] { /*Even with substring as Div inside NigDiv*/
+  color: red;
+}
+div[title^="div"] {
+  color: red;
+}
+p:first-child {
+  display: grid;
+}
+p:not(:first-child) { /*Part 4*/
+  color: yellowgreen;
+}
+p:nth-child(2) {
+  background-color: black;
+}
+input[type="checkbox"]:checked + label{ /*Part 5*/
+  color: red; /*here we changes the next label to a checked input*/
+}
+div:empty {
+  background-color: #e91e63;
+  width: 200px;height: 200px;
+}
+input:disabled {
+  opacity: 0.4;
+}
+input:required + span::before {
+  content: "*";/* we created a * from nothing by css here*/
+  color: red;
+}
+
+/*83rd lesson 10:08:24
+    Media Queries And Responsive INTRO[[[[EXTREMELY IMPORTANT]]]]
+      Managing how devices response to your website !!! [Phones][PCs][TVs]
+    @Media queries are [شروط الاستعلامات]
+    [width] is one of the main approaches for Media
+
+*/
+@media print { /*these are with the printer*/
+  .parent > div:first-child {
+    display: none;/* when we hide info for printer*/
+  }
+}
+@media (max-width:1000px) {
+  .parent > div {
+    background-color: blue;
+  }
+}
+@media (mix-width:1400px) and (max-width:1400px) {
+  .parent > div {
+    background-color: darkblue;
+  }
+}
+
+/*84th lesson 10:17:08
+  Media Queries And Responsive - Standards
+    in HTML we add second link for CSS Printer as normal, but lastly include ⬇️
+      [media="print"] to make @media print exclusive for print e.g:
+      <link rel="stylesheet" href="css/print.css" media="print" />
+      and we can add mix-width and max instead as following:
+      <link rel="stylesheet" href="css/print.css" media="(mix-width:1400px) and (max-width:1400px)" />
+    and we can put that media in style tag as <style media="print">
+      .parent > div {
+      background-color: blue;
+      }
+    </style>
+      
+    we can even include media in <source> tag
+
+  to involve deeper in media width go to official websites as:⬇️ for media queries for standard devices
+    [css-tricks][bootstrap ver-3]
+    although we don't need to save it, when we face many devices of same type we change media rapidly
+*/
+
+/*85th lesson 10:28:26
+  Media Queries and Responsive - Practice
+    we open another page for it
+*/

@@ -1,0 +1,80 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+.firstassign {
+  width: 700px;
+  height: 400px;
+  background-color: #f2f2f4;
+  text-align: center;
+  padding: 10px;
+  margin: 100px auto 20px ;
+  overflow: hidden;
+  transition: .5s ease-in ;
+}
+.firstassign:hover {
+  margin: 20px auto;
+  transition: .5s ease-out ;
+}
+.firstassign > div {
+  background-color: #dededc;
+  width: 600px;
+  height: 80px;
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  transition: .5s ease-in ;
+}
+.firstassign:hover > div {
+  margin: 80px auto;
+  transition: 1s ease-in-out ;
+  transition-delay:0.5s ;
+}
+/* ---------------------------------- Second assignment ----------------------------------  */
+.secassig {
+  /* color: black !important; */
+  /* background-color: #eee !important; */
+  /* font-size: 20px !important; */
+  /* text-align: center; */
+  /* width: 400px !important; */
+  /* margin: 20px auto !important; */
+  /* border: unset !important; */
+  /* box-sizing: content-box; */
+  /* font-weight: bold; */
+  visibility: hidden;
+}
+.secassig::before {
+  content: "Elzero" ;
+  visibility: visible;
+  display: block;
+
+  padding: 20px;
+  color: black ;
+  background-color: #eee ;
+  font-size: 20px ;
+  text-align: center;
+  width: 400px ;
+  margin: 20px auto ;
+  border: unset ;
+  box-sizing: content-box;
+  font-weight: bold;
+
+}
+/* ---------------------------------- Third assignment ----------------------------------  */
+:root { /* Here we called the variable as global scope
+  because it's inside root not the selector itself*/
+  --mainColor: #009688;
+  --mainPadding: 10px;
+}
+
+.third {
+  /* background-color: var(--mainColor); */
+  width: 600px;
+  height: 60px;
+  color: var(--mainColor, red);
+  border: 2px solid var(--mainColor, black);
+  margin: 20px auto;
+  padding: var(--mainPadding, 10px);
+}

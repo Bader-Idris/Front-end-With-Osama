@@ -1,0 +1,215 @@
+/*63rd lesson 7:34
+  GRID: MinMax And Auto-Fill [Advanced Level] Responsive design[to be good with each monitor type][with @media query]
+  to be continued 💁🏿‍♀️
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  font-family:fantasy;
+  background-color: #333;
+  color:rgb(207, 207, 207);
+  letter-spacing: 0.7px;
+}
+.parent {
+  margin: 20px auto;
+  height: 500px;
+  background-color: bisque;
+  display: grid;
+  grid-template-columns: minmax(200px, 400px) repeat(2, 500px);/*MixMax means 1st min 2nd max as you see*/
+  /* grid-template-columns: repeat(7, 200px); it's not useful because when wider it's not filled */
+  /* grid-template-columns: repeat(Auto-Fill, 500px); this is way better than 7 columns, but its problem still the same,⬇️ */
+  grid-template-columns: repeat(Auto-Fill,minmax(200px, 1fr));/*so we use this instead! a function inside another*/
+}
+.parent div {
+  background-color: red;
+  color: white;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  
+}
+/*
+  learn and search more for [ch => characters] && [auto-fit]
+*/
+
+
+/*64th lesson 7:42:22
+  CSS Grid Garden Game.GO TO [cssgridgarden.com]
+  use grid-column:4/span 2; instead of adding grid-column-start:span 2; grid-column-end:4;[short-hand]
+  grid-row: 4/ span 2; is the same function with vertical direction
+  [grid-area] is a short-hand for both. we took it with Osama 
+  last lesson was [grid-template: 1fr 50px /20% 80%;] needs to considerate 
+*/
+
+/*65th lesson 7:59:50
+  2D Transform Scale [he did it with flex]
+    -scaleX
+    -scaleY
+    -scale [Shorthand]
+  transform:scaleX(1.5) means 1.5 of its original
+  transform:scale(2) if only one element, it gives both same value
+  -if minus 1 as (-1) if flips on its axis
+*/
+
+/*66th lesson 8:04:31
+    2D Transform: Rotate
+    deg => degree [most famous]
+    rad => Radians
+    grad=> Gradians
+    turn=> Turn 💫 [e.g: transform:turn(45deg)][360deg=6.28rad=400grad=1turn]
+
+*/
+.image {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  width: 300px;
+  height: 600px;
+}
+.image img {
+  transition: 0.5s;
+  /* width: 12.5%;
+  height: 12.5%; */
+}
+
+.image:hover {
+  transform: scale(1.3);
+  /* transform: rotate(10); if we add it like this, it'll overwrite prior transform, 
+  so we mix them together as below*/
+  transform: scale(1.3) rotate(5deg);
+  transition: 0.5s;
+  opacity: 0.6;
+  /* transform: matrix(1, 0, 0, 1, 0, 0); */
+}
+
+/*67th lesson 8:11:
+  2D Transform 
+    Translate(x,y)
+    e.g:[transform: translate(10%, 20px)] when minus it goes to left or above[2nd default isn't inherent, it's 0]
+  transform: translate(-50%, -50%);[to be in the middle of any monitor][flex is better]
+
+Translate is the best for css animation
+don't forget to use prefixes as -webkit-
+*/
+
+/*68th lesson 8:16:
+  2D Transform: 
+    Skew[it skews the item [انحراف]]
+      transform: skew()[skewx, skewy]
+  
+  we can use it in skewed videos, 
+  although with :before when adding a text and wanting to change only the background
+
+*/
+
+/*69th lesson 8:21:
+  2D Transform
+    Matrix [with math and this value we make great results]
+  syntax => matrix( scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY()) but typing 'em without parenthesis
+    transform: matrix(1, 0, 0, 1, 0, 0); [default values], learn [tan of angle] to be able to change degrees in skew
+    Normal [transform] order is different:transform: translateX() translateY() scaleX(), skewY() skewX() scaleY() ; 
+    translate becomes firstly!!!!!!!
+
+*/
+
+/*70th lesson 8:28:17
+    transform 
+      origin
+      default values => 50% 50% 0
+      2D Transform => transform-origin(X,Y)
+      3D Transform => transform-origin(X,Y,Y)
+      X-Axis [accepts these followings]
+      - CSS Units [PX, em, rem]
+      - %
+      - Keyword[its defaults ⬇️]
+      -- Left = 0%
+      -- Center = 50%
+      -- Right  = 50%
+    Y-Axis 
+      - CSS Units [PX, em, rem]
+      - %
+      - Keyword
+      -- Top = 0%
+      -- Center = 50%
+      -- Bottom = 100%
+  
+  to understand it better go to [codepen.io/shshaw/full/pOVKjb]
+  which is for [transform-origin illustration]
+*/
+.shape > .origin {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;/* this circle is only for learning purposes*/
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: 50% center;/*both values are same,
+  when changed it'll change the angle of transform animation*/
+
+}/* with these, we need to appear their parent div to impact them*/
+
+/*71st lesson 8:36:30
+    3D Transform 
+      Rotate + trainings
+    transform: rotate3d(X,Y,Z, degrees);
+    transform: rotateX() rotateY() rotateZ();
+*/
+/*
+selector{
+  transform: rotate3d(1.5, 1.5, -1, 152deg);
+}
+*/
+/*
+some usages of 3D Transform are:
+  transform: rotateY(90deg); and when clicked/hovered it opens as a pic
+  transform-origin: left top; it becomes great for appearing products
+*/
+
+
+/*72nd lesson 8:42:27
+  3D Transform - Translate
+    perspective + origin
+  [transform: translate3d(0,0,100px);]
+    to use that 3d element in a child div, you need to add [perspective:100px] to tell it
+      the space between you as a user and the object.   when increment, it gets near, until vanish point.as 300px
+  [perspective-origin: left top;] place it into the parent div. its usage is alike transform-origin
+*/
+
+/*73rd lesson 8:47:00
+  3D Transform - backface
+    visibility And Flip Product
+*/
+
+.container {
+  margin: 40px auto;
+  width: 200px;
+}
+.box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.box .face {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+}
+.box .front {
+  background-color: red;
+}
+.box .back {
+  background-color: green;
+}

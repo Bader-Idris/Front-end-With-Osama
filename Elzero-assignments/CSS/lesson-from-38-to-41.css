@@ -1,0 +1,118 @@
+.firstly {
+  position: relative;
+  margin: 20px auto;
+  height: 200px;
+  width:  400px;
+}
+.firstly > div {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: #eee;
+  margin: 50px 10px;
+  text-align: center;
+  counter-increment: toThree;
+  box-shadow:
+  -5px -5px 1px 1px #e20d66,
+  5px 5px 1px 1px #4492f2;
+}
+.firstly > div::before {
+  content: counter(toThree);
+  width:  10px;
+  height: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  border: 5px solid black;
+  top: -10px;
+  left: 40px;
+  position: absolute;
+  font-size: 18px;
+  line-height: 10px;
+  text-align: center;
+} 
+.firstly > div::after {
+  content: "Element";
+  -webkit-content: "Element";
+  -o-content: "Element";
+  -ms-content: "Element";
+  -moz-content:"Element";
+  text-align: center;
+  line-height: 100px;
+  
+}
+.secondly {
+  width: 100px;
+  height: 100px;
+  background-color: #eee;
+  margin: 20px auto;
+  border-radius: 5px 45px;
+  box-shadow: inset 1px 0px 15px 0px black;
+}
+/* I got crazy about it!!, when I go back, Click here 
+[https://elzero.org/css-assignments-lesson-from-38-to-41/]*/
+.thirdly {
+  background-color: rgb(176, 176, 176);
+  width: 550px;
+  margin: 10px auto;
+  /* overflow: hidden; */
+  padding: 10px;
+  position: relative;
+  display: inline-block;
+}
+.thirdly > div {
+  width: 250px;
+  height: 300px;
+  background-color: #eee;
+  float: left;
+  padding: 10px;
+  /* margin: 20px auto; */
+}
+.thirdly > :nth-child(2) {
+  margin-left: 50px;
+}
+.orboy {
+  width: 20px;
+  height: 20px;
+  background-color: #4492f2;
+  border-radius: 50%;
+  margin: 5px auto;
+  position: absolute;
+  color: #ddd;
+  left: 45%;
+  top: 50%;
+}
+.uno {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #4492f2;
+  color: aliceblue;
+  text-align: center;
+  padding: 5px;
+  font-size: 20px;
+  line-height: 30px;
+  float: left;
+  /* background-color: #eee; */
+}
+.dos {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: #eee;
+  margin: 50px 10px;
+  text-align: center;
+  line-height: 100px;
+  float: left;
+  /* background-color: #eee; */
+
+}
+.clear {
+  clear: both;
+}

@@ -1,0 +1,221 @@
+.firstly {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;/* it's better to use flex-basis instead of width */
+  height: 100px;
+  border-radius: 50%;
+  color: #f7552d;
+  background-color: #eee;
+  box-shadow: 
+  -5px 0px 1px #3ea6f3,
+  5px 0px 1px #f7552d;
+  font-family: fantasy;
+}
+.parent1 {
+  width: 600px;
+  height: 300px;
+  margin: 20px auto;
+  display: flex;
+  background-color: #eeeeee;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  align-content: space-between;
+}
+.parent1 div {
+  background-color: #f7552d;
+  color: whitesmoke;
+  width: 185px;
+  text-align: center;
+  padding: 10px 0;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+
+.parent2 {
+  box-sizing: border-box;
+  width: 600px;
+  height: 300px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: stretch;
+  background-color: #eee;
+  color: whitesmoke;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: space-between;
+}
+.parent2 div {
+  background-color: #637d8b;
+  padding: 15px;
+  flex-grow: 2;
+  text-align: center;
+  font-weight: bold;
+  width: calc(100% / 4 - 20px);
+  margin: 0 5px;
+}
+ .parent2 .one {
+  align-self: flex-end;
+  order: 4;
+}
+.parent2 .two {
+  order: 5;
+}
+.parent2 .three {
+  align-self: flex-start;
+  order: 2;
+}
+.parent2 .four {
+  align-self:stretch ;
+  justify-content: flex-end;
+  order: 1;
+}
+.parent2 .five {
+  order: 6;
+}
+.parent2 .six {
+  order: 3;
+}
+/*--------------------------- 4th assign ------------------*/
+.parent3 {
+  width: 600px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px auto;
+  background-color: #eeeeee;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-items: flex-end;
+}
+.parent3 :nth-child(n-3){
+  color: whitesmoke;
+  background-color: #289787;
+  padding: 5% 10px;
+  margin: 10px;
+}
+.parent3:nth-child(1){
+  s
+}
+.parent3 :nth-child(2){
+  /* align-self: flex-start; */
+  width: 50%;
+  flex-grow: 3;
+  align-self: flex-start;
+}
+.parent4 {
+  width: 600px;
+  height: 300px;
+  background-color: #eeeeee;
+  text-align: center;
+  font-weight: bold;
+  margin: 20px auto;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  /* align-content: flex-start; */
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch
+}
+.parent4 > div {
+  padding: 40px;
+  margin: 5px;
+  height: 22%;
+}
+.parent4 > .one{
+  background-color: #f89918;
+  align-self: flex-start;
+  justify-content: flex-start;
+} 
+.parent4 > .two{
+  background-color: #8cc649;
+  align-self: flex-end;
+  justify-content: flex-end;
+} 
+.parent4 > .three{
+  background-color: #765549;
+  align-self: flex-start;
+  justify-content: flex-start;
+} 
+.parent4 > .four{
+  background-color: #6a2fb7;
+  order: -1;
+  align-self: flex-end;
+  justify-content: flex-end;
+
+}             /*It's a disaster to add [align-content] without specific reason*/
+/*--------------------------- 6th assign ------------------*/
+
+/* to see the assignment go to [https://elzero.org/css-assignments-lesson-from-46-to-53/] */
+
+.page {
+  box-sizing: border-box;
+  width: 100%;
+  height: 700px;
+  margin: 10px auto;
+  background-color: transparent;
+  position: relative;
+}
+/* 
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+
+*/
+.page > div {
+  margin: 10px;
+  display: flex;
+  background-color: #eee;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.header {
+  /* display: flex; */
+  /* margin: 10px; */
+  background-color: #ddd;
+  /* height: 10%; */
+  
+}
+.logo {
+  padding: 10px;
+  
+}
+.links {
+  list-style:  none;
+  width: calc(100% / 2);
+  /* display: inline; */
+  display: flex;
+  justify-content: space-around;
+}
+.links > li {
+  margin: 0 10px ;
+}
+
+.main-area {
+  height: 70%;
+}
+.content {
+  flex-basis: 33%;
+  align-self: flex-start;
+}
+.sidebar {
+  padding: 30px;
+  align-self: flex-end;
+  flex-basis: 66%;
+}
+.footer {
+  height: 10%;
+}
+.copyright {
+  s
+}
+.design{
+  s
+}

@@ -1,0 +1,55 @@
+* {
+  background-color: #333;
+  color: aliceblue;
+}
+body > :nth-child(1) {
+  background-color: aliceblue;
+  padding: 5px;
+  margin: 20px auto;
+}
+.divo {
+  display: inline-block;
+  margin: 10px;
+}
+.di1 {
+  border: 5px solid red;
+  padding: 15px;
+  outline: 5px solid black;
+}
+.di2 {
+  border: 5px solid;
+  border-color: blue green ;
+  padding: 15px;
+  outline: 5px solid black;
+}
+.di3 {
+  border: 5px;
+  border-color: red green blue yellow;
+  padding: 15px;
+  border-style: dashed;
+  outline: 5px solid black;
+}
+
+#didi {
+  width: 400px;
+  margin: 20px auto;
+  text-align: left;
+  background-color: #eee;
+  padding:10px;
+}
+#didi div {
+  color: black;
+  font-weight:bold;
+  border-left:5px solid purple ;
+  margin:10px ;
+  padding: 10px;
+  background-color: #fff;
+  outline: 10px solid #fff;
+}
+#didi :nth-child(2) {
+  visibility: hidden;
+}
+#didi :nth-child(3) {
+  border-left-color:green ;
+}
+
