@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: whitesmoke;
+}
+.layout {
+  display: grid;
+  
+  border-style: solid;
+  border-color: transparent;
+
+  width: 100%;
+  min-height: 500px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 13% 70% 13% ;
+  /* gap: 10px; */
+  grid-template-areas:
+  "header header header"
+  "section section aside"
+  "section section aside"
+  "footer footer footer"
+  /* "." means null */ ;
+  margin: 0;
+  padding: 0;
+}
+header {
+  content: "header";
+  grid-area: header;
+  background-color: #3ea5f2;
+}
+header::before {
+  content: "header";
+}
+section {
+  content: "section";
+  grid-area: section;
+  background-color: #f7552d;
+}
+section::before {
+  content: "section";
+}
+aside {
+  content: "aside";
+  grid-area: aside;
+  background-color: #637d8b;
+}
+aside::before {
+  content: "aside";
+}
+footer {
+  content: "footer";
+  grid-area: footer;
+  background-color: #289787;
+}
+footer::before {
+  content: "footer";
+}
+.layout >:nth-child(n-4) {
+  padding: 2%;
+}
+/* ------------------- Third assignment ----------------------- */
+hr {
+  margin: 50px auto;
+}
+
+.gridBoy {
+  box-sizing: border-box;
+  background-color: #ddd;
+  padding: 20px;
+  width: 800px;
+  height: 400px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr auto;
+  grid-template-rows: 1fr auto;
+  gap: 10px;
+}
+.gridBoy > div {
+  padding: 10px;
+  color: whitesmoke;
+  background-color: #403f3f;
+  padding: 2px;
+  font-weight: bold;
+  text-align: center;
+}
+.gridBoy > div:nth-of-type(-n+4) {
+  line-height: 20;
+}
+/* ------------------- fourth assignment ----------------------- */
+.grid4th{
+  background-color: #ddd;
+  padding: 20px;
+  width: 800px;
+  height: 400px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr) ;
+  grid-template-areas:
+  " first first first "
+  " second second third "
+  "fourth fifth fifth"
+  " sixth fifth fifth "
+  " seventh fifth fifth"
+  "eighth eighth eighth "
+  ;
+  text-align: center;
+}
+.grid4th > div {
+  margin: 10px;
+  padding: 10px;
+  background-color: #4492f2;
+}
+.eight {
+  grid-area: first;
+}
+.two {
+  grid-area: second;
+}
+.three {
+  grid-area: third;
+}
+.four {
+  grid-area: fourth;
+}
+.five {
+  grid-area: fifth;
+  /* line-height: 9; */
+  padding-top: 13% !important;
+}
+.six {
+  grid-area: sixth;
+}
+.seven {
+  grid-area: seventh;
+}
+.one {
+  grid-area: eighth;
+  order: 1;
+}
+/* ------------------- Fifth assignment ----------------------- */
+.grid5th {
+  background-color: #ddd;
+  padding: 10px;
+  width: 800px;
+  height: 400px;
+  margin: 20px auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 10%);
+  align-content: space-between;
+
+}
+.grid5th > div {
+  margin: 10px;
+  padding: 0;
+  background-color: #e91e63;
+}
+/* ------------------- Last assignment ----------------------- */
+/*
+  It needs an entire page, and its name is [frontend-company-team-with-grid]
+*/

@@ -1,0 +1,74 @@
+.first {
+  width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: bold;
+  padding: 20px;
+  border-width: 3px;
+  background-color: #eeeeee;
+  font-size: 32px;
+}
+.first::first-letter{
+  color: #e20d66;
+}
+.first::before {
+  content: "";
+  position: absolute;
+  width: 652px;
+  height: 86px;
+  z-index: -1;
+  left: 18px;
+  top: 16px;
+  background-color: red;
+  background-image: linear-gradient(
+    to right,
+    #ec403d 0% 20%,
+    #4492f2 20% 40%,
+    #54b14f 40% 60%,
+    #e20d66 60% 80%,
+    #6a2fb7 80% 100%
+  );
+  /* filter:grayscale(); */
+  /* we should've used filter instead */
+}
+.second {
+  margin: 20px auto;
+  width: 600px;
+  caret-color: #e20d66;
+}
+.second > div {
+  background-color: #f4f4f4;
+  padding: 20px;
+  margin: 20px auto;
+  position: relative;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+
+}
+.second > div::before {
+  content: "";
+  background-color: #e20d66;
+  background-image: linear-gradient(
+    to right,
+    #ec403d 0% 50%,
+    #289787 50% 100%
+  );
+  position: absolute;
+  bottom: -6px;
+  left: 0px;
+  width: 100%;
+  height: 7px;
+  z-index: -2;
+}
+.second:focus {
+ outline: none;
+}
+.filt:hover {
+  color: #0000007d
+}
+/*
+  I think we're Done here
+
+*/

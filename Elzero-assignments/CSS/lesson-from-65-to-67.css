@@ -1,0 +1,86 @@
+.uno-asignación {
+  width: 300px;
+  height: 200px;
+  margin: 20px auto;
+  background-color: #eee;
+  color: #03a9f4;
+  font-size: 32px;
+  text-align: center;
+  position: relative;
+  line-height: 6; /*By adding thin we must add top and left to pseudo elements*/
+}
+.uno-asignación::before {
+  content: "";
+  width: inherit;
+  height: inherit;
+  background-color: #e91e63;
+  z-index: -2;
+  position:absolute;
+  transform: rotate(5deg);
+  transform-origin: center center;
+  display: block;
+  top:0;
+  left:0;
+}
+.uno-asignación::after {
+  content: "";
+  width: inherit;
+  height: inherit;
+  background-color: #03a9f4;
+  z-index: -1;
+  position:absolute;
+  transform: rotate(-5deg);
+  transform-origin: center center;
+  display: block;
+  top:0;
+  left:0;
+}
+/* ------------------------------ dos-asignación ------------------------------ */
+.dos-asignación {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  background-color: #eee;
+  justify-content: center;
+  margin: 65px auto 30px  ;
+  font-size: 28px;
+}
+.dos-asignación::before {
+  content: "";
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  transform-origin: center center;
+  /* transform: scale(1.2); */
+  border:  10px solid;
+  border-color: #e91e63 #e91e63 #e91e63 transparent;
+  position: absolute; /* EXTREMELY IMPORTANT, IT WAS UNBELIEVABLY CRAZY WITHOUT IT */
+  transition: .5s;
+}
+.dos-asignación::after {
+  content: "";
+  width: 222px;
+  height: 222px;
+  border-radius: 50%;
+  transform-origin: center center;
+  /* transform: scale(1.1); */
+  border:  10px solid;
+  border-color: #03a9f4 transparent #03a9f4 #03a9f4 ;
+  position: absolute;
+  transition: .5s;
+  transition-delay: 0.5s;
+}
+
+.dos-asignación:hover::before{
+  transform:rotate(1turn) ;
+  transition: .5s;
+  transition-timing-function: ease-out;
+}
+.dos-asignación:hover::after{
+  transform: rotate(1turn) ;
+  transition: .5s ease-in-out;
+  transition-delay: 0.5s;
+  /* transition-timing-function: ease-out; */
+}

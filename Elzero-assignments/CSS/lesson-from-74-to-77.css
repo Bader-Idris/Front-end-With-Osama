@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+:root{
+  --main-co:#ffc700 ;
+  --sec-co:#1692fc ;
+  --tres-co:#fa3664 ;
+  --main-co2:black ;
+  --sec-co2:#ffc700 ;
+  --tres-co2:#1692fc ;
+
+}
+.uno{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent;
+  margin: 20px auto;
+  /* box-shadow: inset 1px 0px 15px; */
+  border: 3px solid;
+  border-color:var(--main-co) var(--main-co) var(--main-co) transparent ;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  -webkit-animation: rotate 1s normal linear infinite;
+  animation: rotate 1s normal linear infinite;
+}
+.uno::before {
+  content: "";
+  border: 4px solid;
+  border-radius: 50%;
+  border-color:var(--sec-co) var(--sec-co) transparent var(--sec-co);
+  transform: scale(0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.uno::after {
+  content: "";
+  border-radius: 50%;
+  border: 5px solid;
+  border-color: transparent var(--tres-co) var(--tres-co) var(--tres-co) ;
+  transform: scale(0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: auto;
+  top: auto;
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  25% {
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
+  50% {
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+  75% {
+    -webkit-transform: rotate3d(0, 0, 1, 270deg);
+    transform: rotate3d(0, 0, 1, 270deg);
+  }
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+.uno:hover {
+  /* transition: rotate paused; */
+  animation-play-state: paused;
+}
+/* ------------------- dos asignación ------------------- */
+.dos{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent;
+  margin: 20px auto;
+  border: 3px solid;
+  border-color:var(--main-co2) var(--main-co2) transparent var(--main-co2);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  animation: rotate 5s paused linear infinite;
+}
+.dos::before {
+  content: "";
+  border: 4px solid;
+  border-radius: 50%;
+  border-color:var(--sec-co2) var(--sec-co2) transparent var(--sec-co2);
+  transform: scale(0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.dos::after {
+  content: "";
+  border-radius: 50%;
+  border: 5px solid;
+  border-color: var(--tres-co2) var(--tres-co2) transparent var(--tres-co2)  ;
+  transform: scale(0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* left: auto; */
+  /* top: auto; */
+
+}
+/* @keyframes rotate {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  25% {
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
+  50% {
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+  75% {
+    transform: rotate3d(0, 0, 1, 270deg);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+} */
+.dos:hover {
+  animation: rotate 5s running linear infinite;
+}
+.dos:hover::before {
+  /* animation: rotate 7s normal linear infinite;
+  width: 77%;
+  height: 77%; */
+  animation-delay: 0.5s;
+  animation-timing-function:ease-in ;
+
+}
+.dos:hover::after {
+  /* animation: rotate 5s normal linear infinite;
+  width: 55%;
+  height: 55%; */
+  animation-delay: 1s;
+  animation-timing-function:ease-out ;
+
+}
+
+/*
+  I have to make it as 3 divs, then adding boders to each
+  then making each have timing duration 
+*/

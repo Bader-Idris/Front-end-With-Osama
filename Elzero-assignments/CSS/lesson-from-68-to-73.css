@@ -1,0 +1,185 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --main-color: whitesmoke;
+  --main-bgCo: #ff5722;
+  --sec-bgCo: #009688;
+  /* --pane-padding: 5px 42px; */
+  --main-width: 150px;
+}
+.uno {
+  color: var(--main-color);
+  background-color: var(--main-bgCo);
+  margin: 20px auto;
+  width: var(--main-width);
+  text-align: center;
+  position: relative;
+  PADDING: 10px;
+  font-size: 40px;
+}
+.uno::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--main-bgCo);
+  transform: matrix3d();
+  z-index: -1;
+  transform: skew(10deg, 5deg);
+}
+.uno::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--main-bgCo);
+  z-index: -2;
+  transform: skew(-10deg, -5deg);
+
+}
+.dos {
+  position: relative;
+  color: var(--main-color);
+  background-color: var(--sec-bgCo);
+  margin: 20px auto;
+  width: var(--main-width);
+  text-align: center;
+  padding: 10px;
+}
+.dos::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -15px;
+  background-color: var(--sec-bgCo);
+  z-index: -1;
+  transform: skew(20deg, 0deg);
+}
+.dos::after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  top: 0;
+  left: -35px;
+  background-color: var(--sec-bgCo);
+  transform: skew(20deg, 0deg);
+}
+
+.class-assignment-bro {
+  matrix(3, 0.2679, 0, 3, 20, 100);
+  /* the test is easy! It's to explain these values
+  so matrix( scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY())
+  when making it with normal transform it becomes 
+  transform: translateX() translateY() scaleX() skewY() skewX()  scaleY();
+  */
+}
+
+.tres {
+  background-color: #5c7886;
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+  position: relative;
+  top: 120px;
+}
+.tres::before {
+  content: "Elzero";
+  color: var(--main-color);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  padding: 10px;
+  width: 90%;
+  border-bottom: solid black 5px;
+}
+.tres::after {
+  content: "";
+  position: absolute;
+  width: 68%;
+  height: 68%;
+  background: black;
+  bottom: 65%;
+  left: 15%;
+  transform: rotate(45deg);
+  border-bottom: 4px solid white;
+  border-right: 4px solid white;
+}
+/* ------------------- cinco asignación ------------------- */
+.cuatro {
+  margin: 20px auto;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  color: var(--main-color);
+  /* top: 140px; */
+  /* left: -24%; */
+  /* text-align: center; */
+  font-size: 24px;
+  transform-style: preserve-3d;/* I forgot to append it*/
+  transition: transform 1s;/* and this though*/
+}
+.cuatro:hover {
+  transform: rotateY(-180deg);/* THis one though*/
+  perspective: 600px;
+}
+.cuatro::before {
+  content: "Front";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 20px auto;/*focus, you might use left and top instead*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fa3664;
+
+  /* transition: transform 1s; */
+  /* text-align: center; */
+  /* LINE-HEIGHT: 9; */
+}
+.cuatro::after {
+  content: "Back";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 20px auto;/*focus, you might use left and top instead*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1692fc;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;/* Extremely Important, and I forgot it*/
+  
+  /* visibility: hidden; */
+  transition: 0.5s;
+  /* display: flex; */
+
+}
+.cuatro:hover::after {
+
+
+  /*
+  IT'S TOUGH, AND I DIDN'T GET IT WELL ::>_<::
+  visibility: visible;
+  position: absolute;
+  content: "Back";
+  width: 100%;
+  height: 100%;
+  background-color: #1692fc;
+  text-align: center;
+  LINE-HEIGHT: 9;
+  transition: 0.5s;
+  transform: translate(0%, 9%);
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+
+   */
+}
