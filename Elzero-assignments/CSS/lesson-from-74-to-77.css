@@ -156,3 +156,82 @@
   I have to make it as 3 divs, then adding boders to each
   then making each have timing duration 
 */
+/* ------------------- tres asignación ------------------- */
+span {
+  position: relative;
+  margin: 20px auto;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid;
+  border-color: black black transparent black;
+  border-radius: 50%;
+  animation: rotate 1s reverse linear infinite;
+  background-color: #ddd;
+}
+/* ------------------- cuatro asignación ------------------- */
+/* The Tough One, heeeeeeeeeell yeah*/
+.EL {
+  margin: 20px auto;
+  padding: 5px;
+  display: grid;
+  grid-template-columns:repeat(9, 1fr); ;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-areas: 
+  "one one one one . two . . ."
+  "one . . . two . . .  "
+  "one . . . two . . .  "
+  "one one one one . two . . ."
+  "one . . . two . . .  "
+  "one . . . two . . .  "
+  "one one one one . two two two two"
+  ;
+  background-color: #ddd;
+  
+  align-content: stretch;
+  justify-content: center;
+  align-items: stretch;
+  justify-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+/* 
+"one one one one . two . . ."
+  "one . . . two . . .  "
+  "one . . . two . . .  "
+  "one one one one . two . . ."
+  "one . . . two . . .  "
+  "one . . . two . . .  "
+  "one one one one . two two two two"
+  ;
+*/
+/* 
+  "one one one one" . "two" . . .
+  "one" . . ."two" . . .
+  "one" . . . "two" . . .
+  "one one one one" . "two" . . .
+  "one" . . . "two" . . .  
+  "one" . . . "two" . . . 
+  "one one one one" . "two two two two"
+  ;
+*/
+/* 
+  "one one one one . one . . ."
+  "two . . . two . . .  "
+  "three . . . three . . .  "
+  "four four four four . four . . ."
+  "five . . . five . . .  "
+  "six . . . six . . .  "
+  "seven seven seven seven . seven seven seven seven"
+  ; */
+.letter-E {
+  grid-area: one;
+  background-color: #323234;
+}
+.letter-L {
+  grid-area: two;
+  background-color: #323234;
+}
+/* 11% 11% 11% 11% 11% 11% 11% 11% 11% */
+/* 14% 14% 14% 14% 14% 14% 14% */

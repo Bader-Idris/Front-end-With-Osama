@@ -1,0 +1,37 @@
+* {
+  background-color: #1e1e1e;
+  color: whitesmoke;
+  margin: 10px 0 0 10px;
+}
+div.main.red  { /* It's difficult to find, a type that has specific classes*/
+  color: red;
+}
+/*------------------ second assignment --------------*/
+.parent :nth-child(2) {
+  color: red;
+}
+/*------------------ third assignment --------------*/
+.parent2 > :only-child {
+  color: red;
+}
+/*------------------ forth assignment --------------*/
+section >:nth-of-type(-n+5):not(section :nth-child(-n+3)) {
+  color: red;
+}
+/* IT AIN'T AS HE WANTED, BUT I MADE IT RIGHT😁 */
+/*------------------ Fifth assignment --------------*/
+nav >  div:nth-of-type(2) > :nth-child(2) {
+  color: red;
+}
+/*------------------ Sixth assignment --------------*/
+#sixth > :nth-last-of-type(n+2) :nth-last-of-type(2) {
+  color: red;
+}
+/*------------------ seventh assignment --------------*/
+#seventh> :first-child>:nth-last-child(2) {
+  color: red;
+}
+/*------------------ eighth assignment --------------*/
+#eighth > div :not(h3,:last-child, :first-child) {
+  color: red;
+}
