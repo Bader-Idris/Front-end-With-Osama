@@ -1,0 +1,74 @@
+.center-flex {
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+
+}
+.center-position {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.circle-100 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.circle-200 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+/* .arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.top {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.bottom {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+} */
+/* .right::after {
+  content: "";
+  left: 3.3%;
+  border-color: #eee transparent transparent transparent ;
+  border-style: solid;
+  border-width: 10px;
+  position: absolute;
+} */
+.left::before {
+  content: "";
+  position: absolute;
+  /* right: -0.4%; */
+  left: 100%;
+  top: 0;
+  border-color: transparent;
+  border-right-color: #eee;
+  border-style: solid;
+  border-width: 10px;
+  transform: translateY(50%);
+}
+.arrow {
+  width: auto;
+  margin: 50px auto;
+  position: relative;
+
+}

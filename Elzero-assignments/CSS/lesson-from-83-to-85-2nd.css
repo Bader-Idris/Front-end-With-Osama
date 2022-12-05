@@ -3,7 +3,6 @@
     font-size: 40px;
   }
 }
-/* (min-width:740)and */
 @media  (max-width:767px) {
   div {
     width: calc(100% - 20px);
@@ -19,13 +18,16 @@
   h3 {
     color: red;
   }
-}
-@media (min-width:1200px) and (max-width:1400px) {
-  div {
-    width: calc(100% /3 - 20px);
+  .one {
+    flex-basis: calc(100% - 20px);
+  }
+  .two
+  ,.three
+  , .four {
+    flex-basis: calc(100% / 3 - 20px);
   }
 }
-@media (min-width:1401px) {
+@media (min-width:1200px) {
   div {
     width: calc(100% /4 - 20px);
   }
@@ -45,13 +47,11 @@ section > div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5px;
-  /* width: calc(100% - 20px); */
 }
 
 /* See this in special, must be the fastest 🔽*/
 section { 
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;

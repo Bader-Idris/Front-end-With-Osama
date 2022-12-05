@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  background-color: #222426;
+  color: whitesmoke;
+}
+div {
+  background-color: #ddd;
+  color: black;
+  padding: 10px;
+  margin: 20px auto;
+  width: calc(100% - 20px);
+}
+span {
+  background-color: orangered;
+  height: 100px;
+}
+section {
+  height: 100px;
+  background-color: green;
+}
