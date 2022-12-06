@@ -7,9 +7,134 @@
 body {
   font-family: "work sans", sans-serif;
 }
-/* End of Global Rules */
-
-
 /* The Design link 
   [https://www.graphberry.com/item/leon-psd-agency-template]
  */
+
+/* 2nd lesson 0:8:## Containers and font icons
+  We use font icons, similar to text;
+  he went to [http://fontawesome.com] website and changed a flag's values
+  
+  there are some famous websites as:
+  [https://icomoon.io/]
+  I add everything to an edge folder named [Web-Development]
+*/
+/* 
+  we download fonts from FontAwesome website [Web version]
+*/
+/* 
+  we need the dir [webfonts] inside the main dir[template1]
+  -we'll append the min one instead - and the file [all.css] to append it to [css] dir
+  the file [all.min.css] is made to compress its size, we'll do it later on
+
+  To test our icons we go to icons panel 
+  inside the webiste and copy our icon
+*/
+
+/* 
+  We use containers to make content readable
+
+  so instead of adding text inside a div directly
+  , we add a child div called .container 
+  and append [width]and [margin auto] in it.
+  and the bg color inside the parent div
+  and we append left and right padding [e.g: 15px],[it's mainly for phones]
+*/
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 600px; after we appended media we remove this one */
+}
+/* we add media screen [these are same for bootstrap v3 ] */
+
+/* Small */
+@media (min-width:768px) {
+  .container{
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width:992px) {
+  .container{
+    width: 770px;
+  }
+}
+/* Large */
+@media (min-width:1200px) {
+  .container{
+    width: 1170px;
+  }
+}
+/* 3rd lesson 00:20:## Header and Links Part 1
+  we add the logo to [images dir]
+  and use anchor links with the 3 lines on top right of the template
+*/
+
+/* End of Global Rules */
+/* Start Header */
+.header {
+  padding: 20px;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo {
+  width: 60px;
+}
+.header .links {
+  position: relative;
+}
+.header .links:hover .icon span:nth-child(2) {
+  width: 100%;
+  transition: .3s;
+}
+.header .links .icon {
+  width: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.header .links .icon span {
+  background-color: #333;
+  margin-bottom: 5px;
+  height: 2px;
+}
+.header .links .icon span:first-child {
+  width: 100%;
+}
+.header .links .icon span:nth-child(2) {
+  width: 60%;
+  transition: .3s; /*This is to make the hover smooth*/
+}
+.header .links .icon span:last-child {
+  /* height: 5px; */
+  width: 100%;
+}
+/* 4th lesson 00:31:18  Header and links Part 2 
+  We'll unstyle it, then hide it to only appear when hover
+*/
+.header .links ul {
+  list-style: none;
+  margin: 0%;
+  padding: 0;
+  background-color: #f6f6f6;
+  position: absolute;
+  right: 0%;
+  min-width: 200px;
+  top: calc(100% + 15px);/* we separate it to append an arrow between*/
+  display:none;/*after it's done */
+}
+.header .links ul::before {
+  content: "";
+  font-style: none;
+  border-width: 10px;
+  border-style: solid;
+  border-color: red green blue black;
+  position: absolute;
+
+}
+/* End Header */
