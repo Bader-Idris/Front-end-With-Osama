@@ -19,5 +19,20 @@
  * Manipulating and validating Data
  * Mobile & Desktop Apps, web Browser games
  * Cross apps with specific frameworks [valid in IOS & windows] or any platform
- * 
+ * Some websites to practice the lang:
+ * 1-leetcode.com [For Seniors] 2- edabit.com [for newbies] 3- hackerRank.com [for intermediate]
  */
+// 3rd lesson 00:16:16 Setting up Environment & Tools
+/*
+  Some VSC extensions:
+  bracket pair colorizer 2 [became a built-in tool]
+  EditorConfig for VS Code [For Team working]
+  ESLint [To get along with Standards]
+  indent-rainbow
+  Live Server [hot reload is important inside it]
+  Material Icon Theme [I loved it]
+  Path Intellisense
+  prettier - code formatter [formats when saving]
+*/
+// <script></script> HTML internal
+// <script src="main.js"></script> External
