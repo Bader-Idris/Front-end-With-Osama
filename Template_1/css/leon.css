@@ -155,7 +155,7 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color: #f6f6f6;
+  background-color: var(--section-background);
   position: absolute;
   right: 0%;
   min-width: 200px;
@@ -226,9 +226,9 @@ body {
 
 /* Start Features Section */
 .features {
-  padding-top: 60px;
-  padding-bottom: 60px; /*we should make them as vars*/
-  background-color: #f6f6f6;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding); /*we should make them as vars*/
+  background-color: var(--section-background);
 }
 .features .container {
   display: grid;
@@ -260,8 +260,8 @@ body {
 
 /* Start Services Section */
 .services {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
 }
 /* 8th lesson 01:00:45 Part 2
   Services section
@@ -285,7 +285,6 @@ body {
 .services .services-content .srv i {
   color: var(--main-color);
   flex-basis: 60px; /*for phones, instead of width, it's x&y*/
-  margin-left:   ;
 }
 .services .services-content .srv .text {
   flex: 1;
@@ -321,4 +320,19 @@ body {
   }
 }
 /* End Services Section */
+
 /* 9th lesson 01:11:02 Portfolio Section*/
+
+/* Start Portfolio */
+.portfolio {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  background-color: var(--section-background);
+}
+.portfolio .portfolio-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+  
+}
+/* End Portfolio */
