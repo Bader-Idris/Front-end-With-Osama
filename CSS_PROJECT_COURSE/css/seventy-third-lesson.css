@@ -194,6 +194,7 @@ hr {
       - [Attribute~=Value] => Contains A word
       - [Attribute*=Value] => Contains A String
       - [Attribute^=Value] => Starts With A String
+      - [Attribute$="Value"] => Ends With A String (by w3schools)
   =============================================
   ===== 80th lesson Part 3  9:41:50 ===========
   =============================================
