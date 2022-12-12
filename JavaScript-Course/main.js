@@ -106,5 +106,73 @@ console.log(typeof null);
 //in ES6 and 2020,  Big ints -integers- & symbol appeared
 
 /* #11h lesson #1:04:54 Variables Intro
+  we [Declare] variables
+  var, let, const are [keywords]
+  syntax (Keyword | Variable Name | Variable Value )
+*/
+var user = "Bader";
+/* it's not mandatory to type [var] when appending a variable,
+  but it overrides the existing vars when not added as [user = "Bader"]
+*/
+// when we add many vars in a line we use comma sign as
+var user = "Bader",
+    age = 17;// second line's formatting is after two tabs
+// when we have an Id inside HTML, JS counts it as a variable
+// we can declare it as is:
+/*
+  HTML: <div id="hello"></div>
+  JS: console.log(hello)
+*/
+// To change content of an Id we type:
+myVarId.innerHTML = "Do it.";
+// Search for [Loosely typed lang VS Strongly typed lang], JS is loosly, C is strongly
+/* #12h lesson #1:11:11 Identifiers Name Convention & Rules
+  No spaces, No Numbers, No symbols, 
+  except for [$]& [[NOs] & [_] after first letter],[$] can be used everywhere
+  [$_us1$_er1_$] this is valid
+
+  [!@#%^&] are called special characters
+  Reserved keywords are not allowed
+  in Windows we can't name files with [con, aux]
+  in JS [var, if, function] are some examples
+
+  best practice of naming vars in JS is: userName[camelCase]
+*/
+/* #13h lesson #1:15:02 Var, Let, Const Comparison
+  Some declared in ES6
+ */
+/*
+  Var 
+  - Redeclare (Yes)
+  - Access Before Declare (Undefined)
+  - Variable Scope Drama [Added To Window] ()
+  - Block Or Function Scope
+
+  Let 
+  - Redeclare (No => Error)
+  - Access Before Declare (Error)
+  - Variable Scope Drama ()
+  - Block Or Function Scope
+
+  Const
+  - Redeclare (No => Error)
+  - Access Before Declare (Error)
+  - Variable Scope Drama ()
+  - Block Or Function Scope
+*/
+var a = 1;
+var a = 2;// This is re-declaring
+console.log(a);
+//  In Let & const, it'll give an error as ['a' has already been declared]
+console.log(b);
+var b = 1;// This will give an error as Undefined
+//  it won't access before declare, IT'S BAD, AS UNDEFINED, WE KNOW NOTHING ABOUT ITS REASON
+// Let & const gives us an error message:[cannot access 'b' before initialization]
+
+// Any [var] will be shown in [window] object, to access it type: window.myVar
+// That gives a real Drama 😁🤯, to see it type: window ↵ window 🔽
+// search for [Variable Scope Drama] to see results
+
+/* #14h lesson #1:22:05 String Syntax & Chars Escape Sequences
 
 */
