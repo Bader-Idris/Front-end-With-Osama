@@ -174,5 +174,55 @@ var b = 1;// This will give an error as Undefined
 // search for [Variable Scope Drama] to see results
 
 /* #14h lesson #1:22:05 String Syntax & Chars Escape Sequences
+    String Syntax & Character Escape Sequences
+    \ Escape + Line Continues
+    \n
+[Google them ⬆️]
+  To Enable/Disable formation of code we search for[formatonsave] in settings
 
+  Including single quote inside of double quotes is ENABLED, eg:
 */
+console.log('Bader"Idris"Alright!');//[""]inside ['']
+console.log("Bader'Idris'Alright!");//['']inside [""], In any lang though
+console.log("Bader\"Idris\"Alright");// We append backslash [\] to Escape/ignore quotes
+// [\\] two backslashes to append one inside our string, [\n] as we know it
+
+// To connect next line inside our code we append a backslash at last, e,g:
+console.log("Pedro\
+nigga\
+");// No problem connecting them here!
+
+// #15h lesson #1:29:20 Concatenation [+] 
+let a15 = "We Love" + "JS";
+let b15 = "JavaScript";
+document.write(a15 + " " + b15);
+// To print many vars with spaces append comma, type:
+console.log(a15, b15);
+// #16h lesson #1:31:55 Template Literals (Template Strings)
+let a16 = "He Loves";
+let b16 = "JavaScript";
+let c16 = "And";
+let d16 = "Programming";
+
+console.log(a16 + " " + b16 +
+"\n" + c16 + " " + d16);
+// The best practice is to use backtick [`], then $ then carly braces {}
+console.log(`${a16} ${b16} ${c16} ${d16}`);
+
+console.log(`${a16} ' " \\ ${b16}
+${c16} ${d16} ${5 ** 5}`);//Here only by separating the line, it makes one
+// All quotes are valid, and a \ needs 2nd \ as \\
+// we can add expressions as `${5 ** 5}`  A real Example
+let markUp = `
+  <div class="card">
+    <div class="child">
+      <h2> Title</h2>
+      <p> Paragraph</p>
+    </div>
+  </div>
+`;
+document.write(markUp);
+// Got to [babeljs.io] to see, legacy code Tragedy 😁🤯
+// , to write that simple code, Escaping and formatting are Bad
+
+// #17h lesson #1:39:55 Variables & Concatenation Challenge
