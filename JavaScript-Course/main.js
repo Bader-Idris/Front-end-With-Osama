@@ -226,3 +226,19 @@ document.write(markUp);
 // , to write that simple code, Escaping and formatting are Bad
 
 // #17h lesson #1:39:55 Variables & Concatenation Challenge
+/* We have to impact the mission, and we can use [Repeat] command
+after searching for it, I need more practice to do it well 14th/12/22
+*/
+
+/* #18h lesson #1:42:42 Arithmetic Operators\
+  [+ - *] are normal
+  [**] came in (ES7)
+  % Modulus (Remainder) We know if it's even or odd
+  ++ Increment [ Post / Pre ], post is var++[not printed], pre is ++var[prints]
+  -- Decrement [ Post / Pre ], same, in post we print afterwards
+*/
+console.log(10 + "Bader");// This will count it as a concatenate, not an operator
+// Numbers in console are in Blue, and string in Black.
+console.log(10 - "Bader");// NaN [No a number] can't count it, NIGGA
+console.log(typeof NaN);// People think it's weird, as it's a number, but'll be explained
+// #19h lesson #1:42:42 Unary Plus And Negation Operators
