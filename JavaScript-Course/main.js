@@ -81,7 +81,7 @@ console.log("I wanna %cStyle %cyou", "color:red; font-size: 40px", "color:blue; 
   Read API on MDN web Docs
 */
 
-/* ##9h lesson ##:48:38 What Is ECMAScript[Eg: ES6] stand for
+/* ##9th lesson ##:48:38 What Is ECMAScript[Eg: ES6] stand for
   ECMA company standardized Data as Langs & whatnot
   [http://ES6-features.org] shows us what updates got after ES6
   instead of knowing pervious versions we use compilers as 
@@ -89,7 +89,7 @@ console.log("I wanna %cStyle %cyou", "color:red; font-size: 40px", "color:blue; 
   [+] is the concatenation in JS, not . as PHP
 */
 
-/* #10h lesson ##:55:00 Data & operator Types 
+/* #10th lesson ##:55:00 Data & operator Types 
   typeOf, tells us what type of data is that, as gettype() in PHP
 */
 console.log(typeof("my-string"));
@@ -105,7 +105,7 @@ console.log(typeof undefined);
 console.log(typeof null);
 //in ES6 and 2020,  Big ints -integers- & symbol appeared
 
-/* #11h lesson #1:04:54 Variables Intro
+/* #11th lesson #1:04:54 Variables Intro
   we [Declare] variables
   var, let, const are [keywords]
   syntax (Keyword | Variable Name | Variable Value )
@@ -126,7 +126,7 @@ var user = "Bader",
 // To change content of an Id we type:
 myVarId.innerHTML = "Do it.";
 // Search for [Loosely typed lang VS Strongly typed lang], JS is loosly, C is strongly
-/* #12h lesson #1:11:11 Identifiers Name Convention & Rules
+/* #12th lesson #1:11:11 Identifiers Name Convention & Rules
   No spaces, No Numbers, No symbols, 
   except for [$]& [[NOs] & [_] after first letter],[$] can be used everywhere
   [$_us1$_er1_$] this is valid
@@ -138,7 +138,7 @@ myVarId.innerHTML = "Do it.";
 
   best practice of naming vars in JS is: userName[camelCase]
 */
-/* #13h lesson #1:15:02 Var, Let, Const Comparison
+/* #13th lesson #1:15:02 Var, Let, Const Comparison
   Some declared in ES6
  */
 /*
@@ -173,7 +173,7 @@ var b = 1;// This will give an error as Undefined
 // That gives a real Drama 😁🤯, to see it type: window ↵ window 🔽
 // search for [Variable Scope Drama] to see results
 
-/* #14h lesson #1:22:05 String Syntax & Chars Escape Sequences
+/* #14th lesson #1:22:05 String Syntax & Chars Escape Sequences
     String Syntax & Character Escape Sequences
     \ Escape + Line Continues
     \n
@@ -192,13 +192,13 @@ console.log("Pedro\
 nigga\
 ");// No problem connecting them here!
 
-// #15h lesson #1:29:20 Concatenation [+] 
+// #15th lesson #1:29:20 Concatenation [+] 
 let a15 = "We Love" + "JS";
 let b15 = "JavaScript";
 document.write(a15 + " " + b15);
 // To print many vars with spaces append comma, type:
 console.log(a15, b15);
-// #16h lesson #1:31:55 Template Literals (Template Strings)
+// #16th lesson #1:31:55 Template Literals (Template Strings)
 let a16 = "He Loves";
 let b16 = "JavaScript";
 let c16 = "And";
@@ -225,12 +225,12 @@ document.write(markUp);
 // Got to [babeljs.io] to see, legacy code Tragedy 😁🤯
 // , to write that simple code, Escaping and formatting are Bad
 
-// #17h lesson #1:39:55 Variables & Concatenation Challenge
+// #17th lesson #1:39:55 Variables & Concatenation Challenge
 /* We have to impact the mission, and we can use [Repeat] command
 after searching for it, I need more practice to do it well 14th/12/22
 */
 
-/* #18h lesson #1:42:42 Arithmetic Operators\
+/* #18th lesson #1:42:42 Arithmetic Operators\
   [+ - *] are normal
   [**] came in (ES7)
   % Modulus (Remainder) We know if it's even or odd
@@ -241,4 +241,92 @@ console.log(10 + "Bader");// This will count it as a concatenate, not an operato
 // Numbers in console are in Blue, and string in Black.
 console.log(10 - "Bader");// NaN [No a number] can't count it, NIGGA
 console.log(typeof NaN);// People think it's weird, as it's a number, but'll be explained
-// #19h lesson #1:42:42 Unary Plus And Negation Operators
+// #19th lesson #1:42:42 Unary Plus And Negation Operators
+/*
+  - [+] Unary Plus [Returns Numbers If NaN]
+  - [-] Unary Negation [Returns Numbers If NaN && Negates It]
+  Tests
+  - Normal Numbers
+  - String Numbers
+  - String Negative Numbers
+  - String Text
+  - Float
+  - Hexadecimal Numeral System => 0xFF
+  - null
+  - false
+  - true
+*/
+console.log(+100);
+console.log(+"100");//Becomes a number
+console.log(+"-100");//same ⬆️
+console.log(+"Bader");//NaN
+console.log(+0xff);// 255
+console.log(+null);
+console.log(+false);//0
+console.log(+true);//1
+// Negation
+console.log(-100);
+console.log(-"100");
+console.log(-"-100");
+console.log(-"Bader");
+console.log(-0xff);
+console.log(-null);
+console.log(-false);
+console.log(-true);
+// We'll learn in constructors && OOP, what we can turn numbers by [number()] constructor
+console.log(Number("100"));
+/* #20th lesson #1:56:05 Type Coercion (Type Casting)
+  It's inverting a type into another
+  - [+]
+  - [-]
+  - [""] - 2
+  - false - true
+*/
+let a20 = "10";
+let b20 = 20;
+let c20 = true;
+console.log(a20 + b20);// 1020 as + concatenate, not + operator,
+// use unary instead
+console.log(+a20 + b20);
+console.log(Number(a20)+ b20);// this is usable though, number constructor
+// With minus it works well, or gives NaN
+console.log(+"" - b20);//"" here represents 0,
+console.log(false - true);// 0 - 1
+console.log(a20 + b20 + c20);// It converts true to string, so 10 20 true
+// This is type coercion[enforced converting]
+// It happens because of the string
+console.log(+a20 + b20 + c20);// Amended by making a20 as a num with Unary +
+
+/* #21st lesson #2:01:42 Assignment Operators
+  += -= *= /=
+*/
+let a21 = 10;
+a21 = a21 + 20;
+a21 += 100; // a21 = a + 100
+/* #22nd lesson #2:04:42 Operators Challenges
+  we'll use unary, type casting, post and pre increment, and whatnot
+
+*/
+let a22 = 10, b22 = "20", c22 = 80;
+console.log(++a22 + +b22++ + +c22++ - +a22++);
+console.log(++a22 + -b22 + +c22++ - -a22++ + +a22);
+console.log(--c22 + +b22 + --a22 * +b22++ - +b22++ - +b22 * a22 + --a22 - +true);
+/*
+  [++a22] [+]
+  [++a22]
+  - Value:
+  - Explain:
+  [+]
+  - Explain:
+*/
+// Each line need to be explained,
+// as +a++ means: unary with post increment, don't change var values
+
+/* Challenge 2 */
+let d22 = "-100", e22 = "20", f22 =30, g22 = true;
+// Use only variable Values
+// Don't Use A Variable Twice
+console.log();// must be 2000
+console.log();// must be 173
+
+/* #23rd lesson #2:07:46 Number */
