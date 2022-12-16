@@ -271,7 +271,7 @@ console.log(-"-100");
 console.log(-"Bader");
 console.log(-0xff);
 console.log(-null);
-console.log(-false);
+console.log(-false);//-0
 console.log(-true);
 // We'll learn in constructors && OOP, what we can turn numbers by [number()] constructor
 console.log(Number("100"));
@@ -307,7 +307,7 @@ a21 += 100; // a21 = a + 100
   we'll use unary, type casting, post and pre increment, and whatnot
 
 */
-let a22 = 10, b22 = "20", c22 = 80;
+let a22 = 10, b22 = "20", c22 = 80;// looks like each unary reset the var to its original value
 console.log(++a22 + +b22++ + +c22++ - +a22++);
 console.log(++a22 + -b22 + +c22++ - -a22++ + +a22);
 console.log(--c22 + +b22 + --a22 * +b22++ - +b22++ - +b22 * a22 + --a22 - +true);
@@ -326,7 +326,104 @@ console.log(--c22 + +b22 + --a22 * +b22++ - +b22++ - +b22 * a22 + --a22 - +true)
 let d22 = "-100", e22 = "20", f22 =30, g22 = true;
 // Use only variable Values
 // Don't Use A Variable Twice
-console.log();// must be 2000
-console.log();// must be 173
+console.log(-d22 * +e22);// must be 2000
+console.log();// must be 173, Man it socks
 
-/* #23rd lesson #2:07:46 Number */
+
+/* #23rd lesson #2:07:46 Number [data type]*/
+/*
+  Number
+  - Double Precision [complex,float and irrational integers]search for it 
+  - Syntactic Sugar "_" [💻 🔬 word, making the syntax sweeter]
+  - e
+  - **
+  - With Decimal
+  - Number + BigInt
+  - Number Min Value
+  - Number Max Value
+*/
+console.log(1000000);
+console.log(1_000_000);// Here we use syntactic sugar, simplifying the NO
+console.log(1e6);//e means how many digits, so e3 means 000
+console.log(10 ** 6);// a million though
+console.log(Number());// This number is a function that uses a constructor
+/*
+  to access a function/object's attributes, append . after it, so: window. 
+  [ctrl + space] to let VSC appears options
+*/
+console.log(Number.MAX_SAFE_INTEGER);//tells what is the maximum safe irrational number 
+console.log(Number.MAX_VALUE);// can't append more numbers to that number in the lang
+
+/* #24th lesson #2:14:44 Number Methods 
+  [methods stands for functions here]
+
+  - Two Dots To Call A Methods
+  - toString() 
+  - ToFixed() 
+  - parseInt() 
+  - parseFloat() 
+  - isInteger() [ES6]
+  - isNaN() [ES6]
+*/
+console.log((100).toString);
+console.log(100..toString);//same as above, if one period it'll consider it as a decimal number
+console.log(100.10.toString);//this is another way, the formatter'll use the parentheses one 
+console.log(100.555555.toFixed(2));// EXTREMELY IMPORTANT, (2)outputs only 2 decimals, [it output it as a [string]]
+//  if the 3rd decimal is 5 or more it gives [100.56]
+// if 4 it'll output [100.55]
+console.log(parseInt("100 Bader"));// returns it as an integer, overlooking text if exists after the number
+console.log(parseFloat("100.50 Bader"));// same but with float
+
+console.log(Number.isInteger("100"));// false, it's a string
+console.log(Number.isInteger(100.500));// false, it's a float
+console.log(Number.isInteger(100));
+
+console.log(Number.isInteger("Bader"));// it's weird, false
+console.log(Number.isInteger("Bader" / 20));// true, use it with operators
+
+/* #25th lesson #2:22:44 Math Object 
+  - round()
+  - ceil()
+  - floor()
+  - min()
+  - max()
+  - pow()
+  - random()
+  - trunc() [ES6]
+*/
+console.log(Math.round());// separates it between 4< or 5>
+// so if the decimal is 4 as 99.4 => 99.0 and if 99.5 => 100
+console.log(Math.ceil(99.2));// sends it to the top, to 100
+console.log(Math.ceil(99.9));// sends it to the ground to 99
+
+console.log(Math.min(10, 20, 100, -100, 90));// The minimum number
+console.log(Math.max(10, 20, 100, -100, 90));//The maximum number
+
+console.log(Math.pow(2, 4));// stands for power[exponent] 2^4, 2**4
+console.log(Math.random());// as its name
+console.log(Math.trunc(99.5));// Will be used much| makes float integer
+
+/* #26th lesson #2:27:30 Number Challenge */
+let a26 = 1_00;
+let b26 = 2_00.5;
+let c26 = 1e2;
+let d26 = 2.4;
+// Find The Smallest number In All Vars Then Return them as [integer]
+console.log();
+// Use Variable a + d Only once To output the Requirements
+console.log();//10000
+// Get Integer "2" From d Variable using 4 Methods
+console.log();
+console.log();
+console.log();
+console.log();
+// Use Variables b + d To Output These Values
+
+console.log();// 66.67 => String
+console.log();// 67 => Number
+//The useful hint is that when using a function as math.round(),
+// we can use anything inside as math.ceil(), so 
+// console.log(Math.random(Math.ceil())); Extremely IMPORTANT To solve the challenge
+// codepen.io student links for solutions are in the description of the main 🧪 video
+
+/* #27th lesson #2:29:40 String Methods Part 1 */
