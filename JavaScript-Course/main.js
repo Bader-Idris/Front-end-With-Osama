@@ -409,7 +409,7 @@ let b26 = 2_00.5;
 let c26 = 1e2;
 let d26 = 2.4;
 // Find The Smallest number In All Vars Then Return them as [integer]
-console.log();
+console.log(Math.min(a26, b26, c26, d26));
 // Use Variable a + d Only once To output the Requirements
 console.log();//10000
 // Get Integer "2" From d Variable using 4 Methods
