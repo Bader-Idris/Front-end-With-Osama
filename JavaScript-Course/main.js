@@ -225,7 +225,7 @@ document.write(markUp);
 // Got to [babeljs.io] to see, legacy code Tragedy 😁🤯
 // , to write that simple code, Escaping and formatting are Bad
 
-// #17th lesson #1:39:55 Variables & Concatenation Challenge
+// #17th lesson #1:39:55 Variables & Concatenation Challenge ✅after learning let a = 1, b = 2, c = 3; method[External files]
 /* We have to impact the mission, and we can use [Repeat] command
 after searching for it, I need more practice to do it well 14th/12/22
 */
@@ -303,7 +303,7 @@ console.log(+a20 + b20 + c20);// Amended by making a20 as a num with Unary +
 let a21 = 10;
 a21 = a21 + 20;
 a21 += 100; // a21 = a + 100
-/* #22nd lesson #2:04:42 Operators Challenges
+/* #22nd lesson #2:04:42 Operators Challenges ❎
   we'll use unary, type casting, post and pre increment, and whatnot
 
 */
@@ -394,7 +394,7 @@ console.log(Number.isInteger("Bader" / 20));// true, use it with operators
 console.log(Math.round());// separates it between 4< or 5>
 // so if the decimal is 4 as 99.4 => 99.0 and if 99.5 => 100
 console.log(Math.ceil(99.2));// sends it to the top, to 100
-console.log(Math.ceil(99.9));// sends it to the ground to 99
+console.log(Math.floor(99.9));// sends it to the ground to 99
 
 console.log(Math.min(10, 20, 100, -100, 90));// The minimum number
 console.log(Math.max(10, 20, 100, -100, 90));//The maximum number
@@ -409,21 +409,24 @@ let b26 = 2_00.5;
 let c26 = 1e2;
 let d26 = 2.4;
 // Find The Smallest number In All Vars Then Return them as [integer]
-console.log(Math.min(a26, b26, c26, d26));
+console.log(Math.min(a26, b26, c26, d26));//✅
 // Use Variable a + d Only once To output the Requirements
-console.log();//10000
-// Get Integer "2" From d Variable using 4 Methods
-console.log();
-console.log();
-console.log();
-console.log();
-// Use Variables b + d To Output These Values
+console.log(Math.pow(Math.round(d26)), a26);//10000 ✅
+// console.log(Math.pow(a26, Math.round(d26))); I didn't include the math.round with parentheses
 
-console.log();// 66.67 => String
-console.log();// 67 => Number
+// Get Integer "2" From d Variable using 4 Methods
+console.log(parseInt(d26));  //✅
+console.log(Math.floor(d26));//✅
+console.log(Math.round(d26));//✅
+console.log(Math.trunc(d26));//✅
+// Use Variables b + d To Output These Values [b = 200.5, d = 2.4]
+
+console.log();// 66.67 => String ❎
+console.log();// 67 => Number ❎
 //The useful hint is that when using a function as math.round(),
 // we can use anything inside as math.ceil(), so 
 // console.log(Math.random(Math.ceil())); Extremely IMPORTANT To solve the challenge
 // codepen.io student links for solutions are in the description of the main 🧪 video
 
 /* #27th lesson #2:29:40 String Methods Part 1 */
+
