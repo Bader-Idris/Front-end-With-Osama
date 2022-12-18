@@ -428,5 +428,115 @@ console.log();// 67 => Number ❎
 // console.log(Math.random(Math.ceil())); Extremely IMPORTANT To solve the challenge
 // codepen.io student links for solutions are in the description of the main 🧪 video
 
-/* #27th lesson #2:29:40 String Methods Part 1 */
+/* #27th lesson #2:29:40 String Methods Part 1 
+  String Methods
+  - Access With Index
+  - Access With charAt()
+  - length
+  - trim()
+  - toUpperCase()
+  - toLowerCase()
+  - Chain methods [Most important🟢]
+*/
+let theName = "Ahmed";
+let theList = [1, 2, 3, 4, 5];// indexed array with sequence of objects
+// the index is the [n] z based index
+console.log(theName[1]);// H letter, as the second [data sequence]of the string, alike arrays
+// charAt() means character at a position
+console.log(theName.charAt(1));
+console.log(theName.length);// length is used in every language
 
+console.log(theName.charAt(5));// Empty, he said undefined so there're maybe same negative
+console.log(theName[5]);// undefined[not empty]
+// trim is to cut the string as we learned in PHP 
+console.log(theName.trim());// when empty it removes spaces
+console.log(theName.toUpperCase());// all as upperCase
+console.log(theName.toLowerCase());// all as lowerCase
+
+console.log(theName.trim().charAt(2).toUpperCase());// here we trimmed everything excluding M letter and changed its style to upperCase
+// when we include a function inside another, it's called chaining
+
+/* #28th lesson #2:37:51 String Methods Part 2
+  String methods [Mand]&&[Opt] are mandatory and optional
+  - indexOf(value [Mand], Start [Opt] 0)
+  - lastIndexOf(value [Mand], Start [Opt] length)
+  - slice(Start [Mand], End [Opt] Not Including End)
+  - repeat(Times)[ES6]
+  - split(Separator [Opt], Limit [Opt]) [He 💗 it]
+*/
+let a28 = "Elzero Web School";
+console.log(a28.indexOf("Web"));//Starting from 0 letter
+console.log(a28.indexOf("Web", 8));// we set where to start, -1 means look previously
+console.log(a28.lastIndexOf("o"));// 15, starts from left but count normally
+
+console.log(a28.slice(2, 6));//not including the End
+console.log(a28.slice(-5, -3));
+
+console.log(a28.repeat(5));// 5 times of repeating it as we learned
+
+console.log(a28.split());// both are opt, when empty, it makes is as an array
+console.log(a28.split(""));// Cuts each element, even spaces
+console.log(a28.split(" "));// Cuts each word, because spaces'll be removed
+console.log(a28.split(" ", 2));// 2 here is the limit of straps
+
+/* #29th lesson #2:50:15 String Methods Part 3
+  String Methods
+  - Substring(Start [Mand], End [Opt] Not Including End)
+  --- Start > End Will Swap
+  --- Start < 0 Starting With 0
+  --- Use Length To Get The Last Character
+  - Substr(Start [Mand], Character To Extract)
+  --- Start >= Length = ""
+  --- Negative Starts At The End
+  - includes(Value [Mand], Start [Opt] Default 0) [ES6]
+  - startWith(Value [Mand], Start [Opt] Default 0) [ES6]
+  - endWith(Value [Mand], Length [Opt] Default Full length) [ES6]
+      Last Three are boolean methods
+*/
+let a29 = "Elzero Web School";
+console.log(a29.substring(2, 6));// Different than slice,Not including End
+
+
+console.log(a29.substring(6, 2));// If mistakenly swapped them, it'll re-set them
+console.log(a29.substring(-10));// Any Negative Number will start at 0
+console.log(a29.substring(a29.length -1));// A great way of counting last word
+console.log(a29.substring(a29.length -5, a29.length - 3));
+//To calculate last 5 to last 4, not including the End, Now, it's similar to slice function
+console.log(a29.substr(0, 6));// counts how many characters
+console.log(a29.substr(18));// When we type greater number, it'll output an empty line
+
+console.log(a29.includes("Web"));// default starts at 0
+console.log(a29.includes("Web", 8));// false because after nth 8 It didn't find "Web"
+
+console.log(a29.startsWith("E"));// true because it does
+console.log(a29.startsWith("E", 2));// false because 2nd starts with z
+console.log(a29.startsWith("z", 2));// true because it does with z
+
+console.log(a29.endsWith("o"));// false, not ending with o character
+console.log(a29.endsWith("o", 6));// we count length not index ⚠️
+
+/* #30th lesson #3:02:56 String Challenge 
+  All Solutions Must Be In One Chain
+  You Can Use Concatenation
+*/
+
+let a30 = "Elzero Web School";
+
+// Include These Methods In Your Solutions [slice, charAt]
+console.log();// Zero
+
+// 8 H
+console.log();// HHHHHHHH
+
+// Return Array
+console.log();// [Elzero]
+
+// Use Only "substr" Method + Template Literals In Your Solution
+console.log();// Elzero School
+
+// Solution Must Be Dynamic And String May Change
+console.log(); // eLZERO WEB SCHOOl [first and last characters must be small, with any string comes along]
+
+/* #31st lesson #3:05:32 Comparison Operators
+
+*/

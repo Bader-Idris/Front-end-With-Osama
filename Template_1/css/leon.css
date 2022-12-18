@@ -360,5 +360,40 @@ body {
 /* 10th lesson 01:19:12 About Section Part 1 */
 
 /* Start About */
+.about {
+  padding-top: var(--section-padding);
+  padding-bottom: calc(var(--section-padding) + 60px);
+  /* instead of changing the main var*/
+}
+.about-content {
+  margin-top: 100px;/* we can make it as a var, it comes a lot */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.about .about-content .image {
+  position: relative;
+  width: 250px;
+  height: 375px;
+}
+.about .about-content .image::before {
+  content: "";
+  position: absolute;
+  background-color: #edeced;
+  width: 100px;
+  height: calc(100% + 80px);
+  top: -40px;
+  left: -20px;
+  z-index: -1;/* 1.25 video period*/
+}
+.about .about-content .image::after {
+  content: "";
 
+}
+.about .about-content .image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+}
 /* End About */
