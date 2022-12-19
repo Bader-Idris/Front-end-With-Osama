@@ -322,12 +322,12 @@ console.log(--c22 + +b22 + --a22 * +b22++ - +b22++ - +b22 * a22 + --a22 - +true)
 // Each line need to be explained,
 // as +a++ means: unary with post increment, don't change var values
 
-/* Challenge 2 */
+/* Challenge 2 [½] */
 let d22 = "-100", e22 = "20", f22 =30, g22 = true;
 // Use only variable Values
 // Don't Use A Variable Twice
 console.log(-d22 * +e22);// must be 2000
-console.log();// must be 173, Man it socks
+console.log();// must be 173, Man it socks ❎
 
 
 /* #23rd lesson #2:07:46 Number [data type]*/
@@ -523,10 +523,16 @@ console.log(a29.endsWith("o", 6));// we count length not index ⚠️
 let a30 = "Elzero Web School";
 
 // Include These Methods In Your Solutions [slice, charAt]
-console.log();// Zero
+console.log(Math.slice);
+console.log(a30.slice(2, 6));// Zero
+// console.log(a30.slice(2, 6) + a30.charAt(1).toUpperCase);❎❎
+/**
+  let a30 = "Elzero Web School";
+console.log(a30.slice(a29.length -4).toUpperCase());
+ */
 
 // 8 H
-console.log();// HHHHHHHH
+console.log(a30.trim().charAt(a30.length -4).toUpperCase().repeat(8));// HHHHHHHH ✅
 
 // Return Array
 console.log();// [Elzero]
