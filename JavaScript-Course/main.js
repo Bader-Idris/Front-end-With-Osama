@@ -671,3 +671,5 @@ theAge35 < 20
   Nullish Coalescing Operator ??
   -- Null + Undefined
 */
+let price36 = 100;
+console.log(`The Price Is ${price36}`);
