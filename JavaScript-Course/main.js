@@ -515,7 +515,7 @@ console.log(a29.startsWith("z", 2));// true because it does with z
 console.log(a29.endsWith("o"));// false, not ending with o character
 console.log(a29.endsWith("o", 6));// we count length not index ⚠️
 
-/* #30th lesson #3:02:56 String Challenge 
+/* #30th lesson #3:02:56 String Challenge [½]
   All Solutions Must Be In One Chain
   You Can Use Concatenation
 */
@@ -525,24 +525,149 @@ let a30 = "Elzero Web School";
 // Include These Methods In Your Solutions [slice, charAt]
 console.log(Math.slice);
 console.log(a30.slice(2, 6));// Zero
-// console.log(a30.slice(2, 6) + a30.charAt(1).toUpperCase);❎❎
-/**
-  let a30 = "Elzero Web School";
-console.log(a30.slice(a29.length -4).toUpperCase());
- */
+// console.log(a30.slice(2, 6), a30.charAt(0).toUpperCase);❎❎
+console.log(a30.slice(2, 6).charAt(0).toUpperCase());// must to slice other CHs
 
 // 8 H
 console.log(a30.trim().charAt(a30.length -4).toUpperCase().repeat(8));// HHHHHHHH ✅
 
 // Return Array
-console.log();// [Elzero]
+console.log(a30.slice(0,6).split(" "));// [Elzero] ✅
 
 // Use Only "substr" Method + Template Literals In Your Solution
-console.log();// Elzero School
+console.log(a30.substr(0, 6), a30.substr(11, 17));// Elzero School ✅
 
 // Solution Must Be Dynamic And String May Change
 console.log(); // eLZERO WEB SCHOOl [first and last characters must be small, with any string comes along]
+// console.log(a30.substring(a30.length -5, a30.length - 3));❎❎
 
 /* #31st lesson #3:05:32 Comparison Operators
+  - == Equal
+  - != Not Equal
+  
+  - === Identical
+  - !== Not Identical
 
+  - >Larger Than
+  - >= Larger Than Or Equal
+
+  - < Smaller Than
+  - <= Smaller Than Or Equal
+*/
+console.log(10 == "10");
+console.log(10 != "10");
+
+console.log(10 === "10"); // Type and value, as we know[Recommended]
+console.log(10 !== "10");
+
+console.log(typeof "Bader" === typeof "Osama");// if we don't want to change operators and values, and output true
+/* #32nd lesson #3:11:05 Logical Operators
+  - ! Not
+  - && And
+  - || Or
+*/
+console.log(true);
+console.log(!true);
+console.log(!(10 == "10"));// turning boolean value into false
+console.log(10 == "10" && 10 > 8 && 10 >= 10);
+// A customer needs three paper, passport, ID card, and Military state, we use 3 of &&
+
+console.log(10 == "10" || 10 > 80 || 10 > 50);// No Xor in JS, if one or more, it's true
+/* #33rd lesson #3:16:20 If Conditions
+  Control Flow
+  - if
+  - else if
+  - else
+
+  if (Condition){
+    // Block of code
+  }
+
+*/
+let price = 100;
+let discount = false;
+let discountAmount = 30;
+let country = "Egypt";
+
+console.log(price);
+if (discount === true) {
+  price -= discountAmount; // price = price - discountAmount
+} else if (country === "Egypt") {
+  price -= 40;
+} else if (country === "Syria") {
+  price -= 50;
+} else { // It has no conditions
+  price -= 10;
+}
+/* #34th lesson #3:24:54 Nested If Conditions🐣
+
+*/
+let price34 = 100;
+let discount34 = false;
+let discountAmount34 = 30;
+let country34 = "Egypt";
+let student34 = true;
+/* instead of appending many if conditions, for a student
+  and if the student is having a special case 
+  as an orphan to grand greater grant, or whatnot,
+  we only use nested codes
+*/
+if (discount34 === true) {
+  price34 -= discountAmount34;
+} else if (country34 === "Egypt") {
+
+  if (student34 === true) {
+
+  price -= discountAmount34 + 30;
+
+  } else {
+  
+    price -= discountAmount34 + 10;
+  }
+
+} else if (country34 === "Syria") {
+  price34 -= discountAmount34 + 20;
+} else {
+  price34 -= 10;
+}
+// it must not be more than 4 nested if conditions in normal cases
+
+/* #35th lesson #3:29:47 
+  Conditional (Ternary) Operator [brief if]
+*/
+let theName35 = "Mona";
+let theGender35 = "Female";
+let theAge35 = 30;
+
+if (theGender35 === "Male") {
+  console.log("Mr");
+} else {
+  console.log("Mrs");
+}
+// Condition ? If True : If False
+theGender35 === "Male" ? console.log("Mr") : console.log("Mrs");
+// We cab sort Ternary operator inside a variable
+let result35 = theGender35 === "Male" ? "Mr" : "Mrs";// we don't print, but set data
+
+document.write(result35);
+// we can easily print the result
+console.log(theGender35 === "Male" ? "Mr" : "Mrs");
+
+console.log(`Hello ${theName35}`);// in old days normal if was used instead
+console.log(`Hello ${theGender35 === "Male" ? "Mr" : "Mrs"} ${theName35}`);
+// What about if else?! 
+theAge35 < 20
+  ? console.log(20)
+  : theAge35 > 20 && theAge35 < 60
+  ? console.log("20 To 60")
+  : theAge35 > 60
+  ? console.log("Elder than 60")
+  : console.log("Unknown");
+// last is the false [else without conditions]
+
+/* #36th lesson #3:36:51 [Nullish Coalescing Operator & Logical Or]
+  Logical Or ||
+  -- Null + Undefined + Any Falsy Value
+  Nullish Coalescing Operator ??
+  -- Null + Undefined
 */
