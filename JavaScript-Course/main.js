@@ -737,7 +737,7 @@ if ("????" === "w") {
 
 //************
 
-if ("????" !== "String") {
+if ("????" !== "String") { //🙃
   console.log("Good");
 }
 
@@ -746,8 +746,189 @@ if ("????" !== "Number") {
 }
 
 // let st = "Elzero Web School";
-if ("????" === "ElzeroElzero") {// firstly make elzero as an array, then repeat it twice, then remove the space between
+if ("????" === "ElzeroElzero") {//🙃
 console.log("Good");
 }
+// firstly make elzero as an array, then repeat it twice, then remove the space between
+// failed in repeating the outcome, instead of the var ❎❎
+st.split(" ", 1).repeat(2);
+st.repeat(2, st.split(" ", 1));
+
 // ********************************
 /* #38th lesson #3:43:43 Switch Statement */
+// it controls flow of code, as if condition
+/*
+  switch(expression) {
+    case 1:
+      // Code Block
+      break;
+    case 2:
+      // Code Block
+      break;
+    Default:
+      // Code Block
+  }
+  - Default Ordering
+  - Multiple Match
+  - ===
+*/
+// if else, works more with boolean values, and highly complicated block of code
+
+// Switch works codes has many cases, eg: week's days
+let day38 = 0;
+
+switch (day38) {
+  case 0:
+    console.log("Saturday");
+    break;// if we copy same case, it won't work, break stops the flow, if no break, both run
+  case 1:
+    console.log("Sunday");
+    break;
+  case 2:
+  case 3:// we can append many cases for same results
+    console.log("Monday");
+    break;
+  default:
+    console.log("Unknown Day");
+}
+// it compares using [identical operator] if str && n,it won't work
+// we need to append default value, instead of falsy with if statements
+// we can append [default] in first case, but only with break command
+
+/* #39th lesson #3:49:33 Switch && If Condition Challenges */
+
+/*
+  Switch Challenge
+*/
+let job39 = "Manager";
+let salary39 = 0;
+
+if (job39 === "Manager") {
+  salary39 = 8000;
+} else if (job39 === "IT" || job39 === "Support") {
+  salary39 = 6000;
+} else if (job39 === "Developer" || job39 === "Designer") {
+  salary39 = 7000;
+} else {
+  salary39 = 4000;
+}
+// job39 will change, and we need to type it with switch
+// the line before .console, we'll type salary value[not re-declaring vars]
+
+// ******************************** Start solution ❎❎ needing to set an OR instead of || in if statement
+switch (job39) {
+  case 0:
+    job39 = "Manager"
+    salary39 = 8000;
+    console.log(salary39);
+    break;
+  case 1:
+    job39 = "IT" || job39 = "Support"
+    salary39 = 6000;
+    console.log(salary39);
+    break;
+  case 2:
+    job39 = "Developer" 
+  case 3: 
+    job39 = "Designer"
+    salary39 = 7000;
+    console.log(salary39);
+    break;
+  default:
+    salary39 = 4000;
+}
+
+switch (job39) {
+  case "Manager":
+    salary39 = 8000;
+    console.log(salary39);
+    break;
+  case "IT":
+  case "Support":
+    salary39 = 6000;
+    console.log(salary39);
+    break;
+  case "Developer":
+  case "Designer":
+  salary39 = 7000;
+  console.log(salary39);
+  break;
+  default: 
+    salary39 = 4000;
+}
+/*
+let job39 = "Manager";
+let salary39 = 0;
+
+switch (job39) {
+  case 0:
+    job39 = "Manager"
+    salary39 = 8000;
+    break;
+  case 1:
+    job39 = "IT" || job39 = "Support"
+    salary39 = 6000;
+    break;
+  case 2:
+    job39 = "Developer" || job39 = "Designer"
+    salary39 = 7000;
+    break;
+  default:
+    salary39 = 4000;
+}
+*/
+// ******************************** End solution
+/*
+  If Challenge
+*/
+let holidays39 = 0;
+let money39 = 0;
+
+switch (holidays39) {
+  case 0:
+    money39 = 5000;// this is updating not re-declaring we can type let var [an error]
+    console.log(`My Money is ${money39}`);
+    break;
+  case 1:
+  case 2:
+    money39 = 3000;
+    console.log(`My Money is ${money39}`);
+    break;
+  case 3:
+    money39 = 2000;
+    console.log(`My Money is ${money39}`);
+    break;
+  case 4:
+    money39 = 1000;
+    console.log(`My Money is ${money39}`);
+    break;
+  case 5:
+    money39 = 0;
+    console.log(`My Money is ${money39}`);
+    break;
+  default:
+    money39 = 0;
+    console.log(`My Money is ${money39}`);
+}
+// Turn it into if statement
+// this one helps us solving the previous task
+
+// ******************************** Start solution ✅
+
+// let holidays39 = 0;
+// let money39 = 0;
+
+if (money39 === 5000) {
+  console.log(`My Money is ${money39}`);
+} else if (money39 === 3000) {
+  console.log(`My Money is ${money39}`);
+} else if (money39 === 2000) {
+  console.log(`My Money is ${money39}`);
+} else if (money39 === 1000) {
+  console.log(`My Money is ${money39}`);
+} else {
+  console.log(`My Money is ${money39}`);// appending ["Unknown";] is better, or the whole if is not necessary
+}
+// ******************************** End solution
+
+/* #40th lesson #3:52:49 Array Big Introduction */
