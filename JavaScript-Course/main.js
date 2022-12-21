@@ -25,7 +25,7 @@ document.querySelector("h1").style.fontSize = '80px';
 */
 /* when typing 🔽 inside console we'll see window command [its properties commonly used]
   window
-  iside it there'e a property named close, when called it'll close the window
+  inside it there'e a property named close, when called it'll close the window
   window.close
 */
 
@@ -75,7 +75,7 @@ console.timeLog // We can count time with these, [time,timeEnd,timeLog,timeStamp
 console.table(["This","is","an","array"]);//inside the table, appears as table inside console
 console.log("I wanna %cStyle you", "color:red; font-size: 40px");
 // to format it we use [%c] C Directive, and by appending it more it uses 2nd property as
-console.log("I wanna %cStyle %cyou", "color:red; font-size: 40px", "color:blue; font-size: 32px");/*
+console.log("I wanna %cStyle %cYou", "color:red; font-size: 40px", "color:blue; font-size: 32px");/*
   so, we're able to append many c directive signs, when having many properties
   Console is tended for web API, not JS [Application programming interface], so JS uses web APIs
   Read API on MDN web Docs
@@ -125,7 +125,7 @@ var user = "Bader",
 */
 // To change content of an Id we type:
 myVarId.innerHTML = "Do it.";
-// Search for [Loosely typed lang VS Strongly typed lang], JS is loosly, C is strongly
+// Search for [Loosely typed lang VS Strongly typed lang], JS is loosely, C is strongly
 /* #12th lesson #1:11:11 Identifiers Name Convention & Rules
   No spaces, No Numbers, No symbols, 
   except for [$]& [[NOs] & [_] after first letter],[$] can be used everywhere
@@ -178,7 +178,7 @@ var b = 1;// This will give an error as Undefined
     \ Escape + Line Continues
     \n
 [Google them ⬆️]
-  To Enable/Disable formation of code we search for[formatonsave] in settings
+  To Enable/Disable formation of code we search for[formatOnSave] in settings
 
   Including single quote inside of double quotes is ENABLED, eg:
 */
@@ -222,7 +222,7 @@ let markUp = `
   </div>
 `;
 document.write(markUp);
-// Got to [babeljs.io] to see, legacy code Tragedy 😁🤯
+// Got to [babelJs.io] to see, legacy code Tragedy 😁🤯
 // , to write that simple code, Escaping and formatting are Bad
 
 // #17th lesson #1:39:55 Variables & Concatenation Challenge ✅after learning let a = 1, b = 2, c = 3; method[External files]
@@ -646,7 +646,7 @@ if (theGender35 === "Male") {
 }
 // Condition ? If True : If False
 theGender35 === "Male" ? console.log("Mr") : console.log("Mrs");
-// We cab sort Ternary operator inside a variable
+// We can sort Ternary operator inside a variable
 let result35 = theGender35 === "Male" ? "Mr" : "Mrs";// we don't print, but set data
 
 document.write(result35);
@@ -672,4 +672,82 @@ theAge35 < 20
   -- Null + Undefined
 */
 let price36 = 100;
-console.log(`The Price Is ${price36}`);
+console.log(`The Price Is ${price36}`);// Normally it'll print null if not exists
+// This lesson is to append other sting instead,[2 Vertical bars ||]
+console.log(`The Price Is ${price36 || 200}`);//this logical or is useful with any falsy value
+// as if it's: let price36 = 0/ false / "" / undefined / null
+// let price36; equals to undefined
+console.log(Boolean(100));
+console.log(Boolean(-100));
+console.log(Boolean(0));
+console.log(Boolean(""));
+console.log(Boolean(null));// this boolean outputs the falsy or true values
+// Nullish Coalescing Operator ?? is available in PHP
+
+console.log(`The Price Is ${price36 || 200}`);
+console.log(`The Price Is ${price36 ?? 200}`);// outputs 0 when needed
+
+/* #37th lesson #3:41:09 If Condition Challenge */
+let a37 = 10;
+if (a37 < 10) {
+  console.log(10);
+} else if (a37 >= 10 && a37 <= 40) {
+  console.log("10 To 40");
+} else if (a37 > 40){
+  console.log("> 40")
+} else {
+  console.log("Unknown");
+}
+// Write It With Ternary If Syntax ✅
+
+a37 < 10
+  ? console.log(10)
+  : a37 >= 10 && a37 <= 40
+  ? console.log("10 To 40")
+  : a37 > 40
+  ? console.log("> 40")
+  : console.log("Unknown");
+
+// ********************************
+let st = "Elzero Web School";
+
+/*
+if ("????" === "34") {
+  console.log("Good");
+}
+*/
+if (st.repeat(2).length.toString() === "34") {//✅ this is the correct answer, not the next one
+  console.log("Good");
+}
+
+
+if (typeof "????" === typeof "34") {//✅ I consider it done🤣 typeof, not a real answer, above is better
+  console.log("Good");
+}
+// use any method with var instead of ????
+// and make it print Good
+
+// W Point May Change, any string has W character ❎❎
+if ("????" === "w") {
+  console.log("Good");
+}
+// if (st.split("W", 2) === "W") {
+//   console.log("Good");
+// }
+
+//************
+
+if ("????" !== "String") {
+  console.log("Good");
+}
+
+if ("????" !== "Number") {
+  console.log("Good");
+}
+
+// let st = "Elzero Web School";
+if ("????" === "ElzeroElzero") {// firstly make elzero as an array, then repeat it twice, then remove the space between
+console.log("Good");
+}
+// ********************************
+/* #38th lesson #3:43:43 Switch Statement */
