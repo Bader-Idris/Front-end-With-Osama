@@ -815,28 +815,7 @@ if (job39 === "Manager") {
 // job39 will change, and we need to type it with switch
 // the line before .console, we'll type salary value[not re-declaring vars]
 
-// ******************************** Start solution ❎❎ needing to set an OR instead of || in if statement
-switch (job39) {
-  case 0:
-    job39 = "Manager"
-    salary39 = 8000;
-    console.log(salary39);
-    break;
-  case 1:
-    job39 = "IT" || job39 = "Support"
-    salary39 = 6000;
-    console.log(salary39);
-    break;
-  case 2:
-    job39 = "Developer" 
-  case 3: 
-    job39 = "Designer"
-    salary39 = 7000;
-    console.log(salary39);
-    break;
-  default:
-    salary39 = 4000;
-}
+// ******************************** Start solution
 
 switch (job39) {
   case "Manager":
