@@ -422,7 +422,7 @@ console.log(Math.trunc(d26));//✅
 // Use Variables b + d To Output These Values [b = 200.5, d = 2.4]
 
 console.log();// 66.67 => String ❎
-console.log();// 67 => Number ❎
+console.log();// 67 => Number ❎ [length doesn't accept numbers, so we convert it into string]
 //The useful hint is that when using a function as math.round(),
 // we can use anything inside as math.ceil(), so 
 // console.log(Math.random(Math.ceil())); Extremely IMPORTANT To solve the challenge
@@ -835,27 +835,7 @@ switch (job39) {
   default: 
     salary39 = 4000;
 }
-/*
-let job39 = "Manager";
-let salary39 = 0;
 
-switch (job39) {
-  case 0:
-    job39 = "Manager"
-    salary39 = 8000;
-    break;
-  case 1:
-    job39 = "IT" || job39 = "Support"
-    salary39 = 6000;
-    break;
-  case 2:
-    job39 = "Developer" || job39 = "Designer"
-    salary39 = 7000;
-    break;
-  default:
-    salary39 = 4000;
-}
-*/
 // ******************************** End solution
 /*
   If Challenge
@@ -911,3 +891,150 @@ if (money39 === 5000) {
 // ******************************** End solution
 
 /* #40th lesson #3:52:49 Array Big Introduction */
+
+/*
+  Arrays [المصفوفة/list]
+  - Create Arrays [Two Methods] new Array() + []
+  - Access Arrays Elements
+  - Nested Arrays
+  - Change Arrays Elements
+  - Check For Array Array.isArray(arr);
+*/
+let myFriends40 = ["Ahmed", "Mohammad", "Sayed", ["Marwan","Ali"]]// same syntax as python and PHP
+console.log(`Hello ${myFriends40[0]}`);
+console.log(`Hello ${myFriends40[1][2]}`);//3rd ch in 2nd array, Marwan and ali are in a nested array
+console.log(`Hello ${myFriends40[3][1][2]}`);// 2nd ch in 1st inside nested array 
+// changing array's data🔽
+console.log(myFriends40);//😈 are to see results
+myFriends40p[1] = "Gamal";// instead of mohamed
+console.log(myFriends40);//😈
+myFriends40p[3] = ["Gamal", "Sameh"];// an array instead of string
+console.log(myFriends40);//😈
+
+console.log(typeof myFriends40);// object, it's an array
+console.log(Array.isArray(myFriends40));// true
+
+let str40 = "Bader";//
+console.log(Array.isArray(str40));// false, it's a sequence but not an array
+
+/* #41st lesson #4:00:40 Using Length With Array */
+/*
+  Arrays Methods
+  - Length
+*/
+
+// Index Starts With 0 [0, 1, 2, ...]
+let myFriends41 = ["Ahmed","Mohamed","Sayed", "Alaa"];
+console.log(myFriends41.length);// 4
+//  if we append an index with absence number as 7 here, it'll make the length as 7, possessing [empty x 2]
+// [[ Length = index + 1]]
+// if I have 4 indexed elements, I type [4] as a fifth element
+// Instead, we use a var, arr[arr.length] = "Gamal";
+
+myFriends41[myFriends41.length] = "Gamal";
+
+// myFriends41.length = 4; // only 4 not including 0 
+
+/* #42nd lesson #4:06:40 Adding && Removing of Arrays */
+
+/*
+  Array Methods [Adding and Removing]
+  - unshift("", "") Add Element To First Index
+  - push("", "") Add Element To End Index
+  - shift() Remove First Element From Array
+  - pop() Remove Last Element From Array
+*/
+let myFriends42 = ["Ahmed","Mohamed","Sayed", "Alaa"];
+console.log(myFriends42);
+
+myFriends42.unshift("Osama", "Nabil");// 1+ The Start
+
+console.log(myFriends42);
+
+myFriends42.push("Samah", "Eman");// 1+ The last
+
+console.log(myFriends42);
+
+myFriends42.shift(); // Removes the First element
+
+console.log(myFriends42);
+
+myFriends42.pop(); // Removes the last element
+
+console.log(myFriends42);
+
+/* #43rd lesson #4:11:14 Searching in Arrays */
+/*
+  Array Methods [Search]
+  - indexOf(Search Element,From Index [Opt])
+  - lastIndexOf(Search Element,From Index [Opt])
+  - indexOf(ValueToFind, FromIndex[Opt]) [ES7]
+*/
+let myFriends43 = ["Ahmed","Mohamed","Sayed", "Alaa", "Ahmed"];
+
+console.log(myFriends43);
+console.log(myFriends43.indexOf("Ahmed"));// if many are existing, it'll appear only the first one
+console.log(myFriends43.indexOf("Ahmed", 2));// if many are existing, it'll appear only the first one
+console.log(myFriends43.lastIndexOf("Ahmed"));
+console.log(myFriends43.lastIndexOf("Ahmed", -2));
+
+console.log(myFriends43.includes("Ahmed"));// true as 0
+console.log(myFriends43.includes("Ahmed", 2));// true as 4
+// if not exists, it will output -1
+if (myFriends43.lastIndexOf("Bader") === -1) {
+  console.log("Not Found");
+}
+
+/* #44th lesson #4:16:34 Sorting Arrays */
+
+/*
+  Array Methods [Sort]
+  - sort(Function [Opt])
+  - reverse
+*/
+let myFriends44 = [10, "Sayed", "Mohamed", "90", 1000, 100, 20, "10", -20, -10];
+
+console.log(myFriends44);
+console.log(myFriends44.sort());
+console.log(myFriends44.reverse());// reverses last sorted array, if 1st wasn't sorted, it'll only reveres it 
+// Alphabetically sorted, 1 before 2 overlooking subsequent CHs
+//  so 20 comes after 1000, not before; and 20 before 2000 because it has less characters
+
+// we can use compare function with it, as (2) in length to represent binary
+console.log(myFriends44.sort().reverse());// using both with chaining
+
+/* #45th lesson #4:19:34 Slicing Arrays */
+
+/*
+  Array Methods [Slicing]
+  - slice(Start [Opt], End [Opt] Not Including End)
+  --- slice() => All Array
+  --- If Starts gets Undefined => 0
+  --- Negative counts at the End
+  --- If Ends gets Undefined || > Indexes => Slice To The End Array.length
+  --- Returns a new Array
+  --- splice(Start, [Mand], DeleteCount [Opt] [0 No Remove], An Item To Sort [Opt])
+  --- If Negative => Starts At The End
+*/
+let myFriends45 = ["Ahmed", "Sayed","Ali", "Osama", "Gamal", "Ameer"];
+console.log(myFriends45);
+console.log(myFriends45.slice());// counting each index
+console.log(myFriends45.slice(1));// Overlooking 0 index
+console.log(myFriends45.slice(1, 3));// Overlooking 0 and 3, so [1 2]
+console.log(myFriends45.slice(-3));// Counts -3 but continues normally
+console.log(myFriends45.slice(1, -2));// overlooking 0, -1, -2 'cause not included
+// slice doesn't change original array
+
+myFriends45.splice(0,0, "Sameer", "Samara");// Splice changes the original array [!important]
+// 2nd 0 is for [[DeleteCount]], 1st 0 is the appending position
+myFriends45.splice(1,2, "Sameer", "Samara");//starts at 1 not 0, and deletes 2 elements, before appending
+
+/* #45th lesson #4:26:34 Joining Arrays */
+/*
+  Arrays Methods [Joining]
+  - concat(array, array) => Returns A new Array
+  - join(Separator)
+*/
+let myFriends46 = ["Ahmed", "Sayed","Ali", "Osama", "Gamal", "Ameer"];
+let myNewFriends46 = ["Sameer", "Samara"];
+let schoolFriends46 = ["Haythem", "Shady"];
