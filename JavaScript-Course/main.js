@@ -419,10 +419,12 @@ console.log(parseInt(d26));  //✅
 console.log(Math.floor(d26));//✅
 console.log(Math.round(d26));//✅
 console.log(Math.trunc(d26));//✅
-// Use Variables b + d To Output These Values [b = 200.5, d = 2.4]
 
+// Use Variables b + d To Output These Values🔽: [b = 200.5, d = 2.4]
 console.log();// 66.67 => String ❎
 console.log();// 67 => Number ❎ [length doesn't accept numbers, so we convert it into string]
+
+
 //The useful hint is that when using a function as math.round(),
 // we can use anything inside as math.ceil(), so 
 // console.log(Math.random(Math.ceil())); Extremely IMPORTANT To solve the challenge
@@ -687,7 +689,7 @@ console.log(Boolean(null));// this boolean outputs the falsy or true values
 console.log(`The Price Is ${price36 || 200}`);
 console.log(`The Price Is ${price36 ?? 200}`);// outputs 0 when needed
 
-/* #37th lesson #3:41:09 If Condition Challenge */
+/* #37th lesson #3:41:09 If Condition Challenge  ❎*/
 let a37 = 10;
 if (a37 < 10) {
   console.log(10);
@@ -719,7 +721,6 @@ if ("????" === "34") {
 if (st.repeat(2).length.toString() === "34") {//✅ this is the correct answer, not the next one
   console.log("Good");
 }
-
 
 if (typeof "????" === typeof "34") {//✅ I consider it done🤣 typeof, not a real answer, above is better
   console.log("Good");
@@ -1013,7 +1014,7 @@ console.log(myFriends44.sort().reverse());// using both with chaining
   --- Negative counts at the End
   --- If Ends gets Undefined || > Indexes => Slice To The End Array.length
   --- Returns a new Array
-  --- splice(Start, [Mand], DeleteCount [Opt] [0 No Remove], An Item To Sort [Opt])
+  - splice(Start, [Mand], DeleteCount [Opt] [0 No Remove], An Item To Sort [Opt])
   --- If Negative => Starts At The End
 */
 let myFriends45 = ["Ahmed", "Sayed","Ali", "Osama", "Gamal", "Ameer"];
@@ -1029,7 +1030,7 @@ myFriends45.splice(0,0, "Sameer", "Samara");// Splice changes the original array
 // 2nd 0 is for [[DeleteCount]], 1st 0 is the appending position
 myFriends45.splice(1,2, "Sameer", "Samara");//starts at 1 not 0, and deletes 2 elements, before appending
 
-/* #45th lesson #4:26:34 Joining Arrays */
+/* #46th lesson #4:26:34 Joining Arrays */
 /*
   Arrays Methods [Joining]
   - concat(array, array) => Returns A new Array
@@ -1038,3 +1039,161 @@ myFriends45.splice(1,2, "Sameer", "Samara");//starts at 1 not 0, and deletes 2 e
 let myFriends46 = ["Ahmed", "Sayed","Ali", "Osama", "Gamal", "Ameer"];
 let myNewFriends46 = ["Sameer", "Samara"];
 let schoolFriends46 = ["Haythem", "Shady"];
+// concat stands for concatenation
+let allFriends46 = myFriends46.concat(myNewFriends46, schoolFriends46, " Gameel", [1 ,2]);
+// included arrays comes at the end, can append strings and arrays though
+console.log(allFriends46);
+
+console.log(allFriends46.join());// separate 'em with comma
+console.log(allFriends46.join(""));//set them together
+console.log(allFriends46.join(" @ "));// any separator
+console.log(allFriends46.join("|").toUpperCase());// chaining string to upperCase
+
+/* #47th lesson #4:30:00 
+  Arrays Challenge ✅
+*/
+let zero47 = 0;
+
+let counter47 = 3;
+
+let my47 = ["Ahmed", "Mazero", "Elham", "Osama", "Gamal", "Ameer"];
+// Write your code here
+
+console.log(my47);// ["Osama", "Elham", "Mazero", "Ahmed"] me: reverse it and remove -1 && -2
+console.log(my47.slice(0, 4).reverse());// or slice(0, length -2) without appending [.] to length ✅
+
+console.log(my47.slice("????"));// ["Elham", "Mazero",]
+console.log(my47.slice(1, length -3).reverse());//✅
+
+// "Elzero" // me: two letters of elham, and 4 of mazero  ✅
+let elzero47 = my47.slice(1, length -3).reverse();
+let Elzero47 = elzero47[0].slice(0,2) + elzero47[1].slice(2,6);
+console.log(Elzero47);
+
+console.log();// "rO"
+console.log(my47[1][4] + my47[3][0]);//✅
+
+// No numbers allowed to type, use vars
+
+/* #48th lesson #4:32:00 Loop
+  [For keyword] and Loop Concept
+  for([1] [2] [3]) {
+    // Block Of Code
+  }
+
+  in for[1] = initialization[launching]
+        [2] = condition [looping until it acts]
+        [3] = action after looping
+
+  MDN wrote:
+  for ([initialExpression]; [conditionExpression]; [incrementExpression])
+  statement
+*/
+for (let i = 0; i < 10 ; i++) {
+  console.log();
+}
+//why don't we type <= 10 🤔, because 0 index is counted, so 0 to 9 are 10
+/* #49th lesson #4:39:48
+  Looping On Sequences
+*/
+
+let myFriends49 = ["Ahmed", "Mazero", "Elham", "Osama", "Gamal"];
+// Instead of repeating this code 5 times! we use looping
+console.log(myFriends49[0]);
+
+for (let i = 0; i < 5; i++) {
+  console.log(myFriends49[i]);
+  // console.log(myFriends49[0]);
+  // by not changing 0 into the var, it'll repeat same code 5 times, and appears a circle with n 5 in the console
+}
+// to make it more dynamic we change condition into a variable.length as
+for (let i = 0; i < myFriends49.length; i++) {
+  console.log(myFriends49[i]);
+}
+
+// A useful way to use looping is to separate numbers from string as
+let myFriends492nd = [1, 2, "Ahmed", "Mazero", 3, 4, "Elham", "Osama", "Gamal"];
+let namesOnly49 = [];
+// without looping
+if (typeof myFriends492nd[0] === 'string') {
+  namesOnly49.push(myFriends492nd[0]);
+}// and we repeat it until the end of the array
+console.log(namesOnly49);
+
+// with looping
+
+for (let i = 0; i < myFriends492nd.length; i++) {
+  if (typeof myFriends492nd[i] === 'string') {
+    namesOnly49.push(myFriends492nd[i]);
+  }
+}
+console.log(namesOnly49);
+
+/* #50th lesson #4:48:00 Nested loops And Practices */
+
+let products = ["keyboard", "Mouse","Pen","Pad","Monitor"];
+
+let colors = ["red", "green", "black"];
+
+let models = [2020, 2021];
+
+for (let i = 0; i < products.length; i++) {
+  console.log("#".repeat(15));
+  console.log(`# ${products[i]}`);
+  console.log("#".repeat(15));
+  console.log("Colors: ");
+  for (let j = 0; j < colors.length; j++) {
+    console.log(`- ${colors[j]}`);
+  }
+  console.log("Models: ");
+  for (let k = 0; k < models.length; k++) {
+    console.log(`- ${models[k]}`);
+  }
+}
+/* #51st lesson #4:52:03 
+  Loop Control
+  - Break
+  - Continue
+  - Label 
+*/
+let products1 = ["keyboard", "Mouse", 10, 20,"Pen","Pad", 30, 40, "Monitor"];
+
+let colors1 = ["red", "green", "black"];
+// If we want to type only 3 items we use break!
+for (let i = 0; i < products1.length; i++) {
+  if (typeof products1[i] === "number" ) {
+    continue;
+  }
+  console.log(products1[i]);// if we don't add it after the check, it'll type all
+  // if (products1[i] === "Pen" ) {
+  //   break;
+  // }
+  // console.log(products1[i]);
+  // If we type firstly, it'll type "Pen" then stops
+}
+
+// we can control break and continue by using label
+
+// we can control the main loop within a sub-loop as this [mainLoop:]
+
+let products2 = ["Keyboard", "Mouse","Pen","Pad","Monitor"];
+let colors2 = ["Red", "Green", "Black"];
+
+mainLoop: for (let i = 0; i < products2.length; i++) {
+  // if (typeof products2[i] === "number" ) {
+  //   continue;
+  // }
+  console.log(products2[i]);
+  nestedLoop: for (let j = 0; j < colors2.length; j++) {
+    console.log(`- ${colors2[j]}`);
+    if (colors2[j] === "Green") {
+      break mainLoop;
+    }
+  }
+}
+// We're Not gonna use Label in 100%, but have to get its idea
+
+/* #52nd lesson #4:59:00 
+  Loop For - Advanced Example
+*/
+
