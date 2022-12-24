@@ -13,6 +13,11 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+html {
+  -webkit-scroll-behavior: smooth;
+  -moz-scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
 body {
   font-family: "work sans", sans-serif;
 }
@@ -444,5 +449,92 @@ body {
   /* 12th lesson 01:34:35 Contact Section */
 
 /* Start Contact */
-
+.contact {/* Same as Portfolio*/
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  background-color: var(--section-background);
+}
+.contact .info {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  text-align: center;
+}
+.contact .info .label {
+  font-size: 35px;
+  font-weight: 800;
+  color: var(--secondary-color);
+  letter-spacing: -2px;
+  margin-bottom: 15px;
+}
+.contact .info .link {
+  display: block;
+  font-size: 35px;
+  font-weight: 800;
+  color: var(--main-color);
+  text-decoration: none;
+}
+.contact .info .social {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+.contact .info .social i {
+  margin-left: 10px;
+  color: var(--secondary-color);
+}
+@media (max-width:767px) {
+  .contact .info .link,
+  .contact .info .label {
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
 /* End Contact */
+/* Start Footer */
+.footer {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 30px 10px;
+  text-align: center;
+  font-size: 18px;
+}
+.footer span {
+  font-weight:bold;
+  color: var(--main-color);
+}
+/* End Footer */
+
+/* 13th lesson 01:45:15 Improving Code */
+/*
+  When we append an id in an element, we can use anchor by clicking,
+  as we did with main DIVs portfolio, services etc
+  but it ain't smooth, so we use scroll-behavior attribute in html[css file]
+  as smooth, although we need to append [prefixes]
+  it'll be better with JS
+
+  we can stop wasting the code and make this as a local framework, e.g: name it grid3 
+.features .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+  and transition, in conclusion, create functions to save code memory
+*/
+
+/* 14th lesson 01:51:41 Upload To Github && Create a Demo 
+  complete github course, before finishing this lesson
+*/
+
+/*
+  cloned the repo link after creating it
+  created a folder by:
+  mkdir Elzero
+    Cloned the repo in local repo
+  git clone https://github.myLink
+  cd myFolder\
+    checked files, red colored, so needs [git add *] Then [git -m commit "our message"]
+  git push origin main [remote repo and its branch]
+    settings in github.com ↵ GitHub Pages ↵ Source [main Branch]
+    to make it as a demo[alive page]
+*/
