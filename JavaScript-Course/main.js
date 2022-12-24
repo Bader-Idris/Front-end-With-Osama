@@ -1196,4 +1196,41 @@ mainLoop: for (let i = 0; i < products2.length; i++) {
 /* #52nd lesson #4:59:00 
   Loop For - Advanced Example
 */
+let products3 = ["Keyboard", "Mouse","Pen","Pad","Monitor"];
 
+let i = 0;// [var] instead of [loop initialization]
+for (;;) {
+  // we have to append semicolon to set [1st exp]
+  console.log(products3[i]);
+  i++;//[instead of loop 3rd exp][after printing, to not lose 0 index]
+  if ( i === products3.length) {//this is the [condition]
+    break;
+  }
+}
+// we can remove the {Curly braces}, and append: break; as
+// if ( i === products3.length) break;
+// [i++;] = [i = i + 1;] = [i += 1;]
+// if i += 1; it'll be passing even numbers, as day by day
+
+/* #53rd lesson #5:03:25 
+  Practice -Add Products To Page
+*/
+let products4 = ["Keyboard", "Mouse","Pen","Pad","Monitor","iPhone"]
+let colors4 = ["Red", "Green","Black"];
+// we need to sort how many product
+let showCount = 5;
+// we need to have a dynamic number in a heading
+document.write(`<h1>Show ${showCount} Products</h1>`);
+
+for (let i = 0; i < showCount; i++) {
+  document.write(`<div>`);
+  document.write(`<h3>[${i + 1}]${products4[i]}</h3>`);//i +1 => showing 1 instead of 0
+  for (let j = 0; j < colors4.length; j++) {
+    document.write(`<p>${colors4[j]}</p>`);
+  }
+  document.write(`<p>${colors4.join(" | ")}</p>`);
+  document.write(`</div>`);
+}
+/* #54th lesson #5:10:00
+  Loop - While
+*/
