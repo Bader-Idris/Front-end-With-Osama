@@ -1234,3 +1234,56 @@ for (let i = 0; i < showCount; i++) {
 /* #54th lesson #5:10:00
   Loop - While
 */
+/*
+let index = 0; //initialize comes here
+while (index < 10 [condition]) {
+  console.log(index);// if we leave it here, it'll run for keeps
+  index += 1;//increment Expression
+  if (index === 3){
+    break;// another place for [condition]
+  }
+}
+*/
+let products5 = ["Keyboard", "Mouse","Pen","Pad","Monitor","iPhone"]
+let index5 = 0;
+while (index5 < products5.length ) {
+  console.log(products5[index5]);
+  index5 += 1;
+}
+/* #55th lesson #5:14:50
+  Loop - Do, While
+*/
+let products6 = ["Keyboard", "Mouse","Pen","Pad","Monitor","iPhone"]
+let i6 = 0;
+while (false) {
+  console.log(i6);
+  i6++;
+}
+console.log(i6);// same as before while, we stopped it
+// Do while loop, impacts firsts condition, without asking
+do {
+  console.log(i6);
+  i6++;
+} while (false);
+console.log(i6);// the action, even with false condition
+/* #56th lesson #5:18:03
+  Loop - Challenge
+*/
+let myAdmins = ["Ahmed","Osama","Sayed","Stop","Samera"]
+let myEmployees = ["Amgad","Samah","Ameer","Omar","Othman","Amany","Samia"]
+document.write(`<div>We Have X Admins</div>`);
+/*
+  we have to create | <div>We Have X Admins</div>
+  then under it, the number of admins, in a div[dynamically]
+  then force the array to stop when sees [stop] string, as stop/samera
+  we use if condition for it!
+  then Create <hr>, and separate each team with making the members starting with same letter
+  as For Ahmed admin, Amgad/Ameer employees, For Osama give Omar and othman
+  with hr after each set ... <div>The Admin for Team [n] is ${admin}</div>
+  h3 team members: 
+  <p> 1 amgad</p> etc [n] ${Employee}
+In another Page!!!
+*/
+/* #57th lesson #5:21:19
+  Function Intro And Basic Usage
+*/
