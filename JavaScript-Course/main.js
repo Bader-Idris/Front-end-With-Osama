@@ -1283,7 +1283,16 @@ document.write(`<div>We Have X Admins</div>`);
   h3 team members: 
   <p> 1 amgad</p> etc [n] ${Employee}
 In another Page!!!
+        🙃🤔 I tacked sorting strings alphabetically, so A, O, S are separated to each Admin set!!
 */
 /* #57th lesson #5:21:19
   Function Intro And Basic Usage
+  - What's a function!?
+  - User-Defined Vs Build In
+  - Syntax + Basic Usage
+  - Real Life Examples
+  - Parameter + Argument
+  - Practical Example
 */
+// It's a block of code that impacts specific tasks
+// Impacts the origin of [DRY] Don't Repeat Yourself!
