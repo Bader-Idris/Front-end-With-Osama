@@ -1296,3 +1296,152 @@ In another Page!!!
 */
 // It's a block of code that impacts specific tasks
 // Impacts the origin of [DRY] Don't Repeat Yourself!
+console.log(typeof console.log);// It's a built-in function
+/*
+  function[Keyword] sayHello[Identifier]([The parameter[to alter things]]) {
+    // The block of code
+}
+*/
+function SayHello(userName) {
+console.log(`Hello ${userName}`);
+}
+// we need to trigger it -Call it - as:
+SayHello();// this is the basic way
+// [مُعامل التجربة في الكيمياء === parameter 🧪🤘]
+
+//after defining the parameter, it'll ask for it
+SayHello("Bader");//Called [argument][it's the value of the variable]
+SayHello("Sayed");
+SayHello("Ali");// these are instead of repeating yourself
+// and when we change the function values as Hi instead of Hello, it'll do it Only once[DRY]
+
+/* #58th lesson #5:29:17
+  Function Advanced Examples
+*/
+// we can trigger many parameters as:
+function sayHello2(userName, age) {
+  // changes its place into else statement
+  if (age > 20) {
+    console.log(`Our App Isn't Suitable For Your Age`)
+  } else {
+    console.log(`Hello ${userName} Your age is ${age}`);
+  }
+}
+sayHello2("Bader");// undefined, needs age
+sayHello2("Sayed", 45);
+sayHello2("Osama", 39);//his current age in 22
+
+function generateYears(start, end, exclude) {
+  for (let i = start; i <= end; i++) {
+    if (i === exclude) {
+      continue;
+    }
+    console.log(i);
+  }
+}
+generateYears(1982, 2021);// the age of Osama
+generateYears(1982, 2021,2020);
+
+/* #59th lesson #5:35:22
+  Function Return Statement & Use Cases
+*/
+/*
+  Function
+  - Return
+  - Automatic Semicolon Insertion [No Line Terminator Allowed]
+  - Interrupting
+*/
+function sayHello3(userName) {
+  // console.log(`Hello ${userName}`); instead we use return
+  return `Hello ${userName}`;//🔽
+}
+sayHello3("Osama")
+// Normally, function have to impact computing before outputting, so we use return
+// after creating [return] we can declare it as a var, or log it
+let result58 = sayHello3("Bader");
+console.log(result58);// 🤘as this one
+
+function calc(num1, num2) {
+  return num1 + num2;
+}
+// we can change things like this one:
+let calcResults = calc(10, 20);
+console.log(calcResults + 100);
+/*
+  🔴Return stops the execution of Code,
+    and [line terminators] aren't allowed
+  🔴
+  This won't work and appends ; after return
+
+function calc(num1, num2) {
+  return
+  num1 + num2;
+}
+  
+*/
+function generate(start, end) {
+  for (let i = start; i <= end; i++) {
+    console.log(i);//if put under [if], won't type 15
+    if (i === 15) {
+      return `Interrupting`;
+    }
+  }
+}
+
+generate(10, 20)
+//it'll stop at 15 because [return statement] interrupts code flow
+
+/* #60th lesson #5:42:27
+  Function Default Parameters
+  - Function Parameters Default [Undefined]🔴
+  - Old Strategies [Condition + Logical Or]
+  - ES6 Method
+*/
+function sayHello4(username = "Unknown", age = "Unknown") {//3️⃣ making default as unknown
+  // if (age === "undefined") {
+  //   age = "Unknown";
+  // }//🔽[truthy falsy pattern]
+  // age = age || "Unknown";// 2️⃣
+  return `Hello ${username} Your Age Is ${age}`;
+}
+console.log(sayHello4("Osama", 38));
+
+/* #61st lesson #5:46:53
+  Function Rest Parameters
+  - Rest Parameters [...myVar]
+  - Only One Allowed
+  - Must Be At Last
+*/
+// function calc2(num1, num2, num3) {
+//   return num1 + num2 + num3;
+// }
+console.log(calc2(10, 20, 10));
+/* with Rest parameter we can append many unset ones
+  we type: ...parameterName to append a [Rest Parameter]
+  [...sth] is an array of arguments 
+
+*/ 
+
+// function calc2(...numbers) {
+//   console.log(Array.isArray(numbers))//without triple dots[true]
+// }
+function calc2(...numbers) {
+  let result = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    result += numbers[i];
+  }
+  return `Final Result: ${result}`;// important to bring the number back after calculation
+}
+console.log(calc2(10, 20, 10, 30, 50));
+
+/* #62nd lesson #5:53:50
+  Function Ultimate Practice
+*/
+/*
+  Function Advanced Practice
+  - Parameters
+  - Defaults
+  - Rest
+  - Loop
+  - Condition
+*/
