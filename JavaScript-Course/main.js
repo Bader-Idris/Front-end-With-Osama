@@ -1445,3 +1445,59 @@ console.log(calc2(10, 20, 10, 30, 50));
   - Loop
   - Condition
 */
+// we can append rest parameter with other types, but only in the last
+// us => userName, ag => age, rt => ourRate , ...sk => skills[rest 📏]
+function showInfo (us = "Un", ag = "Un", rt= 0, show = "Yes", ...sk) {
+  document.write(`<div>`);
+  document.write(`<h2>Welcome, ${us}</h2>`);
+  document.write(`<p>Age: ${ag}</p>`);
+  document.write(`<p>Hour Rate: $${rt}</p>`);
+  if (show === "Yes") {
+    if (sk.length > 0) {
+      document.write(`<p>Skills: ${sk.join(" | ")}</p>`);
+    } else {
+      document.write(`<p>Skills: No Showed Skills </p>`);
+    }
+  } else {
+    document.write(`<p>Skills Are Hidden</p>`);
+  }
+  document.write(`</div>`);
+}
+showInfo("Bader", 22, 20, "Yes", "HTML", "CSS");
+/**
+ *  The reason of this Video is: 
+ * Logical thinking!
+ * Scenarios To Each Situation
+ * 🟢Ability to append rest📏 with fixed vars, as skills to others🟢
+ * Using Default for 🦥 people
+ * 🔴We can create a loop inside if sk.length statement🔴
+ */
+/* #63rd lesson #6:05:13
+  Random Arguments Function Challenge
+*/
+
+/*
+  Function -Random Argument Challenge
+  ===================================
+  Create Function ShowDetails
+  Function Accepts 3 Parameters [a, b, c]
+  Data Types For Info Are
+  - String => Name
+  - Number => Age
+  - Boolean => Status
+  Argument is Random
+  Unsorted Data Outputs Depending On Data Type
+  - Use Ternary Conditional Operator
+*/
+showDetails("Osama", 38, true); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
+showDetails(38, "Osama", true); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
+showDetails(true, 38, "Osama"); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
+showDetails(false, "Osama", 38);// "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
+function showDetails(a, b, c) {
+  
+}
+// the data will shuffle, [its argument place will change]
+
+/* #64th lesson #6:08:17
+  Anonymous Function With Practice
+*/
