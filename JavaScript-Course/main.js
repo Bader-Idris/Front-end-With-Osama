@@ -1493,9 +1493,37 @@ showDetails("Osama", 38, true); // "Hello Osama, Your Age Is 38, You Are Availab
 showDetails(38, "Osama", true); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
 showDetails(true, 38, "Osama"); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
 showDetails(false, "Osama", 38);// "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
-function showDetails(a, b, c) {
-  
+
+// function showDetails(a, b, c) {
+//   if (a === true && typeof b === "string" && typeof c === "number") {
+//     console.log(`Hello ${b}, Your Age Is ${c}, You Are Available For Hire`);
+//   } else if (a === false && typeof b === "string" && typeof c === "number") {
+//     console.log(`Hello ${b}, Your Age Is ${c}, You Are Not Available For Hire`);
+//   } else {
+//     console.log(`Nigga`);
+//   }
+// }
+
+
+function showDetails(a, b, c) {//d string ,e number, f true, g false
+  typeof a === 'string' ? d = a :
+  typeof a === 'number' ? e = a :
+  a = true ? f = a :
+  a = false ? g = a :
+  typeof b === 'string' ? d = b :
+  typeof b === 'number' ? e = b :
+  b = true ? f = b :
+  b = false ? g = b :
+  typeof c === 'string' ? d = c :
+  typeof c === 'number' ? e = c :
+  c = true ? f = c :
+  c = false ? g = c :
+  console.log(`Hello MotherF`);
+
+  console.log(`Hello ${d}, Your Age Is ${e}, You Are Available For Hire`);
 }
+//🔴 It didn't work!🔴
+showDetails(true, "Osama", 38);
 // the data will shuffle, [its argument place will change]
 
 /* #64th lesson #6:08:17
