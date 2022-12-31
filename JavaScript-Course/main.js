@@ -1528,4 +1528,121 @@ showDetails(true, "Osama", 38);
 
 /* #64th lesson #6:08:17
   Anonymous Function With Practice
+  - calling Named Function vs anonymous function
+  - Argument To another Function
+  - SetTimeout
+*/
+// We can print functions before declaration
+console.log(calc3(10, 20));
+function calc3(num1, num2) {
+  return num1 + num2;
+}
+// here we type an anonymous function
+let calculator = function (num1, num2) {
+  return num1 + num2;
+};// It has no name.🟢we append ; after its braces
+// to invoke it we type its name as:
+console.log(calculator(10, 20));// But it must be after declaring the var
+// we can name it to get its errors as:
+let calculator2 = function elzero(num1, num2) {
+  return num1 + num2;
+};//🤔not explained yet
+// we use this anonymous func for events as clicks etc.
+document.getElementById("show").onclick = function () {//no need to name it🟢
+  console.log("Show");
+};//this is called a [higher-order function]
+
+setTimeout(function () {//it's type after its period as 2s here!
+  console.log("Good");// No need to name it though
+}, 2000);// 2 seconds
+// to use declared functions type it after onclick = 
+document.getElementById("show").onclick = sayHello2;
+/* #65th lesson #6:16:44 Return Nested Functions */
+// It might be the solution for prior challenge 🟢
+
+// example 1
+function replyMessage(fName, lName) {
+  let message = `Hello`;
+  function concatMsg() {
+    message = `${message} ${fName} ${lName}`;
+  }
+  concatMsg()//this is its usage
+  return message;//returning the original one
+}
+console.log(replyMessage("Osama", "Mohammed"));
+// Example 2
+function sayMessage(fName, lName) {
+  let message = `Hello`;
+  function concatMsg() {
+    return `${message} ${fName} ${lName}`;
+  }
+  return concatMsg;//returning the nested function as a value
+}
+console.log(sayMessage("Osama", "Mohammed"));
+// Example 3
+function sayMessage1(fName, lName) {//using a nested func inside another nested one
+  let message = `Hello`;
+  function concatMsg() {//here is the 2nd nested one
+    function getFullName() {
+      return `${fName} ${lName}`
+    }
+    return `${message} ${getFullName}`;//instead of 2 values, they're nested now
+  }
+  return concatMsg;
+}
+console.log(sayMessage1("Osama", "Mohammed"));
+
+/* #66th lesson #6:23:02
+  Arrow function Syntax
+  -- Regular vs Arrow [Param + No Param]
+  -- Multiple Lines
+*/
+// If we have a line on its own, we can remove braces and return, with appending => as
+let print = () => 10;
+// let print = _ => 10;// Another way, popular in other langs as [go] underscore instead of ()
+
+console.log(print());
+/* instead of this normal one, 🔴we can't remove return and parentheses() if more than two params🔴
+  let print = () => {
+    let a = 10;
+    return 10;
+  };
+  console.log(print());
+*/
+// let printo = function (num) { // normal one
+//   return num;
+// };
+let printo = (num) => num;// removed itsName, {}, and return, and added =>
+// if one argument/param, we can remove () as num instead of (num)
+;
+console.log(printo(100));
+
+// let printYo = function (num1, num2) {// Normally
+//   return num1 + num2;
+// };
+
+let printYo = (num1, num2) => num1 + num2;//arrow one, not able to remove (), as for two params
+console.log(printYo(100, 50));
+/* #67th lesson #6:29:00
+  Scope - Global && Local
+*/
+// it's the concept of controlling the existing of our vars
+// so by it we know where to access vars, and when!
+var a67 = 1;
+let b67 = 2;//these two are Global, accessible from everywhere
+
+function showText() {
+  console.log(`Function - From Global${a67}`);
+  console.log(`Function - From Global${b67}`);
+  var a67 = 10;
+  let b67 = 20;// these two are Local, can't print before declaration
+  //It reads Locally and if not existing, search globally
+}
+console.log(`From Global${a67}`);
+console.log(`From Global${b67}`);
+
+showText();
+
+/* #68th lesson #6:34:50
+  Scope - BlockS
 */
