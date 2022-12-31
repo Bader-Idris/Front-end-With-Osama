@@ -913,5 +913,135 @@ header nav .form i {
 /* End Subscribe */
 /* #21 lesson Contact Us Section 2:48:30 */
 /* Start Subscribe */
-
+.contact {
+  padding-top: var(--section-padding);
+  padding-bottom:var(--section-padding);
+}
+.contact .content {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 767px) {
+  .contact .content {
+    flex-direction: column;
+  }
+}
+.contact .content form {
+  flex-basis: 70%;
+}
+.contact .content form .main-input {
+  padding: 20px;
+  display: block;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
+  width: 100%;
+}
+.contact .content form .main-input:focus {
+  outline: none;
+}
+.contact .content form textarea.main-input {/*🔴must stop width flex-ability*/
+  height: 200px;
+}
+.contact .content form input[type="submit"] {
+  background-color: var(--main-color);
+  color: white;
+  padding: 20px;
+  border: none;
+  display: flex;
+  margin-left: auto;/*Great With Flex, Goes To Right*/
+  text-transform: uppercase;
+  cursor: pointer;/*To appear as a button*/
+}
+.contact .content .info {
+  flex-basis: 25%;
+}
+@media (max-width: 767px) {
+  /*instead of using offset in bootstrap
+  -changing left margin of boxes as textAreas and appending info instead-,
+  we use flex order*/
+  .contact .content .info {
+    order: -1;
+    text-align: center;
+  }
+}
+.contact .content .info h4 {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: bold;/*500 is better when existing*/
+  font-size: 18px;
+}
+.contact .content .info .phone {
+  display: block;
+  color: #777;
+  margin-bottom: 10px;
+}
+.contact .content .info h4:last-of-type {/*same as :nth-of-type(2), as we know*/
+  margin-top: 84px;
+}
+.contact .content .info address {
+  color: #777;
+  line-height: 2;
+}
+@media (max-width: 767px) {
+  /* .contact .content .info { The task is to separate them as 🌗
+    display: flex;
+  } */
+  .contact .content .info address {
+    margin-bottom: 20px;
+  }
+}
 /* End Subscribe */
+/* #22 lesson Footer 3:04:17 */
+/* Start Footer */
+.footer {
+  padding-top: calc(var(--section-padding) / 2);
+  padding-bottom:calc(var(--section-padding) / 2);
+  background-image: url(../images/subscribe.jpg);
+  background-size: cover;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 70%);
+}
+.footer .container {
+  position: relative;
+}
+.footer img {
+  margin-bottom: 20px;
+}
+.footer p:not(.copyright) {
+  text-transform: uppercase;
+  padding: 20px;
+  border-bottom: 1px solid white;
+  font-size: 22px;
+  width: fit-content;
+  margin: 20px auto;
+}
+.footer .social-icons i {
+  padding: 20px auto;
+}
+.footer .copyright {
+  margin-top: 60px;
+}
+.footer .copyright span {
+  font-weight: bold;
+  color: var(--main-color);
+}
+/* End Footer */
+/* #23 lesson Finishing && Advices 3:13:05
+  To build a showReel [معرض أعمال]:
+* The PSD design was taken from another website, copyrights must be referred to, as Kasper from GraphBerry
+* You have to be aware of used code if not created by you, to be able to write it in Working
+
+* Always Care && Upgrade your Code, as with float and grid, and Vars
+
+* Impact Shuffling in uls and other JS code when you learn it
+*/
