@@ -1644,5 +1644,46 @@ console.log(`From Global${b67}`);
 showText();
 
 /* #68th lesson #6:34:50
-  Scope - BlockS
+  Scope - Block [If, Switch, For]
 */
+// Var in if statements can output errors, so we use let and const
+var x68 = 10;
+if (10 === 10) {
+  let x68 = 50;/*Don't swap both, must declared before print*/
+  console.log(`From If Block ${x68}`);
+}
+console.log(`From Global ${x68}`);
+/* #69th lesson #6:39:30
+  Scope - Lexical
+*/
+/*
+  Scope 
+  - Lexical Scope
+
+  🟢🔴Search  For🔴🟢
+  - Execution Context
+  - Lexical Environment
+*/
+/* 
+  The child can take from his father, but father can't,
+  as nested blocks
+*/
+/* #70th lesson #6:44:30
+  Arrow Function Challenge
+*/
+
+// [1] One Statement In a Function
+// [2] Convert To Arrow Function
+// [3] Print THe Output [Arguments May Change]
+
+let names = function() {
+  // Parameter ?
+  return "???";
+};
+
+console.log(names("Osama", "Mohamed", "Ali", "Ibrahim"));
+// String [Osama], [Mohammed], [Ali], [Ibrahim] => Done !
+
+/* ================================== */
+
+// 

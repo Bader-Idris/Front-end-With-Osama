@@ -1,0 +1,98 @@
+/* 02 lesson 0:04:45 Preparation for Project and its files */
+/* Start Global Rules */
+:root {
+  --main-color: #2196f3;
+  --main-color-alt: #1787e0;
+  --main-transition: 0.3s;
+  --main-padding-top: 100px;
+  --main-padding-bottom: 100px;
+  --section-background: #ececec;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'cairo', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* End Global Rules */
+/* 03 lesson 0:11:45 Header Section Part 1*/
+.header {
+  background-color: white;
+  position: relative;
+  -webkit-box-shadow: 0 0 10px #ddd;
+  -moz-box-shadow: 0 0 10px #ddd;
+  box-shadow: 0 0 10px #ddd;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.header .logo {
+  font-size: 26px;
+  color: var(--main-color);
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  height: 72px;/*fixing its height for changes others with phones*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .main-nav {
+  display: flex;
+}
+.header .main-nav > li > a {/*direct child for not confusing with mega-menu*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 72px;/*can be as a local var, && it's for filling hover effect*/
+  position: relative;
+  color: black;
+  padding: 0 30px;
+  transition: var(--main-transition);
+}
+/* 04 lesson 0:21:11 Header Section Part 2*/
+.header .main-nav > li > a:hover::before {
+  background-color: #fafafa;
+  color: var(--main-color);
+  border-top: 5px solid var(--main-color-alt);
+}
