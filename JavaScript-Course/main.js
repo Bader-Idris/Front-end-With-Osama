@@ -1623,6 +1623,9 @@ console.log(printo(100));
 
 let printYo = (num1, num2) => num1 + num2;//arrow one, not able to remove (), as for two params
 console.log(printYo(100, 50));
+
+//🟢personal notes: arrows are called [lambda] || [fat Arrow] in some other langs🟢
+
 /* #67th lesson #6:29:00
   Scope - Global && Local
 */
@@ -1683,7 +1686,9 @@ let names = function() {
 
 console.log(names("Osama", "Mohamed", "Ali", "Ibrahim"));
 // String [Osama], [Mohammed], [Ali], [Ibrahim] => Done !
+// 🟢length is unknown, and [], => are printed as string, not function
+/* ================================== 2nd task*/
 
-/* ================================== */
-
-// 
+// [1] Replace ??? IN Return Statement To Get the Output
+// [2] Create The Same Function With Regular Syntax
+// [3] Use Array Inside The Argument TO Get The Output
