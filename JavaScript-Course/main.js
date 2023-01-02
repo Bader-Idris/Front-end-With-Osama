@@ -403,7 +403,7 @@ console.log(Math.pow(2, 4));// stands for power[exponent] 2^4, 2**4
 console.log(Math.random());// as its name
 console.log(Math.trunc(99.5));// Will be used much| makes float integer
 
-/* #26th lesson #2:27:30 Number Challenge */
+/* #26th lesson #2:27:30 Number Challenge ✅⅔, ⅓❎*/
 let a26 = 1_00;
 let b26 = 2_00.5;
 let c26 = 1e2;
@@ -517,7 +517,7 @@ console.log(a29.startsWith("z", 2));// true because it does with z
 console.log(a29.endsWith("o"));// false, not ending with o character
 console.log(a29.endsWith("o", 6));// we count length not index ⚠️
 
-/* #30th lesson #3:02:56 String Challenge [½]
+/* #30th lesson #3:02:56 String Challenge, ⅓❎
   All Solutions Must Be In One Chain
   You Can Use Concatenation
 */
@@ -799,7 +799,7 @@ switch (day38) {
 /* #39th lesson #3:49:33 Switch && If Condition Challenges */
 
 /*
-  Switch Challenge
+  Switch Challenge ✅
 */
 let job39 = "Manager";
 let salary39 = 0;
@@ -1267,7 +1267,7 @@ do {
 } while (false);
 console.log(i6);// the action, even with false condition
 /* #56th lesson #5:18:03
-  Loop - Challenge
+  Loop - Challenge, ✅⅔, ⅓❎
 */
 let myAdmins = ["Ahmed","Osama","Sayed","Stop","Samera"]
 let myEmployees = ["Amgad","Samah","Ameer","Omar","Othman","Amany","Samia"]
@@ -1285,6 +1285,8 @@ document.write(`<div>We Have X Admins</div>`);
 In another Page!!!
         🙃🤔 I tacked sorting strings alphabetically, so A, O, S are separated to each Admin set!!
 */
+
+
 /* #57th lesson #5:21:19
   Function Intro And Basic Usage
   - What's a function!?
@@ -1473,7 +1475,7 @@ showInfo("Bader", 22, 20, "Yes", "HTML", "CSS");
  * 🔴We can create a loop inside if sk.length statement🔴
  */
 /* #63rd lesson #6:05:13
-  Random Arguments Function Challenge
+  Random Arguments Function Challenge ❎
 */
 
 /*
@@ -1672,23 +1674,100 @@ console.log(`From Global ${x68}`);
   as nested blocks
 */
 /* #70th lesson #6:44:30
-  Arrow Function Challenge
+  Arrow Function Challenge ❎
 */
 
 // [1] One Statement In a Function
 // [2] Convert To Arrow Function
 // [3] Print THe Output [Arguments May Change]
 
-let names = function() {
+let namesTest = function() {
   // Parameter ?
   return "???";
 };
 
-console.log(names("Osama", "Mohamed", "Ali", "Ibrahim"));
+console.log(namesTest("Osama", "Mohamed", "Ali", "Ibrahim"));
 // String [Osama], [Mohammed], [Ali], [Ibrahim] => Done !
+
 // 🟢length is unknown, and [], => are printed as string, not function
+
+let names = function (...sth) {
+  console.log(`String [${sth.join(" ],")} => Done !`);
+};
+
 /* ================================== 2nd task*/
 
 // [1] Replace ??? IN Return Statement To Get the Output
 // [2] Create The Same Function With Regular Syntax
 // [3] Use Array Inside The Argument TO Get The Output
+
+let myNumbersTest = [20, 50, 10, 60];
+let calcTest = (one, two, ...nums) => "???";
+
+
+console.log(calcTest(10, "???", "???"));// 80
+
+let calcTest = (one, two, ...nums) => one + two + nums;
+console.log(calcTest(10, myNumbersTest[1], myNumbersTest[0]));
+// 🟢 1st func can be called inside calc one, only with its index
+
+/* #71st lesson #6:47:00
+  Higher Order Functions - Map
+*/
+
+/*
+  Higher Order Functions
+  ---> are functions accepts functions as parameters and/or returns a function.
+
+  - Map
+  --- A method that creates a new array
+  --- popular with results of calling provided functions in each element
+  --- in the calling array🤔
+
+  Syntax map(callBackFunction(Element, index, array) { }, thisArgu)
+  - Element => The current element being processed in the array.
+  - Index => The index of the current element being processed in the array.
+  - Array => The Current Array
+
+  Notes
+  - Map returns A New Array
+
+  Examples
+  - Anonymous Function
+  - Named Function
+*/
+let muNums = [1, 2, 3, 4, 5, 6];
+let newArray = [];
+
+for (let i = 0; i < muNums.length; i++) {
+  newArray.push(myNums[i] + myNums[i]);
+}
+
+console.log(newArray);
+
+// Same Idea With Map
+
+let addSelf = myNums.map(function (element, index, arr) {
+  console.log(`Current Element =>  ${element}`);
+  console.log(`Current Index => ${index}`);
+  console.log(`Array => ${arr}`);
+  console.log(`This => ${this}`);
+  // return element + element;
+}, 10);//10 is ${This}
+// el => element, i => index
+console.log(addSelf);// ❇️ it
+// Element [mand], 2nd && 3rd [Opt]
+
+
+let addSelf2 = myNums.map((el) => el + el);
+
+console.log(addSelf2);//same result as above, when printing only element
+
+function incrementing(ele) {
+  return ele + ele;
+}
+let incre = myNums.map(incrementing);
+
+/* #72nd lesson #6:55:30
+  Higher Order Functions - Map Practice
+*/
