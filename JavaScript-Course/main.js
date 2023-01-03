@@ -1707,7 +1707,7 @@ let calcTest = (one, two, ...nums) => "???";
 
 console.log(calcTest(10, "???", "???"));// 80
 
-let calcTest = (one, two, ...nums) => one + two + nums;
+let calc = (one, two, ...nums) => one + two + nums;
 console.log(calcTest(10, myNumbersTest[1], myNumbersTest[0]));
 // 🟢 1st func can be called inside calc one, only with its index
 
@@ -1771,3 +1771,53 @@ let incre = myNums.map(incrementing);
 /* #72nd lesson #6:55:30
   Higher Order Functions - Map Practice
 */
+
+/*
+  Map
+  - Swap Cases
+  - Inverted Numbers
+  - Ignore Boolean value
+*/
+let swappingCases = "elZERo";
+let invertedNumbers = [1, -10, -20, 15, 100, -30];
+let ignoreNumbers = "Elz123er4o";
+// Solution
+let sw = swappingCases.split("").map(function (ele){//converting string into an array
+  // Condition ? True : False
+  return ele === ele.toUpperCase() ? ele.toLowerCase() : ele.toUpperCase()
+}).join("");//join to return as string
+
+console.log(sw);
+// Arrow Function Version
+let sw2 = swappingCases.split("").map((ele) => ele === ele.toUpperCase() ? ele.toLowerCase() : ele.toUpperCase()).join("");
+console.log(sw2);//ele can be as var [a]
+
+// 2nd one
+let inv = invertedNumbers.map(function (ele) {
+  return -ele;// Just remember,[نفي النفي إثبات]
+})
+console.log(inv);
+// 3rd one
+let ign = ignoreNumbers.split('').map(function (ele) {
+  return isNaN(parseInt(ele)) ? ele : "" ;
+}).join("") //using isNaN, and parseInt
+console.log(ign);
+
+/* #73nd lesson #7:04:04
+  Higher Order Functions - Filter
+*/
+
+/*
+  - Filter
+  --- method creates a new array
+  --- with all elements passes the implemented test by the provided function.
+
+  Syntax filter(callBackFunction(Element, Index, Array) {}, ThisArg)
+  - Element => The current element being processed in the array.
+  - Index => The index of the current element being processed in the array.
+  - Array => The Current Array
+*/
+// Get Friend names starting with A
+let friends73 = ["Ahmed", "Sameh", "Sayed", "Asmaa", "Amgad", "Israa"];
+// Get Only Even Numbers
+let numbers73 = [11, 20, 2, 5, 17 , 10];
