@@ -1803,7 +1803,7 @@ let ign = ignoreNumbers.split('').map(function (ele) {
 }).join("") //using isNaN, and parseInt
 console.log(ign);
 
-/* #73nd lesson #7:04:04
+/* #73rd lesson #7:04:04
   Higher Order Functions - Filter
 */
 
@@ -1819,5 +1819,46 @@ console.log(ign);
 */
 // Get Friend names starting with A
 let friends73 = ["Ahmed", "Sameh", "Sayed", "Asmaa", "Amgad", "Israa"];
+
 // Get Only Even Numbers
 let numbers73 = [11, 20, 2, 5, 17 , 10];
+// Map Vs Filter
+
+let addMap = numbers73.map(function (el){
+  return el + el;
+});
+console.log(addMap);
+// Filter
+let addFilter = numbers73.filter(function (el){
+  return el + el;// because it didn't see anything to filter, it got [true], so no changes
+});
+console.log(addFilter);
+
+let filterFriends = friends73.filter(function (el){
+  return el.startsWith("A");// It's a condition
+  // same as el.startsWith("A"); ? true: false;
+});
+console.log(filterFriends);
+
+let evenNumbers = numbers73.filter(function (el){
+  return el % 2 === 0;
+});
+console.log(evenNumbers);
+/* #74th lesson #7:10:35
+  Higher Order Functions - Filter Practice
+*/
+
+/*
+  Filter
+  - Filter Longest Word By Number
+*/
+
+// FIlter +4 letters Words
+let sentence = "I Love Foood Code Too Playing Much";
+
+// Ignore Numbers
+let ignoreNumbers74 = "Elz123er4o";
+
+let ing74 = ignoreNumbers74.split("").map(function (el){
+  return isNaN(parseInt(el)) ? el : "";
+});
