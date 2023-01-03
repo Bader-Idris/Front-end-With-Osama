@@ -1001,7 +1001,8 @@ console.log(myFriends44.reverse());// reverses last sorted array, if 1st wasn't 
 // Alphabetically sorted, 1 before 2 overlooking subsequent CHs
 //  so 20 comes after 1000, not before; and 20 before 2000 because it has less characters
 
-// we can use compare function with it, as (2) in length to represent binary
+// we can use compare function with it, as (2) in length to represent binary[bin], eg: myNumbers.toString(2)
+// and to Hex[255] as (16), and as Oct(8)
 console.log(myFriends44.sort().reverse());// using both with chaining
 
 /* #45th lesson #4:19:34 Slicing Arrays */
