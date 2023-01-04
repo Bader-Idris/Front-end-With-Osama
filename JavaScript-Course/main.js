@@ -1855,11 +1855,37 @@ console.log(evenNumbers);
 */
 
 // FIlter +4 letters Words
-let sentence = "I Love Foood Code Too Playing Much";
+let sentence = "I Love Foood Code Too Playing Much";//it's in level 7 of https://www.codeWars.com website
+// in simple words, we remove foood and playing
+let smallWords = sentence.split(" ").filter(function (el){
+  return el.length <= 4;// 'cause we wanna remove langer than 4
+}).join(" ");// To separate final results as words
+console.log(smallWords);
 
 // Ignore Numbers
 let ignoreNumbers74 = "Elz123er4o";
 
-let ing74 = ignoreNumbers74.split("").map(function (el){
-  return isNaN(parseInt(el)) ? el : "";
+let ing74 = ignoreNumbers74.split("").filter(function (el){//filter instead of map
+  return isNaN(parseInt(el))// ? el : ""; no need to these conditions with filter, but map needs them
 });
+
+// Filter Strings + Multiply pure numbers
+let mix = "A13BS2ZX";
+// my attempt
+let filterMultiply = mix.split("").map(function (el){
+  return parseInt(el) ? el  * el:"";//if isNaN(parseInt(el)) it brings only strings
+  // he used !isNaN(parseInt(el)) only appending ! as not symbol
+}).join("");
+console.log(filterMultiply);
+
+// Teacher's work
+let mixedContent = mix.split("").filter(function (el){
+  return !isNaN(parseInt(el));
+}).map(function (el){
+  return el * el;
+}).join("");
+console.log(mixedContent);
+
+/* #75th lesson #7:15:50
+  Higher Order Functions - Reduce
+*/
