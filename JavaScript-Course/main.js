@@ -1887,5 +1887,82 @@ let mixedContent = mix.split("").filter(function (el){
 console.log(mixedContent);
 
 /* #75th lesson #7:15:50
-  Higher Order Functions - Reduce
+  Higher Order Functions
+    Reduce
+  --- method executes a reducer function on each element of the array,
+  --- resulting in a single output value.
+
+  Syntax:
+  reduce(callBackFunc(Accumulator, Current Val, Current Index, Source Array) { }, initialValue)
+  - Accumulator => the accumulated value previously returned in the last invocation
+  - Current Val => the current element being processed in the array
+  - Index => The index of the current element being processed in the array.
+  ---------- Starts from index 0 if an initialValue is provided.
+  ---------- Otherwise, it starts from index 1.
+  - Array => The Current Array
+*/
+let nums75 = [10, 20, 15, 30];
+let add75 = nums75.reduce(function(acc, current, index, arr){
+  console.log(`Acc => ${acc}`);
+  console.log(`Current Element => ${current}`);
+  console.log(`Current Element Index => ${index}`);
+  console.log(`Array => ${arr}`);
+  console.log(acc + current);
+  console.log(`###########`);
+  return acc + current;//all of these are in the callBackFunction, that has acc,current,index,arr
+}, 5);// This is the initialValue, where to start counting of numbers, so 5 is attatched to current as 5+ 10, itsIndex[0].
+console.log(add75);
+
+/* #76th lesson #7:23:10
+  Higher Order Functions
+    Reduce Practice
+*/
+//using filter with reduce, most challenging websites append it
+
+/*
+  - Longest Word
+  - Remove Characters + Use Reduce
+*/
+let theBiggest = ["Bla", "Propaganda", "Other", "AAA", "Battery", "Test"];
+
+let Check = theBiggest.reduce(function(acc, current){
+  console.log(`Acc => ${acc}`);
+  console.log(`Current Element => ${current}`);
+  console.log(acc.length > current.length ? acc : current);
+  console.log(`###########`);
+  return acc.length > current.length ? acc : current;
+});
+console.log(Check);
+
+let removeChars = ["E","@","@","L","Z","@","@","E","R","@","O"];
+// 🟢🔴Global and Local Companies ask NOT TO USE JOIN here, they ask to implement it manually
+let finalString = removeChars.filter(function(ele) {
+  return !ele.startsWith("@");
+}).reduce(function (acc, current){
+  return `${acc}${current}`;
+})
+/*
+.reduce(function (acc, current){
+  return `${acc}${current}`;
+})
+  Equals:
+.join("")
+*/
+console.log(finalString);
+
+/* #77th lesson #7:28:44
+  ForEach With Practice
+*/
+/*
+  - forEach
+  --- method executes a provided function once for each array element.
+
+  Syntax: forEach(callBackFunction(Element, Index, Array) { }, thisArg)
+  - Element => The current element being processed in the array.
+  - Index => The index of the current element being processed in the array.
+  - Array => The Current Array
+
+  Note
+  - Doesn't Return Anything [Undefined]
+  - Break Will Not Break The Loop
 */
