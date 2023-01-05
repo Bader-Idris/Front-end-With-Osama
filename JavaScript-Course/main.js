@@ -65,12 +65,12 @@ window.onload = function () {
 //window.alert("Welcome from JS")//it's not useful, because it stops the code
 document.write("<h1>Hello<span>Page</span></h1>");//it appends html elements & content
 //although it's not best practice, the good is this:
-document.createElement("");
+document.createElement("div");
 console.log("this is alike echo in PHP");
 // So they are objects
 // ##8th lesson ##:42:35 Console Methods and Styling with Web API
 console.log("");// appears on the console as a command
-console.error("appears as an error");
+console.error("appears as a manual🙃 error");
 console.timeLog // We can count time with these, [time,timeEnd,timeLog,timeStamp]
 console.table(["This","is","an","array"]);//inside the table, appears as table inside console
 console.log("I wanna %cStyle you", "color:red; font-size: 40px");
@@ -752,8 +752,9 @@ console.log("Good");
 }
 // firstly make elzero as an array, then repeat it twice, then remove the space between
 // failed in repeating the outcome, instead of the var ❎❎
-st.split(" ", 1).repeat(2);
-st.repeat(2, st.split(" ", 1));
+
+// st.split(" ", 1).repeat(2);
+// st.repeat(2, st.split(" ", 1));
 
 // ********************************
 /* #38th lesson #3:43:43 Switch Statement */
@@ -907,9 +908,9 @@ console.log(`Hello ${myFriends40[1][2]}`);//3rd ch in 2nd array, Marwan and ali 
 console.log(`Hello ${myFriends40[3][1][2]}`);// 2nd ch in 1st inside nested array 
 // changing array's data🔽
 console.log(myFriends40);//😈 are to see results
-myFriends40p[1] = "Gamal";// instead of mohamed
+myFriends40[1] = "Gamal";// instead of mohamed
 console.log(myFriends40);//😈
-myFriends40p[3] = ["Gamal", "Sameh"];// an array instead of string
+myFriends40[3] = ["Gamal", "Sameh"];// an array instead of string
 console.log(myFriends40);//😈
 
 console.log(typeof myFriends40);// object, it's an array
@@ -1492,10 +1493,12 @@ showInfo("Bader", 22, 20, "Yes", "HTML", "CSS");
   Unsorted Data Outputs Depending On Data Type
   - Use Ternary Conditional Operator
 */
-showDetails("Osama", 38, true); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-showDetails(38, "Osama", true); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-showDetails(true, 38, "Osama"); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-showDetails(false, "Osama", 38);// "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
+// Osama Wrote🔴
+
+// showDetails("Osama", 38, true); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
+// showDetails(38, "Osama", true); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
+// showDetails(true, 38, "Osama"); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
+// showDetails(false, "Osama", 38);// "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
 
 // function showDetails(a, b, c) {
 //   if (a === true && typeof b === "string" && typeof c === "number") {
@@ -1508,25 +1511,25 @@ showDetails(false, "Osama", 38);// "Hello Osama, Your Age Is 38, You Are Not Ava
 // }
 
 
-function showDetails(a, b, c) {//d string ,e number, f true, g false
-  typeof a === 'string' ? d = a :
-  typeof a === 'number' ? e = a :
-  a = true ? f = a :
-  a = false ? g = a :
-  typeof b === 'string' ? d = b :
-  typeof b === 'number' ? e = b :
-  b = true ? f = b :
-  b = false ? g = b :
-  typeof c === 'string' ? d = c :
-  typeof c === 'number' ? e = c :
-  c = true ? f = c :
-  c = false ? g = c :
-  console.log(`Hello MotherF`);
+// function showDetails(a, b, c) {//d string ,e number, f true, g false
+//   typeof a === 'string' ? d = a :
+//   typeof a === 'number' ? e = a :
+//   a = true ? f = a :
+//   a = false ? g = a :
+//   typeof b === 'string' ? d = b :
+//   typeof b === 'number' ? e = b :
+//   b = true ? f = b :
+//   b = false ? g = b :
+//   typeof c === 'string' ? d = c :
+//   typeof c === 'number' ? e = c :
+//   c = true ? f = c :
+//   c = false ? g = c :
+//   console.log(`Hello MotherF`);
 
-  console.log(`Hello ${d}, Your Age Is ${e}, You Are Available For Hire`);
-}
+//   console.log(`Hello ${d}, Your Age Is ${e}, You Are Available For Hire`);
+// }
 //🔴 It didn't work!🔴
-showDetails(true, "Osama", 38);
+// showDetails(true, "Osama", 38);
 // the data will shuffle, [its argument place will change]
 
 /* #64th lesson #6:08:17
@@ -1639,7 +1642,7 @@ let b67 = 2;//these two are Global, accessible from everywhere
 
 function showText() {
   console.log(`Function - From Global${a67}`);
-  console.log(`Function - From Global${b67}`);
+  // console.log(`Function - From Global${b67}`); cannot access before initialization
   var a67 = 10;
   let b67 = 20;// these two are Local, can't print before declaration
   //It reads Locally and if not existing, search globally
@@ -1708,7 +1711,7 @@ let calcTest = (one, two, ...nums) => "???";
 
 console.log(calcTest(10, "???", "???"));// 80
 
-let calc = (one, two, ...nums) => one + two + nums;
+let calc70 = (one, two, ...nums) => one + two + nums;
 console.log(calcTest(10, myNumbersTest[1], myNumbersTest[0]));
 // 🟢 1st func can be called inside calc one, only with its index
 
@@ -1737,10 +1740,10 @@ console.log(calcTest(10, myNumbersTest[1], myNumbersTest[0]));
   - Anonymous Function
   - Named Function
 */
-let muNums = [1, 2, 3, 4, 5, 6];
+let myNums = [1, 2, 3, 4, 5, 6];
 let newArray = [];
 
-for (let i = 0; i < muNums.length; i++) {
+for (let i = 0; i < myNums.length; i++) {
   newArray.push(myNums[i] + myNums[i]);
 }
 
@@ -1965,4 +1968,56 @@ console.log(finalString);
   Note
   - Doesn't Return Anything [Undefined]
   - Break Will Not Break The Loop
+*/
+
+// It doesn't Make a new array🟢It's its main feature
+// We use in for DIVs attached unordered lists⚠️, as three divs disappear when li[1] is clicked 
+let allLis = document.querySelectorAll("ul li");
+allLis.forEach(function (ele) {
+  console.log(ele.innerHTML);
+  // ele.innerHTML brings elements back in console
+  // return ele [Empty results]
+})
+// console.log(allLis);
+
+// In real life, forEach connects elements with events
+let allDivs = document.querySelectorAll(".content div");
+
+allLis.forEach(function (ele) {
+  ele.onclick = function (){
+    // console.log(this);//this here means our element [ele]
+    allLis.forEach(function (ele) {//can make it same as above
+      ele.classList.remove("active");// removed other active classes in lis
+    })
+    this.classList.add("active");// here we made it active
+    // Hides All Divs
+    allDivs.forEach(function (ele) {
+      ele.style.display = "none";
+    })
+  }
+})
+
+/* #78th lesson #7:40:30
+  Higher Order Functions Challenge
+
+  You Can Use
+  - ,
+  - _
+  - Space
+  - True => 1 => One Time Only
+
+  You Cannot Use
+  - Numbers
+  - Letters
+
+  - You Have to Use [Filter + Map + Reduce + Your Knowledge]
+  - Order Is Not Important
+  - All In One Chain
+*/
+let myString = "1,2,3,EE,l,z,e,r,o,_,W,e,b,_,S,c,h,o,o,l,2,0,Z";
+let solution = '?????';
+console.log(solution); // Elzero Web School
+
+/* #79th lesson #7:42:40
+  Object - Introduction
 */
