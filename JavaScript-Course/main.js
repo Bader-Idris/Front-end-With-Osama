@@ -2029,5 +2029,87 @@ console.log(solution); // Elzero Web School
 // So needs to remove first and last elements, and convert _ into spaces
 
 /* #79th lesson #7:42:40
-  Object - Introduction
+  Object 
+  - Introduction
+  - Testing Window Object
+  - Accessing Object
+*/
+
+/*
+  Object is Generally Important in Computer Science
+  typeof window == "object"
+  typeof window.location = Nested object
+
+  Objects are [properties]&&[methods]
+  1st is bare details, 2nd is actions as counting
+*/
+// window.location.assign("https://google.com")// goes to google
+let user = {//The Object 🟢
+  // Properties
+  theName: "Osama",
+  theAge: 39,
+  // Methods
+  sayHello: function () {
+    return `Hello`;//instead of console.log()
+  },
+}
+// to recall it, and its properties-methods:
+console.log(user.theName);
+console.log(user.theAge);
+
+/* #80th lesson #7:50:05
+  Dot Notation Vs Bracket Notation[رمز]
+  - Dynamic Property Name
+*/
+let user80 = {
+  theName:"Osama",
+  country:"Egypt",
+  "country of":"Palestine",
+};
+console.log(user80.theName);
+console.log(user80["country of"]);//invalid notations are applicable with [] without a dot
+console.log(user80["theName"]);//Even valid notations are applicable
+
+let myVariableYo = "Country";
+
+// console.log(user80.myVariableYo); Undefined
+console.log(user80[myVariableYo]);// accessing a separated object by user80 with [] bracket notation
+
+/* #81st lesson #7:56:15
+  Nested Object With Advanced Examples
+*/
+let user81 = {
+  name: "Osama",
+  age: 39,
+  skills: ["HTML", "CSS", "JS"],
+  available: false,
+  addresses: {//Nested Object
+    ksa: "Riyadh",
+    egypt: {//Nested Into Nested Object
+      one: "Cairo",
+      two: "Giza",
+    },
+  },
+  checkAv: function (){//availability
+    if (user81.available === true){//must be called as nested🟢🪨🔴,or global
+      return `Free To Work`;
+    } else {
+      return `Not Free`;
+    }
+  }
+};
+console.log(user81.name);
+console.log(user81.age);
+console.log(user81.skills);
+console.log(user81.skills.join(" | "));
+console.log(user81.skills[2]);// Accessing By Index
+console.log(user81.addresses.ksa);
+console.log(user81.addresses.egypt.one);
+console.log(user81["addresses"].egypt.one);//applicable
+console.log(user81["addresses"]["egypt"]["one"]);
+
+console.log(user81.checkAv());
+
+/* #81st lesson #8:04:40
+  Create Object With New Keyword
 */
