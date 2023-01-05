@@ -1874,7 +1874,7 @@ let ing74 = ignoreNumbers74.split("").filter(function (el){//filter instead of m
 
 // Filter Strings + Multiply pure numbers
 let mix = "A13BS2ZX";
-// my attempt
+// my attempt✅
 let filterMultiply = mix.split("").map(function (el){
   return parseInt(el) ? el  * el:"";//if isNaN(parseInt(el)) it brings only strings
   // he used !isNaN(parseInt(el)) only appending ! as not symbol
@@ -2017,6 +2017,16 @@ allLis.forEach(function (ele) {
 let myString = "1,2,3,EE,l,z,e,r,o,_,W,e,b,_,S,c,h,o,o,l,2,0,Z";
 let solution = '?????';
 console.log(solution); // Elzero Web School
+
+/*
+  let myString = "1,2,3,EE,l,z,e,r,o,_,W,e,b,_,S,c,h,o,o,l,2,0,Z";
+  let solution = myString.split(',').map(function(el){
+    return isNaN(parseInt(el)) ? el : "" ;
+  }).join("");
+  console.log(solution);
+*/
+// ❎❎ Didn't use reduce. final result was EElzero_Web_SchoolZ
+// So needs to remove first and last elements, and convert _ into spaces
 
 /* #79th lesson #7:42:40
   Object - Introduction
