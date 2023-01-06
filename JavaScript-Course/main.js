@@ -2110,6 +2110,74 @@ console.log(user81["addresses"]["egypt"]["one"]);
 
 console.log(user81.checkAv());
 
-/* #81st lesson #8:04:40
+/* #82nd lesson #8:04:40
   Create Object With New Keyword
+*/
+let user82 = {};
+console.log(user82);//Empty Object
+user82.age = 39;//appending a property separately, by dot notation
+user82["country"] = "Egypt";//by bracket notation
+
+user81.sayHello = function (){
+  return `Hello`;
+};
+
+console.log(user82);//After appending
+// if ${age} in object is defined, and we append it separately🔴it'll update its value
+
+console.log(user81.sayHello);//Methods
+
+let user0 = new Object();//Another way to create an object[new keyword]with[object constructor]
+let user1 = new Object({//Must have Carly brackets
+  name: "Osama",
+  age: 39,
+});
+
+/* #83rd lesson #8:08:48
+  This Keyword
+*/
+
+/*
+  Function this Keyword
+  - this Introduction
+  - this Inside Object Method
+  --- When a function is called as a method in an Object,
+  --- it's this that sets[attached to]🔴 the object the method is called on.
+  - Global Object
+  - Test Variables With Window And This
+  - Global Context
+  - Function Context
+
+  🔴Search for🔴
+  - Strict Mode
+*/
+console.log(this);//goes to [window object]
+console.log(this === window);//true
+
+myVarNigga = 100;
+
+console.log(window.myVarNigga);
+console.log(this.myVarNigga);// both are same
+function sayHi() {
+  console.log(this);//prints window
+  return this;//
+}
+console.log(sayHi() === window);//true though
+// button id="show"
+document.getElementById("show").click = function (){// anonymous func
+  console.log(this);// here it returns to func owner, the Button
+};
+
+let user3 = {
+  age: 22,
+  ageInDays: function () {
+    return this.age * 365;//this returns to user3 here
+  },
+};
+
+console.log(user3.age);
+console.log(user3.ageInDays());
+
+/* #84rd lesson #8:14:02
+  Create Objects && Create Method
 */
