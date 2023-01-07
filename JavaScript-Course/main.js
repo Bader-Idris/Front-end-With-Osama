@@ -2181,4 +2181,13 @@ console.log(user3.ageInDays());
 /* #84rd lesson #8:14:02
   Create Objects && Create Method
 */
-// 
+
+let user4 = {
+  age: 40,
+  doubleAge: function () {
+    return user4.age * 2;
+  },
+};
+console.log(user4);
+console.log(user4.age);
+console.log(user4.doubleAge());
