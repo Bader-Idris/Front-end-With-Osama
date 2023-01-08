@@ -2178,16 +2178,143 @@ let user3 = {
 console.log(user3.age);
 console.log(user3.ageInDays());
 
-/* #84rd lesson #8:14:02
+/* #84th lesson #8:14:02
   Create Objects && Create Method
 */
 
 let user4 = {
   age: 40,
   doubleAge: function () {
-    return user4.age * 2;
+    return user4.age * 2;//to make copyObj🔽flexible,[separated from this one, when changed]:
+    // use [this.age] instead of user4.age 🔴🟢
   },
 };
 console.log(user4);
 console.log(user4.age);
 console.log(user4.doubleAge());
+
+let obj = Object.create({});//an empty object
+obj.a = 100;//appending a property to the object
+
+console.log(obj);
+
+let copyObj = Object.create(user4);// used as a prototype,[نموذج] it´ll be inside the proto
+copyObj.age = 50;// must make user4 object returning [this] instead of its name
+
+console.log(copyObj);
+console.log(copyObj.age);
+console.log(copyObj.doubleAge());
+
+/* #85th lesson #8:20:20
+  Create Objects With Assign Method
+*/
+let obj1 = {
+  prop1:1,
+  meth1: function () {
+    return this.prop1;
+  },
+};
+
+let obj2 = {
+  prop2:2,
+  meth2: function () {
+    return this.prop2;
+  },
+};
+
+let targetObject = {
+  prop1:100,//Ignored as it's declared above🟢
+  prop3: 3,
+};
+
+let finalObject = Object.assign(targetObject, obj1, obj2);
+
+finalObject.prop1 = 200;// it updates it. as after creating [finalObject]
+finalObject.prop4 = 4;
+
+console.log(finalObject);
+
+let newObject = Object.assign({}, obj1, {prop5:5, prop6:6});// first {} instead of target, asAnEmptyObject 82340
+// prop 5 and 6 are typed as [on the fly]
+console.log(newObject);
+
+/* #86th lesson #8:24:25
+  What's DOM ? And Select Elements
+*/
+
+/*
+  DOM
+  - What's it? [Document Object Model]
+  - DOM Selectors
+  --- Find Element By ID
+  --- Find Element By Tag Name [p, div, etc]
+  --- Find Element By Class Name
+  --- Find Element By CSS Selectors
+  --- Find Element By Collection
+  ------ title
+  ------ body
+  ------ images
+  ------ forms
+  ------ links
+*/
+let myIdElement = document.getElementById("my-div");
+let myTagElement = document.getElementsByTagName("p");
+let myClassElement = document.getElementsByClassName("my-span");
+let myQueryElement = document.querySelector(".special");
+let myAllQueryElements = document.querySelectorAll(".special");
+
+console.log(myIdElement);
+console.log(myTagElement[1]);//to pick up the second tag
+// myTagElement[1].innerHTML = "Testing";//Changing p internally🟢
+console.log(myClassElement[1]);
+//🔽query[استعلام]⚠️ enormously popular, can pick any Selector😲
+// Although, it picks up only the first object, for all, use querySelectorAll
+console.log(myQueryElement);
+console.log(myAllQueryElements);//can pick its index as[1]
+
+console.log(document.title);// page title
+console.log(document.body);//🟢we can use appendChild for it
+console.log(document.forms[0].one.Value);//First form,[.one] is for input Named one,[value]for its value
+console.log(document.links[1].href);
+// This is called manipulation, to get and set
+// Document is full of options
+
+/* #87th lesson #8:35:45
+  DOM [Get / Set Elements Content and Attributes]
+  - innerHTML
+  - textContent
+  - Change Attributes Directly
+  - Change Attributes With Methods
+  --- getAttribute
+  --- setAttribute
+
+  🟢Look For🟢
+  - innerText
+*/
+let myElement = document.querySelector(".js");
+
+console.log(myElement.innerHTML);
+console.log(myElement.textContent);//NotChanging elementName, and brings &lt; as < not as innerHTML
+
+myElement.innerHTML = "Text From <span>main.js</span> File";//overwrites HTML
+myElement.textContent = "Text From <span>main.js</span> File";//<span> is as Text here, it'll be useful he said🤔
+
+document.images[0].src = "https://google.com";
+document.images[0].alt = "Alternate";
+document.images[0].title = "Picture";//all overwrites or create if not existing
+document.images[0].id = "pic";//creating an id
+document.images[0].className = "img";
+
+let myLink = document.getElementsByClassName(".link");
+
+console.log(myLink.getAttribute("class"));
+console.log(myLink.getAttribute("href"));
+
+// myLink.getAttribute("class");
+// myLink.getAttribute("href");
+myLink.setAttribute("href", "https://twitter.com");
+myLink.setAttribute("title", "Twitter");
+
+/* #88th lesson #8:45:15
+  Check Attributes With Examples
+*/
