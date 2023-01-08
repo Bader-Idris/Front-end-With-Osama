@@ -2317,4 +2317,103 @@ myLink.setAttribute("title", "Twitter");
 
 /* #88th lesson #8:45:15
   Check Attributes With Examples
+  - Element.attributes
+  - Element.hasAttribute
+  - Element.hasAttributes
+  - Element.removeAttribute
 */
+console.log(document.getElementsByTagName('p')[2].attributes);//brings eachAttribute
+
+let myP = document.getElementsByTagName('p')[2];
+if (myP.hasAttribute("data-src")) {
+  //if there's an image without an alt, because SEO
+  // not to append it directly, but if false we append it
+  if (myP.getAttribute("data-src") === "") {
+    myP.removeAttribute("data-src");
+  } else {
+    myP.setAttribute("data-src", "New Value");
+  }
+}else{
+  console.log(`NOT Existing`);
+}
+
+if (myP.hasAttributes()) {//boolean values
+  console.log(`It Has Attributes`);
+}
+if (document.getElementsByTagName("div")[3].hasAttributes()) {
+  console.log(`It Has Attributes`);
+} else {
+  console.log(`It Doesn't Have Attributes`);
+}
+
+/* #89th lesson #8:52:40🔴Most Important IN DOM🔴
+  Create && Append Elements
+  - createElement
+  - createComment
+  - createTextNode
+  - createAttribute
+  - appendChild
+*/
+let myElementYo = document.createElement("div");//open&&close tags
+let myAttr = document.createAttribute("data-custom");
+let myText = document.createTextNode("Product One");
+let myComment = document.createComment("it's a div");
+
+myElementYo.className = "product";
+myElementYo.setAttributeNode(myAttr);
+myElementYo.setAttribute("data-test", "Testing");
+
+// Append Text To Element
+myElementYo.appendChild(myText);
+
+// Append Comment To Element
+myElementYo.appendChild(myComment);//if before div's text,AddItAbove myText
+
+// Append Element To Body
+document.body.appendChild(myElementYo);
+
+
+// append[in last index], prepend[in first index🟢]
+
+/* #90th lesson #8:59:40
+  Product With Title & Description Practice
+*/
+
+// create a main div with class "product", and inside it add h3 and p both with text 
+
+
+let mainDiv = document.createElement("div");
+let mainH3 = document.createElement("h3");
+let mainP = document.createElement("p");
+let h3TextChildren = document.createTextNode(`Product Title`);
+let pTextChildren = document.createTextNode(`Product Description`);
+
+mainDiv.className = "product";
+
+// mainDiv.appendChild(mainH3);
+// mainDiv.appendChild(mainP);
+// mainH3.appendChild(h3TextChildren);
+// mainP.appendChild(pTextChildren);
+
+// Add Heading Text
+mainH3.appendChild(h3TextChildren);
+// Add Heading To Main Element
+mainDiv.appendChild(mainH3);
+// Add Paragraph Text
+mainP.appendChild(pTextChildren);
+// Add Paragraph To Main Element
+mainDiv.appendChild(mainP);
+
+function paraMi(a) {
+  mainH3.appendChild(h3TextChildren);
+  mainDiv.appendChild(mainH3);
+  mainP.appendChild(pTextChildren);
+  mainDiv.appendChild(mainP);
+}
+for (let i = 0; i < 100; i++) {
+  // console.log(paraMi[a] + i);❎ wasn't able to loop text 100-time
+  mainH3.appendChild(h3TextChildren)[i];
+  mainDiv.appendChild(mainH3)[i];
+  mainP.appendChild(pTextChildren)[i];
+  mainDiv.appendChild(mainP)[i];
+}
