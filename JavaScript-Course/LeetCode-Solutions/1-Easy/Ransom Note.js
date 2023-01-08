@@ -1,16 +1,18 @@
 var canConstruct = function(ransomNote, magazine) {//we can use forEach loop instead
-  for (let i = 0; i < ransomNote.length; i++) {
-    let r = ransomNote[i];//need a check
-    // we can use indexOf(r); instead of all this nested looping
-    let matchingIndex = -1;
-    for (let j = 0; j < magazine.length; j++) {
-      let m = magazine[j];
-      if (m == r) {
-        matchingIndex = j;
-      } else {
-        return matchingIndex ==1;
-      }
+  const map = new Map();
+  for (let i = 0; i < magazine.length; i++) {
+    if(map.has(magazine[i])) {
+      map.set(magazine[i], map.get(magazine[i])+1)
+    }else{
+      map.set(magazine[i], 1)
     }
   }
-  return r;
+  for (let i = 0; i < ransomNote.length; i++) {
+    if (!map.has(ransomNote[i])|| map.get(ransomNote[i]) === 0){
+      return false;
+    }
+    map.set(ransomNote[i], map.get(ransomNote[i]) - 1)
+  }
+  return true;
 };
+// we can use indexOf(r); instead of all this nested looping
