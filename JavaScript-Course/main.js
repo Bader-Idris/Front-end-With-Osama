@@ -2530,3 +2530,59 @@ document.links[3].onmouseenter = function (event) {
 /* #94th lesson #9:28:50
   Event Simulation - Click, Focus, Blur
 */
+
+let uno = document.querySelector('.uno');
+let dos = document.querySelector('.dos');
+
+window.onload = function () {
+  two.focus();// exactly as autofocus HTML
+}
+
+one.onblur = function () {
+  document.links[3].click();// lovely to direct users
+};
+// real example is verification appeals as in EpicGames, apple.
+//  when we type a num, it goes directly afterwards. focus and blur
+
+/* #95th lesson #9:33:15
+  Class List Object && Methods
+  - classList
+  --- length
+  --- contains
+  --- item(index)
+  --- add [%100 will be used⬇️3️⃣]
+  --- remove
+  --- toggle
+*/
+let LaElemento = document.getElementById("my-section");
+
+console.log(LaElemento.classList);//shows how many classes, and its specifications.
+console.log(typeof LaElemento.classList);//it's an object
+console.log(LaElemento.classList.contains("osama"));//false
+console.log(LaElemento.classList.contains("show"));//true
+console.log(LaElemento.classList.item("3"));//to know the i class name
+
+LaElemento.onclick = function () {
+  LaElemento.classList.add('add-one','add-two');//can add many classes[tokens]
+  LaElemento.classList.remove('one','two');//removes existing classes,
+  //  if one doesn't exist, it doesn't care, and remove the existing one
+  LaElemento.classList.toggle('one');// only one class, if exists, it'll remove it, if not it'll create it
+  // we can use it when moving [active] between elements
+};
+
+/* #96th lesson #9:38:45
+  CSS Styling
+*/
+/*
+  DOM [CSS]
+  - style
+  - CssText
+  - removeProperty(propertyName) [Inline, Stylesheet]
+  - setProperty(propertyName, value, priority)
+*/
+// we included a cssFile
+
+// let myIdElement = document.getElementById("my-div");
+
+// [style.] after that, every css property is usable 
+myIdElement.style.
