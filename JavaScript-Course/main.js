@@ -2044,7 +2044,7 @@ console.log(solution); // Elzero Web School
   1st is bare details, 2nd is actions as counting
 */
 // window.location.assign("https://google.com")// goes to google
-let user = {//The Object 🟢
+let user79 = {//The Object 🟢
   // Properties
   theName: "Osama",
   theAge: 39,
@@ -2054,8 +2054,8 @@ let user = {//The Object 🟢
   },
 }
 // to recall it, and its properties-methods:
-console.log(user.theName);
-console.log(user.theAge);
+console.log(user79.theName);
+console.log(user79.theAge);
 
 /* #80th lesson #7:50:05
   Dot Notation Vs Bracket Notation[رمز]
@@ -2395,6 +2395,8 @@ mainDiv.className = "product";
 // mainH3.appendChild(h3TextChildren);
 // mainP.appendChild(pTextChildren);
 
+//🔴Must be upwardly[⬆️], not as normal HTML🔴⚠️
+
 // Add Heading Text
 mainH3.appendChild(h3TextChildren);
 // Add Heading To Main Element
@@ -2417,3 +2419,114 @@ for (let i = 0; i < 100; i++) {
   mainP.appendChild(pTextChildren)[i];
   mainDiv.appendChild(mainP)[i];
 }
+// Change css style, and fix the bug[task/ challenge]
+
+/* #91st lesson #9:05:14
+  DOM [Dealing With Children]
+  - children
+  - childNodes
+  - firstChild
+  - lastChild
+  - firstElementChild
+  - lastElementChild
+*/
+let miElemento = document.querySelector("div");
+
+console.log(miElemento);
+console.log(miElemento.children);//elements as[span, p]
+console.log(miElemento.children[0]);
+console.log(miElemento.childNodes);//ele/comments/text. couns [spaces && /n as nodes]
+console.log(miElemento.childNodes[0]);//only first
+
+console.log(miElemento.firstChild);//exactly as childNodes[0]
+console.log(miElemento.lastChild);
+
+console.log(miElemento.firstElementChild);// as <p>Hello P</p>
+console.log(miElemento.lastElementChild);
+
+/* #92nd lesson #9:10:20
+  DOM Events
+  - Using Events On HTML
+  - Using Events On JS
+  --- onclick
+  --- oncontextmenu
+  --- onmouseenter
+  --- onmouseleave
+
+  --- onload
+  --- onscroll
+  --- onresize
+
+  --- onfocus
+  --- onblur
+  --- onsubmit
+*/
+// in buttom element HTML, we can creat an attrNamed [onclick] see it!
+let myBtn = document.getElementById('btn');
+
+myBtn.onclick = function(){//anonymous function
+  console.log(`clicked`);
+}
+myBtn.oncontextmenu = function(){//Right click📄, we can replace it, withOurOwn as[GoogleDrive]
+  // console.log(`clicked`); we can create a ul with download, copy, etc options
+}
+myBtn.onmouseenter = function(){//then mouse hovers it
+  // console.log(`clicked`);
+}
+myBtn.onmouseleave = function(){//then mouse gets off of it
+  // console.log(`clicked`);
+}
+
+window.onscroll = function(){
+  console.log(`Scroll`);//there are already existing methods to calc pixels💚
+  // sth as scrolling 2K pixels, to appear ⬆️button
+}
+window.onresize = function(){
+  console.log(`Resizing the screen`);
+}
+// special to form fields, focus && blur[blur standsFor un-focusing]
+
+// onfocus is useful with appearing messages with PassWDs to get specific results
+
+// onblur can check the strength of your PassWd
+// onsubmit isUsed to tolerate some weight on behave of databases, to gain sm time
+
+/* #93rd lesson #9:19:00
+  Validate Form And Prevent Default
+*/
+// validation is to check if EverythingIsOk, as required in HTML
+
+let userInput = document.querySelector("[name='username']");
+let ageInput = document.querySelector("[name='age']");//declaring by name
+
+// we created It after links, but it must be above it!
+
+document.forms[3].onsubmit = function (e) {
+  // firstly we see outlaw actions, then trim it🤓
+  let userValid = false;
+  let ageValid = false;
+
+  // console.log(userInput.value);
+  // console.log(userInput.value.length);//to check its length
+  if (userInput.value !== "" && userInput.value.length <= 10) {
+    userValid = true;// allowing its path
+  }
+
+  if (ageInput.value !== "") {
+    ageValid = true; 
+  }
+
+  if (userValid === false || ageValid === false) {
+    e.preventDefault();
+  }
+};
+
+document.links[3].onmouseenter = function (event) {
+  console.log(event);
+  event.preventDefault();//to stop going to google, and other sets
+  // look for return value this. onConsole💚
+};
+
+/* #94th lesson #9:28:50
+  Event Simulation - Click, Focus, Blur
+*/
