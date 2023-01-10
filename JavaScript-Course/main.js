@@ -2616,5 +2616,27 @@ myIdElement.remove();//removes the entire element
 // mostly better than display: none;
 
 /* #98th lesson #9:49:50
-  DOM Traversing
+  DOM [Traversing]
+  - nextSibling
+  - previousSibling
+  - nextElementSibling
+  - previousElementSibling
+  - parentElement
+*/
+let span = document.querySelector(".mi-encanta .two");
+console.log(span.nextSibling);// so it picks the comment
+console.log(span.nextElementSibling);//This ignores comment & bare text
+console.log(span.previousSibling);
+console.log(span.previousElementSibling);
+// mostly in pop-up windows, when clicked on Close, it removes its parentElement
+console.log(span.parentElement);
+// a good example
+span.onclick = function () {
+  span.parentElement.remove();// 
+  // span.parentElement.style.opacity = '0';
+};
+
+
+/* #99th lesson #9:54:40
+  DOM Cloning
 */
