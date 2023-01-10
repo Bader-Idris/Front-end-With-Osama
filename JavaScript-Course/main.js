@@ -2585,4 +2585,36 @@ LaElemento.onclick = function () {
 // let myIdElement = document.getElementById("my-div");
 
 // [style.] after that, every css property is usable 
-myIdElement.style.
+myIdElement.style.color = "#fefefe";
+myIdElement.style.fontWeight = "bold";//we use camelCase with two words
+myIdElement.style.backgroundColor = "#1692fc";
+// can use any of CSS styles🔽
+myIdElement.style.cssText = "font-weight: bold; border-color: #1692fc";//it overrides elements above
+myIdElement.style.removeProperty("color");
+myIdElement.style.setProperty("font-size", "20px", "!important");// can use !important 
+
+// console.log(document.styleSheets[0].rules[0]); rules is deprecated, to not use anymore
+document.styleSheets[0].rules[0].style.removeProperty("line-height");
+document.styleSheets[0].rules[0].style.setProperty("font-size", "20px", );
+
+/* #97th lesson #9:45:23
+  Before, After, Prepend, Append, Remove
+  - before  [Element || String]
+  - after   [Element || String]
+  - append  [Element || String]
+  - prepend [Element || String]
+  - remove
+*/
+let myIdElement = document.getElementById("my-wolf");
+let createdP = document.createElement("p");
+myIdElement.before("Hello From JS");//before the entire Div
+myIdElement.after(createdP);
+
+myIdElement.append(createdP);//nodes & text, are valid
+myIdElement.prepend("Sm text");//initially, created
+myIdElement.remove();//removes the entire element
+// mostly better than display: none;
+
+/* #98th lesson #9:49:50
+  DOM Traversing
+*/
