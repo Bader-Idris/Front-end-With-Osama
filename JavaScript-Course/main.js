@@ -125,7 +125,7 @@ var user = "Bader",
 */
 // To change content of an Id we type:
 myVarId.innerHTML = "Do it.";
-// Search for [Loosely typed lang VS Strongly typed lang], JS is loosely, C is strongly
+// 
 /* #12th lesson #1:11:11 Identifiers Name Convention & Rules
   No spaces, No Numbers, No symbols, 
   except for [$]& [[NOs] & [_] after first letter],[$] can be used everywhere
@@ -967,9 +967,9 @@ console.log(myFriends42);
 
 /* #43rd lesson #4:11:14 Searching in Arrays */
 /*
-  Array Methods [Search]
-  - indexOf(Search Element,From Index [Opt])
-  - lastIndexOf(Search Element,From Index [Opt])
+  Array Methods [
+  - indexOf(
+  - lastIndexOf(
   - indexOf(ValueToFind, FromIndex[Opt]) [ES7]
 */
 let myFriends43 = ["Ahmed","Mohamed","Sayed", "Alaa", "Ahmed"];
@@ -2639,4 +2639,77 @@ span.onclick = function () {
 
 /* #99th lesson #9:54:40
   DOM Cloning
+  - cloneNode(Deep)
 */
+let myPa = document.querySelector(".my-p").cloneNode(true);
+//we want a copy not moving, so we used cloneNode, true for deep is to take internal content
+let myDivo = document.querySelector(".divo");
+
+/*
+Deep means elements and text inside of that clone
+an issue is to change clone's id/class name
+when we change the var specifics, we don't change the original element,
+  as in [myPa]
+*/
+myPa.id = `${myPa.id}-cloned`;
+
+myDivo.appendChild(myPa);
+
+/* 100th lesson #9:58:23
+  DOM [Add Event Listener]
+
+  - addEventListener
+  - Using Without On
+  - Attach Multiple Events
+  - Error Test
+
+  🔴Search for🔴
+  - Capture & Bubbling JavaScript
+  - removeEventListener
+*/
+// let myPa = document.querySelector(".my-p");
+myPa.onclick = function () {
+  console.log("Message From OnClick");
+}
+function one(){
+  console.log("Message From OnClick 1");
+}
+function two(){
+  console.log("Message From OnClick 2");
+}
+myPa.onclick = one;//using other functions instead of anonymous
+myPa.onclick = one;//this'll override on [one] 'cause both are onclick
+
+window.onload = "Bader";//console won't tell it's an ERROR
+
+myPa.addEventListener("click", function(){
+  console.log("Message From OnClick 1 Even");
+})
+myPa.addEventListener("click", one);//Not Overriding 🤓
+myPa.addEventListener("click", two);//It's GREAT😁HeSaid
+
+// myPa.addEventListener("click", "string");//Error,🔴it's not a type of object
+
+//The most important usage of addEventListener
+// we have a P when onclick: clone it Beneath it
+myPa.onclick = function () {
+  let newP = myPa.cloneNode(true);
+  newP.className = "cloned";//To name it
+  document.body.appendChild(newP);
+};
+let cloned = document.querySelector(".cloned");
+
+// cloned.onclick = function () {//Error
+//   console.log("I'm Cloned!");
+// };
+document.addEventListener("click",function () {
+  if (e.target.className === "cloned") {
+    // console.log(e.target);
+    console.log("I'm Cloned!");
+  }
+});
+
+/* 101th lesson 10:07:43
+  DOM Challenge
+*/
+// Empty HTML, only JS Source script
