@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Learn JavaScript from_001-009</title>
+    <script>
+      /*⚠️the question is what code will work and what will not⚠️*/
+      // Code One
+      //❎Js code is trying to colorize undefined element, it works on flow!!
+      document.getElementById("el").style.color = "red";
+    </script>
+    <script>
+      // Code Two
+      //✅the script is being after onload function
+      window.onload = function () {
+        document.getElementById("el").style.color = "red";
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="el">Page Title</h1>
+    <script>
+      // Code Three
+      //✅the script is originally after onload
+      document.getElementById("el").style.color = "red";
+    </script>
+  </body>
+</html>

@@ -2605,7 +2605,7 @@ document.styleSheets[0].rules[0].style.setProperty("font-size", "20px", );
   - prepend [Element || String]
   - remove
 */
-let myIdElement = document.getElementById("my-wolf");
+// let myIdElement = document.getElementById("my-wolf");
 let createdP = document.createElement("p");
 myIdElement.before("Hello From JS");//before the entire Div
 myIdElement.after(createdP);
@@ -2713,3 +2713,6 @@ document.addEventListener("click",function () {
   DOM Challenge
 */
 // Empty HTML, only JS Source script
+
+// I'll be back after solving every Assignment until this lesson. Starting the real working😁🤓🤪
+// 4:23 PM 1/11/2023
