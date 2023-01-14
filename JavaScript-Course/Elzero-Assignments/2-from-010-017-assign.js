@@ -25,6 +25,8 @@ console.log(`
 // 1st assign✅
 console.log(elzero.innerHTML); // object
 console.log(typeof elzero); // object
-// 2nd
+// 2nd❎
 console.log("`I'm In\n\\\\\nLove \\\\ \"\"\" \'\'\'\n\+\+ With \+\+\n\\\"\"\"\\\"\"\"\n\"\"JavaScript\"\"\`\`");
 // 3rd assign✅
+
+// 4th assign❎
