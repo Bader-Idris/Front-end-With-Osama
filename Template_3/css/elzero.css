@@ -77,8 +77,18 @@ ul {
   justify-content: center;
   align-items: center;
 }
+@media (max-width:767px) {
+  .header .logo {
+    width: 100%;/*To make logo as one ele*/
+  }
+}
 .header .main-nav {
   display: flex;
+}
+@media (max-width:767px) {
+  .header .main-nav {
+    margin: auto;
+  }
 }
 .header .main-nav > li > a {/*direct child for not confusing with mega-menu*/
   display: flex;
@@ -88,12 +98,33 @@ ul {
   position: relative;
   color: black;
   padding: 0 30px;
+  overflow: hidden;/*🔗 with hovering,*/
   transition: var(--main-transition);
 }
-/* 04 lesson 0:21:11 Header Section Part 2*/
-.header .main-nav > li > a:hover::before {
-  background-color: #fafafa;
-  color: var(--main-color);
-  border-top: 5px solid var(--main-color-alt);
+@media (max-width:767px) {
+  .header .main-nav > li > a {
+    padding: 10px;/*important*/
+    font-size: 14px;
+    height: 40px;
+    margin-top: -15px;/*or change logo's height to 50px*/
+  }
 }
-
+/* 04 lesson 0:21:11 Header Section Part 2*/
+.header .main-nav > li > a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color:var(--main-color);
+  top: 0;
+  left: -100%;/*This is 🪨, with overflow hidden, and making it 100% after transition*/
+  transition: var(--main-transition);/*to smooth it*/
+}
+.header .main-nav > li > a:hover {
+  color: var(--main-color);
+  background-color: #fafafa;/*can be as a var*/
+}
+.header .main-nav > li > a:hover::before {
+  left: 0;/*as for appearing the little rectangular*/
+}
+/* 05 lesson 0:28:43 Landing Section Part 1*/
