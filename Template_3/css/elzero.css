@@ -128,6 +128,49 @@ ul {
   left: 0;/*as for appearing the little rectangular*/
 }
 /* 05 lesson 0:28:43 Landing Section Part 1*/
+
+/* Start megaMenu */
+/* 07 lesson 0:42:40 Mega Menu Part 1*/
+.header .mega-menu {
+  position: absolute;/*To stop bothering OtherFlexes*/
+  width: 100%;
+  left: 0;
+  padding: 30px;
+  background-color: white;
+  border-bottom: 3px solid var(--main-color);
+  z-index: 100;
+  display: flex;
+  gap: 40px;
+  top: calc(100% + 50px);/*thisIsFor transition*/
+  transition: top var(--main-transition), opacity var(--main-transition);
+}
+/* 08 lesson 0:49:50 Mega Menu Part 2*/
+.header .mega-menu .image img {
+  max-width: 100%;
+}
+.header .mega-menu .links {
+  
+}
+.header .mega-menu .links li {
+  
+}
+.header .mega-menu .links li::before {
+  content: "";
+}
+.header .mega-menu .links li:hover::before {
+  
+}
+.header .mega-menu .links li a {
+  color: var(--main-color);
+  padding: 15px;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+.header .mega-menu .links li a i {
+  margin-right: 10px;
+}
+/* End megaMenu */
 /* Start Landing */
 .landing {
   position: relative;
@@ -240,4 +283,3 @@ ul {
   }
 }
 /* End Animation */
-/* 07 lesson 0:42:40 Mega Menu Part 1*/
