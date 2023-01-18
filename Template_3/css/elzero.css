@@ -90,6 +90,12 @@ ul {
     margin: auto;
   }
 }
+/* for appearing hover */
+.header .main-nav > li:hover .mega-menu {
+  opacity: 1;
+  z-index: 100;
+  top: calc(100% + 1px);
+}
 .header .main-nav > li > a {/*direct child for not confusing with mega-menu*/
   display: flex;
   justify-content: center;
@@ -138,27 +144,58 @@ ul {
   padding: 30px;
   background-color: white;
   border-bottom: 3px solid var(--main-color);
-  z-index: 100;
   display: flex;
   gap: 40px;
   top: calc(100% + 50px);/*thisIsFor transition*/
+  z-index: -1;/*these2 will Change with hover🔴*/
+  opacity: 0;
   transition: top var(--main-transition), opacity var(--main-transition);
 }
 /* 08 lesson 0:49:50 Mega Menu Part 2*/
+@media (max-width: 767px) {
+  .header .mega-menu {
+    flex-direction: column;
+    gap: 0;
+    padding: 5px;
+  }
+}
 .header .mega-menu .image img {
   max-width: 100%;
 }
+@media (max-width:991px) {
+  .header .mega-menu .image {
+  display: none;/*no Need as it's too small and useless*/
+  }
+}
 .header .mega-menu .links {
-  
+  min-width: 250px;/*for tiny screens as tablets*/
+  flex: 1;/*for aligning empty space between two col*/
 }
 .header .mega-menu .links li {
-  
+  position: relative;/*for🔽*/
+}
+.header .mega-menu .links li:not(:last-child) {
+  border-bottom: 1px solid #e9e6e6;
+}
+@media (max-width: 767px) {
+  /* .header .mega-menu .links li:nth-of-type(5) { my approach, see hims🔽 */
+  .header .mega-menu .links:first-of-type li:last-child {
+    border-bottom: 1px solid #e9e6e6;
+  }
 }
 .header .mega-menu .links li::before {
   content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #fafafa;
+  z-index: -1;
+  transition: var(--main-transition);
 }
 .header .mega-menu .links li:hover::before {
-  
+  width: 100%;/*💚, but with JS we don't need having hover, we use click event for it⚠️*/
 }
 .header .mega-menu .links li a {
   color: var(--main-color);
@@ -283,3 +320,4 @@ ul {
   }
 }
 /* End Animation */
+/* 09 lesson 1:01:15 Creating The Main Title */

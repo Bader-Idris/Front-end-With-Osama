@@ -368,7 +368,7 @@ console.log(Number.MAX_VALUE);// can't append more numbers to that number in the
 console.log((100).toString);
 console.log(100..toString);//same as above, if one period it'll consider it as a decimal number
 console.log(100.10.toString);//this is another way, the formatter'll use the parentheses one 
-console.log(100.555555.toFixed(2));// EXTREMELY IMPORTANT, (2)outputs only 2 decimals, [it output it as a [string]]
+console.log(100.555555.toFixed(2));// 🔴EXTREMELY IMPORTANT, (2)outputs only 2 decimals, [it output it as a [string]]
 //  if the 3rd decimal is 5 or more it gives [100.56]
 // if 4 it'll output [100.55]
 console.log(parseInt("100 Bader"));// returns it as an integer, overlooking text if exists after the number
