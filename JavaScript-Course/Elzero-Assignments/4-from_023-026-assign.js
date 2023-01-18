@@ -44,5 +44,10 @@ console.log(Math.floor(flt)); // 10
 console.log(Math.round(flt)); // 10
 console.log(Math.trunc(flt)); // 10
 console.log((+(parseInt(flt).toFixed(2)))); // 10
-console.log(); // 10
-// 6th assignment
+console.log(flt.toString().split("", 2).join("")); // 10 🤣🤪
+// 6th assignment✅
+
+// 7th assignment
+// random between 0 and 4
+console.log(); // 0 || 1 || 2 || 3 || 4
+// let nigga = [0,1,2,3,4];
