@@ -47,7 +47,10 @@ console.log((+(parseInt(flt).toFixed(2)))); // 10
 console.log(flt.toString().split("", 2).join("")); // 10 🤣🤪
 // 6th assignment✅
 
-// 7th assignment
 // random between 0 and 4
-console.log(); // 0 || 1 || 2 || 3 || 4
-// let nigga = [0,1,2,3,4];
+console.log(Math.floor(Math.random(5) * 5)); // 0 || 1 || 2 || 3 || 4
+//brought it from MDN math.random() so inside floor the [* 5 ] can be replaced with a parameter in a function
+//  representing the index.length
+
+
+// 7th assignment✅ with cheating, so needs more practicing to understand
