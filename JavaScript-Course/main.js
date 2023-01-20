@@ -2716,3 +2716,14 @@ document.addEventListener("click",function () {
 
 // I'll be back after solving every Assignment until this lesson. Starting the real working😁🤓🤪
 // 4:23 PM 1/11/2023
+
+// I brought this function to create elements and its textNode via ChatGpt AI, it's awesome
+function createAnElement(tagName, textContent) {
+  let element = document.createElement(tagName);
+  let textNode = document.createTextNode(textContent);
+  element.appendChild(textNode);
+  return element;
+}
+let div = createAnElement("div", "Hello niggas");
+document.body.appendChild(div);
+// It helped me creating two arguments/parameters rapidly💚
