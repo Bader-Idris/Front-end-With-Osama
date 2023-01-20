@@ -646,7 +646,7 @@ if (theGender35 === "Male") {
 } else {
   console.log("Mrs");
 }
-// Condition ? If True : If False
+//💚Condition ? If True : If False💚
 theGender35 === "Male" ? console.log("Mr") : console.log("Mrs");
 // We can sort Ternary operator inside a variable
 let result35 = theGender35 === "Male" ? "Mr" : "Mrs";// we don't print, but set data
