@@ -57,3 +57,5 @@ switch (day) {
     console.log("Its Not A Valid Day");
     alert("I love alerts🤪");
 }
+//✅, but I don't know if the first variable with spaces must be inside this switch statement, for better practices
+//  user must not be able to append spaces in that field🤪🙃
