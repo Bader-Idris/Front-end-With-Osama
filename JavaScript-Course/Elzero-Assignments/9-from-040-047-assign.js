@@ -29,3 +29,32 @@ finalArr.splice(0,0,(finalArr.concat(arrTwo.pop(),arrOne.reverse(),arrTwo.revers
 console.log(finalArr); // ["Z", "X", "D", "C", "B", "A"]
 //3rd Assignment✅
 
+let website = "Go";
+let words = [`${website}ogle`, "Facebook", ["Elzero", "Web", "School"]];
+// only one line
+console.log("Your Code Here"); // ZERO
+// how can I do this function without using numbers!🤪🤪
+console.log(words[2][0].slice(2,6).toUpperCase()); // ZERO
+//  Too much methods. not important🙃🙃. slice, split, join, etc.😒
+//4th Assignment [Half✅]
+
+let needle = "JS";
+let haystack = ["PHP", "JS", "Python"];
+
+// Write 3 Solutions
+if (haystack.includes(needle)) console.log('Found');
+haystack.includes("JS") ? console.log('Found'): null;
+haystack[1] == needle ? console.log('Found'): null;
+for (let i = 0; i < haystack.length; i++) {
+  haystack[i] == needle ? console.log('Found'): null;
+};//good simple for loop☑️
+//5th Assignment✅
+
+let arr1 = ["A", "C", "X"];
+let arr2 = ["D", "E", "F", "Y"];
+let allArrs = [];
+
+// Your Code Here🔴No Numbers  allowed🔴
+myVarBoy = arr2.pop() +arr1.pop()+arr2.pop().split("");// not willing to reverse
+console.log(allArrs); // fxy
+//6th Assignment
