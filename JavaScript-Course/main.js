@@ -1116,13 +1116,13 @@ for (let i = 0; i < myFriends49.length; i++) {
 // A useful way to use looping is to separate numbers from string as
 let myFriends492nd = [1, 2, "Ahmed", "Mazero", 3, 4, "Elham", "Osama", "Gamal"];
 let namesOnly49 = [];
-// without looping
+// without looping🔽see
 if (typeof myFriends492nd[0] === 'string') {
   namesOnly49.push(myFriends492nd[0]);
 }// and we repeat it until the end of the array
 console.log(namesOnly49);
 
-// with looping
+// with looping🔴
 
 for (let i = 0; i < myFriends492nd.length; i++) {
   if (typeof myFriends492nd[i] === 'string') {
