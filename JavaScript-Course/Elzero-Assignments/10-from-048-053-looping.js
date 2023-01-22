@@ -53,7 +53,8 @@ for (let i = start; i >= stop; i--) {
 */
 // 2nd Assignment✅
 
-/* Output
+// Output
+```
 1
 -- 2
 -- 4
@@ -72,7 +73,7 @@ for (let i = start; i >= stop; i--) {
 6
 -- 2
 -- 4
-*/
+```
 let start = 1;
 let end = 6;
 let breaker = 2;
@@ -95,10 +96,60 @@ for (;;) {
   index-=jump;//instead of 3rs argument🔴
   if ( jump === index) break;//this is the condition
 };
-/* Output
-  10
-  8
-  6
-  4
-*/
+// Output
+```
+10
+8
+6
+4
+```
 // 4th Assignment✅
+
+let friends = ["Ahmed", "Sayed", "Eman", "Mahmoud", "Ameer", "Osama", "Sameh"];
+let letter = "a";
+
+// Output
+```
+"1 => Sayed"
+"2 => Eman"
+"3 => Mahmoud"
+"4 => Osama"
+"5 => Sameh"
+```
+for (let i = 0; i < friends.length; i++) {
+  if(friends[i].startsWith(letter.toUpperCase())) continue;
+  console.log(` ${i} => ${friends[i]}`);
+}
+// 5th Assignment✅
+
+let start = 0;
+let swappedName = "elZerO";
+
+// Output
+```
+"ELzERo"
+```
+for (let start = 0; start < swappedName.length; start++) {
+  const element = swappedName[start];
+  if (element == element.toUpperCase())console.log(element.toLowerCase())
+  else console.log(element.toUpperCase());
+}
+// 6th Assignment❎
+
+let start = 0;
+let mix = [1, 2, 3, "A", "B", "C", 4];
+
+// Output
+```
+2
+3
+4
+```
+for (let i = 0; i < mix.length; i++) {
+  if (typeof mix[i] === 'number'){
+    if (mix[i] == mix[start]) continue;
+    console.log(mix[i])
+  } 
+}
+// less than 3 minutes
+// 7th Assignment
