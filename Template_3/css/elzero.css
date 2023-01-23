@@ -51,6 +51,50 @@ ul {
     width: 1170px;
   }
 }
+/* created in 09th lesson☠️ */
+.main-title {
+  margin: 100px auto;
+  border: 2px solid black;
+  padding: 10px 20px;
+  font-size: 30px;
+  width: fit-content;
+  position: relative;/*to connect the circles*/
+  z-index: 1;
+  transition: var(--main-transition);
+}
+.main-title::before,
+.main-title::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background-color: var(--main-color);
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  /* animation: 0.5s linear backwards;🔴we need to make it smoother backwardly🔴
+  and vanish the dots before hovering, they make a bug when hovering on 'em instead of the box*/
+}
+.main-title::before {
+  left: -30px;
+}
+.main-title::after {
+  right: -30px;
+}
+.main-title:hover::before {
+  z-index: -1;
+  animation: left-moving 0.5s linear forwards;
+}
+.main-title:hover::after {
+  z-index: -1;
+  animation: right-moving 0.5s linear forwards;
+}
+.main-title:hover {
+  color: white;
+  border: none;
+  transition-delay: 0.5s;
+}
+/* ☠️ */
 /* End Global Rules */
 /* 03 lesson 0:11:45 Header Section Part 1*/
 .header {
@@ -319,5 +363,33 @@ ul {
     transform: translateY(-15px);
   }
 }
+@keyframes left-moving {
+  50% {
+    left: 0;
+    width: 12px;
+    height: 12px;
+  }
+  100% {
+    left: 0;
+    border-radius: 0;
+    width: 51%;
+    height: 100%;
+  }
+}
+@keyframes right-moving {
+  50% {
+    right: 0;
+    width: 12px;
+    height: 12px;
+  }
+  100% {
+    right: 0;
+    border-radius: 0;
+    width: 51%;
+    height: 100%;
+  }
+}
 /* End Animation */
 /* 09 lesson 1:01:15 Creating The Main Title */
+
+/* 10 lesson 1:10:25 Articles Section Part 1*/
