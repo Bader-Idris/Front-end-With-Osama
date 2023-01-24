@@ -197,10 +197,20 @@ function multiply (...param) {
   };
 
 }
+
+function calc(...numbers) {
+  let result = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    numbers[i] * numbers[i+1]
+    result += numbers[i] ;
+  }
+  return `Final Result: ${result}`;
+}
+console.log(calc(10, 20, 10, 30, 50));
 /*
 multiply(10, 20); // 200
 multiply("A", 10, 30); // 300
 multiply(100.5, 10, "B"); // 1000
 */
 
-// 6th Assignment 
+// 6th Assignment ❎
