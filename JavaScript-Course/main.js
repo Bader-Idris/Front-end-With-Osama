@@ -1478,6 +1478,10 @@ showInfo("Bader", 22, 20, "Yes", "HTML", "CSS");
  */
 /* #63rd lesson #6:05:13
   Random Arguments Function Challenge ❎
+  ✅✅
+  ⚠️I solved it in 12 assignment, as a basic function⚠️it must get nested to save code space⚠️
+  ⚠️Although it's boring🥱💤
+  ✅✅
 */
 
 /*
