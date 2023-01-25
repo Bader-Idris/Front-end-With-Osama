@@ -2060,7 +2060,7 @@ let user79 = {//The Object 🟢
 // to recall it, and its properties-methods:
 console.log(user79.theName);
 console.log(user79.theAge);
-
+//hashMaps in JS are same as objects Important☠️known from pheezx Coding lady on YouTube, not Elzero
 /* #80th lesson #7:50:05
   Dot Notation Vs Bracket Notation[رمز]
   - Dynamic Property Name
