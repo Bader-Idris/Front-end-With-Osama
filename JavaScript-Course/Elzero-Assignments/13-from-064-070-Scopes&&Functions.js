@@ -19,7 +19,12 @@ function getDetails(zName, zAge, zCountry) {
     // 32 Is The Age => Your Age Is 32
   };//✅
   function countryTwoLetters(zCountry) {
-    return (zCountry[0] + zCountry[1]).toUpperCase();
+    let sum ="";
+    for (let i = 0; i < 2; i++) {
+        sum = sum + zCountry[i];
+    }
+    if(sum != 0)return sum.toUpperCase();
+    // return (zCountry[0] + zCountry[1]).toUpperCase(); same as this!🔼
     // Egypt => You Live In EG
     // Syria => You Live In SY
   };
@@ -35,10 +40,11 @@ console.log(getDetails("Osama Mohamed", "38 Is My Age", "Egypt"));
 console.log(getDetails("Ahmed ali", "32 Is The Age", "Syria"));
 // Hello Ahmed A., Your Age Is 32, You Live In SY
 
-// 1st Assignment ✅ toke 3 days to fix all of its bugs, although some functions need improvements,
+// 1st Assignment ✅ took 3 days to fix all of its bugs, although some functions need improvements,
 //  they're too basic and raw. I failed using for to pick two indexes, so I used a stupid method,
 //  picking each on its own. And That's A Disaster In Programming☠️🤬
 // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+// 🔴Look for brute force algorithm🔴
 
 // ⚠️🔴Turn both functions into arrow syntax🔴⚠️
 // 1st func🔽
@@ -80,3 +86,31 @@ console.log(checker("Osama")("Available")(4000)); // Osama, My Salary Is 4000
 console.log(checker("Ahmed")("Not Available")()); // Iam Not Avaialble
 // [[read More About ⚠️Currying Function Technique⚠️]]
 // 3rd Assignment [A Challenge]💤✅🔼 
+
+
+
+
+
+
+
+
+
+
+
+
+function specialMix(...data) {
+  // Use parseInt
+  for (let i = 0; i < data.length; i++) {
+    if (parseInt(data[i]) && data[i] != 0) {
+      for (let j = 0; j < i.length; j++) {
+        // needs concentration🤓
+      }
+    } else continue;
+  }
+}
+
+console.log(specialMix(10, 20, 30)); // 60
+console.log(specialMix("10Test", "Testing", "20Cool")); // 30
+console.log(specialMix("Testing", "10Testing", "40Cool")); // 50
+console.log(specialMix("Test", "Cool", "Test")); // All Is Strings
+// 4th Assignment 
