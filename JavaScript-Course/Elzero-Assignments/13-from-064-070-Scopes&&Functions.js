@@ -77,24 +77,46 @@ console.log(urlCreate("https", "elzero", "org")); // https://www.elzero.org✅
 function checker(zName) {
   return function (status) {
     return function (salary) {
-      return status === "Available" ? `${zName}, My Salary Is ${salary}` : `Iam Not Avaialble`;
+      return status === "Available" ? `${zName}, My Salary Is ${salary}` : `Iam Not Available`;
     };
   };
 }
+// arrow function 
 
+let checker =(zName) => {
+  return function (status) {
+    return function (salary) {
+      return status === "Available" ? `${zName}, My Salary Is ${salary}` : `Iam Not Available`;
+    };
+  }
+}
+// results
 console.log(checker("Osama")("Available")(4000)); // Osama, My Salary Is 4000
-console.log(checker("Ahmed")("Not Available")()); // Iam Not Avaialble
-// [[read More About ⚠️Currying Function Technique⚠️]]
-// 3rd Assignment [A Challenge]💤✅🔼 
+console.log(checker("Ahmed")("Not Available")()); // Iam Not Available
+// [[read More About ⚠️Currying Function Technique⚠️because this is an example of it]]
+// 3rd Assignment [A Challenge]✅
 
+/* currying function example
+  info from geeksforgeeks.org
+  Note: An American mathematician named Haskell Curry developed this technique, that’s why it is called currying.
 
+function calculateVolume(length) {
+    return function (breadth) {
+        return function (height) {
+            return length * breadth * height;
+        }
+    }
+}
+console.log(calculateVolume(4)(5)(6));
 
+*/
+//******************************************************************************************
 
-
-
-
-
-
+console.log(specialMix(10, 20, 30)); // 60
+console.log(specialMix("10Test", "Testing", "20Cool")); // 30
+console.log(specialMix("Testing", "10Testing", "40Cool")); // 50
+console.log(specialMix("Test", "Cool", "Test")); // All Is Strings
+// 4th Assignment 
 
 
 
@@ -108,9 +130,3 @@ function specialMix(...data) {
     } else continue;
   }
 }
-
-console.log(specialMix(10, 20, 30)); // 60
-console.log(specialMix("10Test", "Testing", "20Cool")); // 30
-console.log(specialMix("Testing", "10Testing", "40Cool")); // 50
-console.log(specialMix("Test", "Cool", "Test")); // All Is Strings
-// 4th Assignment 
