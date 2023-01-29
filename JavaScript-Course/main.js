@@ -1873,7 +1873,7 @@ console.log(smallWords);
 let ignoreNumbers74 = "Elz123er4o";
 
 let ing74 = ignoreNumbers74.split("").filter(function (el){//filter instead of map
-  return isNaN(parseInt(el))// ? el : ""; no need to these conditions with filter, but map needs them
+  return isNaN(parseInt(el))// ? el : "";⚠️🔴no need to these conditions with filter🔴⚠️but map needs them
 });
 
 // Filter Strings + Multiply pure numbers
