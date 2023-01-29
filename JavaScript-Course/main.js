@@ -1738,7 +1738,7 @@ console.log(calcTest(10, myNumbersTest[1], myNumbersTest[0]));
   - Array => The Current Array
 
   Notes
-  - Map returns A New Array
+  - Map returns A New Array⚠️🔴💚
 
   Examples
   - Anonymous Function
@@ -1780,7 +1780,7 @@ let incre = myNums.map(incrementing);
   Higher Order Functions - Map Practice
 */
 
-/*
+/* 🔴Useful🔴
   Map
   - Swap Cases
   - Inverted Numbers
