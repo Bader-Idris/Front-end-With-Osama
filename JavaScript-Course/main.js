@@ -1917,7 +1917,7 @@ let add75 = nums75.reduce(function(acc, current, index, arr){
   console.log(acc + current);
   console.log(`###########`);
   return acc + current;//all of these are in the callBackFunction, that has acc,current,index,arr
-}, 5);// This is the initialValue, where to start counting of numbers, so 5 is attatched to current as 5+ 10, itsIndex[0].
+}, 5);// This is the initialValue, where to start counting of numbers, so 5 is attached to current as 5+ 10, itsIndex[0].
 console.log(add75);
 
 /* #76th lesson #7:23:10

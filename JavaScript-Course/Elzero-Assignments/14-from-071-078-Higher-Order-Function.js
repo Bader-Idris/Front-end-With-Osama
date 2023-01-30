@@ -1,22 +1,18 @@
 
 
-// let mix = [1, 2, 3, "E", 4, "l", "z", "e", "r", 5, "o"];
-// // Elzero
-// let results = [];
+// Real working example⚠️
+let mix = [1, 2, 3, "E", 4, "l", "z", "e", "r", 5, "o"];
+// Elzero
+let elzero = mix.map((element) => {
+  return isNaN(parseInt(element)) ? element : "";
+}).reduce(function (acc, current){
+  return `${acc}${current}`;
+})
+console.log(elzero);
+// 1st Assignment✅
 
 
-for (let i = 0; i < mix.length; i++) {
-  if(typeof mix[i] === 'number')results.push(mix[i]);
-  else continue
-}
-console.log(results);//Did not work as for normal. let's use Reduce and map together
-
-// let myNums = [1, 2, 3, 4, 5, 6];
-// let newArray = [];
-// for (let i = 0; i < myNums.length; i++) {
-//   newArray.push(myNums[i]);
-// }
-// console.log(newArray);
+// practices on map, reduce, and filter 
 
 let addSelf = myNums.map(function (element, index, arr) {
   console.log(`Current Element =>  ${element}`);
@@ -63,11 +59,28 @@ let numbers = [11, 20, 2, 5, 17 , 10];
 let nigga_ability = numbers.filter((el) => el % 2 === 0)
 console.log(nigga_ability);
 
-// Real working example⚠️
-let mix = [1, 2, 3, "E", 4, "l", "z", "e", "r", 5, "o"];
-// Elzero
-let results = [];
+let mixo = "A13BS2ZX";
+let mixedContent = mixo.split("").filter(function (el){
+  return !isNaN(parseInt(el));
+}).map(function (el){
+  return el * el;
+}).join("");
+console.log(mixedContent);
 
-let elzero = mix.map(function (element, index, arr) {
-  // 
+
+
+let removeChars = ["E","@","@","L","Z","@","@","E","R","@","O"];
+let finalString = removeChars.filter(function(ele) {
+  return !ele.startsWith("@");
+}).reduce(function (acc, current){
+  return `${acc}${current}`;
 })
+console.log(finalString);
+
+let removenums = [1, 2, 3, "E", 4, "l", "z", "e", "r", 5, "o"];
+let finalString22 = removenums.filter(function(ele) {
+  return isNaN(ele);
+}).reduce(function (acc, current){
+  return `${acc}${current}`;
+})
+console.log(finalString22);
