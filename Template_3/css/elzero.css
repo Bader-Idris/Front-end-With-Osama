@@ -53,7 +53,7 @@ ul {
 }
 /* created in 09th lesson☠️ */
 .main-title {
-  margin: 100px auto;
+  margin: 0 auto 80px;
   border: 2px solid black;
   padding: 10px 20px;
   font-size: 30px;
@@ -339,6 +339,17 @@ ul {
   animation: bouncing 1.5s infinite;
 }
 /* End Landing */
+/* Start Articles */
+.articles {
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+}
+.articles .container {}
+.articles .box {}
+.articles .box img {}
+.articles .box .content {}
+.articles .box .info {}
+/* End Articles */
 /* Start Animation */
 @keyframes up-and-down {
   0%,
