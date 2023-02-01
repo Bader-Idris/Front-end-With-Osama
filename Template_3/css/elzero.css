@@ -339,16 +339,56 @@ ul {
   animation: bouncing 1.5s infinite;
 }
 /* End Landing */
+/* 10 lesson 1:10:25 Articles Section Part 1*/
 /* Start Articles */
 .articles {
   padding-top: var(--main-padding-top);
   padding-bottom: var(--main-padding-bottom);
 }
-.articles .container {}
-.articles .box {}
-.articles .box img {}
-.articles .box .content {}
-.articles .box .info {}
+.articles .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap:40px;
+}
+.articles .box {
+  -webkit-box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  -moz-box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  background-color: white;/*As spare*/
+  border-radius: 6px;
+  overflow: hidden;/*for picture*/
+  transition: transform var(--main-transition), box-shadow var(--main-transition);
+}
+.articles .box:hover {
+  transform: translateY(-10px);
+  -webkit-box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+  -moz-box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+  box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+}
+.articles .box img {
+  max-width: 100%;/*we use it for inconvenient scales, instead of normal width*/
+}
+.articles .box .content {
+  padding-left: 20px;
+}
+.articles .box .info {
+  padding: 20px;
+  color: var(--main-color);
+  border-top: 1px solid rgb(0 0 0 / 15%);
+}
+.articles .box .info a {
+  text-decoration: none;
+  color: var(--main-color);
+  font-weight: bold;
+}
+.articles .box .info i {
+  margin-left: 50%;
+  animation: 0.5s linear infinite ease-in-out;
+}
+.articles .box:hover .info i {
+  margin-left: 55%;
+  animation: shaking 1.5s infinite;
+}
 /* End Articles */
 /* Start Animation */
 @keyframes up-and-down {
@@ -400,7 +440,19 @@ ul {
     height: 100%;
   }
 }
+@keyframes shaking {/*needs fixes*/
+  0%,
+  10%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(0);
+  }
+  40%,
+  60% {
+    transform: translateX(-15px);
+  }
+}
 /* End Animation */
 /* 09 lesson 1:01:15 Creating The Main Title */
-
-/* 10 lesson 1:10:25 Articles Section Part 1*/
