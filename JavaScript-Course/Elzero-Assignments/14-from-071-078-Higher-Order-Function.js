@@ -11,6 +11,16 @@ let elzero = mix.map((element) => {
 console.log(elzero);
 // 1st Assignment✅
 
+let myString = "EElllzzzzzzzeroo";
+// Elzero
+let unfossed = myString.split('').filter((element,ind) => {
+  if(element !== ind) return element;
+}).reduce(function (acc, current){
+    return `${acc}${current}`;
+})
+console.log(unfossed);
+// 2nd Assignment
+
 
 // practices on map, reduce, and filter 
 
@@ -84,3 +94,5 @@ let finalString22 = removenums.filter(function(ele) {
   return `${acc}${current}`;
 })
 console.log(finalString22);
+
+// String(Math.abs(array))🔴this is used to convert negative numbers to positive numbers and vice-versa
