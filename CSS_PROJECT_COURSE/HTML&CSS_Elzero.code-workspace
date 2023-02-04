@@ -79,5 +79,10 @@
 				]
 			}
 		]
+	},
+	"extensions": {
+		"recommendations": [
+			"editorconfig.editorconfig"
+		]
 	}
 }
