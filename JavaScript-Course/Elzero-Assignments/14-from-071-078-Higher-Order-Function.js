@@ -97,3 +97,29 @@ console.log(finalString22);
 
 // String(Math.abs(array))🔴this is used to convert negative numbers to positive numbers and vice-versa
 // needs to be overlooked for now
+
+
+
+let myString = "EElllzzzzzzzeroo";
+// Elzero
+let unfossed = myString.split('').filter((element,ind) => {
+  for (let i = 0; i < ind.length; i++) {
+    let result = [];
+    
+  }
+  
+  if(element !== ind) return element;
+}).reduce(function (acc, current){
+    return `${acc}${current}`;
+})
+console.log(unfossed);
+// 2nd Assignment
+
+// Re-watch the lessons ⚠️🟢
+let myString = "EElllzzzzzzzeroo";
+// let theBiggest = ["Bla", "Propaganda", "Other", "AAA", "Battery", "Test"];
+let Check = myString.reduce(function(acc, current){
+  return acc.length !== current.length ? acc : current;
+});
+
+console.log(Check);
