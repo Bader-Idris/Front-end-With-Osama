@@ -1790,7 +1790,7 @@ let swappingCases = "elZERo";
 let invertedNumbers = [1, -10, -20, 15, 100, -30];
 let ignoreNumbers = "Elz123er4o";
 // Solution
-let sw = swappingCases.split("").map(function (ele){//converting string into an array
+let sw = swappingCases.split("").map(function (ele){//🔴We use split() to convert string into an array🔴
   // Condition ? True : False
   return ele === ele.toUpperCase() ? ele.toLowerCase() : ele.toUpperCase()
 }).join("");//join to return as string
