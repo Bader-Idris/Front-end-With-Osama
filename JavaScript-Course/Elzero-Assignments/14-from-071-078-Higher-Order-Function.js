@@ -123,3 +123,4 @@ let Check = myString.reduce(function(acc, current){
 });
 
 console.log(Check);
+// 7:15 reduce CourseTime
