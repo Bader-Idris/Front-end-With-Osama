@@ -117,10 +117,10 @@ console.log(unfossed);
 
 // Re-watch the lessons ⚠️🟢
 let myString = "EElllzzzzzzzeroo";
-// let theBiggest = ["Bla", "Propaganda", "Other", "AAA", "Battery", "Test"];
-let Check = myString.reduce(function(acc, current){
-  return acc.length !== current.length ? acc : current;
+let solution = myString.split('').filter((element,ind) => {
+  return isNaN(parseInt(element));
+}).reduce(function(acc, current){
+  if(acc === current){ return ''}
+  else return acc + current ;
 });
-
-console.log(Check);
-// 7:15 reduce CourseTime
+console.log(solution);
