@@ -303,10 +303,11 @@ console.log(+a20 + b20 + c20);// Amended by making a20 as a num with Unary +
 let a21 = 10;
 a21 = a21 + 20;
 a21 += 100; // a21 = a + 100
-/* #22nd lesson #2:04:42 Operators Challenges ❎
+/* #22nd lesson #2:04:42 Operators Challenges ✅
   we'll use unary, type casting, post and pre increment, and whatnot
-
 */
+
+
 let a22 = 10, b22 = "20", c22 = 80;// looks like each unary reset the var to its original value
 console.log(++a22 + +b22++ + +c22++ - +a22++);
 console.log(++a22 + -b22 + +c22++ - -a22++ + +a22);
@@ -322,12 +323,14 @@ console.log(--c22 + +b22 + --a22 * +b22++ - +b22++ - +b22 * a22 + --a22 - +true)
 // Each line need to be explained,
 // as +a++ means: unary with post increment, don't change var values
 
-/* Challenge 2 [½] */
+/* Challenge 2 */
 let d22 = "-100", e22 = "20", f22 =30, g22 = true;
 // Use only variable Values
 // Don't Use A Variable Twice
-console.log(-d22 * +e22);// must be 2000
-console.log();// must be 173, Man it socks ❎
+console.log(-d22 * +e22);// 2000✅
+console.log(++e22 * ++g22 + -d22 + ++f22);//173 ❎ because this 🔽
+
+// 🔴 adding unary to a true condition makes its var as 2 when +var🔴
 
 
 /* #23rd lesson #2:07:46 Number [data type]*/
@@ -403,7 +406,7 @@ console.log(Math.pow(2, 4));// stands for power[exponent] 2^4, 2**4
 console.log(Math.random());// as its name
 console.log(Math.trunc(99.5));// Will be used much| makes float integer
 
-/* #26th lesson #2:27:30 Number Challenge ✅⅔, ⅓❎*/
+/* #26th lesson #2:27:30 Number Challenge ✅*/
 let a26 = 1_00;
 let b26 = 2_00.5;
 let c26 = 1e2;
@@ -421,8 +424,8 @@ console.log(Math.round(d26));//✅
 console.log(Math.trunc(d26));//✅
 
 // Use Variables b + d To Output These Values🔽: [b = 200.5, d = 2.4]
-console.log();// 66.67 => String ❎
-console.log();// 67 => Number ❎ [length doesn't accept numbers, so we convert it into string]
+console.log((parseInt(b26) / Math.ceil(d26)).toFixed(2));// 66.67 => String ✅after seeing this🔽
+console.log(Math.round(parseInt(b26) / Math.ceil(d26)));// 67 => Number ❎✅a🧔☑️it making 200 / 3 using round to make 66.7 as 67
 
 
 //The useful hint is that when using a function as math.round(),
@@ -525,13 +528,13 @@ console.log(a29.endsWith("o", 6));// we count length not index ⚠️
 let a30 = "Elzero Web School";
 
 // Include These Methods In Your Solutions [slice, charAt]
-console.log(Math.slice);
-console.log(a30.slice(2, 6));// Zero
-// console.log(a30.slice(2, 6), a30.charAt(0).toUpperCase);❎❎
-console.log(a30.slice(2, 6).charAt(0).toUpperCase());// must to slice other CHs
+
+// console.log(a30.slice(2, 6).charAt(0).toUpperCase());// ❎❎
+// initially he capitalized Z then he sliced it🔽
+console.log(a30.charAt(2).toUpperCase() + a30.slice(3, 6)); // Zero🔴 ✅a🧔☑️ made it🔴
 
 // 8 H
-console.log(a30.trim().charAt(a30.length -4).toUpperCase().repeat(8));// HHHHHHHH ✅
+console.log(a30.charAt(a30.length -4).toUpperCase().repeat(8));// HHHHHHHH ✅
 
 // Return Array
 console.log(a30.slice(0,6).split(" "));// [Elzero] ✅
@@ -542,6 +545,9 @@ console.log(a30.substr(0, 6), a30.substr(11, 17));// Elzero School ✅
 // Solution Must Be Dynamic And String May Change
 console.log(); // eLZERO WEB SCHOOl [first and last characters must be small, with any string comes along]
 // console.log(a30.substring(a30.length -5, a30.length - 3));❎❎
+
+// 🔴 ✅a🧔☑️ made it🔴🔽
+console.log(a30[0].toLowerCase() + a30.slice(1, -1).toUpperCase() + a30.slice(-1).toLowerCase());
 
 /* #31st lesson #3:05:32 Comparison Operators
   - == Equal
@@ -2024,13 +2030,17 @@ console.log(solution); // Elzero Web School
 
 /*
   let myString = "1,2,3,EE,l,z,e,r,o,_,W,e,b,_,S,c,h,o,o,l,2,0,Z";
-  let solution = myString.split(',').map(function(el){
-    return isNaN(parseInt(el)) ? el : "" ;
-  }).join("");
-  console.log(solution);
+  let solution = myString.split('').filter((ele)=>{
+      return isNaN(parseInt(ele))
+  }).map((ele)=>{
+      return !ele.startsWith(',') ? ele.replace("_"," ") : '';
+  }).reduce((acc,elem)=>{
+      return `${acc}${elem}`;
+  })
+  console.log(solution); // Elzero Web School
 */
-// ❎❎ Didn't use reduce. final result was EElzero_Web_SchoolZ
-// So needs to remove first and last elements, and convert _ into spaces
+// ❎ final result was EElzero Web SchoolZ 
+// 1st && last need to get trimmed
 
 /* #79th lesson #7:42:40
   Object 

@@ -87,6 +87,8 @@ let finalString = removeChars.filter(function(ele) {
 })
 console.log(finalString);
 
+
+
 let removenums = [1, 2, 3, "E", 4, "l", "z", "e", "r", 5, "o"];
 let finalString22 = removenums.filter(function(ele) {
   return isNaN(ele);
@@ -100,22 +102,6 @@ console.log(finalString22);
 
 
 
-let myString = "EElllzzzzzzzeroo";
-// Elzero
-let unfossed = myString.split('').filter((element,ind) => {
-  for (let i = 0; i < ind.length; i++) {
-    let result = [];
-    
-  }
-  
-  if(element !== ind) return element;
-}).reduce(function (acc, current){
-    return `${acc}${current}`;
-})
-console.log(unfossed);
-// 2nd Assignment
-
-// Re-watch the lessons ⚠️🟢
 let myString = "EElllzzzzzzzeroo";
 let solution = myString.split('').filter((element,ind) => {
   return isNaN(parseInt(element));
