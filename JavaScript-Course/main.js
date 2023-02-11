@@ -925,6 +925,9 @@ console.log(Array.isArray(myFriends40));// true
 let str40 = "Bader";//
 console.log(Array.isArray(str40));// false, it's a sequence but not an array
 
+// array.flat() 🔴 referred to it in high order function assignment🔴
+//  71 to 78. it's great as myfriends.flat() for nested arrays
+
 /* #41st lesson #4:00:40 Using Length With Array */
 /*
   Arrays Methods
