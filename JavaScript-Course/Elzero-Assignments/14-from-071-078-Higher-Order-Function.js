@@ -34,44 +34,42 @@ console.log(reduceflatting);
 // a greater method 🔽
 let flatArray = [].concat(...myArray);
 // just search for hot to flat an array 
-// 3rd Assignment✅ stolen with other methods from flexiple.com
+// 3rd Assignment✅ stolen with other methods from www.flexiple.com
 
 // use filter, map and other methods to output only numbers, and reverse their statement as - or +
 let numsAndStrings = [1, 10, -10, -20, 5, "A", 3, "B", "C"];
 let reverseNum = numsAndStrings.map((ele)=>{
-  return !isNaN(parseInt(ele)) ? ele: '';
-}).filter((ele,ind)=>{
-  return Math.abs(ele);
+  return !isNaN(parseInt(ele)) ? ele * -1: '';//must convert it into map not filter
+  // whether map is here or down🔴
+}).filter((ele)=>{
+  return ele ;
 })
 console.log(reverseNum);
 // [-1, -10, 10, 20, -5, -3]
+// 4th Assignment✅
 
-// 4th Assignment ❎ wasn't able to reverse its statement
+// if % of current is 1 do sum accumulator and current. if it's 0 then multiply acc && cur
+// initial value must be 1
+
 let nums = [2, 12, 11, 5, 10, 1, 99];
-let moduleNum = nums.reduce((acc,ind)=> {
-  return acc % ind === 1 ? acc : ind
+let moduleNum = nums.reduce((acc,cur)=> {
+  return acc % cur === 1 ? acc + cur : acc % cur === 0 ? acc * cur: '';
 },1)
 console.log(moduleNum);
 // 500
 
-// 5th Assignment
+// 5th Assignment❎ A challenge 🔴
+
+// String(Math.abs(array))🔴this is used to convert negative numbers to positive numbers and vice-versa
+
+
+
+
+
 
 
 
 // practices on map, reduce, and filter 
-
-let addSelf = myNums.map(function (element, index, arr) {
-  console.log(`Current Element =>  ${element}`);
-  console.log(`Current Index => ${index}`);
-  console.log(`Array => ${arr}`);
-  console.log(`This => ${this}`);
-  // return element + element;
-}, 10);//10 is ${This}
-// el => element, i => index
-console.log(addSelf);// ❇️ it
-// Element [mand], 2nd && 3rd [Opt]
-
-// ----------------------------------------------------------------------------
 
 let swappingCases = "elZERo";
 let sw = swappingCases.split("").map(function (ele){
@@ -99,15 +97,7 @@ console.log(ing);
 
 // ----------------------------------------------------------------------------
 
-// filter examples 
-let friends = ["Ahmed", "Sameh", "Sayed", "Asmaa", "Amgad", "Israa"];
-let filterFriends = friends.filter(function (el){
-  return el.startsWith("A");// It's a condition
-  // same as el.startsWith("A"); ? true: false;
-});
-console.log(filterFriends);
-
-// ----------------------------------------------------------------------------
+// filter examples ----------------------------------------------------------------------------
 
 let numbers = [11, 20, 2, 5, 17 , 10];
 let nigga_ability = numbers.filter((el) => el % 2 === 0)
@@ -142,8 +132,4 @@ let finalString22 = removenums.filter(function(ele) {
   return `${acc}${current}`;
 })
 console.log(finalString22);
-
-// String(Math.abs(array))🔴this is used to convert negative numbers to positive numbers and vice-versa
-// needs to be overlooked for now
-
 // ----------------------------------------------------------------------------
