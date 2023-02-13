@@ -2315,7 +2315,7 @@ finalObject.prop4 = 4;
 
 console.log(finalObject);
 
-let newObject = Object.assign({}, obj1, { prop5: 5, prop6: 6 }); // first {} instead of target, asAnEmptyObject 82340
+let newObject = Object.assign({}, obj1, { prop5: 5, prop6: 6 }); // first {} instead of target, asAnEmptyObject
 // prop 5 and 6 are typed as [on the fly]
 console.log(newObject);
 
