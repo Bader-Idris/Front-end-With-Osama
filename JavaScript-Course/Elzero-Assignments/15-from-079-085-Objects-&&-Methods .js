@@ -153,3 +153,8 @@ for (let i = 0; i < objectLength; i++) {
 */
 
 // 4th Assignment CHALLENGE ❎
+
+// MDN in an object we can declare a function as bio(){},
+// without typing bio: function (){}
+
+
