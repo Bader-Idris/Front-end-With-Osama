@@ -19,18 +19,12 @@ let myQueryAll2 = document.querySelectorAll("#elzero");
 let myQueryAll3 = document.querySelectorAll("[name='js']");
 let myQueryAll4 = document.querySelectorAll("div");
 let myQueryAll5 = document.querySelectorAll("[class='element']");//don't count it
-// 3 remaining
+// 3 remaining❎
 
 
-document.body.getAttribute()
-document.body.getAttributeNS()
-document.body.getAttributeNames()
-document.body.getAttributeNode()
-document.body.getAttributeNodeNS()
-
-// let myAllQuerySeries = document.querySelectorAll(".special");
-
-
-
-
+myQuery4.getAttribute()
+myQuery4.getAttributeNS()
+myQuery4.getAttributeNames('js')
+myQuery4.getAttributeNode()
+myQuery4.getAttributeNodeNS()
 console.log(myTagElement[0]);//if it's applicable we can get a double of each, but let it as last choice
