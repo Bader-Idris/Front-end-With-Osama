@@ -7,15 +7,19 @@ let myIdElement = document.getElementById("elzero");
 let myTagElement = document.getElementsByTagName("div");
 let myClassElement = document.getElementsByClassName("element");
 let myQueryName = document.getElementsByName('js');
-// console.log(myTagElement.getAttribute("class"));
 let myQueryElement = document.querySelector(".special");
-let myAllQueryElements = document.querySelectorAll(".special");// if many
-
-
 let myQuery2 = document.querySelector("#elzero");
-let myQuery3 = document.querySelector("js");
-let myQuery4 = document.querySelector(".special");
-let myQuerySeries = document.querySelector("body .special");//check before it
+let myQuery3 = document.querySelector("[name='js']");
+let myQuery4 = document.querySelector("div");
+let myQuery5 = document.querySelector("[class='element']");//don't count it
+let myQuerySeries = document.querySelector("body .special");//don't count it
+
+let myAllQueryElements = document.querySelectorAll(".special");
+let myQueryAll2 = document.querySelectorAll("#elzero");
+let myQueryAll3 = document.querySelectorAll("[name='js']");
+let myQueryAll4 = document.querySelectorAll("div");
+let myQueryAll5 = document.querySelectorAll("[class='element']");//don't count it
+// 3 remaining
 
 
 document.body.getAttribute()
