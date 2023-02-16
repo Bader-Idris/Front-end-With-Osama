@@ -95,10 +95,6 @@ window.onload = function() {
   document.body.appendChild(myForm);
 };
 // manipulate div el to output $ and E£ [egyptian currency]
-let dollar = document.querySelector("[name='dollar']");
-let result = document.querySelector("form .result");
-
-
 
 // created by the love of Chat GPT 💚
 function convertCurrency() {
@@ -123,3 +119,38 @@ function convertCurrency() {
 
 // Add an event listener to the input element to trigger the currency conversion on input change
 document.querySelector('input[name="dollar"]').addEventListener('input', convertCurrency);
+
+// 3rd Assignment✅ cheating by Chat GPT
+
+/*
+  <div class="one" title="two">Two</div>
+  <div class="two" title="one">One</div>
+*/
+// Final results must become as:
+/*
+  <div class="one" title="one">One</div>
+  <div class="two" title="two">Two 2</div>
+*/
+let firstText = document.querySelector('.two').title;
+let secondText = document.querySelector('.one').textContent;
+document.querySelector('.one').title = firstText;
+document.querySelector('.one').textContent = firstText;
+document.querySelector('.one').textContent;
+document.querySelector('.two').textContent = `${secondText} 2`;
+document.querySelector('.two').title = secondText;
+// old fashion, use get and set instead🔼✅
+let firstDiv = document.querySelector('.one');
+let secondDiv = document.querySelector('.two');
+let firstTxt = firstDiv.textContent;//one
+let secondTxt = secondDiv.textContent;//two
+// firstDiv.getAttribute("title");// both ain't important🔽
+// secondDiv.getAttribute("title");
+firstDiv.setAttribute("title",secondTxt);
+firstDiv.textContent = secondTxt;
+secondDiv.textContent = firstTxt;
+secondDiv.setAttribute("title", firstTxt);
+// second is cleaner💚✅ 330 on behalf of 385
+// 4th Assignment✅
+
+
+// 5th Assignment
