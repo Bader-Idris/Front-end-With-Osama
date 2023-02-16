@@ -63,4 +63,63 @@ console.log(myTagElement[0]);//if it's applicable we can get a double of each, b
     <img decoding="async" src="#" alt="" />
   </div>
 
+
+// https://elzero.org/wp-content/themes/elzero/imgs/logo.png turn the src into this🔴
+
 */
+for (let i = 0; i < document.querySelectorAll("img").length; i++) {
+  document.images[i].src = "https://elzero.org/wp-content/themes/elzero/imgs/logo.png";
+  document.images[i].alt = "Elzero Logo";
+}
+
+// spare attributes 🧊
+// document.images[0].title = "Picture";
+// document.images[0].id = "pic";
+// document.images[0].className = "img";
+
+// 2nd Assignment✅
+
+/* HTML text
+  <form action="">
+  <input type="number" name="dollar" placeholder="USD Dollar" />
+  <div class="result">{0} USD Dollar = {0} Egyptian Pound</div>
+  </form>
+*/
+let myForm = `
+  <form action="">
+  <input type="number" name="dollar" placeholder="USD Dollar" />
+  <div class="result">{0} USD Dollar = {0} Egyptian Pound</div>
+  </form>
+  `;
+window.onload = function() {
+  document.body.appendChild(myForm);
+};
+// manipulate div el to output $ and E£ [egyptian currency]
+let dollar = document.querySelector("[name='dollar']");
+let result = document.querySelector("form .result");
+
+
+
+// created by the love of Chat GPT 💚
+function convertCurrency() {
+  // Get the input element for the USD Dollar amount
+  const dollarInput = document.querySelector('input[name="dollar"]');
+
+  // Get the result element to display the conversion
+  const result = document.querySelector('.result');
+
+  // Get the current USD Dollar amount entered by the user
+  const dollarAmount = parseFloat(dollarInput.value);
+
+  // Set the exchange rate for USD Dollars to Egyptian Pounds
+  const exchangeRate = 15.6;
+
+  // Calculate the conversion from USD Dollars to Egyptian Pounds
+  const poundAmount = dollarAmount * exchangeRate;
+
+  // Display the conversion in the result element
+  result.innerText = `\{${dollarAmount.toFixed(2)}\} USD Dollar = \{${poundAmount.toFixed(2)}\} Egyptian Pound`;
+}
+
+// Add an event listener to the input element to trigger the currency conversion on input change
+document.querySelector('input[name="dollar"]').addEventListener('input', convertCurrency);
