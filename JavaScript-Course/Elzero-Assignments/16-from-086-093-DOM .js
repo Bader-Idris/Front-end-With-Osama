@@ -28,3 +28,39 @@ myQuery4.getAttributeNames('js')
 myQuery4.getAttributeNode()
 myQuery4.getAttributeNodeNS()
 console.log(myTagElement[0]);//if it's applicable we can get a double of each, but let it as last choice
+// 1st Assignment⌛
+
+/*
+
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+  <div>
+    <img decoding="async" src="#" alt="" />
+  </div>
+
+*/
