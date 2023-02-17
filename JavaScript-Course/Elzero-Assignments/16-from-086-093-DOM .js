@@ -153,4 +153,77 @@ secondDiv.setAttribute("title", firstTxt);
 // 4th Assignment✅
 
 
-// 5th Assignment
+// you have this set of images, change existing alt to 'Old'
+// and create new for non-existing then call 'em 'Elzero New'
+// use for loop and if statement
+/*
+  <img decoding="async" src="#" alt="One" />
+  <img decoding="async" src="#" />
+  <img decoding="async" src="#" alt="Three" />
+  <img decoding="async" src="#" />
+  <img decoding="async" src="#" />
+*/
+let img = document.querySelectorAll("img");
+for (let i = 0; i < img.length; i++) {
+  if(img[i].alt.length > 0) img[i].setAttribute("alt", 'Old');
+  else img[i].setAttribute("alt", 'Elzero New');
+}
+// must be as:
+/*
+  <img decoding="async" src="#" alt="Old" />
+  <img decoding="async" src="#" alt="Elzero New" />
+  <img decoding="async" src="#" alt="Old" />
+  <img decoding="async" src="#" alt="Elzero New" />
+  <img decoding="async" src="#" alt="Elzero New" />
+*/
+// 5th Assignment✅
+
+
+// 6th Assignment CHALLENGE🔽
+/*
+<form action="">
+  <input type="number" name="elements" class="input" placeholder="Number Of Elements" />
+  <input type="text" name="texts" class="input" placeholder="Elements Text" />
+  <select name="type" class="input">
+    <option value="Div">Div</option>
+    <option value="Section">Section</option>
+  </select>
+  <input type="submit" name="create" value="Create" />
+  <div class="results"></div>
+</form>
+*/
+
+// if number 3 divs appended. result must be: 
+/*
+<div class="box" title="Element" id="id-1">Hello</div>
+<div class="box" title="Element" id="id-2">Hello</div>
+<div class="box" title="Element" id="id-3">Hello</div>
+*/
+
+// my css for the form:🔴💚
+// WORK ON RESULTS WHICH COMES OUT AFTER CREATING THE FUNCTION WHICH GENERATES THESE ELEMENTS🔴
+/*
+form{
+  display: flex;
+  width: calc(100% / 4);
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px auto;
+  padding: 20px;
+  align-items: stretch;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+form > * {
+  padding: 10px;
+  margin: 5px 10px;
+  outline: none;
+  borer:none;
+}
+form > input:last-of-type {
+  font-weight: bold;
+  color: white;
+  background-color: #2490ff;
+}
+*/
+

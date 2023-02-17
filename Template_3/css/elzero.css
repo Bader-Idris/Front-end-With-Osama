@@ -53,6 +53,7 @@ ul {
 }
 /* created in 09th lesson☠️ */
 .main-title {
+  text-transform: uppercase;
   margin: 0 auto 80px;
   border: 2px solid black;
   padding: 10px 20px;
@@ -91,7 +92,7 @@ ul {
 }
 .main-title:hover {
   color: white;
-  border: none;
+  border: 2px solid white;/*🔴 To not lose some pixels*/
   transition-delay: 0.5s;
 }
 /* ☠️ */
@@ -344,6 +345,7 @@ ul {
 .articles {
   padding-top: var(--main-padding-top);
   padding-bottom: var(--main-padding-bottom);
+  position: relative;  /* we use it to include link font weight */
 }
 .articles .container {
   display: grid;
@@ -368,13 +370,28 @@ ul {
 .articles .box img {
   max-width: 100%;/*we use it for inconvenient scales, instead of normal width*/
 }
+/* 11 lesson 1:20:42 Articles Section Part 2*/
 .articles .box .content {
-  padding-left: 20px;
+  padding: 20px;
+}
+.articles .box .content {
+  padding: 20px;
+}
+.articles .box .content h3 {
+  margin: 0;
+}
+.articles .box .content p {
+  margin: 10px 0 0;
+  line-height: 1.5;
+  color:#777;
 }
 .articles .box .info {
   padding: 20px;
-  color: var(--main-color);
-  border-top: 1px solid rgb(0 0 0 / 15%);
+  border-top: 1px solid #e6e6e7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 }
 .articles .box .info a {
   text-decoration: none;
@@ -384,12 +401,30 @@ ul {
 .articles .box .info i {
   margin-left: 50%;
   animation: 0.5s linear infinite ease-in-out;
+  color: var(--main-color);
 }
 .articles .box:hover .info i {
   margin-left: 55%;
-  animation: shaking 1.5s infinite;
+  animation: shaking 0.6s linear infinite;
 }
 /* End Articles */
+/* Start Gallery */
+.gallery {
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+  position: relative;
+  background-color: var(--section-background);
+}
+.gallery .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap:40px;
+}
+.gallery .box {}
+.gallery .box img {
+  max-width: 100%;
+}
+/* End Gallery */
 /* Start Animation */
 @keyframes up-and-down {
   0%,
@@ -441,19 +476,13 @@ ul {
   }
 }
 @keyframes shaking {/*needs fixes*/
-  0%,
-  10%,
-  20%,
-  50%,
-  80%,
   100% {
-    transform: translateX(0);
-  }
-  40%,
-  60% {
-    transform: translateX(-15px);
+    transform: translateX(10px);
   }
 }
 /* End Animation */
 
 /* 09 lesson 1:01:15 Creating The Main Title */
+/* 10th and 11th are on upwardly .articles .box*/
+
+/* 12 lesson 1:24:15 Gallery Section */
