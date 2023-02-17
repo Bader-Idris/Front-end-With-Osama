@@ -7,25 +7,38 @@
 */
 
 function generateEl(num,str) {
-  const elNumber = document.querySelector('input[type="number"]');
+  let elNumber = document.querySelector('input[type="number"]');
   const elText = document.querySelector('input[type="text"]');
   const myEl = document.querySelector('select[name="type"]');
-  const result =  document.querySelectorAll('.results');
+  const myB = document.querySelector('input[name="create"]');
+  // const result =  document.querySelectorAll('.results');
+  const result =  document.getElementsByClassName('.results');
 
-  const myDiv = document.createElement("div");
-  const mySec = document.createElement("section");
+  const myDiv = document.createElement(myEl.val);
+  // const mySec = document.createElement("section");
   const myTitle = document.createAttribute("title");
   const myId = document.createAttribute("id");
-  const myText = document.createTextNode("Product One");
-  
-  for (let i = 0; i < result.length; i++) {
-      result[i].setAttribute("title", "Element");
-      result[i].setAttribute("id",`id-${i}`);
-  }
 
+  const myText = document.createTextNode(elText.value);
+  //this for loop must be inside onclick event handler🔴🔴
+  for (let i = 0; i <= +elNumber.value; i++) {
+      result[i].setAttribute("title", "Element");
+      result[i].setAttribute("id",`id-${i+1}`);
+  }
   // result.innerText = 3;
 }
 document.querySelector('input[type="number"]').addEventListener('input', generateEl);
+
+startBtn.onclick = function(){
+  removeButton = document.getElementById("start");
+  removeButton.parentNode.removeChild(removeButton);
+
+  for(var i = 0; i < cards; i++){ 
+      var backside = document.createElement("div");
+      backside.className = 'card';
+      board.appendChild(backside);
+  }
+};
 
 /*
 <form action="">
