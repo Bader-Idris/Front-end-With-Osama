@@ -10,11 +10,10 @@ function generateEl(num,str) {
   let elNumber = document.querySelector('input[type="number"]');
   const elText = document.querySelector('input[type="text"]');
   const myEl = document.querySelector('select[name="type"]');
-  const myB = document.querySelector('input[name="create"]');
+  const myB = document.querySelector('input[name="create"]');//the submit button
   // const result =  document.querySelectorAll('.results');
-  const result =  document.getElementsByClassName('.results');
-
-  const myDiv = document.createElement(myEl.val);
+  const results =  document.getElementsByClassName('.results');//results
+  const myType = document.createElement(myEl.value);
   // const mySec = document.createElement("section");
   const myTitle = document.createAttribute("title");
   const myId = document.createAttribute("id");
@@ -22,8 +21,9 @@ function generateEl(num,str) {
   const myText = document.createTextNode(elText.value);
   //this for loop must be inside onclick event handler🔴🔴
   for (let i = 0; i <= +elNumber.value; i++) {
-      result[i].setAttribute("title", "Element");
-      result[i].setAttribute("id",`id-${i+1}`);
+      document.appendChild(myType)
+      results[i].setAttribute("title", "Element");
+      results[i].setAttribute("id",`id-${i+1}`);
   }
   // result.innerText = 3;
 }
