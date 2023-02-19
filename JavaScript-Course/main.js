@@ -2515,7 +2515,7 @@ let miElemento = document.querySelector("div");
 console.log(miElemento);
 console.log(miElemento.children); //elements as[span, p]
 console.log(miElemento.children[0]);
-console.log(miElemento.childNodes); //ele/comments/text. couns [spaces && /n as nodes]
+console.log(miElemento.childNodes); //ele/comments/text. counts [spaces && /n as nodes]
 console.log(miElemento.childNodes[0]); //only first
 
 console.log(miElemento.firstChild); //exactly as childNodes[0]
@@ -2541,7 +2541,7 @@ console.log(miElemento.lastElementChild);
   --- onblur
   --- onsubmit
 */
-// in buttom element HTML, we can creat an attrNamed [onclick] see it!
+// in button element HTML, we can create an attrNamed [onclick] see it inside index.html line 52
 let myBtn = document.getElementById("btn");
 
 myBtn.onclick = function () {
@@ -2595,11 +2595,9 @@ document.forms[3].onsubmit = function (e) {
   if (userInput.value !== "" && userInput.value.length <= 10) {
     userValid = true; // allowing its path
   }
-
   if (ageInput.value !== "") {
     ageValid = true;
   }
-
   if (userValid === false || ageValid === false) {
     e.preventDefault();
   }

@@ -23,9 +23,18 @@ form > input:last-of-type {
 }
 .results {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex: 1;
-  flex-basis: 300px;
-  
+  justify-content: center;
+  flex-wrap:wrap;
+}
+.results > * {
+  width: 100px;
+  height: 36px;
+  margin: 20px;
+  padding: 10px;
+  background: #19986d;
+  color: white;
+  font-size: 27px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
 }
