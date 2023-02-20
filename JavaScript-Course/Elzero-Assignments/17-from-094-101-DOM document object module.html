@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>17-from-094-101-DOM document object module</title>
   <script>
-    // Your Code Here
+    window.onload = function () {
+      for (let i = 0; i < document.links.length; i++) {
+        if (document.links[i].classList.contains("open") && document.links[i].textContent == 'Elzero'){
+          document.links[i].click();
+        } else false;
+      }
+    };
   </script>
 </head>
+
 <body>
+  <a class="open" href="https://google.com">Google</a>
+  <a class="open" href="https://elzero.org" target="_blank">Elzero</a><!-- I made its target as blank to stay in page-->
+  <a class="not" href="https://facebook.com">Facebook</a>
+  <a class="linked" href="https://linkedin.com">Elzero</a>
   <script src="17-from-094-101-DOM document object module.js"></script>
 </body>
 </html>
