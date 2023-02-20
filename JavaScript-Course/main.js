@@ -2656,7 +2656,7 @@ LaElemento.onclick = function () {
   CSS Styling
 */
 /*
-  DOM [CSS]
+  DOM [CSS]🔴important🔴
   - style
   - CssText
   - removeProperty(propertyName) [Inline, Stylesheet]
