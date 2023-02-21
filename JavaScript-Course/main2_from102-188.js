@@ -96,4 +96,38 @@ btn[0].onclick = function (){
   - setInterval(Function, Millseconds, Additional Params)
   - clearInterval(Identifier)
     similar to setTimeout, but setInterval repeats the function repeatedly
+    meaning: setInterval waits for 3000 then repeats after 3000 or until using clearInterval
+*/
+setInterval(function (){
+  console.log(`I'm A Msg`);
+},1000)
+// same as:
+setInterval(sayHiBabe, 2000,'Hanady',29);
+
+function sayHiBabe(babe, age){
+  console.log(`I'm A Msg For You ${babe}, sincere love, ${age} is here`);
+};
+// see this
+let div = document.querySelector('div');
+function countdown() {
+  div.innerHTML -= 1;
+  if (div.innerHTML === '0') {// it's in string not as number
+    clearInterval(counter);
+  }
+}
+countdown();//calling it, or 🔽
+let counter = setInterval(countdown, 1000);
+
+// 106th lesson 00:24:25 Window Location Object
+// Important
+/*
+  BOM [Browser Object Model]
+  - location Object
+  --- href Get / Set [URL || Hash || File || Mail]
+  --- host
+  --- hash
+  --- protocol
+  --- reload()
+  --- replace()
+  --- assign()
 */
