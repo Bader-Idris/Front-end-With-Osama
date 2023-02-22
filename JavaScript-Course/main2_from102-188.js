@@ -108,10 +108,10 @@ function sayHiBabe(babe, age){
   console.log(`I'm A Msg For You ${babe}, sincere love, ${age} is here`);
 };
 // see this
-let div = document.querySelector('div');
+let div = document.querySelectorAll('div');
 function countdown() {
-  div.innerHTML -= 1;
-  if (div.innerHTML === '0') {// it's in string not as number
+  div[0].innerHTML -= 1;
+  if (div[0].innerHTML === '0') {// it's in string not as number
     clearInterval(counter);
   }
 }
@@ -131,3 +131,177 @@ let counter = setInterval(countdown, 1000);
   --- replace()
   --- assign()
 */
+window.location//or console.log(location); same results
+window.location.href// our hyper text reference as https://www.google.com
+// this is all getting attributes
+// 💋right click on ◀️ or ▶️ button in your browser💋 to see tab's history
+// current page isn't in history, when you pass to another, it'll be gathered
+// we'll take things to delete that history!
+window.location.href = "https://www.google.com";
+// we can go directly to our section as:
+location.href = '/#sec02';
+location.href = "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#description";
+
+console.log(location.host)// host name and its port
+console.log(location.hostname)// host name
+
+console.log(location.protocol);// it's HTTP || HTTPS
+console.log(location.hash);// as #sec02, when we're in it at thy address bar 
+// as http://127.0.0.1:5500/#sec02
+
+// we'll need to separate it to check for things, to know where the user came from
+// or what did he/she opened etc.
+
+// location.reload(); //we'll need it as for when user saves settings
+
+location.replace('https://elzero.org');// it removes current page from section history
+location.assign('URL bla bla bla');//doesn't remove current page'history
+
+// 107th lesson 00:36:31 Window Open And Close
+/*
+  BOM [Browser Object Model]
+  - open(URL [Opt], Window Name Or Target Attr [Opt], Win Features [Opt], History Replace [Opt])
+  - close()
+  - Window Features
+  --- width [Num]
+  --- height [Num]
+  --- left [Num]
+  --- top [Num]
+
+  🔴Search for🔴
+  - window.Open window Features
+*/
+window.close()//exclusively close windows opened by JS
+window.open('','_self')//target's default is _blank[2nd attr]
+// 1st attr's def is blank page
+// features are as for X Y Z, is it resizable or not? etc...
+// 4th is boolean value for replacing as above
+setTimeout(() => {
+  window.open('https://google.com','', 'width=400,height=400,width=400,left=400,top=100');
+}, 2000);
+// width,height ... , we don't type px for pixels
+
+// 108th lesson 00:42:25 Window History Object
+/*
+  BOM [Browser Object Model]
+  - History API
+  --- Properties
+  ------ length
+  --- Methods
+  ------ back()
+  ------ forward()
+  ------ go(Delta) => Position In History
+
+  🔴Search for🔴 to get Advanced in it
+  - pushState() + replaceState()
+*/
+history.length;// the pages you visited and current one
+history.back();// the previous page
+history.forward();// the next page. if last. it'll return undefined
+history.go(-1);//◀️prior one, 0 current, 1 next
+history.go(-3);//third 🔽 when thou see by clicking right button on history bar in thy browser
+
+// 109th lesson 00:45:47 Scroll, Focus, Print, Stop
+/*
+  BOM [Browser Object Model]
+  - stop()
+  - print()
+  - focus()
+  - scrollTo(x, y || Options)
+  - scroll(x, y || Options)
+  - scrollBy(x, y || Options)
+*/
+
+// when You Click On Esc Key When Downloading Page Resources, It Stops, as for images etc.
+let myNewWindow = window.open("https://www.google.com",'','width=500,height=500,left=500');
+myNewWindow.focus();//when we're at the parent page, we focus on child one
+myNewWindow.close();// we can, because we opened it
+// scrollTo && scroll are [equals] && supported in various browsers
+// but scroll isn't supported in safari[apple's browser]
+window.scrollTo(500,200);
+window.scrollBy(500,200);//starting from last point, not inherently as scrollTo
+
+window.scrollTo({
+  left: 500,
+  top: 200,
+  behavior: 'smooth'
+});
+// there are some methods that scrolls an entire page,
+// and some other good features
+
+// 110th lesson 00:53:32 Scroll To Top Using ScrollX && Y
+/*
+  BOM [Browser Object Model]
+  - Practice => Scroll To Top
+  - scrollX [Alias => PageXOffset]
+  - scrollY [Alias => PageYOffset]
+  // old browsers prefer using [Alias] with
+*/
+// we check
+console.log(window.scrollX === window.pageXOffset); //true
+
+window.onscroll = () =>{
+  if (window.scrollY >= 600) {
+    // console.log(`Scrolling Y Value Is ${window.scrollY}`)
+    btn[1].style.display = 'block';
+  }else btn[1].style.display = 'none';
+}
+btn[1].onclick = function (){
+  window.scrollTo({
+    left:0,
+    top:0,
+    behavior:'smooth',
+  });
+}
+
+// 111th lesson 00:59:12 Local Storage
+/*🔴EXTREMELY IMPORTANT🔴 even more than upcoming lessons
+  BOM [Browser Object Model]
+  Local Storage
+  - setItem
+  - getItem
+  - removeItem
+  - clear
+  - key
+
+  Info
+  - No Expiration Time
+  - HTTP And HTTPS
+  - Private Tab
+*/
+/*
+  Osama spoke about this design: https://www.youtube.com/playlist?list=PLDoPjvoNmBAzvmpzF-6l3tAviiCPbwkB8
+  it's named  special design master
+  though he said:
+  and Contains Many Practical Concepts
+  in JavaScript and DOM🔴💋
+*/
+window.localStorage.setItem('color','#2490ff');//blue
+// window.localStorage.setItem('color','#fc2455');//red
+// in console, it prints as Storage
+
+/*
+  To see our Storage:
+  beside console >> go to [Application]
+  Storage 👇 Local Storage 👇 our site
+  
+  It'll show us our values as keys && values
+*///all 3 methods are set
+window.localStorage.fontWeight = "bold";//these are other approaches
+window.localStorage['fontSize'] = "20px";
+// now the get
+console.log(window.localStorage.getItem('color'));// as working with any object 
+console.log(window.localStorage.color);
+console.log(window.localStorage['fontSize'])
+// changing body BG color:
+document.body.style.backgroundColor = window.localStorage.getItem('color')//any of three
+// it saves the current value
+// to remove we type:
+window.localStorage.removeItem('fontSize');
+// this removes all. clear
+window.localStorage.clear();//length will be zero
+// when length is +1 we use Get Key:
+console.log(window.localStorage.key(0));
+
+// 112th lesson 01:08:40 Local Storage Color Application Practice
+// I brought the script from https://elzero.org/category/courses/javascript-bootcamp/
