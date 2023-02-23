@@ -305,3 +305,65 @@ console.log(window.localStorage.key(0));
 
 // 112th lesson 01:08:40 Local Storage Color Application Practice
 // I brought the script from https://elzero.org/category/courses/javascript-bootcamp/
+
+// 113th lesson 01:18:33 Session Storage And Use Cases
+/*
+  BOM [Browser Object Model]
+  Session Storage
+  - setItem
+  - getItem
+  - removeItem
+  - clear
+  - key
+
+  Info
+  - New Tab = New Session
+  - Duplicate Tab = Copy Session
+  - New Tab With Same URL = New Session
+*/
+// Local storage Vs. Session Storage
+// session doesn't save values as local one
+// 🔷when I close the TAB, session will get vanished🔷
+// window.localStorage.setItem("color", "red");
+// window.sessionStorage.setItem("color", "blue"); they're different, so you can use both
+
+// When You Open same Tab As new, it'll get A NEW SESSION
+//🔴To save same session data, DUPLICATE THE TAB🔴
+document.querySelector(".name").onblur = function () {
+  // console.log(this.value);
+  window.sessionStorage.setItem("input-name",this.value);
+  // don't make is as localStorage, User will be scared.
+  // sessionStorage => refreshing ✅, closing ❎
+};
+
+// 114th lesson 01:25:15 BOM Challenge
+/* elzero tips:
+  Don't start coding when you see problems!
+  separate sections into phases[pseudo code as YOU LEARNED]
+  Do each step in a separate FUNCTION
+  or you'll get [spaghetti code🍕🍝]
+*/
+/* FORM or DIV, same functionality
+  <body>
+    <div class="container">
+      <div class="form">
+        <input type="text" class="input">
+        <input type="submit" class="add" value="Add Task">
+      </div>
+      <div class="tasks"></div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+*/
+// text field eg: create Python Course [Add Task]
+// tasks field => 🔼 [as block, its key is[title]] && delete button on right edge
+// save values in localStorage
+// delete will vanish both in storage and the element
+
+// 115th lesson 01:27:41 Destructuring Arrays Part 1
+/*
+  Destructuring
+  "is a JavaScript expression that allows us to extract data from arrays,
+    objects, and maps And sets them into new, distinct variables."
+  - Destructuring Array
+*/
