@@ -1,34 +1,51 @@
-/* 
-  <body>
-    <div class="container">
-      <div class="form">
-        <input type="text" class="input">
-        <input type="submit" class="add" value="Add Task">
-      </div>
-      <div class="tasks"></div>
-    </div>
-    <script src="main.js"></script>
-  </body>
-*/
-// text field eg: create Python Course [Add Task]
-// tasks field => 🔼 [as block, its key is[title]] && delete button on right edge
-// save values in localStorage
-// delete will vanish both in storage and the element
-let taskField = document.querySelector('.input').value;
 document.querySelector('.add').addEventListener('click', function(){
+  let text = document.querySelector('.input').value;
   let div = document.createElement('div');
-  let textNode = document.createTextNode(taskField);
+  let textNode = document.createTextNode(text);
+  let tasks = document.querySelector('.tasks');
+  let delButton = document.createElement('p');
+  let deleting = document.createTextNode('Delete');
+  let contain = document.createElement('div');
+    let count = document.querySelector('.tasks').childElementCount;
   div.appendChild(textNode);
+  contain.appendChild(div);
+  delButton.appendChild(deleting);
+  contain.append(delButton);
+  contain.setAttribute("class", "task");
+    for (let i = -1; i < count; i++) {
+      contain.setAttribute("id", `del-${i+1}`);
+    }
+  tasks.appendChild(contain);
+});
 
-  return document.body.appendChild(div);;
-  // let delButton = document.createElement('p');
+// Deletion didn't work, and afterwards I need to create localStorage values for Divs
+//  I create, then delete them when clicking on delete button
+// 5:25 PM 2/23/2023 🤮💩
+
+let deleteMe = document.getElementsByTagNameNS('p');
+let task = document.querySelectorAll('.task');
+document.querySelectorAll('.task').forEach((elem)=>{
+  task.addEventListener("click",(e)=>{
+    elem.remove();
+  });
 })
+// document.querySelectorAll('.task').forEach((elem)=>{
+//   elem.addEventListener("click",(e)=>{
+//     elem.remove();
+//   });
+// })
 
-function createAnElement(textContent) {
-  let element = document.createElement("div");
-  let textNode = document.createTextNode(textContent);
-  element.appendChild(textNode);
-  return element;
-}
-// let div = createAnElement("div", "Hello niggas");
-// document.body.appendChild(div);
+
+// let taskSet = document.querySelectorAll('.task');
+// taskSet.forEach((li)=>{
+//   li.addEventListener("click",(e)=>{
+//     // e.currentTarget.classList.remove('task');
+//     e.parentElement.remove();
+//   });
+// });
+
+// for (let i = -1; i < count; i++) {
+//   // document.querySelector('.task p').parentElement.remove();
+//   document.querySelector('.task p').parentElement.remove();
+//   document.querySelector("[name='username']");
+// }

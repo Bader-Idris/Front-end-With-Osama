@@ -336,7 +336,7 @@ document.querySelector(".name").onblur = function () {
   // sessionStorage => refreshing ✅, closing ❎
 };
 
-// 114th lesson 01:25:15 BOM Challenge
+// 114th lesson 01:25:15 BOM Challenge ❎💩
 /* elzero tips:
   Don't start coding when you see problems!
   separate sections into phases[pseudo code as YOU LEARNED]
