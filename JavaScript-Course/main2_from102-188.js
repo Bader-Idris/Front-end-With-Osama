@@ -367,3 +367,10 @@ document.querySelector(".name").onblur = function () {
     objects, and maps And sets them into new, distinct variables."
   - Destructuring Array
 */
+let myFriends = ["Ahmed","Sayed","Ali","Maysa" ];
+let [first,second,third,forth] = myFriends;// destructuring is done✔️
+
+console.log(first);
+console.log(second);
+console.log(third);
+console.log(forth);
