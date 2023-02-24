@@ -1,0 +1,31 @@
+- No Frameworks
+- Vanilla JavaScript
+- Many Plugins
+- jQuery For Plugins
+- UI/UX Sketches
+- Mind Mapping
+- Osama's VS Code Extensions
+
+we'll practice floating, some css tracks
+  jQuery is only because Plugins are built-in It
+  Vanilla JS means PURE JAVASCRIPT
+I have to create a UX/UI design on my own,
+he said I have to make some little changes 
+  as for fixing the simple bugs he passes for finishing The Course
+
+Mind Mapping: is the perpetration of the sections in the design
+
+His Extensions:
+  Auto Rename Tag [For closing tags]
+  Bracket Pair Color[colorizing brackets]
+  EditorConfig[as we know, for spaces and whatnot]
+  GitLens[Used by me]
+  Icon Fonts[I think I have alters]
+  indent-rainbow
+  Jinja[python extension]
+  live server[for hot reloading, greatly savory, as we know]
+  Material Icon Theme[used]
+  Polacode[same as Code Snap]
+  Prettier[used]
+
+  Neither sass, nor Pugjs

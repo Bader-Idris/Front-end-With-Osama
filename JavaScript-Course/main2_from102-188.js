@@ -374,3 +374,67 @@ console.log(first);
 console.log(second);
 console.log(third);
 console.log(forth);
+// if we type: let [first = 'A'] = myFriends
+// 'A' will not be valuable, it won't redeclare it, but type myFriends' first variable
+// and if it's not declared it'll do declare it
+// to pass an element inside the array, type an empty space as:
+let [uno, dos, ,cuatro] = myFriends;// it'll pass 'Ali'
+
+// 116th lesson 01:33:47 Destructuring Arrays Part 2
+let myFriendsDist = ["Ahmed","Sayed","ali",["Shady", "Amr",["Mohamed","Gamal"]]];
+console.log(myFriendsDist[3][2][1]);
+
+// little challenge
+// let alf = myFriendsDist[3][0];// use spaces!
+// let bah = myFriendsDist[3][2][1];// use spaces!
+
+// let [,,,alf,,bah,,] = myFriendsDist;//shady✅, gamal❎because I didn't access the nested array using []as
+// let [,,,[alf,,[,,bah]]] = myFriendsDist;//I added one more comma
+let [,,,[alf,,[,bah]]] = myFriendsDist;//✅✅
+console.log(alf);// Shady
+console.log(bah);// Gamal
+// he used a lovely way to teach us, cloning the prior one, and only removing unimportant values,
+//  changing string into our var,and finally = myFriends ||  it was identical
+
+// 117th lesson 01:38:00 Destructuring Arrays Part 3 Swap Variables
+// Destructuring Array => Swapping variables
+let book = "video";
+let video = "book";
+/* This is swapping, too boring, see the love downwards
+// Save book value in stash
+let stash = book;// Video
+// change Book value
+book = video;// Book
+
+// Change Video value
+video = stash;// Video
+*/
+[book, video] = [video, book];// swapping using destructuring love
+console.log(book);
+console.log(video);
+
+// 118th lesson 01:41:25 Destructuring Objects Part 1
+const user = {
+  theName: "Osama",
+  theAge: 39,
+  theTitle: "Developer",
+  theCountry: "Egypt",
+};
+console.log(user.theName);//the normal property calling as we know
+const { theName, theAge, theTitle, theCountry} = user;//for updating these the values wrap it all as🔷
+// { theName, theAge, theTitle, theCountry} = user;//this = means following:
+// they ask us to wrap the whole object within  (parenthesis)
+({ theName, theAge, theTitle, theCountry} = user);// as this🔷
+
+console.log(theName);// as a normal variable
+// if we pass a property, we don't need to add ,, as arrays, see:
+// const { theName, theAge, theCountry} = user;
+
+// 119th lesson 01:46:20 Destructuring Objects Part 2
+/*
+  Destructuring Object
+  -- Naming Variables
+  -- add New Property
+  -- Nested Object
+  -- Destructuring Only Nested Objects
+*/
