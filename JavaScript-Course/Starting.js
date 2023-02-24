@@ -36,3 +36,7 @@
 */
 // <script></script> HTML internal
 // <script src="main.js"></script> External
+
+// I say: search for [Emmet in Visual Studio Code]it's great as
+// [ div.nigga*3$ ] this creates divs classed in nigga multiples by 3 as a counter💚
+// this is greater ul>li.lis>a:link*3 💚💚
