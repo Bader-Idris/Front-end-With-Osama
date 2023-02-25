@@ -6,6 +6,7 @@ body {
   min-height: 100vh;
   background-image: url("../imgs/01.jpg");
   background-size: cover;
+  position: relative;
 }
 .landing-page .overlay {
   background-color: rgba(0, 0, 0, 0.6);
@@ -14,9 +15,31 @@ body {
   height: 100%;
   left: 0;
   top: 0;
+  z-index: 1;
 }
-.landing-page .header-area{}
-.landing-page .logo{}
-.landing-page ul {}
-.landing-page ul li{}
+.header-area {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  display: flex;
+  padding: 10px;
+}
+.header-area .logo{
+  width: 300px;
+  padding: 15px;
+  font-weight: bold;
+}
+.header-area .links {
+  list-style: none;
+  padding-left: 0;
+  padding-left: 20px;
+  width: 100%;
+  text-align: right;
+
+}
+.header-area .links li{
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 15px;
+}
 /* End Landing Page */

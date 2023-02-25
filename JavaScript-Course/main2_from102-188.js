@@ -438,4 +438,83 @@ console.log(theName);// as a normal variable
   -- Nested Object
   -- Destructuring Only Nested Objects
 */
-// OMG, it's 12:25 AM 2/25/2023 after midnight
+const userNigga = {
+  theName: "Osama",
+  theAge: 39,
+  theTitle: "Developer",
+  theCountry: "Egypt",
+  skills:{
+    html:70,
+    css:80
+  },
+};
+const {theName: naw, theAge: algo, theCountry, theColor = "Red",skills:{html:h,css}} = userNigga;
+// because we sat theColor, we type = instead of colon :
+console.log(naw);
+console.log(algo);
+console.log(theCountry);
+console.log(theColor);
+// console.log(co);// we can set theColor as: {theColor: co = "Red"}
+console.log(`My HTML Progress Is ${h}`);//nested object=> skills:{html}
+// we don't have to type userNigga.html
+// skills:{html:h} I changed html's name to 'h'
+// to bring other properties we use same way: skills:{html:h, css}
+console.log(`My HTML Progress Is ${css}`);
+
+const {html:skillOne, css: skillTwo} = userNigga.skills;
+console.log(`My HTML Progress Is ${skillOne}`);
+console.log(`My HTML Progress Is ${skillTwo}`);
+
+// 120th lesson 01:52:00 Destructuring Function Parameters
+const userTeen = {
+  theName: "Osama",
+  theAge: 39,
+  skills:{
+    html:70,
+    css:80
+  },
+};
+
+showDetails(userTeen);
+// function showDetails(obj){
+//   console.log(`Your Name Is ${obj.theName}`);
+//   console.log(`Your Age Is ${obj.theAge}`);
+//   console.log(`Your CSS Progress Is ${obj.skills.css}`);
+// }
+
+function showDetails({theName:n, theAge:a,skills:{css:c}}= userTeen){
+  console.log(`Your Name Is ${n}`);
+  console.log(`Your Age Is ${a}`);
+  console.log(`Your CSS Progress Is ${c}`);
+}
+
+// 121st lesson 01:54:50 Destructuring Mixed Content
+//🔴destructuring training!!🔴
+const userTraining = {
+  theName: "Hanady",
+  theAge: 29,
+  skills:["HTML","CSS","JavaScript"],
+  addresses:{
+    egypt:"Cairo",
+    ksa:"Riyadh",
+    Palestine:"Hebron",
+  },
+};
+
+
+function myHoney({theName:n, theAge:a,skills:j,addresses:{Palestine:p}}= userTeen){
+  console.log(`Your Name Is ${n}`);
+  console.log(`Your Age Is ${a}`);
+  console.log(`Your Skills Are ${j}`);
+  console.log(`Your Home Town Is ${p}`);
+}
+myHoney(userTraining);//Done✅
+// teacher's working without func
+const {
+  theName: n,
+  theAge: a,
+  skills: [one, two, three],
+  addresses: { egypt: e },
+} = userTraining;
+
+// 122nd lesson 01:58:50🔴Destructuring CHALLENGE🔴
