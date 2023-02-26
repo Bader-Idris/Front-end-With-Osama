@@ -518,3 +518,48 @@ const {
 } = userTraining;
 
 // 122nd lesson 01:58:50🔴Destructuring CHALLENGE🔴
+
+// this myFriends array has 3 objects, and another nested array in each
+
+// if chosen == 1, make destructuring to get only the first person
+// if available == true, say:
+// Available, if false say: Not Available
+// pick the last skill
+
+// the results must be consoled as
+// Osama
+// 39
+// Available
+// CSS
+// if chosen == 2, pick the second obj, and so on
+let chosen = 1;
+let myFriendsChall = [
+  { title: "Osama", age: 39, available: true, skills: ["HTML", "CSS"] },
+  { title: "Ahmed", age: 25, available: false, skills: ["Python", "Django"] },
+  { title: "Sayed", age: 33, available: true, skills: ["PHP", "Laravel"] },
+];
+function destruct(){
+  const { title: n, age: a, skills: [, s], available: free, } = myFriendsChall[chosen];
+  console.log(n);
+  console.log(a);
+  if (free == true) console.log(`Available`);
+  else console.log(`Not Available`);
+  console.log(s);
+}
+destruct();//✅
+
+// 123rd lesson 02:01:20 Set Data Type And Methods
+/*
+  Syntax: new Set(Iterable)
+  -- Object To Store Unique Values
+  -- Cannot Access Elements By Index
+
+  Properties:
+  - size
+
+  Methods:
+  -- add
+  -- delete
+  -- clear
+  -- has
+*/
