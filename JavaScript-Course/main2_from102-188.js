@@ -563,3 +563,96 @@ destruct();//✅
   -- clear
   -- has
 */
+let myData = [1,1,1,2,3,"A"];
+// let myUniqueData = new Set([1,1,1,2,3]);
+// let myUniqueData = new Set(myData);
+// let myUniqueData = new Set().add(1).add(1).add(1).add(2).add(3);//valid though
+
+let myUniqueData = new Set();
+myUniqueData.add(1).add(1).add(1);
+myUniqueData.add(2).add(3).add("A");//same as updating values
+
+// set constructor removes repetition, and only stores unique values
+// set's size is the length
+console.log(myData);
+console.log(myUniqueData);
+console.log(myUniqueData.size);
+console.log(myUniqueData[0]);//undefined, not as normal arrays
+
+myUniqueData.delete(2);//deletes the value 2
+// console.log(myUniqueData.delete(2));// boolean, true, so it does and return true
+// if not exists, doesn't delete, and returns false
+
+console.log(myUniqueData);
+console.log(myUniqueData.size);
+
+// myUniqueData.clear();// clears everything AYK
+
+// has is better than includes⚠️🔴
+console.log(myUniqueData.has("A"));
+console.log(`Does Set have => A ${myUniqueData.has("a".toUpperCase())}`);
+// .has("a".toUpperCase())}`); I love this💗
+
+// 124th lesson 02:09:42 Set Vs WeakSet And Garbage collector
+/*
+  - Set vs WeakSet
+  "
+    meaning references to objects in a WeakSet are held weakly
+    If no other references to an object stored in the WeakSet exist,
+    those objects can be garbage collected.
+    
+  "
+  --
+  Set     => Can Store Any Data Value
+  WeakSet => Stores Only Collection of objects
+  --
+  Set     => Have Size Property
+  WeakSet => Doesn't Have Size Property
+  --
+  Set     => Can Use ForEach
+  WeakSet => Cannot Use ForEach
+
+  Usage: Store Objects and removes them once they become inaccessible
+
+  Search for
+  🔴Garbage collection🔴 as for weakSet cleaning in CS
+*/
+
+// Type Of Data
+let mySet = new Set([1,1,1,2,3,"A","A"]);
+console.log(mySet);
+// Size
+console.log(`Size Of Elements In Set: ${mySet.size}`);
+
+// Values + Keys Alias
+let iterator = mySet.keys();//keys are alias to values,
+// console.log(iterator);
+// we'll see [next method] inside prototype of keys
+// console.log(iterator.next());//done false
+//  meaning: iteration didn't finish, it must arrive at "A"
+console.log(iterator.next().value);//1
+console.log(iterator.next().value);//2
+console.log(iterator.next().value);//3
+console.log(iterator.next().value);//A
+console.log(iterator.next());//value undefined, done: true
+
+// ForEach
+mySet.forEach((el)=> console.log(el));
+
+console.log('#'.repeat(20));
+
+// values return iterators
+// Search for 🔴values && iteration for looping in set🔴
+
+// let myws = new WeakSet([1,1,1,2,3,"A","A"]); invalid, it needs objects
+let myws = new WeakSet([{A:1,B:2}]);
+console.log(myws);
+// size isn't in its prototype, no need to look after it
+
+
+// Values + Keys Alias
+//same as size, not a function in __proto__
+// Search for 🔴WeakSet Usage Cases🔴 he referred it 
+// he talked about [[front-end tutorial]]⚠️ IMPORTANT
+
+// 125th lesson 02:20:21 Map Data Type Vs Object
