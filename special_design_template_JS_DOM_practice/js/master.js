@@ -1,3 +1,11 @@
+let myGear = document.querySelector(".toggle-settings .myGear");
+let settingsBox = document.querySelector(".settings-box");
+myGear.onclick = function() {
+  this.classList.toggle('fa-spin');
+  settingsBox.classList.toggle("open");
+};
+// 🔼 7th lesson Toggle Spin Class Icon I love it💚
+
 // Select Landing Page Element
 let landingPage = document.querySelector(".landing-page");
 
