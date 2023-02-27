@@ -1,10 +1,22 @@
+
+
+//🔼 9th lesson localStorage
 let myGear = document.querySelector(".toggle-settings .myGear");
 let settingsBox = document.querySelector(".settings-box");
 myGear.onclick = function() {
   this.classList.toggle('fa-spin');
   settingsBox.classList.toggle("open");
 };
-// 🔼 7th lesson Toggle Spin Class Icon I love it💚
+//🔼 7th lesson Toggle Spin Class Icon I love it💚
+
+const colorsLi = document.querySelectorAll('.colors-list li');
+colorsLi.forEach(li =>{
+  li.addEventListener("click",(e)=>{
+    document.documentElement.style.setProperty("--main-color",e.target.dataset.color);
+  });
+});
+
+//🔼 8th lesson Switching Colors
 
 // Select Landing Page Element
 let landingPage = document.querySelector(".landing-page");
