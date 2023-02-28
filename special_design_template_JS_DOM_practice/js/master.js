@@ -1,4 +1,13 @@
-
+let mainColors = localStorage.getItem('color_option');
+if (mainColors !== null) {
+  document.documentElement.style.setProperty("--main-color",mainColors);
+  // check for active classes
+  document.querySelectorAll(".colors-list li").forEach(ele =>{
+    ele.classList.remove("active");//same for assignments🔴
+  // now we add active class && data-color and into localStorage though
+  if (ele.dataset.color === mainColors) ele.classList.add("active");
+  });
+}
 
 //🔼 9th lesson localStorage
 let myGear = document.querySelector(".toggle-settings .myGear");
@@ -12,7 +21,16 @@ myGear.onclick = function() {
 const colorsLi = document.querySelectorAll('.colors-list li');
 colorsLi.forEach(li =>{
   li.addEventListener("click",(e)=>{
-    document.documentElement.style.setProperty("--main-color",e.target.dataset.color);
+    // setting color in root:
+    document.documentElement.style.setProperty("--main-color",e.target.dataset.color);//copy to localStorage
+    // setting colors in localStorage🔷
+    localStorage.setItem("color_option",e.target.dataset.color);
+    // removing children's active classes
+    e.target.parentElement.querySelectorAll(".active").forEach(ele =>{
+      ele.classList.remove("active");//important to solve 🔴elzero assignment's local storage🔴
+    });
+    //adding active class
+    e.target.classList.add("active");
   });
 });
 

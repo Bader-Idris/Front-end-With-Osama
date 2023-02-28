@@ -448,7 +448,7 @@ const userNigga = {
     css:80
   },
 };
-const {theName: naw, theAge: algo, theCountry, theColor = "Red",skills:{html:h,css}} = userNigga;
+// const {theName: naw, theAge: algo, theCountry, theColor = "Red",skills:{html:h,css}} = userNigga; theCountry is being used before
 // because we sat theColor, we type = instead of colon :
 console.log(naw);
 console.log(algo);
@@ -656,3 +656,57 @@ console.log(myws);
 // he talked about [[front-end tutorial]]⚠️ IMPORTANT
 
 // 125th lesson 02:20:21 Map Data Type Vs Object
+/*
+  - Map Data Type
+  Syntax: new Map(Iterable With Key/Value)
+  -- Map Vs Object
+  --
+  ------ Map => Does Not Contain Key By Default
+  ------ Object => Has default keys
+  --
+  ------ Map => Key Can Be Anything [Function, object, Any Primitive Data Type]
+  ------ Object => String Or Symbol
+  --
+  ------ Map => Key Can Be Insertion
+  ------ Object => Not 100% Till Now
+  --
+  ------ Map => Get Items By Size
+  ------ Object => Need To Be Manually
+  --
+  ------ Map => Can be Directly Iterated
+  ------ Object => Not Directly && Needs To Use Object.keys() && so on
+  --
+  ------ Map => Better Performance When Add Or Remove Data
+  ------ Object => Low Performance When Comparing TO Map
+*/
+let miObject = {};
+let myEmptyObject = Object.create(null);//as I read in MDN about prototype chain
+let miMap = new Map();
+
+console.log(miObject);//properties as __proto__
+console.log(myEmptyObject);//no properties
+console.log(miMap);
+// Osama has OOP JS course
+let myNewObject = {
+  10: "Number",
+  "10": "String",//formatter will change 10 to number type
+};
+// it'll overwrite it, even without changing its type
+// console.log(myNewObject[10]);
+
+let myNewMap = new Map();
+myNewMap.set(10, "Number");
+myNewMap.set("10", "String");
+// adding other types
+myNewMap.set(true, "Boolean");
+myNewMap.set({a: 1, b: 2}, "Object");
+myNewMap.set(function whatEver(){}, "Function");
+
+
+console.log(myNewMap.get(10));//get here brings back our key name
+console.log(myNewMap.get("10"));
+
+console.log("#".repeat(15));
+console.log(myNewObject);
+console.log(myNewMap);//see what Osama means
+// 2:28:14

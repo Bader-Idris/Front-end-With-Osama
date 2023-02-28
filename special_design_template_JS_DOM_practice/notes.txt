@@ -33,3 +33,5 @@ His Extensions:
 //02 lesson Get Inspiration and Create Landing Page
   <!-- on google, type landing page... it'll fill your txt -->
   <!-- landing page inspiration -->
+
+lessons with 🔼 are the most important, for forEach loops, adding and removing active classes and using localStorage
