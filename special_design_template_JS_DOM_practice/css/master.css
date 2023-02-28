@@ -43,6 +43,7 @@ body {
 .settings-box .option-box h4{
   margin: 0;
   color: #666;
+  font-size: 14px;
 }
 .settings-box .option-box .colors-list {
   list-style: none;
@@ -76,6 +77,23 @@ body {
 }
 .settings-box .colors-list li:last-child{
   background-color: #9c27b0;
+}
+.settings-box .random-backgrounds .yes,
+.settings-box .random-backgrounds .no {
+  width: 50px;
+  background-color: #009688;
+  color: #fff;
+  margin-top: 20px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  opacity: .5;
+}
+.settings-box .random-backgrounds span.active {
+  opacity: 1;
 }
 /* End settings box */
 /* Start Landing Page */
@@ -150,5 +168,4 @@ body {
   font-size: 20px;
   margin: 0;
 }
-/* 11th */
 /* End Landing Page */
