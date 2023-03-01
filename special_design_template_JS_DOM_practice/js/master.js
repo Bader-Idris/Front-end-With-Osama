@@ -154,3 +154,24 @@ window.onscroll = function () {
     })
   }
 }
+//🔽19th lesson is important in DOM Osama said🔴 for pop-up usages
+// creating pop-up using images
+let ourGallery = document.querySelectorAll('.gallery img');
+ourGallery.forEach(image => {
+  image.addEventListener('click', (e)=>{
+    // adding overlay element
+    let overlay = document.createElement('div');
+    overlay.className = 'popup-overlay';
+    document.body.appendChild(overlay);
+    // creating our popup
+    let popupBox = document.createElement("div");
+    popupBox.className = 'popup-box';
+    // creating our image inside popup box
+    let popupImage = document.createElement("img");
+    // setting image source
+    popupImage.src = image.src;
+    // appending image to popup box
+    popupBox.appendChild(popupImage);
+    document.body.appendChild(popupBox);
+  });
+});
