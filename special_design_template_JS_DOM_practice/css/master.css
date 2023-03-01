@@ -7,6 +7,12 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
+.container {
+  width: 1170px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: auto;
+}
 /* Start settings box */
 .settings-box {
   position: fixed;
@@ -23,12 +29,14 @@ body {
 }
 .settings-box .toggle-settings {
   position: absolute;
-  right: -30px;
+  right: -37px;
   top: 100px;
   background-color: #fff;
   text-align: center;
   cursor: pointer;
   border-radius: 0 12em 12em 0;
+  border: solid black;
+  border-width: 2px 2px 2px 0;
 }
 .settings-box .myGear {
   padding: 8px 0;
@@ -169,3 +177,84 @@ body {
   margin: 0;
 }
 /* End Landing Page */
+/* Start About Us */
+.about-us {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+}
+.about-us .info-box{
+  flex: 1;
+  padding: 30px;
+}
+.about-us .info-box h2 {
+  font-weight: bold;
+  font-size: 30px;
+  color: var(--main-color);
+  margin: 0 0 10px;
+}
+.about-us .info-box p {
+  line-height: 1.8;
+  color: #767676;
+  margin: 0;
+}
+.about-us .image-box {
+  flex: 1;
+  text-align: center;
+  /* he said, it's lovelier to make pic's colors change with main color */
+}
+.about-us .image-box img {
+  width: 250px;
+}
+/* End About Us */
+
+/* End Skills */
+.skills {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #ddd;
+}
+.skills h2 {
+  font-weight: bold;
+  font-size: 30px;
+  color: var(--main-color);
+  margin: 0 0 50px;
+  text-align: center;
+}
+.skills .skill-box {
+  background-color: #fff;
+  display: flex;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.skills .skill-box .skill-name {
+  font-weight: bold;
+  width: 140px;
+  text-align: center;
+  line-height: 30px;
+}
+.skills .skill-box .skill-progress {
+  height: 30px;
+  width: calc(100% - 110px);
+  text-align: center;
+  background-color: #ddd;
+  overflow: hidden;
+  position: relative;
+}
+.skills .skill-box .skill-progress span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color:  var(--main-color);
+}
+.skills .skill-box:first-of-type .skill-progress span {
+  width: 100%;/*our progress*/
+}
+.skills .skill-box:nth-of-type(2) .skill-progress span{
+  width: 75%;
+}
+.skills .skill-box:last-of-type .skill-progress span {
+  width: 40%;
+}
+/* End Skills */
