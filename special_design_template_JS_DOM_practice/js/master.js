@@ -128,3 +128,29 @@ function randomizeImgs() {
   }
 };
 // 🔼12th lesson Random BG logic
+
+//🔽16th lesson Animate SKills, too tough, my man🤯😮‍💨
+// selecting skills selector
+ourSkills = document.querySelector('.skills');
+
+window.onscroll = function () {
+  //skills Offset Top
+  //🔽it's the point above skills section in scrolling
+  let skillsOffsetTop = ourSkills.offsetTop;
+  // Skills Outer Height
+  let skillsOuterHeight = ourSkills.offsetHeight;
+  // it's an🔴HTMLelement method. see MDN🔴
+  // it picks el height including other parts as border...
+
+  // window height
+  let windowHeight = this.innerHeight;
+
+  let windowScrollTop = this.scrollY //same as pageYOffset
+  
+  if (windowScrollTop > (skillsOffsetTop + skillsOuterHeight - windowHeight)) {
+    let allSkills = document.querySelectorAll(".skill-box .skill-progress span");
+    allSkills.forEach(skill =>{
+      skill.style.width = skill.dataset.progress;
+    })
+  }
+}

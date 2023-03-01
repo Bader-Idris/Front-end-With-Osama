@@ -212,7 +212,7 @@ body {
 .skills {
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: #ddd;
+  background-color: #EEE;
 }
 .skills h2 {
   font-weight: bold;
@@ -235,11 +235,13 @@ body {
 }
 .skills .skill-box .skill-progress {
   height: 30px;
-  width: calc(100% - 110px);
+  /* width: calc(100% - 110px); */
+  width: 100%;
   text-align: center;
-  background-color: #ddd;
+  background-color: #f6f6f6;
   overflow: hidden;
   position: relative;
+  border-radius: 6px;
 }
 .skills .skill-box .skill-progress span {
   position: absolute;
@@ -247,14 +249,7 @@ body {
   top: 0;
   height: 100%;
   background-color:  var(--main-color);
-}
-.skills .skill-box:first-of-type .skill-progress span {
-  width: 100%;/*our progress*/
-}
-.skills .skill-box:nth-of-type(2) .skill-progress span{
-  width: 75%;
-}
-.skills .skill-box:last-of-type .skill-progress span {
-  width: 40%;
+  transition: all .5s; /* because of ease-in-out all the function broke */
+  width: 0;
 }
 /* End Skills */
