@@ -154,7 +154,7 @@ window.onscroll = function () {
     })
   }
 }
-//🔽19th lesson is important in DOM Osama said🔴 for pop-up usages
+//🔽18th lesson is important in DOM Osama said🔴 for pop-up usages
 // creating pop-up using images
 let ourGallery = document.querySelectorAll('.gallery img');
 ourGallery.forEach(image => {
@@ -166,6 +166,17 @@ ourGallery.forEach(image => {
     // creating our popup
     let popupBox = document.createElement("div");
     popupBox.className = 'popup-box';
+        //----------------------------------
+          // 19th lesson
+          if (image.alt !== null) {
+            // creating image's heading from alt text
+            let imgHeading = document.createElement("h3");
+            let imgText = document.createTextNode(image.alt);
+            imgHeading.appendChild(imgText);
+            // appending heading to popup box
+            popupBox.appendChild(imgHeading);
+          }
+        //----------------------------------
     // creating our image inside popup box
     let popupImage = document.createElement("img");
     // setting image source
@@ -173,5 +184,20 @@ ourGallery.forEach(image => {
     // appending image to popup box
     popupBox.appendChild(popupImage);
     document.body.appendChild(popupBox);
+    // 19th continuing: creating closing[❌] span
+    let closeButton = document.createElement("span");
+    // creating cross symbol
+    let closeButtonText = document.createTextNode("X");
+    closeButton.appendChild(closeButtonText);
+    closeButton.className = 'close-button';
+    // adding close button to popup box
+    popupBox.appendChild(closeButton);
   });
 });
+document.addEventListener("click",(e)=>{
+  if (e.target.className == "close-button") {
+    e.target.parentNode.remove();//utilizing X symbol
+    // removing overlay as second method
+    document.querySelector(".popup-overlay").remove();
+  }
+})

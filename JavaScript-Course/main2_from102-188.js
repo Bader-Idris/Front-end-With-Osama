@@ -709,4 +709,88 @@ console.log(myNewMap.get("10"));
 console.log("#".repeat(15));
 console.log(myNewObject);
 console.log(myNewMap);//see what Osama means
-// 2:28:14
+
+// 126th lesson 02:30:20 Map Methods
+/*
+  - Map Data Type
+  Methods
+  --- set
+  --- get
+  --- delete
+  --- clear
+  --- has
+
+  Properties
+  --- size
+*/
+let myMap = new Map([
+  [10, "Number"],
+  ["Name", "string"],//same as set key and value downwards
+  [false, "Boolean"],
+]);
+
+// myMap.set(10, "Number");
+// myMap.set("Name", "string");
+
+console.log(myMap.get(10));
+console.log(myMap.get("Name"));//to get name's key
+console.log(myMap.get(false));//gets key
+
+console.log("####");
+console.log(myMap.has(false));//boolean true
+console.log("####");
+
+console.log(myMap.size);
+console.log(myMap.delete("Name"));//when returns true, it says I delete it successfully
+console.log(myMap.size);//it's shorter
+myMap.clear(); //no options, it clears AYK
+console.log(myMap.size);
+
+// 127th lesson 02:35:35 Map Vs WeakMap
+/*
+  WeakMap Allows Garbage Collector To Do Its Task Not Map.
+
+  Map     => Key Can Be Anything
+  WeakMap => Key Can Only Be Objects
+*/
+
+let mapUser = {theName: "Elzero"};
+let misMap = new Map();
+misMap.set(mapUser,"Object Value");
+mapUser = null;// Override The Reference
+console.log(misMap);
+
+console.log("#".repeat(20));
+
+let wMapUser = {theName: "Elzero"};
+let myWeakMap = new WeakMap();
+myWeakMap.set(wMapUser,"Object Value");
+console.log(wMapUser);
+myWeakMap = null;// Override The Reference
+// it's to remove garbage collection,
+// 🔴but it doesn't, because of JS structuring,
+//  not as C++ and other manageable languages
+
+// in console, go to Performance => 🧺trash, its title is [Collect garbage] and it's in memory besides it
+
+// 128th lesson 02:42:10 Array.from Method [advanced concepts]
+/*
+  Array Methods
+  - Array.from(Iterable, MapFunc, This)[MapFunc ~ reduce()]
+  --- Variable
+  --- String Numbers
+  --- Set
+  --- Using The Map Function
+  --- Arrow Function
+  --- Shorten Teh Method + Uses arguments
+*/
+console.log(Array.from("Bader"));//he called the iterable as [sequence]
+// it's same as split(""), here🔼
+
+console.log(Array.from(12345));//not iterable, no output
+console.log(Array.from("12345"));//iterable as string
+console.log(Array.from("12345", (n)=> +n + +n));// unary because it's a string
+console.log(Array.from("12345", function (n) {
+  return +n + +n;
+}));
+// 2:45:..
