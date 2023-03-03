@@ -1,0 +1,12 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a{
+  list-style: none;
+  text-align: center;
+  text-decoration: none;
+  color:#fff;
+  background-color: #1f8ad2;
+}
