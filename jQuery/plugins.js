@@ -16,7 +16,7 @@
 $(document).ready(function(){
   //it doesn't wait for images to load, only code, not as JS
   $("body>p").hide();// this is best practice, to not have bugs as out of ready func
-  $("2nd-lesson").css("color", "#1f8ad2");
+  $("Sec-lesson").css("color", "#1f8ad2");
   $("body div").css("font-size", "40px");
 
 });
@@ -33,16 +33,16 @@ $(document).ready(function(){
 // 3rd lesson
 $(function(){//onload func
   $(".nesP").click(function (e) { 
-    $(".3rdlesson").hide();
-    $(".2nd-lesson").css("background-color", "black");
+    $(".Thirlesson").hide();
+    $(".Sec-lesson").css("background-color", "black");
     $(this).dblclick(function (e) {//this dblclick is double click
       $(this).css("color", "green");
     });
   });
   // ease For JS Pros
-  $(this).mouse((e)=> {
-    $("span").hide();
-  });
+  // $(this).mouse((e)=> {
+  //   $("span").hide();
+  // });
 });
 // events, same as JS
 /*
@@ -69,3 +69,39 @@ $(function(){//onload func
 // });
 
 // 5th lesson
+// fade funcs are built into CSS opacity
+// fadeIn(speed, callbackFunc)
+// fadeOut(speed, callbackFunc) is opposite to fadeIn
+// fadeToggle() as any other toggle func
+// fadeTo(speed,Opacity, callbackFunc)
+
+// reveals opacity from 0 to 1, if display is none, it gets block using opacity
+// looks like we need to use func as toFix() in JS
+
+// $(function(){// it's not working in 3.6 jQuery compressed VERSION
+//   $("button").click(()=>{
+//     $(this).fadeTo(5000,0.2,()=>{
+//       $('nesP').fadeOut(2000);
+//     });
+//   });
+// });
+
+// 6th lesson
+/*
+slideDown() if its display is none, it appears 🔽, its height stretches
+slideUp(), opposite to slideDown
+  SlideToggle()
+*/
+// 7th lesson [Animate]IMPORTANT
+$(function () {
+  $("button").click(() => {
+    $(".nesP").animate({
+      width: "+=200px",
+      margin: "0 50%",
+      border: "5px solid #eee",
+      position:"relative"
+    }, 2000,()=>{$(".sevlesson").fadeIn(3000);});
+  });
+});
+// width: "+=50px" this one means, current value plus ...[relative values]
+// $("el").animate({param},speed, callbackFunc);
