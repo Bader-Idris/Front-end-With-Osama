@@ -121,7 +121,8 @@ $(function () {
 // we can use animate with popups
 
 // 8th lesson
-// stop() it stops the animation
+// stop(clearQueue,goToEnd) it stops the animation
+// stop(false);[default]
 $(document).ready(()=>{
   $(".eighth").animate({
     width: "+=100px",
@@ -132,6 +133,22 @@ $(document).ready(()=>{
     left:"+=200px",
   });
   $("button").click(()=>{
-    $(".eighth").stop()
+    $(".eighth").stop();//only stops 1st animate, as default
   })
 });
+// stop(true);// stops all animations
+// stop(true,true);// goes to the end of the 1st animate,
+// stop(false,true);//ends 1st animation, and continues others
+
+// 9th lesson [(length -1) in animation lessons]
+// chain, using JS declaration instead of $('sth')
+let dido = $(document);
+dido.ready(()=>{
+  let ninth = $('.ninth');
+  ninth.css({background:'#ff23f1'}).slideUp(800).slideDown(800)
+    .fadeOut(1000);//flexible in new lines
+  // these upwards are chained AYK in Vanilla JS
+  ninth.css("margin-left","40px");
+});
+// using declaration is faster than $('sth')
+// we put non-animating methods Preceding animating methods 💠🔗
