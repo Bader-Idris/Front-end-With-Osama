@@ -793,4 +793,39 @@ console.log(Array.from("12345", (n)=> +n + +n));// unary because it's a string
 console.log(Array.from("12345", function (n) {
   return +n + +n;
 }));
-// 2:45:..
+
+let miArray = [1,1,1,2,3,4];
+// let miSet = new Set(miArray);
+// console.log(Array.from(miSet));
+
+// instead of setting a set and array from it do this
+console.log([...new Set(miArray)]);//these 3 dots are spread operator
+// we'll learn Spread operation as a great func Osama Said[Spread syntax (...)]
+
+function testArgs(){
+  return arguments;//it's as its name
+};
+console.log(testArgs("Bader","Hanady","marriage"));
+
+function af(){
+  return Array.from(arguments);// this makes it as an array
+};
+console.log(af("Bader","Hanady","marriage"));
+
+// 129th lesson 02:49:30 Array.copyWithin Method
+/*
+  Array Methods
+  - Array.copyWithin(Target, Start => Optional, End => Optional)
+  "Copy Part Of An Array To Another Location in The Same Array"
+  -- Any Negative Value Will Count From The End
+  -- Target
+  ---- Index To Copy Part To
+  ---- If At Or Greater Than Array Length Nothing Will Be Copied
+  -- Start
+  ---- Index To Start Copying From
+  ---- If Omitted = Start From Index 0
+  -- End
+  ---- Index To End Copying From
+  ---- Not Including End
+  ---- If Omitted = Reach The End
+*/

@@ -98,10 +98,40 @@ $(function () {
     $(".nesP").animate({
       width: "+=200px",
       margin: "0 50%",
-      border: "5px solid #eee",
-      position:"relative"
+      border: "toggle",//hide show, etc 🔴can be used🔴 LOVELY && IMPORTANT[toggleIsShow||Hide]
+      position:"relative",
+      backgroundColor:"black",
     }, 2000,()=>{$(".sevlesson").fadeIn(3000);});
   });
 });
 // width: "+=50px" this one means, current value plus ...[relative values]
 // $("el").animate({param},speed, callbackFunc);
+
+// with animate, it's Ascending a:z[in a row] not as other methods, together
+// if we use +1 animate() functions as 
+// $(()=>{
+//   $(".nesP").animate({
+//     width: "+=200px",
+//   });
+//   $("*").animate({
+//     backgroungColor: "transparent",
+//   });
+// })
+
+// we can use animate with popups
+
+// 8th lesson
+// stop() it stops the animation
+$(document).ready(()=>{
+  $(".eighth").animate({
+    width: "+=100px",
+    height: "+=50px",
+    listStyle:'none',//this didn't work, too bad for it
+  },1000);
+  $(".eighth").animate({
+    left:"+=200px",
+  });
+  $("button").click(()=>{
+    $(".eighth").stop()
+  })
+});
