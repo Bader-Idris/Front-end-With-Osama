@@ -152,3 +152,102 @@ dido.ready(()=>{
 });
 // using declaration is faster than $('sth')
 // we put non-animating methods Preceding animating methods 💠🔗
+
+// 10th lesson set && get 
+// $("sth").text() picks up textContent
+// .html() picks up innerHTML
+// .val() picks forms' value
+// .attr(attr, value) eg: .attr("target","_parent")
+dido.ready(()=>{
+  let cached = $(".eighth").text();
+  let myBaby = "Handay";
+  //making its textContent as an alert
+  alert("hi " + myBaby);
+  $(".tenth").text('Hello ' + cached);
+  $(".tenth + li").text($(".eighth > a").attr("target"));//attrs as href etc
+});
+// I can use .val() to get users' fields in back-end data
+
+/* [to set many attributes], appealingly allOfThese jQuery's are objects
+  $("a").attr({
+    "target":"_parent",
+    "href":"www.google.com",
+    "title":"Google",
+    "class":"goog"
+  });
+*/
+
+// 11th lesson adding elements
+/*
+  append()
+  prepend()
+  after() both comes beside elements themselves [before & after]
+  before()
+  appendTo()
+  prependTo()
+
+  last 2 add selected to targeted as:
+    $("<div>appended</div>).appendTo("li")
+*/
+dido.ready(()=>{
+  $(".eleventh").append("<div>appended</div>both are in same li");
+  $("li")[6].prepend("prepended");
+});
+// before comes here
+// <div> one</div>
+// <div> two</div>
+// after comes here
+
+// a good example using before() and after()
+dido.ready(()=>{
+  $("span.add").click(()=>{
+    $(".bradd").after("<input type='file'>")
+  })
+});
+// advanced usage of appendTo() or its sibling 
+/*
+$(`
+  <div class="sec">
+      <p class="nesP">nested P</p>
+  </div>
+`).appendTo("li");
+  ***********************OR*************************
+$("<div></div>",{
+  class: "divYo",
+  text: "sth",
+  // attributes, or any other object properties
+}).appendTo("li");
+*/
+// we can put variables inside appendTo() object
+
+// 12th lesson
+// remove() exactly as Vanilla JS
+
+$("sec").remove();//unlike hide, this removes el not its only height
+
+dido.ready(()=>{
+  $("button").click(()=>{
+    $(".twelfth").fadeOut(1000,()=>{
+      $(this).remove();//we fade it out then removeItCompletely✔️ GOOD!
+    });
+  });
+  // empty() removes HTML inside selected El
+  let thirdLe = document.querySelector(".Thirlesson");
+  $(thirdLe).empty();
+  $("sth").remove(":contains('This')");//alike includes() in JS
+});
+
+// 13th lesson IMPORTANT dealing with CSS
+/*
+  $(sth).addClass("1stClass anotherClass")[LOVELY]
+  $(sth).removeClass()
+  $(sth).toggleClass() adds or removes
+*/
+// we can use many elements as CSS eg:
+// using chain, we can add classes and remove prior existing ones
+$("div.itsCl, .class, #id").addClass("a b etc").removeClass("old-class")
+// filters:
+// $("p:first") picks up the first paragraph, $("p:last")
+// $("p:eq(0)")// first index
+
+// 14th lesson
