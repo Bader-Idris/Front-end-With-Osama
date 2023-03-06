@@ -81,3 +81,38 @@ form > *:not(:last-child)::selection {
   color: #1f8ad2;
   background-color: #eee;
 }
+.fifteenth {
+  cursor: pointer;
+  position: relative;
+  left: 35%;
+  transform: translateX(-50%);
+  width: 11rem;
+  text-align: center;
+  list-style: none;
+  border: 2px dotted;
+  user-select: none;
+}
+.container {
+  width: 800px;
+  background-color: #ea5f02;
+  color: #0d1c1c;
+  margin: 0 20%;
+  overflow: hidden;
+  top: 10%;
+  position: fixed;
+}
+.container .left {
+  float: left;
+  width: 490px;
+  margin-right: 10px;
+  background-color: #9ACD32;
+  color: #1f8ad2;
+  text-align: center;
+}
+.container .right {
+  float: right;
+  width: 300px;
+  background-color: #9ACD32;
+  color: #1f8ad2;
+  text-align: center;
+}

@@ -250,4 +250,37 @@ $("div.itsCl, .class, #id").addClass("a b etc").removeClass("old-class")
 // $("p:first") picks up the first paragraph, $("p:last")
 // $("p:eq(0)")// first index
 
-// 14th lesson more get / set
+// 15th lesson dimensions: innerWidth, innerHeight, width, height, outerWidth, outerHeight
+// important to impact on behalf of special design's vanilla JS coding in functions
+$(()=>{
+  let dw = $(document).width();
+  if(dw == 1920){
+    //blab
+  }
+  $(".fifteenth").click(()=>{
+    // console.log(true);
+    $(".fifteenth").width("+="+ 50).text("broadenTo"+ $(this).width()+ "px");
+  })
+});
+
+// floated left && right
+$(()=>{
+  $(".left").click(function(){//⚠️the crazy bug I saw, because arrow function, not valid⚠️
+    $(this).width("+="+ 50);
+    $(".right").width("-="+ 50);
+  });
+  $(".right").click(function(){
+    $(this).width("+="+ 50);
+    $(".left").width("-="+ 50);
+  })
+});
+// jQuery's width() doesn't count other arguments as padding,
+// so we use our dimensions🔴🔴 
+// or [[box-sizing: border-box;]]
+
+// innerWidth counts padding, not border nor outline
+// outerWidth is Great ✔️
+// if outerWidth(true) it counts margin with 'em
+// height's argus are same as width's
+
+// 16th lesson traversing [motion]
