@@ -250,4 +250,4 @@ $("div.itsCl, .class, #id").addClass("a b etc").removeClass("old-class")
 // $("p:first") picks up the first paragraph, $("p:last")
 // $("p:eq(0)")// first index
 
-// 14th lesson
+// 14th lesson more get / set
