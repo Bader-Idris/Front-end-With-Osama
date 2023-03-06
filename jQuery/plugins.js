@@ -3,7 +3,7 @@
   jQuery 2015 course:
   jQuery is an open source library, used to simplify working between HTML && JS, built-in JS code
   published in 2006 after a year of development
-  it's specificly useful to non-profession JS coders
+  it's specifically useful to non-profession JS coders
   jQuery works well in every browser, even too old ones as EI 6
 */
 
@@ -114,7 +114,7 @@ $(function () {
 //     width: "+=200px",
 //   });
 //   $("*").animate({
-//     backgroungColor: "transparent",
+//     backgroundColor: "transparent",
 //   });
 // })
 
@@ -283,4 +283,50 @@ $(()=>{
 // if outerWidth(true) it counts margin with 'em
 // height's argus are same as width's
 
-// 16th lesson traversing [motion]
+// 16th lesson [[traversing]] [motion] I LOVE IT💚
+/*
+  $(sth).parent()
+  $(sth).parents() even HTML itself
+  $(sth).parentsUntil() a real love[not including last parent nor 1st parent]
+*/
+// $(sth).parents(".top") only .top parent from family roots
+
+// 17th lesson
+$(()=>{
+  // $(".grand-parent").children("#id");//works well
+  
+});
+// .children() picks up direct children[can't pick grandChildren]
+// .find() picks any son in 👪 branch find("*") picks everything
+
+// Great usage: find("p:contains(\"Hanady\")") 🔴IMPORTANT🔴
+
+// 18th lesson 
+/*
+  siblings
+  .next() as next in JS objects
+  .prev() previous El
+  .nextAll() as its name, all after as sibling
+  .nextUntil('se') as its name, not including selected El
+  .perviousUntil
+*/
+$(()=>{
+  // this👇picks all siblings excluding selected element
+  $(".sth:contains('sth')").siblings().css('color', 'negro');
+  // lovely:
+  $("aside > *").click(function(){
+    $(this).siblings().slideUp(1000);
+    $(this).siblings(".selected").slideDown();//only selected get impacted
+    // using next().slideToggle() or other slideMethods is great
+  });
+});
+// next(".sth");// only true when selected statement
+
+// 19th lesson yet in traversing
+/*
+  .first()
+  .last()
+  .eq()
+  .filter()
+  .not()
+*/
