@@ -324,9 +324,15 @@ $(()=>{
 
 // 19th lesson yet in traversing
 /*
-  .first()
+  .first() can't add argus inside ()
   .last()
-  .eq()
+  .eq() as index of arrays (-1 is last index)
   .filter()
   .not()
 */
+$(()=>{
+  $("div").first().next().css({
+    //css can't do this simply
+  });
+  $("div").prev().next().css()
+});
