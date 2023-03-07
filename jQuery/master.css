@@ -59,7 +59,9 @@ form > * {
 }
 form > *:not(:last-child) {
   padding-left: 20px;
-  caret-shape: underscore;
+  -moz-caret-shape: underscore;
+  -webkit-caret-shape: underscore;
+  -ms-caret-shape: underscore;
   caret-color: #fff;
 }
 form > *:not(:last-child)::selection {
@@ -115,4 +117,8 @@ form > *:not(:last-child)::selection {
   background-color: #9ACD32;
   color: #1f8ad2;
   text-align: center;
+}
+.container .left,
+.container .right {
+  user-select: none;
 }

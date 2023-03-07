@@ -331,15 +331,94 @@ $(()=>{
   .not() opposite to .filter()
 */
 $(()=>{
-  $("div").first().next().css({
-    //css can't do this easily
-  });
-  $("div").prev().css()
-  $("div").filter().prev().css()
-  //any prev to filter('sel')[can add jQuery Objects && func]
-  $("div").not(function(par){
-    return par === 1;// excludes length 1 of index elements
-  }).css("color","#eee")
+  // $("div").first().next().css({
+  //   //css can't do this easily
+  // });
+  // $("div").prev().css()
+  // $("div").filter().prev().css()
+  // //any prev to filter('sel')[can add jQuery Objects && func]
+  // $("div").not(function(par){
+  //   return par === 1;// excludes length 1 of index elements
+  // }).css("color","#eee")
 });
 
-// 20th lesson selector Reference introduction
+// 20th lesson selector Reference introduction [🔴IMPORTANT🔴]
+/* seperate selectors with comma as[#a, .b]
+  [*] even used in linux
+  [.class]
+  [#id]
+  [el]
+  $("el:jQuery")as[first, last eq(n),[:even, :odd]are used though]
+*/
+// 21st lesson continuing selector Reference
+/* as p:first
+
+  :first picks first result
+  :first-child
+  :last
+  :last-child
+  :first-of-type [as css]
+  :last-of-type
+  :nth-child()
+  :nth-last-child() counts descendingly[z:a]
+  :nth-of-type()
+  :nth-last-of-type()
+
+  difference between sibling-child and normal one is as:
+    picks any first selected el, as if body&div have Ps,
+    both will be selected
+*/
+
+// 22nd lesson selector Reference
+/*
+  :only-child [lonely el]
+  :only-of-type [lonely type]
+  $("div ~ p") [every p sibling to div]
+  :gt() [greater than] gt(1) after 2 index
+  :lt() [less than]
+*/
+
+// 23rd lesson selector Reference continuing
+/*
+  $(":header") [every head 1-6]
+  :animated [under animation] when using in Events, it'll be better
+  $(sth).focus() as css input focus
+  :focus [being focused]
+  :has("")
+  :empty [when el's innerHTML is null]
+  :parent every El which has  a parent as <p>st</p> NOT <p></p>
+  :hidden picks elements displayed none, or width/height 0[not working with visibility]
+  :visible opposite to :hidden
+  :root higher than html in priority[where to put vars]
+  :lang as Arabic or rtl langs
+*/
+$(function () {
+  $("body *:contains('JavaScript')").animate({
+    width: '500px',
+  }, 3000).css({
+    background: "yellow",
+    color: '#000',
+  });
+  // out of the course, using vanilla JS
+  let formSub = document.querySelector("input[type='submit']");
+  formSub.onclick = ((e)=> {
+    e.preventDefault()
+    formSub.parentElement.remove()
+  });
+  // -------- end Of JS-------------
+  // $("div:visible").slideToggle();when clicked, it's nice
+});
+
+// 24th lesson selector Reference continuing [Attributes]
+/*
+  [atr] as [src]
+  [atr='sth']
+  element[atr='sth']
+  element[atr!='sth'] not equal to attr
+
+  [atr*='sth'] if atr="sth and other text" [[atr*]] is as includes()in JS
+  ~= separates by word, so [*='st'✔️] but [~='st'❌] it needs all word
+  ^= means starting with
+*/
+
+// 25th lesson selector Reference last V
