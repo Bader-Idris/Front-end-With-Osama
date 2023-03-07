@@ -328,11 +328,18 @@ $(()=>{
   .last()
   .eq() as index of arrays (-1 is last index)
   .filter()
-  .not()
+  .not() opposite to .filter()
 */
 $(()=>{
   $("div").first().next().css({
-    //css can't do this simply
+    //css can't do this easily
   });
-  $("div").prev().next().css()
+  $("div").prev().css()
+  $("div").filter().prev().css()
+  //any prev to filter('sel')[can add jQuery Objects && func]
+  $("div").not(function(par){
+    return par === 1;// excludes length 1 of index elements
+  }).css("color","#eee")
 });
+
+// 20th lesson selector Reference introduction
