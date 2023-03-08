@@ -461,3 +461,53 @@ body {
   color: #706f6f;
 }
 /* End Features */
+
+/* Start Testimonials */
+.testimonials {
+  min-height: 600px;
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.testimonials::before {
+  content: '';
+  width: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--main-color);
+  height: 100%;
+}
+.testimonials::after {
+  content: '';
+  content: '';
+  width: 50%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #333;
+  height: 100%;
+}
+.testimonials h2 {
+  font-weight: bold;
+  font-size: 30px;
+  color: #FFF;
+  margin: 0 0 30px;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+.testimonials .ts-box{
+  position: relative;
+  z-index: 2;
+  width: calc(98% / 3);
+  float: left;
+  background-color: #FFF;
+  padding: 20px;
+  font-size: 22px;
+}
+.testimonials .ts-box:not(:last-of-type){
+  margin-right: 1%;
+}
+
+/* End Testimonials */
