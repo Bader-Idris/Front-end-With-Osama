@@ -162,7 +162,7 @@ dido.ready(()=>{
   let cached = $(".eighth").text();
   let myBaby = "Handay";
   //making its textContent as an alert
-  alert("hi " + myBaby);
+  // alert("hi " + myBaby);//it's noisy
   $(".tenth").text('Hello ' + cached);
   $(".tenth + li").text($(".eighth > a").attr("target"));//attrs as href etc
 });
@@ -422,3 +422,73 @@ $(function () {
 */
 
 // 25th lesson selector Reference last V
+/*
+  $(":text") to pick specific types as $(":input")
+*/
+
+// 26th lesson Events Reference
+/*
+  after 1.7 jQuery Version, .on() took the place of bind(),live(), and delegate()
+  [they similar to [addEventListener]]
+  .bind(Event, Data, Func, Map)
+  .on()
+
+*/
+$(function(){
+  "ues strict";// For JS Lint Errors[he typed]
+  $(".normal").bind("click", function(){
+    // $(this).hide();
+  });
+  $(".normal").bind("mouseenter mouseleave", function(){// many events
+    $(this).toggleClass("colored");
+  })
+});
+// a nicer way is this:[🔴IMPORTANT TO LEARN HOW TO CREATE IT WITH 🍦 JS🔴]
+$(function (){
+  $(".map").on({// it didn't work in bind, unlike .on()
+    click: function () { $(this).text("You Have Clicked On Me"); },
+    dblclick: function () { $(this).text("You Have Clicked On Me Twice"); },
+    mouseenter: function () { $(this).text("You Have Hovered ON Me"); },
+    mouseleave: function () {  $(this).text("Mouse Went Out!"); },
+    // many objects are made as Spread(...) operators in 🍦 JS
+  });
+  // custom Event, not gonna use bind(), it's deprecated
+  $('.customize').on("myCustomizedEvent",function (event, userInteraction) {
+    $(this).hide(1500);
+  });
+  //this is how to trigger it:
+  $('.customize').prev().dblclick(function(){
+    $('.customize').slideUp("myCustomizedEvent");//here we triggered it
+  });
+  // with trigger we can modify log in pages/forms 💚
+});
+
+// 27th lesson Event Reference live() deprecated in 1.9 jQuery
+// live(event, data, func)
+// delegate and on do same functionalities in live()
+
+// $(content).insertAfter(selector)
+// $(content).insertBefore(selector)
+
+$(()=>{//it didn't work! whatever!!!
+  $("button").on("click", function(){//if live is a bug, use on()
+    $("<p>This Is Created By on/live</p>").insertAfter($(this));
+  });
+  $("p").on("click", function(){
+    $(this).remove(1000);
+  });
+})
+// 28th lesson Event Reference, delegate()
+// delegate() and live() make changes to current element, and future element[labor[😦]]
+// $(parent).delegate(".child",Event , function)
+
+// 29th lesson Event Reference .on() [The Most Important One]
+// syntax: .on(Event, child Selector[Opt], Data, Function, Map)
+
+
+$(()=>{
+  "use strict";//I think it's user strict now
+  $('body').on('mouseenter mouseleave','.customize', function(){
+    $(this).toggleClass("colored");//👆multi-event 
+  });
+})

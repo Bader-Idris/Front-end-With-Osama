@@ -35,7 +35,7 @@ body {
   text-align: center;
   cursor: pointer;
   border-radius: 0 12em 12em 0;
-  border: solid black;
+  border: solid var(--main-color);
   border-width: 2px 2px 2px 0;
 }
 .settings-box .myGear {
@@ -104,6 +104,38 @@ body {
   opacity: 1;
 }
 /* End settings box */
+
+/* Start Nav Bullets 24th Lesson */
+.nav-bullets {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  z-index: 999;
+}
+.nav-bullets .bullet {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--main-color);
+  margin: 10px auto;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+}
+.nav-bullets .bullet .tooltip{
+  background-color: var(--main-color);
+  width: 120px;
+  color: #FFF;
+  padding: 4px 10px;
+  position: absolute;
+  right: 40px;
+  top: -7px;
+  border-radius: 10px;
+  text-align: center;
+}
+/* ENd Nav Bullets */
+
 /* Start Landing Page */
 .landing-page {
   min-height: 100vh;
@@ -504,10 +536,30 @@ body {
   float: left;
   background-color: #FFF;
   padding: 20px;
-  font-size: 22px;
 }
 .testimonials .ts-box:not(:last-of-type){
   margin-right: 1%;
 }
-
+.testimonials .ts-box > p {
+  margin: 0 0 20px;
+  line-height: 1.5;
+  font-size: 18px;
+  color: #707070;
+  font-style: italic;
+}
+.testimonials .ts-box .person-info {
+  overflow: hidden;
+}
+.testimonials .ts-box .person-info img {
+  float: left;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.testimonials .ts-box .person-info h4 {
+  margin: 15px 0 10px;
+}
+.testimonials .ts-box .person-info p {
+  color: #707070;
+  margin: 0;
+}
 /* End Testimonials */

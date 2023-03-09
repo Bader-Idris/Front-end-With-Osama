@@ -122,3 +122,14 @@ form > *:not(:last-child)::selection {
 .container .right {
   user-select: none;
 }
+.customize {
+  padding: 20px 10px;
+  margin: 20px auto;
+  text-align: center;
+  z-index: 30;
+  position: relative;
+}
+.colored {
+  background-color: #1f8ad2;
+  color: #FFF;
+}
