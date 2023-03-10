@@ -133,3 +133,23 @@ form > *:not(:last-child)::selection {
   background-color: #1f8ad2;
   color: #FFF;
 }
+holder {
+  position: relative;
+  bottom: 30%;
+  margin-bottom: 100px;
+  padding: 20px;
+  margin: 20px auto;
+}
+holder input {
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  width: 50%;
+
+}
+.resultsAye {
+  width: 80%;
+  height: 300px;
+  margin: 20px auto;
+  background: purple;
+}

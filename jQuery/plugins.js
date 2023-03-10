@@ -460,7 +460,7 @@ $(function (){
   $('.customize').prev().dblclick(function(){
     $('.customize').slideUp("myCustomizedEvent");//here we triggered it
   });
-  // with trigger we can modify log in pages/forms 💚
+  // with trigger we can modify log in pages/forms 💚 LOVELY >>>
 });
 
 // 27th lesson Event Reference live() deprecated in 1.9 jQuery
@@ -491,4 +491,87 @@ $(()=>{
   $('body').on('mouseenter mouseleave','.customize', function(){
     $(this).toggleClass("colored");//👆multi-event 
   });
+  // $(this).height(heightVariable).width(widthVariable);
+});
+//🔴it's important to make .on() with parent and its children,
+//🔴  not children directly to allow future events work well unlike normal .click() func
+
+$(()=>{
+  $("body").on("click","button", function(){//if live is a bug, use on()
+    $("<p>Using .on() and its preferred usages</p>").insertAfter($(this));
+  });
+  $("body").on("click","p", function(){//🔴important as "body" then "selected child"🔴
+    $(this).fadeOut(1000);
+  });
+});
+
+// 30th lesson Event Reference PreventDefault
+$(document).ready(function(){
+  "use strick";
+  $("a").on('click',function (e) {
+    e.preventDefault();
+    // he said in 🍦JS it was as <a onclick="return false"></a>
+    if(e.isDefaultPrevented()){//as its name
+    };//sth
+  });
+});
+
+// 31st lesson Event Reference keyDown, keyPress, keyUp
+// specified for keyboard: keystrokes [lovely💚]
+$(function(){
+  "use strick";
+  $("holder").on('keyDown','input',function(){
+    $(".resultsAye").text("You Are Going TO Click On A Key");
+    // weird, and unbelievable! 
+  });
+  $("holder").on('keypress','input',function(){
+    $(".resultsAye").text("You're Pressing On A Key");
+  });
+  $("holder").on('keyup','input',function(){
+    $(".resultsAye").text("You Left Your KeyStroke");
+  });
 })
+// why do we use it!?
+/**
+ * because when working with advertisement, we need to count clicks!!
+ * keyup is better for previewing text
+ */
+// 32nd lesson event reference change
+// .change() function works with focused input, when blur it output results
+// and it works when options in select are changed
+
+// we can use it in selectBox when users change!! 
+// it's great for programmers he said
+
+// 33rd lesson event reference focus, blur
+// $("form").on('focus','input',function(){});
+
+// 34th lesson event reference [one]
+// its func is as on() but works only once
+// if we have multi-events as click dblclick it'll use both then stop
+// it might be useful more than on() itself, Osama said
+
+// 35th lesson event reference: select
+$(()=>{
+  "user strict";
+  $("textarea").on('click',function(){
+    $(this).select(function(){//when I click on textarea, it selects all text
+      //functions inside, as you can see
+      $(this).after("Text Copied").delay(2000).fadeOut();
+    });
+  })
+});
+
+//36th event reference resize[MOST IMPORTANT IN RESPONSIVE 2015]
+$(()=>{
+  $(window).on("resize",function(){
+  let wid = $(window).width(),
+      hei = $(window).height();
+    if(wid > 2000)console.log(wid);
+    //console.log(wid, hei);
+  })
+  // he said it's useful when having buttons which refers to other sections
+  // or any dimension traction 
+});
+
+// 37th lesson event reference scroll()

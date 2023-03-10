@@ -30,3 +30,6 @@ multi-thread uses huge memory, so the server might hang
 #### REST API
 #### MEAN stack[MongoDB, Express, Angular, and Node]
 we need to learn angular framework before [MEAN stack]
+
+<!-- until 6th lesson he explained basics of 🍦JS [skipped]-->
+###### Download node.js from http://nodejs.org 
