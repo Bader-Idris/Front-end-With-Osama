@@ -605,3 +605,165 @@ $(()=>{
 // its main useful is what it can send
 //   users data without refreshing the page
 // or validate the form, if length >10 , and other conditions
+
+$(function () {
+  "ues strict";
+  $("form").submit(function (e) {
+    // CONFIRM condition
+    if($("input:first").val() === "CONFIRM"){
+      $("span").text("That's correct").show();
+      return;
+    }
+    // $("span").text("Words aren't correct").show().fadeOut(2000);
+    e.preventDefault();//as we know, making false as default
+  })
+})
+//we can insertBefore, a div including, "Please type: CONFIRM" to delete your account
+// and a span after(), to appear results
+
+// 40th lesson Effects reference [Delay] [🔴EXTREMELY IMPORTANT🔴]
+//when clicked $(sth).text("blabBlaBla").fadeIn("fast").delay(5000).fadeOut("slow");
+
+// 41st lesson HTML&&CSS reference [clone]
+// $(sth).clone(false)[as JS, default is false] it reject events from main cloned element
+// if we change css style to main element, when true, it'll clone these changes[when made with .on()]
+// he used it as:[when clicked with .on()]
+// $(".main").clone(true).appendTo("body");
+
+// 42nd lesson HTML&&CSS reference [detach]
+// it's similar to remove().
+// the main difference is: it doesn't remove data and events to an El
+// so, with remove(), any el will lose its events and data, when invoked,
+// but detach() will keep 'em, so we'll not need to recreate them or refresh page
+
+// 43rd lesson HTML&&CSS reference [hasClass] you'll use it a lot, Osama Said
+$(() => {
+  $("li").each(function (e, value) {
+    $('li').on({
+      // click: function () {},//I love this combination
+      click: function () {
+        if ($(this).hasClass('active')) {
+          $(this).css({
+            backgroundColor: "#fff",//can use localStorage lessons here
+            Color: "black"
+          })
+          //💚you can see drop down lists, Osama said💚
+          // we can give active class to its parent, as:
+          $(this).parent().parent().css()// to go to its grandparent
+        }
+      }
+    })
+  })
+})
+
+// same func as forEach in 🍦js
+// $.each(collection, function (indexInArray, valueOfElement) { });
+
+// 44th lesson HTML&&CSS reference [offset][IMPORTANT]
+// it's an object with top and left directions[needs to change position from default]
+
+// as any object, we can access its properties rapidly as:
+// $(sth).offset().top or left
+// $(()=>{
+//   $(window).scroll(function () {
+//     // console.log($(this).scrollTop());
+//     // console.log($("div").offset().top);
+//     let scrolling = $(this).scrollTop(),
+//         divOffset = $("div").offset().top;
+//     if(scrolling >= divOffset){
+//       $("div").fadeOut(); //or any effect
+//     }
+//   });
+// })
+
+// 45th lesson HTML&&CSS reference [Position]
+// similar to offset, offset counts outer margin,
+//  but position counts from its parent not from document[html]
+// position doesn't count padding
+
+// 46th lesson HTML&&CSS reference [prop] property
+// it's a boolean function, not as attr() which picks up its value
+// so if we ask $(sth).prop("disabled"); it gives false or true,
+//  but with $(sth).attr("disabled");// it'll give a string, if not output will be undefined
+// so with [.prop()] we can set it as true.
+// if in HTML disabled is true, we type:
+// $('input').prop('disabled',false);// means Disable disable itself!
+$(".customize").prop({
+	name:"nigga",
+	disabled:false,
+	id:"baby",
+}) // example of using object in prop()
+// Osama said, prop() is more important than attr()
+
+// 47th lesson HTML&&CSS reference [replace]
+// $(selector).replaceWith(newContent);// this replaces innerHTML
+// $(()=>{
+//   'use strict';
+//   $(".div").click(function () { 
+//     $(this).replaceWith("<input type='text' value='"+ $(this).text()+" >")
+//     $("button").fadeIn();//must be hidden previously
+//   });
+//   $("button").click(function () {
+//     $("input").replaceWith("<div>"+ $('input').val() +"</div>")
+//     $("button").fadeOut();
+//   })
+// })
+//replaceWith removes event handlers, most important lesson in replaceWith() function
+
+// 48th lesson HTML&&CSS reference [TOP_LEFT]
+// visibility: hidden; equals to opacity:0; the element takes place, but it's hidden
+$(function () { 
+  'use strict';
+  $(window).scroll(function () { 
+    // console.log('window scroll Top = ' + $(this).scrollTop());
+    // console.log('Test Lesson Offset = ' + $(".test-lesson").offset().top);
+    let divTop = $(".test-lesson").offset().top;
+    let windowScrollTop = $(window).scrollTop();
+    if (windowScrollTop >= divTop ) {
+      $('.test-lesson').animate({
+        opacity:1,
+        // he didn't make it when we get near it, only after passing it
+      },1000);
+    }
+  });
+});
+// if we say $(window).scrollTop(1000); it'll go there directly
+// we can use it when user clicks on the purchase button
+// or when he's down, we get 'em upwards to 0
+
+// 49th lesson HTML&&CSS reference [Wrap]
+// wrap, unwrap
+// $('span').wrap('<div></div>')// in an adding button
+// $('span').unwrap()// in a remove button
+
+// we can wrap elements with header, or paragraph, as our situation asks
+
+// 50th lesson traversing reference [each] same as forEach in 🍦js
+//  go to 641 line to see our each example, with hasClass function
+
+// 51st lesson traversing reference [has]
+// has can be hasClass or (has Element) class, or any other attribute[I think]
+// $(parent).has(child).ourFunc() // even as $('p').has("span")
+// we can add many as other selectors (p, div) or has(p, strong, span, .test)
+
+// 52nd lesson traversing reference [is]
+// as a span inside a div, using click function on span 
+// if ($(this).parent().is('div')){
+//   console.log('Yes I am a div');
+// }
+
+// if we ask for many elements we type:
+// if ($(this).parent().is('div, p, whatever, .nigga'))//this is lovely
+// if ($(this).is(':first-child'))//lovelier 💚 is() and :contains together are great, Osama said
+
+// 53rd lesson traversing reference [end] last video
+// it ends the chain of an element, and returns it to its original situation
+// $("div").find('span').css("color", "#00f").end()
+//     .find('strong').css("color", "#f00");//because second one is not valid normally; we use end()
+//     //so it starts searching after that point, in same ('div')
+
+// a better way is to change the color of a span, and then change the color of its parent itself
+// $('div').find('span').css("color", "#00f").end()
+//     .css('color', '#f00');
+
+// END OF THE COURSE; NOW GO TO 2018TH PRACTICAL COURSE💪
