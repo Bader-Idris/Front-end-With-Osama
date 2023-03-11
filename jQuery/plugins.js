@@ -575,3 +575,33 @@ $(()=>{
 });
 
 // 37th lesson event reference scroll()
+/*
+  scroll()
+  scrollTop() [all pixels above our position in scrolling]
+
+  if $(window).scrollTop() > 1000 fadeIn our buttom, else fadeOut
+  use it inside on() function
+*/
+
+// 38th lesson event reference PageX, PageY
+$(()=>{
+  $("html").mousemove(function (e) { 
+    // values: e.clientX, e.clientY, e.pageX, e.pageY
+    $(".thirtyEight").text("X-Axis: " + e.pageX + "Y-Axis: " + e.pageY);
+  });
+  $("html").click(function (e) { 
+    $(".circledThirty")
+      .show().offset({
+        left: e.pageX,
+        top: e.pageY
+      })
+    // this offset is not explained yet, but it's awesome
+    // whenever I click in the page, the circle will appear
+    // on the clicked point!!
+  })
+})
+
+// 39th lesson event reference Submit()
+// its main useful is what it can send
+//   users data without refreshing the page
+// or validate the form, if length >10 , and other conditions
