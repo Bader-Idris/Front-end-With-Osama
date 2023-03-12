@@ -1,0 +1,60 @@
+/* 
+#f0e800 yellow
+#ff6600 orange
+#fff    white
+our grid system brought from https://monkeytype.com
+*/
+body {
+  background-color: #0d1c1c;
+  color: #ff6600;
+  font-family: Tahoma, Arial;
+}
+:root {
+  --icon-color: #f0e800;
+  --second-color: #fff;
+}
+/* Start Header */
+.navbar {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  background-color: #333;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.navbar li {
+  display: inline-block;
+  padding: 10px;
+}
+.navbar li a.active {
+  color: #ffea00;
+}
+
+/* End Header */
+/* Start Section */
+.block {
+  height: 1200px;/*only for lesson purposes*/
+  background-color: #115252;
+  margin-bottom: 20px;
+  padding: 50px 0;
+  text-align: center;
+}
+/* End Section */
+/* Start scroll-to-top */
+.scroll-to-top {
+position: relative;
+}
+.scroll-to-top i {
+  text-decoration: none;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  background: #eee;
+  padding: 15px;
+  border-radius: 50%;
+  color: #0d1c1c;
+  transition: 0.5s ;
+}
+/* End scroll-to-top */
