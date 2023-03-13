@@ -967,14 +967,14 @@ let objTwo = {
 // merging objects with spread operator
 console.log({ ...objOne, ...objTwo, e: 5 });
 
-// 133rd lesson 03:18:26 Map And Set Challenge [🤣🤪]
+// 133rd lesson 03:18:26 Map And Set Challenge
 /*
   Map And Set + What You Learned => Challenge
   Requirements
   - You Can't Use Numbers nor True Or False
   - Don't Use Array Indexes
   - You Can't Use Loop
-  - You Can't Use Any HIgher Order Function
+  - You Can't Use Any Higher Order Function
   - Only One Line Solution Inside Console
   - If You Use Length => Then One Time Only
   Hints
@@ -988,6 +988,11 @@ let n2 = [30, 20, 10];
 
 console.log('Your Solution Here');//210
 
+// ([...n1, ...n2].length) this is 7
+// Math.max(...n2); this is 30
+// let challengeSet = new Set(n1, n2);// why did he mentioned it?
+console.log(Math.max(...n2) * [...n1, ...n2].length);//easy peasy
+
 // 134th lesson 03:21:40 Intro & What Is Regular Expression
 /*
   Regular Expression
@@ -996,3 +1001,169 @@ console.log('Your Solution Here');//210
   - Phone
   - URL
 */
+// it's not exclusively in JavaScript, any other language uses same concepts
+let str1 = '10 20 100 1000 5000';
+let str2 = 'Os1 Os12 Os123 Os123Os os12312Os123';
+
+let invalidEmail = 'Osama@@@gmail....com';
+// string && numbers => email name              [valid]
+//    @              => at symbol               [valid]
+// gmail || domainCo => [domain] email provider [valid]
+//    .              => dot symbol              [valid]
+// com || net || org => Top Level Domain [TLD]  [valid]
+// let validEmail = 'Osama@gmail.com'
+let validEmail = 'o@nn.sa';
+
+let ip = '192.168.2.1';// IPv4, it's a 32bit, and IPv6 is 128bit 🤪
+
+// let url = 'elzero.org';
+// let url = 'elzero.org/';
+// let url = 'see-sth.com/';// with dash in its name
+// let url = 'http://elzero.org/';
+// let url = 'http://www.elzero.org/';
+// let url = 'https://elzero.org/';
+// let url = 'https://www.elzero.org/';
+// let url = 'https://www.elzero.org/?facebookid=fdsafdsafhsda';
+// all of 'em are valid
+
+// 135th lesson 03:29:50 Regular Expression - Modifiers
+
+/*
+  Regular Expression
+
+  Syntax
+  /pattern/modifier(s);
+  new RegExp("pattern", "modifier(s)")
+
+  Modifiers => Flags
+  i => case-insensitive
+  g => global
+  m => Multi-lines
+
+  Search Methods
+  - match(Pattern)
+
+  Match
+  -- Matches A String Against a Regular Expression Pattern
+  -- Returns An Array With The Matches
+  -- Returns null If No Match Is Found.
+*/
+let myString = "Hello Elzero Web School I Love elzero";// 1st elz is capitalized, 2nd is smallCased
+let regex = /elzero/;//[re=> regular expression]
+console.log(myString.match(/Elzero/));
+console.log(myString.match(regex));//both are same
+// myString.match(/Elzero/i); /s/i means case-insensitive see Modifiers above!
+console.log(myString.match(/Elzero/ig));//picks global insensitive
+// the great thing is that it returns same in mother's array !!
+console.log(myString.match(/Elzeros/ig));//null
+
+// let newRegExp = new RegExp("pattern", "modifier(s)");
+
+// 136th lesson 03:34:55 Regular Expression - Ranges Part 1
+/*
+  Regular Expression
+
+  Ranges
+
+  - Part 1
+  (X|Y) => X Or Y
+  [9-9] => 0 To 9
+  [^0-9] => Any Character Not 0 To 9
+  Practice
+
+  - Part 2
+  [a-z]
+  [^a-z]
+  [A-Z]
+  [^A-Z]
+  [abc]
+  [^abc]
+*/
+// ranges are great in RegExp
+let tld = "Com Net Org Info Code Io" ;
+let tldRe = /(org|info|io)/i;//what a real love
+console.log(tld.match(tldRe));// it picks first to find, not by order in tldRe
+
+let numsRegExp = "12345678910";
+let numsRe = /[0-9]/g;//global is important
+console.log(numsRegExp.match(numsRe));
+
+let notNums = "12345678910";
+let notNsRe = /[^0-2]/g;//can't use notEqual symbol [!]
+console.log(notNums.match(notNsRe));
+
+let specialNums = "1!2@3#4$5%678910";
+let specialNumsRe = /[^0-9]/g;
+console.log(specialNums.match(specialNumsRe));
+
+let practice = "Os1 Os1Os Os2 Os8 Os8Os";
+let practiceRe = /Os[5-9]Os/g;//what a real LOVE
+console.log(practice.match(practiceRe));
+
+// 137th lesson 03:44:55 Regular Expression - Ranges Part 2
+// continuing
+let myStringRegExp = "AaBbcdefG123!234%^&*";
+let englishLetters = 'abcdefghijklmnopqrstuvwxyz';// how to get 'em with Regular Expression!?
+
+let atozSmall = /[a-z]/g;
+let NotatozSmall = /[^a-z]/g;
+let atozCapital = /[a-z]/g;
+let NotatozCapital = /[^a-z]/g;
+let aceLetters = /[ace]/g;
+
+let atozCapAndSmall = /[a-zA-Z]/g;//to get all letters
+let atozCapAndSmall = /[A-Z]/gi;//I see they're same
+
+let numbersAndSpecials = /[^a-zA-Z]/g;
+let specials = /[^0-9A-Za-z]/g;// i think it's this
+let craziness = /[^0-9^A-Z^a-z]/g;// this will remove [^] as others, even as /[^0-9^A-Za-z] one in middle
+
+
+console.log(myStringRegExp.match(atozSmall));
+console.log(myStringRegExp.match(NotatozSmall));
+console.log(myStringRegExp.match(aceLetters));
+
+// 138th lesson 03:51:00 Regular Expression - Character Classes Part 1
+/*
+  Regular Expression
+  Character Classes
+  . => matches any character, except newline or other line terminators.
+  \w => matches word characters. [a-z, A-Z, 0-9 And Underscore]
+  \W => matches Non word characters
+  \d => matches digits from 0 to 9.
+  \D => matches non-digit characters.
+  \s => matches whitespace character.
+  \S => matches non whitespace character.
+*/
+
+let email = 'O@@@g...com O@g.com O@g.net A@Y.com O-g.com o@s.org 1@1.com';
+let dot = /./g;
+let word = /\w/g;
+let valid = /\w@\w.(com|net)/g;// if (com|net) only one we type /\w@\w.com/g
+// /\w/ means any ch followed by @
+// let valid = /\w@\w.(com|net)/g; Osama said, this is too simplified
+
+console.log(email.match(dot));
+console.log(email.match(word));
+console.log(email.match(valid));
+// line terminators are as \n \t \r
+
+// 139th lesson 03:57:05 Regular Expression - Character Classes Part 2
+/*
+  Regular Expression
+  Character Classes
+  \b => matches at the beginning or end of a word.
+  \B => matches NOT at the beginning/end of a word.
+
+  Test Method
+  pattern.test(input)
+*/
+
+let names = "Sayed 1Spam 2Spam 3Spam Spam4 Spam5 Osama Ahmed Aspamo";
+let re = /(\bspam|spam\b)/ig;
+console.log(names.match(re));
+
+console.log(re.test(names));
+console.log(/(\bspam|spam\b)/ig.test("Osama"));
+console.log(/(\bspam|spam\b)/ig.test("1Spam"));
+console.log(/(\bspam|spam\b)/ig.test("Spam1"));
