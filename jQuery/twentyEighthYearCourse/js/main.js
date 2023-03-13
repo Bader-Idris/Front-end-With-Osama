@@ -61,3 +61,72 @@ $(function () {
 })
 
 // 7th lesson scroll TO Top Button Part 1
+// we have to append every scrolling event in same window scroll,
+//  but I separate them for learning purposes
+$(function () {
+  let scrollToTop = $('.scroll-to-top');
+  $(window).scroll(function () {
+    // scroll to top button
+    if ($(window).scrollTop() >=1000 ){
+      if(scrollToTop.is(':hidden')){//for stopping checking after 1k
+        scrollToTop.fadeIn();//.css('display', 'inline-block') if tended as for some bugs
+        //this stops checking💚🔴, No Need To else
+      }
+    } else {
+      scrollToTop.fadeOut();//I prefer show,hide
+    }
+  });
+  // clicking on button to go upwardly
+  scrollToTop.click(function (e) {
+    e.preventDefault();// because of not having, the entire function was useless
+    $('html, body').animate({
+      scrollTop:0},1000)
+  });
+});
+
+// 10th lesson Popup Part 2
+$(()=>{
+  $('.show-popup').click(function () {
+    $('.' + $(this).data('popup')).fadeIn();//this little change is in 11th lesson
+    // to remove '.' + concatenation, we go to HTML and add . for each data-popup
+  });
+  $('.popup').click(function () {
+    $(this).fadeOut();//because its dimension is FULLSCREEN,
+    //  when we click anywhere it'll disappear, so we need to make .inner prevented
+  });
+  $('.popup .inner').click(function (e) {
+    e.stopPropagation();//this stops propaganda, meaning:
+    // it'll prevent .inner from disappearing when clicked on
+  });
+  $('.popup .close').click(function (e) {
+    e.preventDefault()
+    $(this).parentsUntil('.popup').parent().fadeOut();//see if he'll do same, he did in 11th
+    //in 114 in his code
+    // he'll use a func when [Esc] ket stroke clicked, to exit popup
+    // which is called UI, as esc for escaping, ctrl+A for selecting all
+    
+    // I found that there're [keyCodes] in jQuery, and JS
+    // I love this website, for picking 'em when clicked, as 🍦JS
+    // 🔴💚 https://www.toptal.com/developers/keycode 💚🔴
+  });
+});
+
+// button might be in a form, if we work via asp.net, chief point
+// and [retarded متخلفة] techs, that might put all HTML in a form, making any button wreck the entire page
+// that's why we have to preventDefault in buttons as prior one
+// 🔴important🔴
+
+// 11th popup Part 3
+// we might have many popups in a website, and there're types as popover[for appearing info of products]
+// you can see examples in bootstrap website, it has many lovely jQuery plugins
+// especially before launching bootstrap5
+
+// Esc keyCode
+$(()=>{
+  $(document).keydown(function (e) { 
+    if (e.keyCode == 27){// 27 is escape key, as we saw
+      $('.popup').fadeOut();// it doesn't work when
+      //  having many popups appearing together
+    }
+  });
+});

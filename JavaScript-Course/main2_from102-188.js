@@ -829,3 +829,66 @@ console.log(af("Bader","Hanady","marriage"));
   ---- Not Including End
   ---- If Omitted = Reach The End
 */
+// it's similar to mainMove in C++
+let myArray = [10, 20, 30, 40, 50, "A", "B"];
+/* let myArray = [10, 20, "A", "B", 50, "A", "B"];// copies indexes as this eg
+  start here means the first element I copy, end means last one as if copy 
+  "A", "B" they mean: 5,6;
+*/
+myArray.copyWithin(3);
+console.log(myArray);//[ 10, 20, 30, 10, 20, 30, 40 ] weird!!
+// because I didn't type where to start, it starts in 0 index
+//  so it copied 4 indexes from '40'as 3 to last of array's length
+// it won't make array longer
+// let nigga = myArray.copyWithin(4,-1);// or 4,6
+// console.log(nigga);// as Osama Asked [ 10, 20, 30, 40, "B", "A", "B" ]
+// [ 10, "A", "B", 40, 50, "A", "B" ] is (-6,-2);1st para is target, 2nd para is start counting
+//  so if -6,-2,-1 or 1,-2,-1; it'll target 1 index, start counting -2 for one index
+// after i said this 👆, he made it as a homework, I'm smart 🤣 for now...
+// he says i'll fu## you with assignments 🤣[heavy not fu%# he's polite]
+
+// 130th lesson 02:57:25 Array.some Method
+/*
+  Array Methods 
+  - Array.some(CallbackFunc(Element, Index, Array), This Argument)
+  --- CallbackFunc => Function To Run On Every Element On The Given Array
+  ------> Element => The Current Element To Process
+  ------> Index  => Index Of Current Element
+  ------> Array  => The Current Array Working With
+  ---- This Argument => Value To Use As This When Executing CallbackFunc
+  Using
+  -Check If Element Exists In Array
+  -Check If Number In Range
+*/
+// array.some() if our condition is true it returns boolean true! and it's not as filter
+let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let check = nums.some(function (e){
+  return e > 5;
+});
+console.log(check);// true, if filter it'll give 6,7, in an array
+//it works in false, when true once it quits
+// arrow one
+check = nums.some((e)=> e > 5);
+// this in array.some is originally (window), we change it as:
+let aNum = 5;
+let checkYo = nums.some(function (e){
+  return e > this;
+}, aNum);//here we changed this to our variable
+console.log(checkYo);
+// a little more advanced array.some func
+function checkValues(arr, val) {
+  return arr.some(e => e === val);
+};// I made it shorter
+console.log(checkValues(nums, 20));//false, if exists: true
+// using objects in array.some
+let range = {
+  min:10,
+  max:20,
+}
+let checkNumberInRange = nums.some(function (e){
+  return e >= this.min && e <= this.max;
+}, range);//false because we have nothing between 10 and 20 as min & max
+// it'll be used regularly array.some Osama Said!!
+
+// 131st lesson 03:06:50 Array.every Method
+

@@ -27,6 +27,8 @@ body {
 .navbar li {
   display: inline-block;
   padding: 10px;
+  font-weight: bold;
+  color: var(--second-color);
 }
 .navbar li a.active {
   color: #ffea00;
@@ -41,20 +43,87 @@ body {
   padding: 50px 0;
   text-align: center;
 }
-/* End Section */
-/* Start scroll-to-top */
-.scroll-to-top {
-position: relative;
+.block h2 {
+  color: var(--second-color);
+  letter-spacing: 0.7px;
 }
-.scroll-to-top i {
+/* End Section */
+.scroll-to-top  {
   text-decoration: none;
   position: fixed;
   right: 50px;
   bottom: 50px;
-  background: #eee;
+  background: #333;
   padding: 15px;
   border-radius: 50%;
-  color: #0d1c1c;
+  color: #FFF;
   transition: 0.5s ;
+  display: none;
 }
-/* End scroll-to-top */
+/* Start Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background-color: rgba(0, 0, 0,0.6);
+  display: none;
+}
+.popup .inner {
+  background-color: #EEE;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;/*half of it in margin-left to get 50%*/
+  height: 250px;
+  left: 50%;
+  top: 50%;
+  position: fixed;
+  margin-left: -150px;
+  margin-top: -125px;
+}
+.popup .inner h3 {
+  position: relative;
+  color: #333;
+  text-align: center;
+  top: 0px;
+  padding: 0;
+  margin-top: 0;
+  text-transform: capitalize;
+}
+.popup .inner p {
+  position: relative;
+  color: #333;
+  text-align: center;
+  top: 175px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.popup .inner button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: #115252;
+  color: #f0e800;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.show-popup {
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  margin: 20px;
+  background-color: #FFF;
+  width: 140px;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #928440;
+}
+/* End Popup */
