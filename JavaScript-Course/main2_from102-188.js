@@ -891,4 +891,108 @@ let checkNumberInRange = nums.some(function (e){
 // it'll be used regularly array.some Osama Said!!
 
 // 131st lesson 03:06:50 Array.every Method
+/*
+  Array Methods
+  - Array.every(CallbackFunc(Element, Index, Array), This Argument)
+  --- CallbackFunc => Function To Run On Every Element On The Given Array
+  ------ Element => The Current Element To Process
+  ------ Index => Index Of Current Element
+  ------ Array => The Current Array Working With
+  --- This Argument => Value To Use As This When Executing CallbackFunc
+  --
+*/
+// array.every() is opposite to array.some, [all El have to be true],
+//  if 1 index is false, it all returns false
 
+const locations = {
+  20: "Place 1",
+  30: "Place 2",
+  10: "Place 3",// this is tended to be less than mainLocation
+  40: "Place 4",
+}
+let mainLocation = 15;
+
+let locationsArray = Object.keys(locations)
+console.log(locationsArray);
+let locationsArrayNumbers = locationsArray.map((n) => +n);
+//this turns array's indexes into numbers
+console.log(locationsArrayNumbers);
+
+let checkEvery = locationsArrayNumbers.every(function (e) {
+  return e > this
+}, mainLocation);
+console.log(checkEvery);//false because of 3rd index
+
+// 132nd lesson 03:11:10 Spread Syntax And Usage Cases
+/*
+  Spread Operator => ...Iterable
+  "Allow Iterable To Expand In Place"
+*/
+
+// Spread With String => Expand String
+console.log('Bader');
+console.log(...'Bader');// it'll be B a d e r //extracted
+console.log([...'Bader']);// makes them in an array
+
+// Concatenate Arrays
+let myArray1 = [1,2,3];
+let myArray2 = [4,5,6];
+let allArraysByBader = myArray1.concat(myArray2);// normal concat()
+let allArrays = [...myArray1, ...myArray2];// using spread operator
+console.log(allArrays);
+
+// Copy Array
+let copiedArray = [...myArray1];
+console.log(copiedArray);
+
+// Push Inside Array
+let myAllFriends = ["Osama", "Ahmed", "Sayed"];
+let thisYearFriends = ["Sameh", "Mahmoud"];
+myAllFriends.push(...thisYearFriends);//if without spread operator, it'll be as nested array
+console.log(myAllFriends);
+
+// Use With Math Object
+let myNumsSpread = [10, 20, -100, 100, 1000, 500];
+console.log(Math.max(myNumsSpread));// without spread it'll return NaN
+
+// Spread With Objects => Merge Objects
+let objOne = {
+  a:1,
+  b:2,
+};
+let objTwo = {
+  c:3,
+  d:4,
+};
+// merging objects with spread operator
+console.log({ ...objOne, ...objTwo, e: 5 });
+
+// 133rd lesson 03:18:26 Map And Set Challenge [🤣🤪]
+/*
+  Map And Set + What You Learned => Challenge
+  Requirements
+  - You Can't Use Numbers nor True Or False
+  - Don't Use Array Indexes
+  - You Can't Use Loop
+  - You Can't Use Any HIgher Order Function
+  - Only One Line Solution Inside Console
+  - If You Use Length => Then One Time Only
+  Hints
+  - You Can Use * Operator Only In Calculation
+  - Set
+  - Spread Operator
+  - Math Object Methods
+*/
+let n1 = [10, 30, 10, 20];
+let n2 = [30, 20, 10];
+
+console.log('Your Solution Here');//210
+
+// 134th lesson 03:21:40 Intro & What Is Regular Expression
+/*
+  Regular Expression
+  - Email
+  - IP
+  - Phone
+  - URL
+*/
