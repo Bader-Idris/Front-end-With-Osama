@@ -131,3 +131,4 @@ $(()=>{
   });
 });
 
+// 12 lesson buttons with effects part 1

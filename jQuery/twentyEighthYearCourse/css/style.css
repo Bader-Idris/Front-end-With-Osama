@@ -127,3 +127,62 @@ body {
   color: #928440;
 }
 /* End Popup */
+/* Start Buttons With Effects */
+.buttons-effects {}
+.buttons-effect {
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+  background: #115252;
+  border: none;
+  position: relative;/*for :first-child*/
+}
+.buttons-effect .download{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+}
+.buttons-effect .download::before,
+.buttons-effect .download::after {
+  position: absolute;
+  content: "DOWNLOAD";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #C8102E;
+  box-sizing: border-box;
+}
+.buttons-effect .download::before {
+  color: #fff;
+  background: #C8102E;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.buttons-effect .download::after{
+  color: #C8102E;
+  background:#FFF;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.buttons-effect .download:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+.buttons-effect.from-left span:first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;/*with normal buttons we fill it left-right 102%*/
+  height: 102%;
+  background-color: #080;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
+/* End Buttons With Effects */
