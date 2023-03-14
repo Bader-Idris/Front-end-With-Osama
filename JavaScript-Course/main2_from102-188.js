@@ -1112,7 +1112,7 @@ let NotatozCapital = /[^a-z]/g;
 let aceLetters = /[ace]/g;
 
 let atozCapAndSmall = /[a-zA-Z]/g;//to get all letters
-let atozCapAndSmall = /[A-Z]/gi;//I see they're same
+// let atozCapAndSmall = /[A-Z]/gi;//I see they're same
 
 let numbersAndSpecials = /[^a-zA-Z]/g;
 let specials = /[^0-9A-Za-z]/g;// i think it's this
@@ -1248,3 +1248,153 @@ console.log(txt.replaceAll("@", "JavaScript"));
 let re1 = /@/ig;
 console.log(txt.replaceAll(re1, "JavaScript"));
 console.log(txt.replaceAll(/@/ig, "JavaScript"));
+// with RegExp and replaceAll we can fix many problems in codeWars and other problem solving websites
+// instead of using loops and conditions
+
+// 144th lesson 04:21:55 RegExp - Form Validation
+/*
+  Regular Expression
+  - Input Form Validation Practice
+*/
+document.getElementById("register").onsubmit = function () {
+  let phoneInput = document.getElementById("phone").value;
+  let phoneRe = /\(\d{4}\)\s\d{3}-\d{4}/; // (1234) 567-8910
+  // /\(\)/ for real parentheses not grouping
+  let validationResult = phoneRe.test(phoneInput);
+  if (validationResult === false) {
+    return false;
+  }
+  return true;
+}
+
+// 145th lesson 04:26:25 Test Your RegExp And Discussions
+// when we face a problem impacting what we learned we can search for
+// commonly used RegExp or any other issue
+// osama looked in https://digitalfortress.tech for 15 commonly used RegExp
+// and used https://regexr.com, said there're many other similar websites
+// and see these two: https://www.regextester.com/ https://regex101.com/
+// search for RegExp online JS
+
+// 146th lesson 04:30:15 RegExp  Challenge
+/*
+  Regular Expression
+  - Challenge✅
+*/
+
+let url1 = 'elzero.org';
+let url2 = 'http://elzero.org';
+let url3 = 'https://elzero.org';
+let url4 = 'https://www.elzero.org';
+let url5 = 'https://www.elzero.org:8080/articles.php?id=100&cat=topics';
+
+let re2 = /(https?)?(:\/\/)?(www.)?\w+.(org|com)(:\d{4})?(\/[\w?.\W]*)?/ig;
+
+console.log(url1.match(re2));
+console.log(url2.match(re2));
+console.log(url3.match(re2));
+console.log(url4.match(re2));
+console.log(url5.match(re2));
+// it's preferred to make it more difficult by adding urls as more of email providers TLDs and whatnot
+
+// 147th lesson 04:32:05 OOP Introduction
+/*
+  What Is OOP ?
+  • OOP Stand For => Object Oriented Programming
+  • OOP Is A Paradigm or Style Of Code
+  • OOP Uses The Concept Of Object To Design A Computer Program
+  • Its Not New => Simula Is The First OOP Programming Language In 1960
+  • Some Languages Support OOP and Some Not
+  An Object Is A Package Contains Properties and Functions That Work Together To Produce Something
+  in Your Application. Functions Here Called Methods
+*/
+
+/*
+  why Do We Use OOP?
+  • You Will be Able to Create a Large and Complex Software Architecture
+    in Organized Ways.
+  • You Will be Able To Hide Certain Parts Of Code in Your Object With
+    Encapsulation To Prevent Mess With The Code.
+  • You Will Be Able To Create Reusable Objects To Use in Your
+    Application Easily With Inheritance.
+*/
+
+// there're many programmers who hates OOP and some of them are language inventors
+// but Osama Loves It, and said YOU WILL LOVE IT TOO, but it has some issues
+// so we're not compiled to use it repeatedly
+
+// there's an entire OOP course in elzero web school [I assume it's not in JS]
+
+// 148th lesson 04:38:50 Constructor Function Introduction
+// concentrate in theoretical speech in this lesson, not practical
+// 1st time Osama says this!
+
+/*
+  Constructor Function
+*/
+
+function User(id, username, salary) {// constructor func starts with Capital ch
+  // instantiating => creating objects
+  this.i = id;
+  this.u = username;
+  this.s = salary + 1000;// instead of changing every func we can simply do this
+}
+
+let userOne = new User(100, "Elzero", 5000);
+let userTwo = new User(101, "Hassan", 6000);
+let userThree = new User(102, "Sayed", 7000);
+
+console.log(userOne.i);// we can't say id, and other arguments, they're only when calling
+console.log(userOne.u);
+console.log(userOne.s);
+
+console.log(userTwo.i);
+console.log(userTwo.u);
+console.log(userTwo.s);
+
+console.log(userThree.i);
+console.log(userThree.u);
+console.log(userThree.s);
+
+// const userOne = {
+//   id: 100,
+//   username: "Elzero",
+//   salary: 5000,
+// };
+
+// const userTwo = {
+//   id: 101,
+//   username: "Hassan",
+//   salary: 6000,
+// };
+
+// const userThree = {
+//   id: 102,
+//   username: "Sayed",
+//   salary: 7000,
+// };
+
+// 149th lesson 04:46:55 Constructor Function New Syntax
+/*
+  Constructor Function
+  - New Syntax
+*/
+
+class User {//ECMAScript syntax
+  constructor(id, username, salary) {
+    this.i = id;
+    this.u = username;
+    this.s = salary + 1000;
+  }
+}
+// it's important to know that these constructor functions are [🔴[JS functions]🔴]
+let userUno = new User(100, "Elzero", 5000);
+
+console.log(userUno.i);
+console.log(userUno.u);
+console.log(userUno.s);
+
+console.log(userUno instanceof User);
+//🔼useful boolean value asking if object is an instance[inheritor] of our constructor function
+console.log(userUno.constructor === User);//another way to ask same question
+
+// 150th lesson 04:50:45 Dealing With Properties & Methods
