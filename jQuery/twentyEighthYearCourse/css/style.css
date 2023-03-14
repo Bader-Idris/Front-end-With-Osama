@@ -128,8 +128,7 @@ body {
 }
 /* End Popup */
 /* Start Buttons With Effects */
-.buttons-effects {}
-.buttons-effect {
+.buttons-effect.from-right {
   position: relative;
   display: inline-flex;
   width: 180px;
@@ -140,7 +139,7 @@ body {
   border: none;
   position: relative;/*for :first-child*/
 }
-.buttons-effect .download{
+.buttons-effect.from-right .download{
   font-size: 19px;
   letter-spacing: 1px;
   transform-style: preserve-3d;
@@ -149,8 +148,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
 }
-.buttons-effect .download::before,
-.buttons-effect .download::after {
+.buttons-effect.from-right .download::before,
+.buttons-effect.from-right .download::after {
   position: absolute;
   content: "DOWNLOAD";
   height: 55px;
@@ -161,28 +160,51 @@ body {
   border: 5px solid #C8102E;
   box-sizing: border-box;
 }
-.buttons-effect .download::before {
+.buttons-effect.from-right .download::before {
   color: #fff;
   background: #C8102E;
   transform: rotateY(0deg) translateZ(25px);
 }
-.buttons-effect .download::after{
+.buttons-effect.from-right .download::after{
   color: #C8102E;
   background:#FFF;
   transform: rotateX(90deg) translateZ(25px);
 }
-.buttons-effect .download:hover{
+.buttons-effect.from-right .download:hover{
   transform: translateZ(-25px) rotateX(-90deg);
 }
+/* 🔼 3d button brought in codePen */
 .buttons-effect.from-left span:first-child {
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;/*with normal buttons we fill it left-right 102%*/
-  height: 102%;
+  width: 0;
+  height: 100%;
   background-color: #080;
   display: block;
-  z-index: 5;
   overflow: hidden;
+  z-index: 1;
+}
+.buttons-effect.from-left span:last-child {
+  position: relative;
+  z-index: 2;
+
+}
+.buttons-effect.from-left {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  margin: 20px auto;
+  background-color: #FFF;
+  width: 140px;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #FFF;
+  background-color: #9d3b12;
+  border: none;
+  overflow: hidden;
+  position: relative;
+
 }
 /* End Buttons With Effects */

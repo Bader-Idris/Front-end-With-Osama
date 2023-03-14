@@ -132,3 +132,15 @@ $(()=>{
 });
 
 // 12 lesson buttons with effects part 1
+$(()=>{
+  $(".from-left").hover(function () {
+    $(this).find('span').eq(0).animate({
+      width: '100%',
+    }, 300);
+  }, function () {
+    // this is when hover is gone
+    $(this).find('span').eq(0).animate({
+      width: 0,
+    }, 300);
+  });
+});
