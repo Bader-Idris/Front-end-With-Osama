@@ -144,3 +144,21 @@ $(()=>{
     }, 300);
   });
 });
+// 13th lesson buttons with effects part 2
+// Osama said make colors in buttons when hover and without similar to each other
+// go to https://flatuicolors.com to see lovely results
+
+$(()=>{
+  $(".from-top").hover(function () {
+    $(this).find('span').eq(0).animate({
+      height: '100%',
+    }, 500);
+  }, function () {
+    // this is when hover is gone
+    $(this).find('span').eq(0).animate({
+      height: 0,
+    }, 500);
+  });
+});
+// instead of repetition, we can create a function with 2 parameters
+// 1st for selector, and 2nd for height or width [practice that manually]

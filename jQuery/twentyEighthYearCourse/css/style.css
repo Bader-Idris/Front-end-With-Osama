@@ -174,37 +174,47 @@ body {
   transform: translateZ(-25px) rotateX(-90deg);
 }
 /* 🔼 3d button brought in codePen */
-.buttons-effect.from-left span:first-child {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #080;
-  display: block;
-  overflow: hidden;
-  z-index: 1;
-}
-.buttons-effect.from-left span:last-child {
-  position: relative;
-  z-index: 2;
-
-}
-.buttons-effect.from-left {
+.buttons-effect:not(.from-right) {
   cursor: pointer;
   display: inline-block;
   text-align: center;
   margin: 20px auto;
-  background-color: #FFF;
   width: 140px;
   padding: 10px;
   border-radius: 10px;
   font-weight: bold;
   color: #FFF;
-  background-color: #9d3b12;
   border: none;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+}
+.buttons-effect:not(.from-right) span:first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  z-index: 1;
+}
+.buttons-effect:not(.from-right) span:last-child {
+  position: relative;
+  z-index: 2;
+}
+.buttons-effect.from-left {
+  background-color: #c0392b;
+}
+.buttons-effect.from-left span:first-child {
+  background-color: #e74c3c;
+  width: 0;
+  height: 100%;
+}
+.buttons-effect.from-top {
+  background-color: #2980b9;
+}
+.buttons-effect.from-top span:first-child {
+  background-color: #3498db;
+  height: 0;
+  width: 100%;
 
 }
 /* End Buttons With Effects */

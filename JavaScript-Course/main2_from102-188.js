@@ -1160,10 +1160,91 @@ console.log(email.match(valid));
 */
 
 let names = "Sayed 1Spam 2Spam 3Spam Spam4 Spam5 Osama Ahmed Aspamo";
-let re = /(\bspam|spam\b)/ig;
+let re = /(\bspam|spam\b)/ig;// either starts with span or ends with it
 console.log(names.match(re));
 
 console.log(re.test(names));
-console.log(/(\bspam|spam\b)/ig.test("Osama"));
+console.log(/(\bspam|spam\b)/ig.test("Osama"));//false here means he's good
 console.log(/(\bspam|spam\b)/ig.test("1Spam"));
 console.log(/(\bspam|spam\b)/ig.test("Spam1"));
+// this test pattern is usually used with if conditions to validate forms
+
+// 140th lesson 04:02:30 RegExp - Quantifiers Part 1
+/*
+  Regular Expression
+
+  Quantifiers
+  n+    => One Or More
+  n*    => zero or more [or if not exists as /0\d*0/]
+  n?    => zero or one [n might be existing or not as [https?]]
+*/
+let mails = "o@nn.sa osama@gmail.com elzero@gmail.net osama@mail.ru"; // All Emails
+// let mailsRe = /\w+@\w+.(com|net)/ig;
+let mailsRe = /\w+@\w+.\w+/ig;
+console.log(mails.match(mailsRe));
+
+let nums1 = "0110 10 150 05120 0560 350 00"; // 0 Numbers Or No 0
+let numsRe1 = /0\d*0/ig;
+console.log(nums1.match(numsRe1));
+
+let urls = "https://google.com http://www.website.net web.com"; // http + https
+let urlsRe = /(https?:\/\/)?(www.)?\w+.\w+/ig;// \/\/ two // with escaping
+//  (www.)? means www. might exist or not, same as (https?:\/\/)?
+console.log(urls.match(urlsRe));
+
+// 141st lesson 04:11:25 RegExp - Quantifiers Part 2
+/*
+  Regular Expression
+
+  Quantifiers
+  n{x}   => Number of
+  n{x,y} => Range
+  n{x,}  => At Least x
+*/
+
+let serials = "S100S S3000S S50000S S950000S";
+
+console.log(serials.match(/s\d{3}s/ig)); // S[Three Number]S
+console.log(serials.match(/s\d{4,5}s/ig)); // S[Four Or Five Number]S
+console.log(serials.match(/s\d{4,}s/ig)); // S[At Least Four]S
+
+// 142nd lesson 04:13:48 RegExp - Quantifiers Part 3
+/*
+  Regular Expression
+
+  Quantifiers
+  $  => End With Something
+  ^  => Start With Something
+  ?= => Followed By Something
+  ?! => Not Followed By Something
+*/
+
+let myString1 = "We Love Programming";
+let names1 = "1OsamaZ 2AhmedZ 3Mohammed 4MoustafaZ 5GamalZ";
+
+console.log(/ing$/ig.test(myString1));
+console.log(/^we/ig.test(myString1));
+console.log(/lz$/ig.test(names1));
+console.log(/^\d/ig.test(names1));// it recognizes numbers, LOVELY
+
+console.log(names1.match(/\d\w{5}(?=Z)/ig));
+// 🔼 means starts with digit, then 5 letters, 
+// then (?=Z) means after these 6 characters, must have Z,
+//  it will not be printed with 'em
+
+console.log(names1.match(/\d\w{8}(?!Z)/ig));
+
+// 143rd lesson 04:18:46 RegExp - Replace With Pattern
+/*
+  Regular Expression
+
+  - replace
+  - replaceAll
+*/
+
+let txt = "We Love Programming And @ Because @ Is Amazing";
+console.log(txt.replace("@", "JavaScript"));
+console.log(txt.replaceAll("@", "JavaScript"));
+let re1 = /@/ig;
+console.log(txt.replaceAll(re1, "JavaScript"));
+console.log(txt.replaceAll(/@/ig, "JavaScript"));
