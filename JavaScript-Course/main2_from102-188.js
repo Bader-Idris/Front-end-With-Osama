@@ -1395,6 +1395,301 @@ console.log(userUno.s);
 
 console.log(userUno instanceof User);
 //🔼useful boolean value asking if object is an instance[inheritor] of our constructor function
-console.log(userUno.constructor === User);//another way to ask same question
+console.log(userUno.constructor === User);//another way to ask same question [similar not identical]
 
 // 150th lesson 04:50:45 Dealing With Properties & Methods
+/*
+  Constructor Function
+  - Deal With Properties And Methods
+*/
+
+class User {
+  constructor(id, username, salary) {
+    // Properties
+    this.i = id;
+    this.u = username || "Unknown";
+    this.s = salary < 6000 ? salary + 500 : salary;
+    this.msg = function () {
+      return `Hello ${this.u} Your Salary Is ${this.s}`;
+    };
+  }
+  // Methods
+  writeMsg() {
+    return `Hello ${this.u} Your Salary Is ${this.s}`;
+  }
+}
+
+let userUn = new User(100, "Elzero", 5000);
+let userDo = new User(101, "", 6000);
+
+console.log(userUn.u);
+console.log(userUn.s);
+console.log(userUn.msg());
+console.log(userUn.writeMsg());
+
+console.log(userDo.u);
+console.log(userDo.s);
+console.log(userDo.msg); // Native Code [this func is a property [box icon]] not returning its name
+console.log(userDo.writeMsg); // Native Code [this func is a method [cube icon]] returning its name
+
+// 151st lesson 04:55:35 Update Properties & Built In Constructors
+
+/*
+  Constructor Function
+  - Update Properties
+  - Built In Constructors
+*/
+
+class User {
+  constructor(id, username, salary) {
+    this.i = id;
+    this.u = username;
+    this.s = salary;
+  }
+  updateName(newName) {
+    this.u = newName;
+  }
+}
+
+let userFirst = new User(100, "Elzero", 5000);
+// to know info about anything click: ctrl + k + i as for User()
+console.log(userFirst.u);
+userFirst.updateName("Osama");
+console.log(userFirst.u);
+
+let strOne = "Elzero";
+let strTwo = new String("Elzero");//object as a built-in constructor
+
+console.log(typeof strOne);
+console.log(typeof strTwo);
+
+console.log(strOne instanceof String);//false because it's built with another way!! Osama said[too advanced]
+console.log(strTwo instanceof String);
+
+console.log(strOne.constructor === String);//both are true, because they're used with String constructor
+console.log(strTwo.constructor === String);//even if both are not brought same way, as instanceof [above]
+// we can do same with numbers in this lesson
+
+// 152nd lesson 05:00:40 Class Static Properties & Methods
+/*
+  Class
+  - Static Properties And Methods
+*/
+
+class User {
+  // Static Property
+  static count = 0;
+
+  constructor(id, username, salary) {
+    this.i = id;
+    this.u = username;
+    this.s = salary;
+    User.count++;
+    //this is exactly how to create [.length], after defining count as static
+    // it's a length of objects in our Class
+  }
+
+  // Static Methods
+  static sayHello() {
+    return `Hello From Class`;
+  }
+  static countMembers() {
+    return `${this.count} Members Created`;
+  }
+}
+
+let userOne1 = new User(100, "Elzero", 5000);
+let userTwo1 = new User(101, "Ahmed", 5000);
+let userThree1 = new User(102, "Sayed", 5000);
+
+console.log(userOne1.u);
+console.log(userTwo1.u);
+console.log(userOne1.count);
+console.log(User.count);//undefined because it's not static
+// [when was used without [static] in the class], but when [static] is used, it'll be reversed,
+// the new userOne.count[object] will be undefined[can't access property], not User.count[Class]
+// static properties are special to classes themselves.
+// so [objects] are as: userOne, and Classes are :[constructor functions]
+console.log(User.sayHello());
+console.log(User.countMembers());//if as object, it'll return [not a function]
+//  meaning: can't access this static property
+
+// 153rd lesson 05:05:40 Class Inheritance
+/*
+  Class
+  - Inheritance [🔴EXTREMELY IMPORTANT AS ADVANCED IN CLASSES🔴]
+*/
+
+// Parent Class
+class User {
+  constructor(id, username) {
+    this.i = id;
+    this.u = username;
+  }
+  sayHello() {
+    return `Hello ${this.u}`;
+  }
+}
+
+// Derived Class
+class Admin extends User {//[extends User to be derived from User[our inheritance]]
+  constructor(id, username, permissions) {
+    super(id, username);//instead of prior normal id & username properties
+    this.p = permissions;
+  }
+  // and User method[sayHello] is here, without [super] or whatnot
+}
+
+class Superman extends Admin {
+  constructor(id, username, permissions, ability) {
+    super(id, username, permissions);
+    this.a = ability;
+  }
+}
+
+let userOne2 = new User(100, "Elzero");
+let adminOne = new Admin(110, "Mahmoud", 1);
+
+console.log(userOne2.u);
+console.log(userOne2.sayHello());
+console.log("####");
+console.log(adminOne.i);
+console.log(adminOne.u);
+console.log(adminOne.p);
+console.log(adminOne.sayHello());
+
+// 154th lesson 05:12:35 Class Encapsulation
+/*
+  Encapsulation [2nd column of OOP]
+  - Class Fields Are Public By Default
+  - Guards The Data Against Illegal Access.
+  - Helps To Achieve The Target Without Revealing Its Complex Details.
+  - Will Reduce Human Errors.
+  - Make The App More Flexible And Manageable.
+  - Simplifies The App.
+*/
+
+class User {
+  // Private Property
+  #e;//as JS outputs: private field must be declared
+  constructor(id, username, eSalary) {
+    this.i = id;
+    this.u = username;
+    this.#e = eSalary;
+  }
+  getSalary() {// this is how to get our Private Property
+    return parseInt(this.#e);//it's accessible to Private Property
+    // because it's inside User, it's in the family
+  }
+}
+
+let userOne3 = new User(100, "Elzero", "5000 Gneh");
+
+console.log(userOne3.u);
+console.log(userOne3.getSalary() * 0.3);
+// 🔼 is instead of typing: userOne3.#e * 0.3; or userOne3.e
+// this is called hidden implementation
+
+// a mission: try declaring a class and inheriting another, then making some properties private
+// especially inheriting private properties
+
+// I learned, private properties aren't valid to inherit
+
+// 155th lesson 05:20:05 Prototype Introduction
+/*
+  Prototype [نموذج أو مخطط]
+  - Introduction
+  - Prototypes are the mechanism by which JavaScript objects
+    inherit features from one another.
+*/
+// prototypes are objects
+class User {
+  constructor(id, username) {
+    this.i = id;
+    this.u = username;
+  }
+  sayHello() {
+    return `Hello ${this.u}`;
+  }
+}
+
+let userOne4 = new User(100, "Elzero");
+console.log(userOne4.u);
+
+console.log(User.prototype);
+
+let strOne4 = "Elzero";
+// only by creating a var as String, we can inherit String Class properties
+// that's lovely, as: strOne4. [you can see results]
+console.log(String.prototype);
+
+// 156th lesson 05:23:05 Add To Prototype Chain
+/*
+  Prototype
+  - Add To Prototype Chain
+  - Extend Built In Constructors Features
+*/
+
+class User {
+  constructor(id, username) {
+    this.i = id;
+    this.u = username;
+  }
+  sayHello() {
+    return `Hello ${this.u}`;
+  }
+}
+
+let userUnoYo = new User(100, "Elzero");
+console.log(userUnoYo.u);
+console.log(User.prototype);
+console.log(userUnoYo);
+
+User.prototype.sayWelcome = function () {
+  return `Welcome ${this.u}`;
+};
+// extend here means to extend power of our [built-in constructors]
+Object.prototype.love = "Elzero Web School";// an example
+
+String.prototype.addDotBeforeAndAfter = function (val) {
+  return `.${this}.`;
+};
+
+let misString = "Elzero";
+
+// 157th lesson 05:30:00 Object Meta Data And Descriptor Part 1
+/*
+  Object Meta Data And Descriptor
+  - writable
+  - enumerable
+  - configurable [Cannot Delete Or Reconfigure]
+*/
+
+const myObject = {
+  a: 1,
+  b: 2,
+};
+
+Object.defineProperty(myObject, "c", {
+  writable: false,
+  enumerable: true,
+  configurable: false,
+  value: 3,
+});
+
+// Object.defineProperty(myObject, "c", {
+//   writable: false,
+//   enumerable: true,
+//   configurable: true, <= Cannot redefine property
+//   value: 3,
+// });
+
+myObject.c = 100;
+
+console.log(delete myObject.c);
+
+for (let prop in myObject) {
+  console.log(prop, myObject[prop]);
+}
+
+console.log(myObject);
