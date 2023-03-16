@@ -1869,7 +1869,7 @@ console.log(date1);
 let date2 = new Date(404344800000);
 console.log(date2);
 
-let date3 = new Date("10-25-1982");
+let date3 = new Date("10-25-1982");// we can replace dash with special ch
 console.log(date3);
 
 let date4 = new Date("1982-10-25");
@@ -1884,8 +1884,117 @@ console.log(date6);
 let date7 = new Date(1982, 9, 25, 2, 10, 0);
 console.log(date7);
 
-let date8 = new Date(1982, 9, 25);
+let date8 = new Date(1982, 9, 25);//9 is 10th here as an Index
 console.log(date8);
 
-let date9 = new Date("1982-10-25T06:10:00Z");
+let date9 = new Date("1982-10-25T06:10:00Z");// without Z it becomes 6 instead of +002 or your current zone
 console.log(date9);
+
+
+// 163rd lesson 06:02:20 Tracking Time Operations
+/*
+  Date And Time
+  - Track Operations Time
+
+  Search For
+  - performance.now()
+  - performance.mark()
+*/
+
+// Start Time
+let start = new Date();
+
+// Operation
+for (let i = 0; i < 100000; i++) {
+  // document.write(`<div>${i}</div>`);
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(i));
+  document.body.appendChild(div);
+}
+
+// Time End
+let end = new Date();
+
+// Operation Duration
+let duration = end - start;
+
+console.log(duration);
+
+
+// 164th lesson 06:05:40 Generator Function Introduction
+/*
+  Generators
+  - Generator Function Run Its Code When Required.
+  - Generator Function Return Special Object [Generator Object]
+  - Generators Are Iterable
+*/
+
+function* generateNumbers() {// append * to [function keyword]
+  yield 1;
+  console.log("Hello After Yield 1");
+  yield 2;
+  yield 3;
+  yield 4;
+}
+//🔴we can use these generator functions with [[show more]] buttons in our portfolio🔴
+// and in charging SIM balances Osama said
+
+let generator = generateNumbers();
+
+console.log(typeof generator);//object
+console.log(generator);//to see its prototype
+
+console.log(generator.next());//we can see our done & value by appending 'em as next().
+console.log(generator.next());//to get string printed this yield must start
+console.log(generator.next());
+console.log(generator.next());
+console.log(generator.next());
+// we need to stop these, when we wanna do 2nd [for of loop]in this lesson,
+//  they yield values from our variable [generator]
+
+
+for (let value of generateNumbers()) {
+  console.log(value);
+}
+
+for (let value of generator) {
+  console.log(value);
+}
+
+// 165th lesson 06:12:20 Delegate Generator Function
+/*
+  Generators
+  - Delegate Generator[تفويض]
+*/
+
+function* generateNums() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+function* generateLetters() {
+  yield "A";
+  yield "B";
+  yield "C";
+}
+
+function* generateAll() {
+  yield* generateNums();
+  yield* generateLetters();
+  yield* [4, 5, 6];
+}
+
+let generatorYo = generateAll();
+
+console.log(generatorYo.next());
+console.log(generatorYo.next());
+console.log(generatorYo.next());
+console.log(generatorYo.next());
+console.log(generatorYo.next());
+console.log(generatorYo.next());
+console.log(generatorYo.return("Z"));
+console.log(generatorYo.next());
+console.log(generatorYo.next());
+console.log(generatorYo.next());
+
