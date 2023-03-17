@@ -2049,17 +2049,102 @@ export { aA, arr, saySomething };// this is another way to export wanted propert
 // this lesson is extremely important when working with frameworks,
 //  because we'll [literarily🙄]start working with it 
 
+
 // 168th lesson 06:22:50 Named Vs Default Export And Import All
 // import elzero, { myNumber, arr, saySomething as s } from "./main.js";
 
-// console.log(myNumber);
-// console.log(arr);
+// console.log(myNumberC);
+// console.log(arrC);
 // console.log(s());
 // console.log(elzero());
 
-import * as all from "./main.js";
-
+import * as all from "./main.js";// all here is a nickname, it's changeable
+// we can use default exported[module] without naming it, or by changing its name
 console.log(all);
-
+// as any object, to call our module properties & methods use[all.]
 console.log(all.myNumberC);
 console.log(all.arrC);
+
+
+// 169th lesson 06:26:50 What's JSON ?
+/*
+  What Is JSON ?
+  - JavaScript Object Notation
+  - Format For Sharing Data Between Server And Client
+  - JSON Derived From JavaScript
+  - Alternative To XML
+  - File Extension Is .json
+
+  Why JSON ?
+  - Easy To Use And Read
+  - Used By Most Programming Languages And Its Frameworks
+  - You Can Convert JSON Object To JS Object And Vice Versa
+
+  JSON vs XML
+  ===================================================
+  = Text Based Format      = Markup Language        =
+  = Lightweight            = Heavier                =
+  = Does Not Use Tags      = Using Tags             =
+  = Shorter                = Not Short              =
+  = Can Use Arrays         = Cannot Use Arrays      =
+  = Not Support Comments   = Support Comments       =
+  ===================================================
+*/
+// Note: يمكنك الفصل بين كل JSON Object والآخر عن طريق علامة ال Comma “,” ووضعهم كلهم داخل Square Brackets []
+
+
+// 170th lesson 06:30:20 JSON Syntax And Compare With JS Object
+/*
+  JSON Syntax
+  - Data Added Inside Curly Braces {  }
+  - Data Added With Key : Value
+  - Key Should Be String Wrapped In Double Quotes
+  - Data Separated By Comma
+  - Square Brackets [] For Arrays
+  - Curly Braces {} For Objects
+
+  Available Data Types
+  - String
+  - Number
+  - Object
+  - Array
+  - Boolean Values
+  - null
+*/
+
+// there're no functions or calculations, because JSON's a sharing format
+// comments are not permitted in JSON[not available]
+
+// good websites to edit JSON and get its format with some tips are as:
+// https://jsoneditoronline.org/
+// and we can compress it, by clicking [copy] icon, then copy as compacted
+
+
+// 171st lesson 06:33:40 What's API [🔴application programming interface🔴]
+/* الواجهة البرمجية
+  JSON
+  - API Overview
+  - Tools To Test API
+  - Preview Github API
+*/
+// consider you have a website as readEra application
+// after adding user's info, and other favorites
+//  as read, currently reading, wanting to read books
+
+// when we create a feature of comparing our user to his friends as goodReaders
+// we have to not appear all user's details
+
+// gold trading websites use APIs, to get various details each day
+
+// YouTube has APIs to change playlists, videos and other resources to other websites
+
+// 🔴there are two types of API:🔴 Public API🔴 Private API
+// with appearing books it's public, with changing YouTube content it's private
+
+// so private APIs uses [Secret Keys]or as[Authentication]
+// 🔴we can appear our private APIs in specific domains🔴
+
+// see daily seen APIs:
+// https://api.github.com/users/bader-idris ⬅️ my or as our teacher, user is: elzeroWebSchool
+// when we add /repos we'll see github user's repositories
+// 6:39:45
