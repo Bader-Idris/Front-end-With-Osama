@@ -1980,9 +1980,9 @@ function* generateLetters() {
 }
 
 function* generateAll() {
-  yield* generateNums();
+  yield* generateNums();// using yield then * to get another Generator function's values
   yield* generateLetters();
-  yield* [4, 5, 6];
+  yield* [4, 5, 6];// without * here, it'll print array itself
 }
 
 let generatorYo = generateAll();
@@ -1993,8 +1993,73 @@ console.log(generatorYo.next());
 console.log(generatorYo.next());
 console.log(generatorYo.next());
 console.log(generatorYo.next());
-console.log(generatorYo.return("Z"));
+console.log(generatorYo.return("Z"));// return close generator function, so 🔽🔽 [and itself if empty] will quit
 console.log(generatorYo.next());
 console.log(generatorYo.next());
 console.log(generatorYo.next());
 
+// 166th lesson 06:15:50 Generator Infinite Numbers
+/*
+  Generators
+  - Generate Infinite Numbers
+  - Use Return Inside Generators
+*/
+
+function* generateNumbers() {
+  // yield 1;
+  // yield 2;
+  // return "A";// this is exactly as upwardly one.
+  // yield 3;
+  // yield 4;
+  let index = 0;
+
+  while (true) {
+    yield index++;
+  }
+}
+
+let generatorBro = generateNumbers();
+
+console.log(generatorBro.next());
+console.log(generatorBro.next());
+console.log(generatorBro.next());
+console.log(generatorBro.next());
+
+// 167th lesson 06:18:40 Modules Import And Export
+/*
+  Modules
+  - Import And Export
+*/
+
+let aA = 10;
+// export let aA = 10; typing export before wanted object to export it
+let arr = [1, 2, 3, 4];
+
+function saySomething() {
+  return `Something`;
+}
+
+export { aA, arr, saySomething };// this is another way to export wanted properties
+
+
+// import { aA, arr, saySomething as s } from "./main.js";
+// this is the most important line in app.js which imports required data methods and properties
+// saySomething as s means an alias, every property can be nicknamed
+
+// this lesson is extremely important when working with frameworks,
+//  because we'll [literarily🙄]start working with it 
+
+// 168th lesson 06:22:50 Named Vs Default Export And Import All
+// import elzero, { myNumber, arr, saySomething as s } from "./main.js";
+
+// console.log(myNumber);
+// console.log(arr);
+// console.log(s());
+// console.log(elzero());
+
+import * as all from "./main.js";
+
+console.log(all);
+
+console.log(all.myNumberC);
+console.log(all.arrC);
