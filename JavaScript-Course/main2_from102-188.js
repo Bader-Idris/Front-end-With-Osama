@@ -2813,3 +2813,7 @@ fetchData();
 
 // solve a lot of problems, see articles in elzero.org about problem solving
 // search for requested questions from Osama, he repetend some videos 30-40 times 🙀MY-MAN
+
+
+// to see each video's content go to this link:
+// https://elzero.org/category/courses/javascript-bootcamp/
