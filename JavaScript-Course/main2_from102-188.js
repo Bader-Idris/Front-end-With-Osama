@@ -2294,7 +2294,7 @@ console.log("Three");// both here and stacked functions output same results,
   Story
   - JavaScript Is A Single Threaded Language "All Operations Executed in Single Thread"
   - Call Stack Track All Calls
-  - Every Function Is Done Its Poped Out
+  - Every Function Is Done Its Popped Out
   - When You Call Asynchronous Function It Sent To Browser API
   - Asynchronous Function Like Settimeout Start Its Own Thread
   - Browser API Act As A Second Thread
@@ -2320,3 +2320,197 @@ setTimeout(() => {
 
 let myVar = 100;
 myVar += 100;
+
+/* a lovely comment from a programmer about console.log queue and its threaded approach
+
+  These APIs can include functions that are synchronous and asynchronous. For example, the
+  [setTimeout] will use the event loop, [console.log()] will synchronously write to the browser's
+  console (implementations vary between engines), [fetch] will call an asynchronous function that can
+  be [await]ed.
+*/
+
+// 176th lesson 07:05:07 What Is AJAX And Network Information
+/*
+  AJAX
+  - Asynchronous JavaScript And XML
+  - Approach To Use Many Technologies Together [HTML, CSS, Js, DOM]
+  - It Use "XMLHttpRequest" Object To Interact With The Server
+  - You Can Fetch Data Or Send Data Without Page Refresh
+  - Examples
+  --- Youtube Studio
+  --- Google Drive
+  --- Upload Article Photo
+  --- Form Check Name
+
+  Test new XMLHttpRequest();
+  Request And Response
+  Status Code
+*/
+
+let req = new XMLHttpRequest();// we see some status as 404 or 405
+console.log(req);
+// 200 status in network tap means ok[in status code:], not as 404 can't access
+
+
+// 177th lesson 07:10:00 Request And Response From Real API
+/*
+  Ajax
+  - Ready State => Status Of The Request
+  [0] Request Not Initialized
+  [1] Server Connection Established
+  [2] Request Received
+  [3] Processing Request
+  [4] Request Is Finished And Response Is Ready[even with bugs, it's finished unlike 200]
+  - Status
+  [200] Response Is Successful
+  [404] Not Found
+*/
+
+let myRequest = new XMLHttpRequest();
+myRequest.open("GET", "https://api.github.com/users/elzerowebschool/repos");
+// a boolean comes as true [default] after the URL means async [asynchronous]
+myRequest.send();
+console.log(myRequest);
+
+myRequest.onreadystatechange = function () {
+  // console.log(myRequest.readyState);
+  // console.log(myRequest.status);
+  if (this.readyState === 4 && this.status === 200) {// 🔴 IMPORTANT 🔴
+    console.log(this.responseText);
+  }
+};
+
+
+// 178th lesson 07:15:28 Loop On Data
+/*
+  Ajax
+  Loop On Data
+
+  🔴 Search For 🔴
+  - Cross Origin API [CORS]
+  - API Authentication
+*/
+let myRequest = new XMLHttpRequest();
+myRequest.open("GET", "https://api.github.com/users/elzerowebschool/repos");
+myRequest.send();
+myRequest.onreadystatechange = function () {
+  if (this.readyState === 4 && this.status === 200) {
+    // console.log(this.responseText);
+    let jsData = JSON.parse(this.responseText);
+    // console.log(jsData);
+    for (let i = 0; i < jsData.length; i++) {
+      let div = document.createElement("div");
+      let repoName = document.createTextNode(jsData[i].full_name);
+      // instead of full_name we can add any property, as archive_url, you can see 'em by printing 
+      // JSON.parse(myRequest.responseText)
+      div.appendChild(repoName);
+      document.body.appendChild(div);
+    }
+  }
+};
+
+
+// 179th lesson 07:19:20 Callback Hell Or Pyramid Of Doom
+/*
+  To Understand Ajax, Fetch, Promises
+
+  Pyramid Of Doom || Callback Hell
+
+  - What Is Callback
+  - Callback Hell Example
+
+  What Is Callback
+  - A Function That Is Passed Into Another One As An Argument To Be Executed Later
+  - Function To Handle Photos
+  --- [1] Download Photo From URL
+  --- [2] Resize Photo
+  --- [3] Add Logo To The Photo
+  --- [4] Show The Photo In Website
+*/
+
+function makeItRed(e) {
+  e.target.style.color = "red";
+}
+let p = document.querySelector(".test");
+p.addEventListener("click", makeItRed);
+
+
+function iamACallback() {
+  console.log("Iam A Callback Function");
+}
+
+setTimeout(iamACallback, 2000);
+
+setTimeout(() => {
+  console.log("Download Photo From URL");
+  setTimeout(() => {
+    console.log("Resize Photo");
+    setTimeout(() => {
+      console.log("Add Logo To The Photo");
+      setTimeout(() => {
+        console.log("Show The Photo In Website");
+      }, 1000);
+    }, 1000);
+  }, 1000);
+}, 1000);
+
+
+// 180th lesson 07:25:30 Promise Intro And Syntax
+/*
+  Promise Intro And Syntax
+  - Promise In JavaScript Is Like Promise In Real Life
+  - Promise Is Something That Will Happen In The Future
+  - Promise Avoid Callback Hell
+  - Promise Is The Object That Represent The Status Of An Asynchronous Operation And Its Resulting Value
+
+  - Promise Status
+  --- Pending: Initial State
+  --- Fulfilled: Completed Successfully
+  --- Rejected: Failed
+
+  Story
+  - Once A Promise Has Been Called, It Will Start In A Pending State
+  - The Created Promise Will Eventually End In A Resolved State Or In A Rejected State
+  - Calling The Callback Functions (Passed To Then And Catch) Upon Finishing.
+
+  - Then
+  --- Takes 2 Optional Arguments [Callback For Success Or Failure]
+*/
+
+// const myPromise = new Promise((resolveFunction, rejectFunction) => {
+//   let connect = false;
+//   if (connect) {
+//     resolveFunction("Connection Established");
+//   } else {
+//     rejectFunction(Error("Connection Failed"));
+//   }
+// }).then(
+//   (resolveValue) => console.log(`Good ${resolveValue}`),
+//   (rejectValue) => console.log(`Bad ${rejectValue}`)
+// );
+
+const myPromise = new Promise((resolveFunction, rejectFunction) => {
+  let connect = true;
+  if (connect) {
+    resolveFunction("Connection Established");
+  } else {
+    rejectFunction(Error("Connection Failed"));
+  }
+});
+
+console.log(myPromise);
+
+let resolver = (resolveValue) => console.log(`Good ${resolveValue}`);
+let rejecter = (rejectValue) => console.log(`Bad ${rejectValue}`);
+
+myPromise.then(resolver, rejecter);
+
+myPromise.then(
+  (resolveValue) => console.log(`Good ${resolveValue}`),
+  (rejectValue) => console.log(`Bad ${rejectValue}`)
+);
+
+myPromise.then(
+  (resolveValue) => console.log(`Good ${resolveValue}`),
+  (rejectValue) => console.log(`Bad ${rejectValue}`)
+);
