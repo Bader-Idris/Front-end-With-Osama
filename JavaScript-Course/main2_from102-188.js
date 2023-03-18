@@ -38,7 +38,7 @@ console.log('Test');
 */
 
 /*
-  We use confirm when user has decesions to make, as:
+  We use confirm when user has decisions to make, as:
   -!! do you wanna remove this item permanently!! 🆗⛔
 */
 let confirmMsg = confirm('Are you sure?');
@@ -93,7 +93,7 @@ btn[0].onclick = function (){
 // 105th lesson 00:20:05 setInterval And clearInterval
 /*
   BOM [Browser Object Model]
-  - setInterval(Function, Millseconds, Additional Params)
+  - setInterval(Function, Milliseconds, Additional Params)
   - clearInterval(Identifier)
     similar to setTimeout, but setInterval repeats the function repeatedly
     meaning: setInterval waits for 3000 then repeats after 3000 or until using clearInterval
@@ -2460,8 +2460,8 @@ setTimeout(() => {
   Promise Intro And Syntax
   - Promise In JavaScript Is Like Promise In Real Life
   - Promise Is Something That Will Happen In The Future
-  - Promise Avoid Callback Hell
-  - Promise Is The Object That Represent The Status Of An Asynchronous Operation And Its Resulting Value
+  - Promise Avoids Callback Hell
+  - Promise Is The Object That Represents The Status Of An Asynchronous Operation And Its Resulting Value
 
   - Promise Status
   --- Pending: Initial State
@@ -2503,7 +2503,7 @@ console.log(myPromise);
 let resolver = (resolveValue) => console.log(`Good ${resolveValue}`);
 let rejecter = (rejectValue) => console.log(`Bad ${rejectValue}`);
 
-myPromise.then(resolver, rejecter);
+myPromise.then(resolver, rejecter);//summarized
 
 myPromise.then(
   (resolveValue) => console.log(`Good ${resolveValue}`),
@@ -2514,3 +2514,302 @@ myPromise.then(
   (resolveValue) => console.log(`Good ${resolveValue}`),
   (rejectValue) => console.log(`Bad ${rejectValue}`)
 );
+
+
+// 181st lesson 07:33:45 Promise - Then, Catch, Finally
+/*
+  Promise Training
+
+  We Will Go To The Meeting, Promise Me That We Will Find The 4 Employees
+  .then(We Will Choose Two People)
+  .then(We Will Test Them Then Get One Of Them)
+  .catch(No One Came)
+
+  Then    => Promise Is Successful Use The Resolved Data
+  Catch   => Promise Is Failed, Catch The Error
+  Finally => Promise Successful Or Failed Finally Do Something
+*/
+
+const myPromiseYo = new Promise((resolveFunction, rejectFunction) => {
+  // let employees = ["Bader", "Hanady", "Marriage", "Children"];
+  let employees = [];
+  if (employees.length === 4) {
+    resolveFunction(employees);
+  } else {
+    rejectFunction(Error("Number Of Employees Is Not 4"));
+  }
+});
+
+myPromiseYo
+  .then((resolveValue) => {
+    resolveValue.length = 2;
+    return resolveValue;
+  })
+  .then((resolveValue) => {
+    resolveValue.length = 1;
+    return resolveValue;
+  })
+  .then((resolveValue) => {
+    console.log(`The Chosen Employee Is ${resolveValue}`);
+  })
+  .catch((rejectedReason) => console.log(rejectedReason))
+  .finally(console.log("The Operation Is Done"));
+
+
+// 182nd lesson 07:42:55 Promise And XHR
+/*
+  Promise And XHR
+*/
+const getData = (apiLink) => {
+  return new Promise((resolve, reject) => {
+    let myRequest = new XMLHttpRequest();
+    myRequest.onload = function () {
+      if (this.readyState === 4 && this.status === 200) {
+        resolve(JSON.parse(this.responseText));
+      } else {
+        reject(Error("No Data Found"));
+      }
+    };
+
+    myRequest.open("GET", apiLink);
+    myRequest.send();
+  });
+};
+
+getData("https://api.github.com/users/elzerowebschool/repos")
+  .then((result) => {
+    result.length = 10;
+    return result;
+  })
+  .then((result) => console.log(result[0].name))
+  .catch((rej) => console.log(rej));
+
+
+// 183rd lesson 07:47:50 Fetch API
+/*
+  Fetch API
+  - Return A Representation Of the Entire HTTP Response
+*/
+fetch("https://api.github.com/users/elzerowebschool/repos")
+  .then((result) => {
+    console.log(result);
+    let myData = result.json();
+    console.log(myData);
+    return myData;
+  })
+  .then((full) => {// full is same as myData, but we can change its name as a parameter
+    full.length = 10;
+    return full;
+  })
+  .then((ten) => {// same as full
+    console.log(ten[0].name);
+  });
+
+// const getData = (apiLink) => {
+//   return new Promise((resolve, reject) => {
+//     let myRequest = new XMLHttpRequest();
+//     myRequest.onload = function () {
+//       if (this.readyState === 4 && this.status === 200) {
+//         resolve(JSON.parse(this.responseText));
+//       } else {
+//         reject(Error("No Data Found"));
+//       }
+//     };
+
+//     myRequest.open("GET", apiLink);
+//     myRequest.send();
+//   });
+// };
+
+// getData("https://api.github.com/users/elzerowebschool/repos")
+//   .then((result) => {
+//     result.length = 10;
+//     return result;
+//   })
+//   .then((result) => console.log(result[0].name))
+//   .catch((rej) => console.log(rej));
+
+
+// 184th lesson 07:53:25 Promise - All, AllSettled, Race
+/*
+  Promise
+  - All [if 3rd in 🔼 is rejected it stops the thread]
+  - All Settled [even with rejected promises it returns keys]
+  - Race [gets the first comes out in time, it's a race as its name, whether isIt rej or res]
+*/
+const myFirstPromise = new Promise((res, rej) => {
+  setTimeout(() => {
+    res("Iam The First Promise");
+  }, 5000);
+});
+
+const mySecondPromise = new Promise((res, rej) => {
+  setTimeout(() => {
+    rej("Iam The Second Promise");
+  }, 1000);
+});
+
+const myThirdPromise = new Promise((res, rej) => {
+  setTimeout(() => {
+    res("Iam The Third Promise");
+  }, 2000);
+});
+
+// Promise.all([myFirstPromise, mySecondPromise, myThirdPromise]).then(
+//   (resolvedValues) => console.log(resolvedValues),
+//   (rejectedValue) => console.log(`Rejected: ${rejectedValue}`)
+// );
+
+// Promise.allSettled([myFirstPromise, mySecondPromise, myThirdPromise]).then(
+//   (resolvedValues) => console.log(resolvedValues),
+//   (rejectedValue) => console.log(`Rejected: ${rejectedValue}`)
+// );
+
+Promise.race([myFirstPromise, mySecondPromise, myThirdPromise]).then(
+  (resolvedValues) => console.log(resolvedValues),
+  (rejectedValue) => console.log(`Rejected: ${rejectedValue}`)
+);
+
+
+// 185th lesson 08:01:20 Async And Trainings
+/*
+  Async
+  - Async Before Function Mean This Function Return A Promise
+  - Async And Await Help In Creating Asynchronous Promise Behavior With Cleaner Style
+*/
+
+// function getDataYo() {
+//   return new Promise((res, rej) => {
+//     let users = [];
+//     if (users.length > 0) {
+//       res("Users Found");
+//     } else {
+//       rej("No Users Found");
+//     }
+//   });
+// }
+
+// getDataYo().then(
+//   (resolvedValue) => console.log(resolvedValue),
+//   (rejectedValue) => console.log("Rejected " + rejectedValue)
+// );
+
+// function getDataYo() {
+//   let users = ["Osama"];
+//   if (users.length > 0) {
+//     return Promise.resolve("Users Found");
+//   } else {
+//     return Promise.reject("No Users Found");
+//   }
+// }
+
+// getDataYo().then(
+//   (resolvedValue) => console.log(resolvedValue),
+//   (rejectedValue) => console.log("Rejected " + rejectedValue)
+// );
+
+async function getDataYo() {
+  let users = [];
+  if (users.length > 0) {
+    return "Users Found";
+  } else {
+    throw new Error("No Users Found");
+  }
+}
+
+console.log(getDataYo());
+
+getDataYo().then(
+  (resolvedValue) => console.log(resolvedValue),
+  (rejectedValue) => console.log("Rejected " + rejectedValue)
+);
+
+
+// 186th lesson 08:08:30 Await And Trainings
+/*
+  Await
+  - Await Works Only Inside Async Functions
+  - Await Make JavaScript Wait For The Promise Result
+  - Await Is More Elegant Syntax Of Getting Promise Result
+*/
+const myPromiseYoYo = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // resolve("Iam The Good Promise");
+    reject(Error("Iam The Bad Promise"));
+  }, 3000);
+});
+
+async function readData() {
+  console.log("Before Promise");
+  // myPromiseYoYo.then((resolvedValue) => console.log(resolvedValue));
+  // console.log(await myPromiseYoYo);
+  console.log(await myPromiseYoYo.catch((err) => err));
+  console.log("After Promise");
+}
+
+readData();
+
+
+// 187th lesson 08:13:05 Try, catch, Finally With Fetch
+/*
+  Async & Await With Try, Catch, Finally
+*/
+
+const myPromiseBro = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Iam The Good Promise");
+  }, 3000);
+});
+
+// async function readData() {
+//   console.log("Before Promise");
+//   console.log(await myPromiseBro);
+//   console.log("After Promise");
+// }
+// readData();
+// attempt to convert this code into try and catch before seeing lesson's rest
+// --------------------------Task-----------Assignment-----------------------------------
+
+
+// async function readData() {
+//   console.log("Before Promise");
+//   try {
+//     console.log(await myPromiseBro);
+//   } catch (reason) {
+//     console.log(`Reason: ${reason}`);
+//   } finally {
+//     console.log("After Promise");
+//   }
+// }
+
+// readData();
+
+// "https://api.github.com/users/elzerowebschool/repos"
+
+async function fetchData() {
+  console.log("Before Fetch");
+  try {
+    let myData = await fetch("https://api.github.com/users/elzerowebschool/repos");
+    console.log(await myData.json());
+  } catch (reason) {
+    console.log(`Reason: ${reason}`);
+  } finally {
+    console.log("After Fetch");
+  }
+}
+
+fetchData();
+
+// 188th lesson 08:17:25 The End And Advices
+/*
+  The End
+  - Other Information => Practice + Tutorials
+  - Problem Solving
+  - Search In Lessons
+  - Advanced Books
+*/
+
+// learn by practicing tutorials as we installed, hangman, clock, calculator etc
+
+// solve a lot of problems, see articles in elzero.org about problem solving
+// search for requested questions from Osama, he repetend some videos 30-40 times 🙀MY-MAN
