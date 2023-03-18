@@ -2147,4 +2147,176 @@ console.log(all.arrC);
 // see daily seen APIs:
 // https://api.github.com/users/bader-idris ⬅️ my or as our teacher, user is: elzeroWebSchool
 // when we add /repos we'll see github user's repositories
-// 6:39:45
+
+// we can make last five tweets as public in a person's portfolio website, as JSON
+
+// see https://myjson.dit.upm.es saves json info into a sub-link 
+
+
+// 172nd lesson 06:41:50 Parse And Stringify
+/*
+  JSON
+  - JSON.parse => Convert Text Data To JS Object
+  - JSON.stringify => Convert JS Object To JSON
+*/
+// Get From Server
+const myJsonObjectFromServer = '{"Username": "Osama", "Age": 39}';
+console.log(typeof myJsonObjectFromServer);
+console.log(myJsonObjectFromServer);
+
+// Convert To JS Object
+const myJsObject = JSON.parse(myJsonObjectFromServer);
+console.log(typeof myJsObject);
+console.log(myJsObject);
+
+// Update Data
+myJsObject["Username"] = "Elzero";
+myJsObject["Age"] = 40;
+
+// Send To Server
+const myJsonObjectToServer = JSON.stringify(myJsObject);
+console.log(typeof myJsonObjectToServer);
+console.log(myJsonObjectToServer);
+// real life example of bringing json data into JS,
+//  then turn it into jSON to send it to server
+
+
+// 173rd lesson 06:45:30 Asynchronous Vs Synchronous Programming
+/*
+  To Understand Ajax, Fetch, Promises
+
+  Asynchronous vs Synchronous Programming
+  - Meaning
+
+  Synchronous[متزامن]
+  - Operations Runs in Sequence
+  - Each Operation Must Wait For The Previous One To Complete
+  - Story From Real Life
+
+  Asynchronous [غير متزامن]
+  - Operations Runs In Parallel
+  - This Means That An Operation Can Occur while Another One Is Still Being Processed
+  - Story From Real Life
+
+  - Facebook As Example
+  - Simulation
+
+  🔴Search For🔴 [I DID A Week preceding it]
+  - JavaScript Is A Single-Threaded
+  - Multi Threaded Languages
+*/
+
+// Synchronous
+
+// console.log("1");
+// console.log("2");
+// window.alert("Operation");
+// console.log("3");
+
+// Asynchronous
+console.log("1");
+console.log("2");
+setTimeout(() => console.log("Operation"), 3000);
+console.log("3");
+
+
+// 174th lesson 06:51:20 Call Stack And Web API
+/*
+  To Understand Ajax, Fetch, Promises
+
+  Call Stack || Stack Trace
+  -- JavaScript Engine Uses A Call Stack To Manage Execution Contexts
+  -- Mechanism To Make The Interpreter Track Your Calls
+  -- When Function Called It Added To The Stack
+  -- When Function Executed It Removed From The Stack
+  -- After Function Is Finished Executing The Interpreter Continue From The Last Point
+  -- Work Using LIFO Principle => Last In First Out
+  -- Code Execution Is Synchronous.
+  -- Call Stack Detect Web API Methods And Leave It To The Browser To Handle It🔴🔴
+
+  Web API
+  -- Methods Available From The Environment => Browser
+*/
+// see MDN itself considered [document] as a web API 
+setTimeout(() => {
+  console.log("Web API");
+}, 0);// this will be the last because of letting web API to leave it to the browser
+// 🔼 even after last outputs
+
+function one() {
+  console.log("One");
+}
+function two() {
+  one();
+  console.log("Two");
+}
+function three() {
+  two();
+  console.log("Three");
+}
+
+three();
+
+/*
+=================================
+console.log("One");
+=================================
+function one() {
+  console.log("One");
+}
+=================================
+function two() {
+  one();
+  console.log("Two");
+}
+=================================
+function three() {
+  two();
+  console.log("Three");
+}
+=================================
+*/
+
+console.log("#####");
+console.log("One");
+console.log("Two");
+console.log("Three");// both here and stacked functions output same results,
+//  because functions were not able to print 2nd inner line before calling the first one
+//    as Func 2nd calling 1st before printing, so it's synchronous
+
+
+// 175th lesson 06:57:30 Event Loop And Callback Queue
+/*
+  To Understand Ajax, Fetch, Promises
+
+  Event Loop + Callback Queue
+
+  Story
+  - JavaScript Is A Single Threaded Language "All Operations Executed in Single Thread"
+  - Call Stack Track All Calls
+  - Every Function Is Done Its Poped Out
+  - When You Call Asynchronous Function It Sent To Browser API
+  - Asynchronous Function Like Settimeout Start Its Own Thread
+  - Browser API Act As A Second Thread
+  - API Finish Waiting And Send Back The Function For Processing
+  - Browser API Add The Callback To Callback Queue
+  - Event Loop Wait For Call Stack To Be Empty
+  - Event Loop Get Callback From Callback Queue And Add It To Call Stack
+  - Callback Queue Follow FIFO "First In First Out" Rule
+*/
+
+console.log("One");
+setTimeout(() => {
+  console.log("Three");
+}, 0);
+setTimeout(() => {
+  console.log("Four");
+}, 0);
+console.log("Two");
+
+setTimeout(() => {
+  console.log(myVar);
+}, 0);
+
+let myVar = 100;
+myVar += 100;
