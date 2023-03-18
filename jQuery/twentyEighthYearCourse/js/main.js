@@ -162,3 +162,5 @@ $(()=>{
 });
 // instead of repetition, we can create a function with 2 parameters
 // 1st for selector, and 2nd for height or width [practice that manually]
+
+// 14th lesson buttons with effects part 3
