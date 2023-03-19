@@ -3,20 +3,28 @@ let addClass = document.querySelector('input.classes-to-add');
 let removeClass = document.querySelector('input.classes-to-remove');
 let appendedToDiv = document.querySelector('.classes-list > div');
 
-window.onload = (()=>{
+// window.onload = (()=>{
+//   addClass.focus();
+// })
+window.addEventListener("load", () => {
   addClass.focus();
-})
+});
+
 addClass.addEventListener('blur', function (e) {
+  let createdDiv = document.createElement('span');
   this.value.split(' ').map((e)=>{
     if (e !== "" || e != 0) {
-      let createdDiv = document.createElement('div');
-      createdDiv.addClass(e);
-      // let divContent = e;
-      // createdDiv.appendChild(divContent);
+      createdDiv.textContent = e;
+      createdDiv.classList.add(e);
+      // createdDiv.classList.add(addClass.value);
+      for (let i = 0; i < e.length; i++) {
+        appendedToDiv.appendChild(createdDiv);
+      }
+    // console.log(e);
     }
     // e !== "" || e != 0 ? console.log(e) : false;
   });
-  document.body.appendChild(createdDiv);// a lot of craziness bro, continue tomorrow
+  // document.body.appendChild(createdDiv);
 },);
 
 removeClass.addEventListener('blur', function (e) {
@@ -29,7 +37,6 @@ removeClass.addEventListener('blur', function (e) {
 },);
 
 
-// we'll need to use those events 
 /*
   Class List Object && Methods
   - classList
@@ -53,7 +60,6 @@ removeClass.addEventListener('blur', function (e) {
 */
 
 
-
 // addClass.addEventListener({
 //   onblur: (e)=> {
 //     console.log('my baby Hanady');
@@ -62,16 +68,3 @@ removeClass.addEventListener('blur', function (e) {
 //     console.log('nigga')
 //   }
 // })
-
-
-
-// LaElemento.onclick = function () {
-//   LaElemento.classList.add("add-one", "add-two"); //can add many classes[tokens]
-//   LaElemento.classList.remove("one", "two"); //removes existing classes,
-//   //  if one doesn't exist, it doesn't care, and remove the existing one
-//   LaElemento.classList.toggle("one"); // only one class, if exists, it'll remove it, if not it'll create it
-//   // we can use it when moving [active] between elements
-// };
-
-
-
