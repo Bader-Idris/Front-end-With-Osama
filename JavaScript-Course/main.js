@@ -2617,10 +2617,10 @@ let uno = document.querySelector(".uno");
 let dos = document.querySelector(".dos");
 
 window.onload = function () {
-  two.focus(); // exactly as autofocus HTML
+  dos.focus(); // exactly as autofocus HTML
 };
 
-one.onblur = function () {
+uno.onblur = function () {
   document.links[3].click(); // lovely to direct users
 };
 // real example is verification appeals as in EpicGames, apple.
@@ -2672,7 +2672,7 @@ myIdElement.style.fontWeight = "bold"; //we use camelCase with two words
 myIdElement.style.backgroundColor = "#1692fc";
 // can use any of CSS styles🔽
 myIdElement.style.cssText = "font-weight: bold; border-color: #1692fc"; //it overrides elements above
-myIdElement.style.removeProperty("color");
+myIdElement.style.removeProperty("color");//('normal css as "background-color" ')
 myIdElement.style.setProperty("font-size", "20px", "!important"); // can use !important
 
 // console.log(document.styleSheets[0].rules[0]); rules is deprecated, to not use anymore
@@ -2783,7 +2783,7 @@ let cloned = document.querySelector(".cloned");
 // cloned.onclick = function () {//Error
 //   console.log("I'm Cloned!");
 // };
-document.addEventListener("click", function () {
+document.addEventListener("click", function (e) {
   if (e.target.className === "cloned") {
     // console.log(e.target);
     console.log("I'm Cloned!");
