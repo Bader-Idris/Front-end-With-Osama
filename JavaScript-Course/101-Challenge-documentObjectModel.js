@@ -1,74 +1,49 @@
-/* only [DOM] in adding content
-  Everything is having its class
 
-  header
-  elzero logo on left, 4 ul on right[Home About Service Contact]
-  🔼 same as 3rd template, 71 pixels height. 
-  logo's color is same as footer's background
-  padding-left: 20px
+const div = document.createElement("div");
+const paragraph = document.createElement('p');
+const headTwo = document.createElement("h2");
 
-  .content div
-  inside <span>${n}</span>product</div>
-  15 products separated with flex into 5 rows and 3 columns
-  20px margin  text-align: center  each number has Product beneath it
-  he asks to use loop n*15
+const header = div.cloneNode(false);
+const container = div.cloneNode(false);
+const footer = div.cloneNode(false);//if true, you'll get crazy of [deep] actions
 
+const sectionBar = ['HOME', 'ABOUT', 'SERVICE', 'CONTACT'];
+const ul = document.createElement('ul');
+for (let i = 0; i < 4; i++) {
+  const li = document.createElement('li');
+  li.textContent = sectionBar[i];
+  li.className = sectionBar[i].toLowerCase()
+  ul.appendChild(li);
+}
 
-  footer with 70px height, its text is Copyright 2021
-  background: #19986d;
-*/
+let logoText = "Elzero";
+const logoHeader = headTwo.cloneNode(false);
+logoHeader.innerHTML = logoText;
+const logo = div.cloneNode(false);
+logo.className = "logo";
+logo.appendChild(logoHeader);
 
-/*header must be as:
-  <div class="header" id="header">
-    <div class="container">
-      <a href="#" class="logo">Elzero</a>
-      <ul class="main-nav">
-        <li><a class="active" href="#Home">Home</a></li>
-        <li><a href="#About">About</a></li>
-        <li><a href="#Service">Service</a></li>
-        <li><a href="#Contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
+header.className = "header";
+header.appendChild(logo);
 
-*/
+header.appendChild(ul);
+for (let i = 0; i < 15; i++) {
+  const proH2 = headTwo.cloneNode(false);
+  proH2.textContent = i+1;
+  const proDesk = paragraph.cloneNode(false);
+  proDesk.textContent = 'Product';
+  const contDiv = div.cloneNode(false);
+  contDiv.appendChild(proH2);
 
-let myHead = document.createElement("div");
-let logo = document.createTextNode("Elzero");
-let myDiv = document.createElement("div").cloneNode(true);
-let myList = document.createElement("ul");
-let myOrdered = document.createElement("li").cloneNode();
-// let myAttr = document.createAttribute("data-custom");
+  contDiv.appendChild(proDesk);
+  container.appendChild(contDiv);
+}
+container.className = "container";
+footer.className = "footer";
+const footPa = paragraph.cloneNode(false);
+footPa.textContent = `Copyright ${new Date().getFullYear()}`;
+footer.appendChild(footPa);
 
-myHead.className = "header";
-myDiv.className = "logo";
-myList.className = "main-nav";
-// myHead.setAttributeNode(myAttr);
-// myHead.setAttribute("data-test", "Testing");
-
-// Append Text To Element
-myDiv.prepend(logo);
-// myList.prepend(myOrdered[0] );
-// for (let i = 0; i < 4; i++) {
-//   myList.append(i + myOrdered);//see reduce
-// }
-let unordered = [ 0,"Home", "About", "Service", "Contact"];
-
-let testing = myList.append(myOrdered);
-
-let add75 = unordered.reduce(function(acc, current, index, arr){
-  document.body.append( current);
-  return;
-});
-console.log(add75);
-// myHead.prepend(logo);
-
-// Append Element To Body
-document.body.prepend(myList);
-document.body.prepend(myDiv);
-// document.body.prepend(myHead);
-
-
-// append[in last index], prepend[in first index🟢]
-
-// I'll be back after solving every Assignment until this lesson. Starting the real working😁🤓🤪
+document.body.appendChild(header);
+document.body.appendChild(container);
+document.body.appendChild(footer);
