@@ -1,13 +1,13 @@
-body {
-  background-color: #333;
+/* body {
+  background-color: #CCC;
   color: #FFF;
   margin: 0;
   padding: 0;
-}
-*{
+} */
+/* *{
   font-family: helvetica;
-}
-.header {
+} */
+/* .header {
   height: 75px;
   display: inline-flex;
   width: 100%;
@@ -17,13 +17,15 @@ body {
   color: #161616;
   font-weight: bold;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-}
-.header .logo {
+} */
+
+/* .header .logo {
   flex-basis: 20%;
   margin-left: 50px;
   color: #1f9863;
-}
-.header ul {
+} */
+
+/* .header ul {
   list-style: none;
   display: flex;
   padding-right: 20px;
@@ -49,9 +51,8 @@ body {
   justify-content: center;
   width: 100%;
   height: calc(100% - 145px);
-  background-color: #CCC;
   color: #161616;
-  padding-bottom: 50px;
+  padding: 25px 0;
 }
 .container div{
   width: calc(100% /3 - 50px);
@@ -81,4 +82,4 @@ body {
   position: fixed;
   width: 100%;
   bottom: 0;
-}
+} */
