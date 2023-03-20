@@ -9,8 +9,8 @@
 
 
 
-// 2nd Assignment CHALLENGE it's tall, so I create an entire directory for it
-// ½ is done, only useful with one element per click
+// 2nd Assignment❎(not fully solved) CHALLENGE exists in separated files
+// only useful with one element per click
 /*
 <script>
     // HTML text 🔽
@@ -47,14 +47,18 @@
 // document.querySelector('div').childNodes[4];
 // 4th Assignment✅
 
-//test these
-/*
-document.querySelector('div').children
-document.querySelector('div').children
-document.querySelector('div').childNodes
-document.querySelector('div').childNodes
-document.querySelector('div').firstChild
-document.querySelector('div').lastChild
-document.querySelector('div').firstElementChild
-document.querySelector('div').lastElementChild
-*/
+// we have each type of elements in body, onclick we want each to console.log(`this is :${this}`)
+
+// document.body.children.forEach(function(el){
+window.onload = () => {
+  document.querySelectorAll('body > *:not(script)').forEach((el)=>{
+    el.addEventListener('click', function(selected){
+      selected.preventDefault();
+      console.log(`This Is ${el.nodeName.toLowerCase()}`);
+    })
+  })
+}
+// document.querySelectorAll('body > *') //2nd method to get 'em
+// the loveliest part of this is that I needed to see prototype of NodeList after called ('body.children')
+
+// 5th assignment✅

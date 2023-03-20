@@ -164,3 +164,15 @@ $(()=>{
 // 1st for selector, and 2nd for height or width [practice that manually]
 
 // 14th lesson buttons with effects part 3
+$(()=>{
+  $(".border-left").hover(function () {
+    $(this).find('span').eq(0).animate({
+      width: '100%',
+    }, 300);
+  }, function () {//when hover is gone
+    $(this).find('span').eq(0).animate({
+      width: 0,
+    }, 300);
+  });
+});
+// 15th lesson buttons with effects part 4
