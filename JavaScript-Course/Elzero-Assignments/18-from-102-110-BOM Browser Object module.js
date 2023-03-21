@@ -16,7 +16,7 @@ for (let i = lower; i <= upper; i++) {
 
 window.onload = () => {
   function welcomePopup(){
-    const div = document.createElement('div')
+    const div = document.createElement('div').cloneNode(false);
     let text = "<h2>Welcome</h2><p>Welcome To Elzero Web School</p><span>X</span>";
     div.innerHTML = text;
     div.className = "temper-popup";
@@ -61,3 +61,21 @@ window.onload = () => {
   setTimeout(welcomePopup, 3000);//if func has parameters, we append them after milliseconds as ,'Hanady',29
 };
 // // 2nd Assignment✅
+const thirdDiv = document.createElement('div');
+thirdDiv.innerHTML = 10;
+function countdown() {
+  console.log(thirdDiv.innerHTML);
+  if (thirdDiv.innerHTML === '0') {//string because of DOM, if as number, can be as == 0
+    clearInterval(counter);
+    // window.location.href = "https://elzero.org"; 4th Assignment✅
+  }
+  if (thirdDiv.innerHTML === '4') window.open('https://elzero.org', '',
+    'width=400,height=400,width=400,left=500,top=200');//5th Assignment✅
+  thirdDiv.innerHTML -= 1;
+}
+let counter = setInterval(countdown, 300);// this iterate countDown function
+// it worked, but I need to practice more on setInterval() && clearInterval() functions
+// 3rd Assignment✅
+
+// 4th Assignment✅ just add window.location.href
+//5th Assignment✅ I love this lesson

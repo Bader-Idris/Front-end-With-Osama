@@ -6,7 +6,7 @@ document.querySelector('.add').addEventListener('click', function(){
   let delButton = document.createElement('p');
   let deleting = document.createTextNode('Delete');
   let contain = document.createElement('div');
-    let count = document.querySelector('.tasks').childElementCount;
+  let count = document.querySelector('.tasks').childElementCount;
   div.appendChild(textNode);
   contain.appendChild(div);
   delButton.appendChild(deleting);

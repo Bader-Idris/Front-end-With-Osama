@@ -119,7 +119,7 @@ countdown();//calling it, or 🔽
 let counter = setInterval(countdown, 1000);
 
 // 106th lesson 00:24:25 Window Location Object
-// Important
+// 🔴Important🔴
 /*
   BOM [Browser Object Model]
   - location Object
