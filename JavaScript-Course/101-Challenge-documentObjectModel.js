@@ -86,14 +86,22 @@ document.querySelectorAll(".header ul li").forEach(el => {
   cursor: pointer;
 `;
 });
+
 document.querySelectorAll(".header ul li").forEach((e) => {
-  e.onmouseenter = () => {// how to use settimeout with this hover
+  let timeoutId;
+  e.onmouseenter = () => {
     e.style.backgroundColor = "#CCC";
-  }
+  };
   e.onmouseleave = () => {
-    e.style.removeProperty("background-color")
-  }
+    timeoutId = setTimeout(() => {
+    // clearTimeout(timeoutId);
+    e.style.removeProperty("background-color");
+  }, 300);
+  };
 });
+
+
+
 document.querySelector(".container").style.cssText =`
   display: flex;
   flex-wrap: wrap;
