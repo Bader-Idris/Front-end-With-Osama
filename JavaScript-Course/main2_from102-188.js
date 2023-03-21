@@ -321,13 +321,9 @@ console.log(window.localStorage.key(0));
   - Duplicate Tab = Copy Session
   - New Tab With Same URL = New Session
 */
-// Local storage Vs. Session Storage
-// session doesn't save values as local one
-// 🔷when I close the TAB, session will get vanished🔷
 // window.localStorage.setItem("color", "red");
 // window.sessionStorage.setItem("color", "blue"); they're different, so you can use both
 
-// When You Open same Tab As new, it'll get A NEW SESSION
 //🔴To save same session data, DUPLICATE THE TAB🔴
 document.querySelector(".name").onblur = function () {
   // console.log(this.value);
