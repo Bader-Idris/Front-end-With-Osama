@@ -5,32 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>19-from-111-114-BOM Browser Object module</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Open+Sans:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap"
+    rel="stylesheet">
   <style>
-    *{background-color: #333;box-sizing: border-box;margin: 0;padding: 0;}
-    select {background-color: #329171;padding: 10px; margin: 20px; border: none;color: #DDD;font-size: 22px;}
+    :root{
+      --main-color:#329171;
+    }
+    *{background-color: #333;box-sizing: border-box;margin: 0;padding: 0;}/*font-family: 'open sans';*/
+    select {background-color: var(--main-color);padding: 10px; margin: 20px; border: none;color: #DDD;font-size: 22px;}
     option {background-color: #131111;}
   </style>
 </head>
 <body>
   <select name="fonts" id="fonts">
-    <option value="Open">Open</option><!--open sans-->
-    <option value="Cairo">Cairo</option><!--get 'em from google'-->
+    <option value="Open Sans">Open</option>
+    <option value="Cairo">Cairo</option>
     <option value="Roboto">Roboto</option>
   </select>
-  <select name="colors" id="colors"><!--see special template!!-->
-    <option value="green">green</option>
-    <option value="green">green</option>
-    <option value="green">green</option>
-    <option value="green">green</option>
-    <option value="green">green</option>
-    <option value="green">green</option>
+  <select name="colors-opt" id="colors-opt">
   </select>
   <select name="font-size" id="font-size">
-    <option value="16px" name="16px">16px</option>
   </select><!-- default value is 1st option, and 1st impacted in CSS-->
-  <!-- do exactly as special template, gear with these options for user,
-    using localStorage, 🔴 after User close page,
-    select box has to return to default, and what User selected has to get into LocalStorage -->
   <script src="19-from-111-114-BOM Browser Object module.js"></script>
 </body>
 </html>
