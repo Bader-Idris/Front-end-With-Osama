@@ -131,8 +131,28 @@ body {
   position: absolute;
   right: 40px;
   top: -7px;
-  border-radius: 10px;
   text-align: center;
+  /* 25th lesson */
+  cursor: default;
+  pointer-events: none;/*is it same as preventDefault in JS*/
+  display: none;
+}
+.nav-bullets .bullet:hover .tooltip{
+  display: block;
+}
+/* 25th lesson */
+.nav-bullets .bullet .tooltip::before {
+  content: '';
+  border-style: solid;
+  border-width: 14px;
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-color: transparent transparent transparent var(--main-color);
+  right: -26px;
+  border-radius: 2px;
 }
 /* ENd Nav Bullets */
 

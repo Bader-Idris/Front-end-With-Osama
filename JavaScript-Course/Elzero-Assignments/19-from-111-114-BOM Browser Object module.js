@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ----------------------------------------------------------------
   // font-family, now you need to make this as color, checking if localStorage has fontFamOpt to save its value
 // fontFamOpt.onclick = (el) => {
-  fontFamOpt.addEventListener('click', el => {
+  fontFamOpt.addEventListener('click', el => {//🔴in special design Osama made parent forEach, and child click event listener🔴
     // console.log(fontFamOpt.children)
     for (let i = 0; i < fontFamOpt.childElementCount; i++) {
       fontFamOpt.children[i].onclick = (e) => {

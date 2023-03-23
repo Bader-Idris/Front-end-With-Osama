@@ -201,3 +201,16 @@ document.addEventListener("click",(e)=>{
     document.querySelector(".popup-overlay").remove();
   }
 })
+// 25th lesson 
+const allBullets = document.querySelectorAll('.nav-bullets .bullet ');
+allBullets.forEach((bullet) => {
+  bullet.addEventListener("click",(e)=>{
+    //web API has this lovely feature, Osama loves it to death
+    // element.scrollIntoView() it's under experimental usages, not to be used in production code MDN said
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView see its compatibility
+    document.querySelector(e.target.dataset.section).scrollIntoView({//this is dynamic unlike ".about-us"
+      behavior: "smooth",// to be dynamic we create data-section in every bullet
+    });
+  });
+});
+// 26th lesson Enhancements And Organizing Code
