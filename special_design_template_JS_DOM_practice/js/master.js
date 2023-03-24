@@ -201,7 +201,7 @@ document.addEventListener("click",(e)=>{
     document.querySelector(".popup-overlay").remove();
   }
 })
-// 25th lesson 
+// 25th lesson
 const allBullets = document.querySelectorAll('.nav-bullets .bullet ');
 allBullets.forEach((bullet) => {
   bullet.addEventListener("click",(e)=>{
@@ -213,4 +213,32 @@ allBullets.forEach((bullet) => {
     });
   });
 });
+
 // 26th lesson Enhancements And Organizing Code
+// this is a repetition of previous allBullets, which is bad, remember[Don't repeat yourself]
+// you have to make functions for repetitive loops
+const links = document.querySelectorAll('.links a');
+// links.forEach((link) => {
+//   link.addEventListener("click",(e)=>{
+//     e.preventDefault();//to stop links
+//     document.querySelector(e.target.dataset.section).scrollIntoView({
+//       behavior: "smooth",
+//     });
+//   });
+// });
+
+function scrollTo26Lesson(elements,OurDataset) {
+  elements.forEach((ele) => {
+    ele.addEventListener("click",(e)=>{
+      e.preventDefault();
+      document.querySelector(e.target.dataset.section).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+};
+scrollTo26Lesson(links);//we can use this function instead of every element set that has [dataset.section]
+//  as links and tooltip
+// task: get all of your sections in an array.has(their classes) and then generate them with DOM
+// to create an element.has(our bullets' sections) evert bullet has its dataset.section
+// [to accomplish the mission] when any user adds new sections. the bullet get created automatically
