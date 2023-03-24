@@ -259,3 +259,39 @@ function  handleActiveState(ev) {
 };
 // osama said the code enhancing in 27th is more generic
 // functions stops the huge waste or time DRY[don't repeat yourself]
+
+// 28th lesson
+let bulletsSpan = document.querySelectorAll(".bullets-option span");
+let bulletsContainer = document.querySelector('.nav-bullets');
+let bulletLocalItem = localStorage.getItem('bullets_option');
+
+if (bulletLocalItem !== null) {
+  bulletsSpan.forEach(span => {
+    span.classList.remove("active");
+  });
+  if(bulletLocalItem === 'block'){
+    bulletsContainer.style.display = "block";//repeated from down⚠️
+    document.querySelector(".bullets-option .yes").classList.add("active");
+  }
+  else{
+    bulletsContainer.style.display = "none";
+    document.querySelector(".bullets-option .no").classList.add("active");
+  }
+}
+
+bulletsSpan.forEach((span)=>{
+  span.addEventListener('click',(e)=>{
+    if(span.dataset.display === 'show'){//we can make block and none, instead of show and hide [logically]
+      bulletsContainer.style.display = "block";//⚠️
+      localStorage.setItem('bullets_option', 'block');
+    }
+    else {
+      bulletsContainer.style.display = "none";
+      localStorage.setItem('bullets_option', 'none');//by me. maybe he wrote it without my notice. It's important
+    }
+    handleActiveState(e);//lovely function in 27th lesson
+  });
+});
+// this is much cleaner than code typed in first lines, but you need to understand both!!
+
+// 29th lesson
