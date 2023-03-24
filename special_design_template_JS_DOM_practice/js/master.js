@@ -54,12 +54,16 @@ colorsLi.forEach(li =>{
     document.documentElement.style.setProperty("--main-color",e.target.dataset.color);//copy to localStorage
     // setting colors in localStorage🔷
     localStorage.setItem("color_option",e.target.dataset.color);
-    // removing children's active classes
-    e.target.parentElement.querySelectorAll(".active").forEach(ele =>{
-      ele.classList.remove("active");//important to solve 🔴elzero assignment's local storage🔴
-    });
-    //adding active class
-    e.target.classList.add("active");
+
+    // ------------------------------replaced in 27th----------------------------------
+    // // removing children's active classes                                        ---
+    // e.target.parentElement.querySelectorAll(".active").forEach(ele =>{
+    //   ele.classList.remove("active");//important to solve 🔴elzero assignment's local storage🔴
+    // });
+    // //adding active class                                                        ---
+    // e.target.classList.add("active");
+    // ------------------------------replaced in 27th----------------------------------
+    handleActiveState(e);//our event above, that simple
   });
 });
 
@@ -69,10 +73,13 @@ colorsLi.forEach(li =>{
 const randomBgEl = document.querySelectorAll('.random-backgrounds span');
 randomBgEl.forEach(span =>{
   span.addEventListener("click",(e)=>{
-    e.target.parentElement.querySelectorAll(".active").forEach(ele =>{
-      ele.classList.remove("active");
-    });
-    e.target.classList.add("active");
+    // ------------------------------replaced in 27th----------------------------------
+    // e.target.parentElement.querySelectorAll(".active").forEach(ele =>{
+    //   ele.classList.remove("active");
+    // });
+    // e.target.classList.add("active");
+    handleActiveState(e);//same function for every active state
+    // ------------------------------replaced in 27th----------------------------------
 
     // 12th lesson part🔽
     if(e.target.dataset.bg === 'yes') {
@@ -242,3 +249,13 @@ scrollTo26Lesson(links);//we can use this function instead of every element set 
 // task: get all of your sections in an array.has(their classes) and then generate them with DOM
 // to create an element.has(our bullets' sections) evert bullet has its dataset.section
 // [to accomplish the mission] when any user adds new sections. the bullet get created automatically
+
+// 27th lesson Creating Handle active function
+function  handleActiveState(ev) {
+    ev.target.parentElement.querySelectorAll(".active").forEach(ele =>{
+      ele.classList.remove("active");
+    });
+    ev.target.classList.add("active");
+};
+// osama said the code enhancing in 27th is more generic
+// functions stops the huge waste or time DRY[don't repeat yourself]

@@ -80,3 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // MDN says, DOMContentLoaded uploads only DOM, contrast to window.onload 
 // which fires only when iframe, images all get loaded, [so in 95% use DOMContentLoaded eventlistener]
+
+
+// this code brought from 27th lesson in special design,
+//  might be the solution to selecting parents from their children
+
+//Creating Handle active function
+function  handleActiveState(ev) {
+  ev.target.parentElement.querySelectorAll(".active").forEach(ele =>{
+    ele.classList.remove("active");
+  });
+  ev.target.classList.add("active");
+};
