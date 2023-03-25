@@ -29,5 +29,11 @@ let allKeys = Object.keys(words);
 let randomPropNumber = Math.floor(Math.random() * allKeys.length);
 let randomPropName = allKeys[randomPropNumber];//random key [length]
 let randomPropValue = words[randomPropName];
+
 let randomValueNumber = Math.floor(Math.random() * randomPropValue.length);
-console.log(randomPropValue[randomValueNumber]);
+let randomValueValue = randomPropValue[randomValueNumber];
+
+// set Category info
+document.querySelector('.game-info span').innerHTML = randomPropName;// to let user know from which key[category]
+
+// 5th lesson 0:42:10 Generate Guess Letters Elements
