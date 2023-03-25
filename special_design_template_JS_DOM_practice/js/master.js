@@ -295,3 +295,12 @@ bulletsSpan.forEach((span)=>{
 // this is much cleaner than code typed in first lines, but you need to understand both!!
 
 // 29th lesson
+document.querySelector('.reset-options').addEventListener('click',(e)=>{
+  // instead of using clear, we might have user data, so we use this:
+  ['bullets_option', 'color_option', 'background_option'].forEach((item) => {
+    localStorage.removeItem(item);
+    // reloading our page:
+    window.location.reload();
+    // I have a bug, random background doesn't start when clearing items
+  });
+});

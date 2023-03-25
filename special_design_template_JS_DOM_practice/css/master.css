@@ -104,6 +104,19 @@ body {
 .settings-box .option-box span.active {/*27th instead of .random-backgrounds we put .option-box for enhancing the code*/
   opacity: 1;
 }
+/* 29th lesson */
+.settings-box .reset-options {
+  background-color:#F44336;
+  border: none;
+  width: 178px;
+  margin: 10px auto;
+  display: block;/*its initial is inline-block*/
+  color: #FFF;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 /* End settings box */
 
 /* Start Nav Bullets 24th Lesson */
