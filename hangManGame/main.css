@@ -156,3 +156,40 @@ hr {
   cursor: pointer;
   margin-bottom: 10px;
 }
+/* 5th lesson 0:42:10 */
+.letters-guess {
+  -ms-wrap-margin: 10px auto;
+  background-color: #F8F8F8;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 104px;
+}
+.letters-guess span {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #FDFDFD;
+  border-bottom: 3px solid #333;
+  transition: .3s;
+}
+.letters-guess span.with-space {
+  background: none;/*🔴if background-color, nothing will happen🔴*/
+  border-bottom: none;
+  position: relative;
+}
+.letters-guess span.with-space::before {
+  content: '';
+  width: 20px;
+  height: 4px;
+  background-color: #333;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) ;
+}

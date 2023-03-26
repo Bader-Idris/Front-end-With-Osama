@@ -37,3 +37,18 @@ let randomValueValue = randomPropValue[randomValueNumber];
 document.querySelector('.game-info span').innerHTML = randomPropName;// to let user know from which key[category]
 
 // 5th lesson 0:42:10 Generate Guess Letters Elements
+// Selecting Letters Guess Element
+let lettersGuessContainer = document.querySelector('.letters-guess');
+
+// Converting Chosen Word To An Array
+let lettersAndSpace = Array.from(randomValueValue);
+
+// Creating Spans Depending on Words
+lettersAndSpace.forEach(letter => {
+  let emptySpan = document.createElement('span');
+  // Adding Class to space-owner words
+  if (letter === ' ') {
+    emptySpan.className = 'with-space';
+  }
+  lettersGuessContainer.appendChild(emptySpan);
+});
