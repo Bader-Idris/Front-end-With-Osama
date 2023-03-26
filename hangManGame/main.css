@@ -43,10 +43,13 @@ hr {
   4px will be the thickness of everything of our draw*/
   position: relative;
   margin: auto;
+  left: -60px;
+  display: none;
 }
 /* we can make this stand more lovelier && 
   make its style pretty Osama said, because we don't use complicated style,
-   we don't need to use pseudo elements */
+    we don't need to use pseudo elements
+*/
 
 .hangman-draw .the-stand {/*above is the reason why we removed pseudo :before from this*/
   content: '';
@@ -56,7 +59,10 @@ hr {
   height: 100%;
   left: 50%;
   margin-left: -2px;/* we can use transform: translateX(-50%); instead*/
-  
+  display: none;
+}
+.hangman-draw .the-hang{
+  display: none;
 }
 .hangman-draw .the-hang::before {
   content: '';
@@ -84,6 +90,7 @@ hr {
   left: 97px;
   top: 45px;
   border: 4px dashed #222;
+  display: none;
 }
 .hangman-draw .the-man .head {
   width: 50px;
@@ -93,6 +100,7 @@ hr {
   position: absolute;
   left: 106px;
   top: 54px;
+  display: none;
 }
 .hangman-draw .the-man .body {
   position: absolute;
@@ -101,6 +109,10 @@ hr {
   height: 110px;
   top: 102px;
   left: 130px;
+  display: none;
+}
+.hangman-draw .the-man .hands {
+  display: none;
 }
 .hangman-draw .the-man .hands::before,
 .hangman-draw .the-man .hands::after{
@@ -119,6 +131,9 @@ hr {
   left: 130px;
   transform: rotate(-30deg);
 }
+.hangman-draw .the-man .legs {
+  display: none;
+}
 .hangman-draw .the-man .legs::before,
 .hangman-draw .the-man .legs::after{
   content: '';
@@ -136,10 +151,39 @@ hr {
   left: 130px;
   transform: rotate(30deg);/*we only made negative positive and vise versa from hands*/
 }
+/* --------------------------- Displaying with wrongAttempts ----------------------- */
+.hangman-draw.wrong-1 .the-draw {
+  display: block;
+}
+.hangman-draw.wrong-2 .the-stand {
+  display: block;
+}
+.hangman-draw.wrong-3 .the-hang {
+  display: block;
+}
+.hangman-draw.wrong-4 .the-rope {
+  display: block;
+}
+.hangman-draw.wrong-5 .the-man .head {
+  display: block;
+}
+.hangman-draw.wrong-6 .the-man .body {
+  display: block;
+}
+.hangman-draw.wrong-7 .the-man .hands {
+  display: block;
+}
+.hangman-draw.wrong-8 .the-man .legs {
+  display: block;
+}
+/* --------------------------- Displaying with wrongAttempts ----------------------- */
 .letters {
   flex: 1;
   padding: 20px;
   text-align: center;
+}
+.letters.finished {
+  pointer-events: none;/* instead of craziness in JS */
 }
 .letters .letter-box {
   width: 55px;
@@ -200,4 +244,19 @@ hr {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) ;
+}
+.popup {
+  position: fixed;
+  background-color: #009688;
+  width: 80%;
+  top: 10%;
+  left: 50%;
+  border-radius: 4px;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 100px 20px;
+  font-size: 40px;
+  color: #FFF;
+  font-weight: bold;
+  border: 1px solid #CCC;
 }

@@ -57,17 +57,28 @@ lettersAndSpace.forEach(letter => {
 // let guessSpans = lettersGuessContainer.childNodes;//instead of my work here:see 🔽
 let guessSpans = document.querySelectorAll(".letters-guess span");
 // Setting The Chosen Status
-let theStatus = false;// will get changed when user picks right letters
+// let theStatus = false;// will get changed when user picks right letters
 //-------------------------- 7th ----------------------------------
+//-------------------------- 8th ----------------------------------
+// Setting Wrong Attempts
+let wrongAttempts = 0;
+// Selecting Draw Element
+let theDraw = document.querySelector('.hangman-draw');//.the-draw the child
+//-------------------------- 8th ----------------------------------
 // 6th lesson 0:51:55 Comparing Letters Part 1 🔴IMPORTANT LESSON🔴
 document.addEventListener('click', (e) => {
+  //------------------------------- 8th lesson ----------------------------
+  // Setting The Chosen Status
+  let theStatus = false;
+  //------------------------------- 8th lesson ----------------------------
   if (e.target.className === 'letter-box') {
     e.target.classList.add('clicked');
     let theClickedLetter = e.target.innerHTML.toLowerCase();
     // to simplify, we repeat theChosenWord
     let theChosenWord = Array.from(randomValueValue.toLowerCase());
+    //🔴if we don't use this, first capital letter will be vanished🔴 lettersAndSpace should be toLowerCase⚠️
     // chosen word with spaces
-    lettersAndSpace.forEach( (wordLetter, wordIndex) =>{
+    theChosenWord.forEach( (wordLetter, wordIndex) =>{
       if(wordLetter == theClickedLetter){//2nd part 1:00:43
         // Setting Status to correct
         theStatus = true;// before 8th lesson, we didn't set it false inside loop,
@@ -83,7 +94,51 @@ document.addEventListener('click', (e) => {
     // outside loop checking
     // console.log(theStatus);// have to be outside looping,[not to use else statement]
     //  because it'll iterate insideIt, if we use playSound, it'll iterate, craziness will arrive
+
+    //------------------------- 9th lesson -------------------------
+    const audioSuccess = document.getElementById('success');
+    const audioFail = document.getElementById('fail');
+    //------------------------- 9th lesson -------------------------
+    // If Attempt Is wrong!
+    if (theStatus !== true){
+      wrongAttempts++;
+      theDraw.classList.add(`wrong-${wrongAttempts}`);
+
+        // Increase Wrong Attempts
+        // 9th -------
+        audioFail.play();
+        if (wrongAttempts === 8) {
+          endGame();
+          lettersContainer.classList.add('finished');//see css
+        }
+        // ------- 9th
+      // else if (wrongAttempts > 8){
+      // }
+    } else {
+      audioSuccess.play();
+    }
   }
 });
-
 // 8th lesson 1:10:43 The Draw Logic And Design
+// 9th lesson 1:19:12 Finalizing The Game
+// he used same 2 audio file used in memory game
+
+// , End •Game v Function
+function endGame(){
+  //Create Popup Div
+  let div = document.createElement("div");
+  //Create Text
+  let divText = document.createTextNode(`Game Over, The Word Is: ${randomValueValue}`)
+  //Append Text To Div
+  div.appendChild(divText);
+  div.classList.add('popup');
+  document.body.appendChild(div);
+}
+// task: you can create a similar popup when user successfully guess the word
+// tell user how many mistakes he made, the message: You got n mistakes, Your IQ level is 🤣
+// if less than 4 he's professional, 4-5 medium, 7 barely finished the game
+
+// the Real Task:To track it: ❎ ;
+// create a JSON Object what has many words, and many categories, to fitch in this application,
+//  to access 'em dynamically!!!
+// initially you need to convert JSON code into JS object
