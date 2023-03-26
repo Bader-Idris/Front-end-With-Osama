@@ -52,3 +52,38 @@ lettersAndSpace.forEach(letter => {
   }
   lettersGuessContainer.appendChild(emptySpan);
 });
+//------ part 2 ------------- 7th ----------1:00:43 ---------------
+// Selecting Spans to Connect With clicked letter index from down below
+// let guessSpans = lettersGuessContainer.childNodes;//instead of my work here:see 🔽
+let guessSpans = document.querySelectorAll(".letters-guess span");
+// Setting The Chosen Status
+let theStatus = false;// will get changed when user picks right letters
+//-------------------------- 7th ----------------------------------
+// 6th lesson 0:51:55 Comparing Letters Part 1 🔴IMPORTANT LESSON🔴
+document.addEventListener('click', (e) => {
+  if (e.target.className === 'letter-box') {
+    e.target.classList.add('clicked');
+    let theClickedLetter = e.target.innerHTML.toLowerCase();
+    // to simplify, we repeat theChosenWord
+    let theChosenWord = Array.from(randomValueValue.toLowerCase());
+    // chosen word with spaces
+    lettersAndSpace.forEach( (wordLetter, wordIndex) =>{
+      if(wordLetter == theClickedLetter){//2nd part 1:00:43
+        // Setting Status to correct
+        theStatus = true;// before 8th lesson, we didn't set it false inside loop,
+        //  it should get false after clicking on correct letter, 🔴then wrong one🔴
+        // so, we put it inside click, not of it
+        guessSpans.forEach( (span ,spanIndex) =>{
+          if(spanIndex == wordIndex){
+            span.innerHTML = wordLetter;// 2nd can be theClickedLetter
+          }
+        });
+      }
+    });
+    // outside loop checking
+    // console.log(theStatus);// have to be outside looping,[not to use else statement]
+    //  because it'll iterate insideIt, if we use playSound, it'll iterate, craziness will arrive
+  }
+});
+
+// 8th lesson 1:10:43 The Draw Logic And Design

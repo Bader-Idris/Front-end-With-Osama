@@ -155,7 +155,15 @@ hr {
   font-weight: bold;
   cursor: pointer;
   margin-bottom: 10px;
+  user-select:none;/*to prevent dblClick selection*/
 }
+/* 6th lesson --------------------- */
+.letters .letter-box.clicked {
+  background-color: #222;
+  opacity: .2;
+  pointer-events: none;
+}
+/* -------------------------------- */
 /* 5th lesson 0:42:10 */
 .letters-guess {
   -ms-wrap-margin: 10px auto;
