@@ -183,7 +183,7 @@ hr {
   text-align: center;
 }
 .letters.finished {
-  pointer-events: none;/* instead of craziness in JS */
+  pointer-events: none;/* instead of craziness in JS, as preventDefault and whatnot */
 }
 .letters .letter-box {
   width: 55px;
@@ -259,4 +259,5 @@ hr {
   color: #FFF;
   font-weight: bold;
   border: 1px solid #CCC;
+  user-select:none;
 }

@@ -8,7 +8,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 .container {
-  width: 1170px;
+  /* width: 1170px; with grid system, this varies, with every media, template 3 is much better */
   padding-left: 15px;
   padding-right: 15px;
   margin: auto;
@@ -198,13 +198,14 @@ body {
   padding: 15px;
   font-weight: bold;
 }
+.header-area .links-container {
+  width: 100%;
+}
 .header-area .links {
   list-style: none;
   padding-left: 0;
   padding-left: 20px;
-  width: 100%;
   text-align: right;
-
 }
 .header-area .links li{
   display: inline-block;
@@ -678,3 +679,23 @@ body {
   transition: .3s;
 }
 /* End contact */
+/* Start Grid System */
+/* Small */
+@media (min-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+}
+/* Medium */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+/* Large */
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+/* End Grid System */
