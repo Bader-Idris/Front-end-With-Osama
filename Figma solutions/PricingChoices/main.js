@@ -1,16 +1,14 @@
 const userPlan = document.querySelector('.top-container .button');
-const planHeader = document.querySelectorAll('.plan h2')
-userPlan.onclick = ((e)=> {
+const planHeader = document.querySelectorAll('.plan h2');
+const initialPrices = [];
+
+planHeader.forEach(header => initialPrices.push(header.innerHTML));
+userPlan.addEventListener('click', (e) => {
   e.target.classList.toggle('clicked');
-  planHeader.forEach((h2)=>{
-    if (h2.parentElement.classList.contains('basic')){
-      console.log(`basic bro${h2.parentElement}`);
-    }
-    if (h2.parentElement.classList.contains('pro')){
-      console.log(`pro bro${h2.parentElement}`);
-    }
-    if (h2.parentElement.classList.contains('master')){
-      console.log(`master bro${h2.innerHTML}`);
-    }
-  });
+  const newPrices = e.target.matches(".clicked.button")
+  ? ['&dollar;19.99', '&dollar;24.99', '&dollar;39.99']
+  : initialPrices;
+
+  // Update prices using a loop
+  planHeader.forEach((header, index) => header.innerHTML = newPrices[index]);
 });
