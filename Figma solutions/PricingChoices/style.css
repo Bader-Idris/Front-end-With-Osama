@@ -84,48 +84,40 @@
 .top-container .button.clicked::before {
   left: 50%
 }
-
-
-
-
-
-
 .plans-container {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   flex-wrap: wrap;
-  margin: 0 0 70px;
+  margin: 0 0 70px
 }
-/* @media (max-width: 767px) { */
-@media (max-width: 1023px) {
+@media (max-width:1023px) {
   .plans-container {
-    flex-direction: column;
+    flex-direction: column
   }
   .plans-container .plan {
-    margin: 30px 0 0;
+    margin: 30px 0 0
   }
 }
-@media (min-width: 768px) {
+@media (min-width:768px) {
   .plans-container {
     width: 80%;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 30px;
+    margin-top: 30px
   }
 }
-
-.plans-container > div {
+.plans-container>div {
   flex-basis: 350px;
   text-align: center;
-  box-shadow:0px 0px 35px 5px rgb(0 0 0 / .3);
+  box-shadow: 0 0 35px 5px rgb(0 0 0 / .3)
 }
-.plans-container > div > *:not(:first-child,:last-child){
+.plans-container>div>:not(:first-child, :last-child) {
   position: relative;
-  padding: 15px 0;
+  padding: 15px 0
 }
-.plans-container > div > *:not(:first-child,:last-child)::before{
+.plans-container>div>:not(:first-child, :last-child)::before {
   content: '';
   position: absolute;
   width: 80%;
@@ -133,92 +125,78 @@
   bottom: 0;
   transform: translateX(-50%);
   height: 1px;
+  background-color: rgb(255 255 255 / .3)
 }
-.plans-container > div > *:not(:first-child,:last-child)::before{
-  background-color:  rgb(255 255 255 / .3);
+.plans-container>div:not(.pro)>:not(:first-child, :last-child)::before {
+  background-color: rgb(0 0 0 / .3)
 }
-.plans-container > div:not(.pro) > *:not(:first-child,:last-child)::before{
-  background-color: rgb(0 0 0 / .3);
+.plans-container .basic,
+.plans-container .master {
+  border-radius: 15px
 }
-.plans-container .basic {
-  border-radius: 15px;
-}
-.plans-container .basic button{
-  background-image: linear-gradient(0.25turn,
-  var(--second-color),
-  var(--main-color));
-  color: #FFF;
-  border:1px solid #FFF;
-  
+.plans-container .basic button,
+.plans-container .master button {
+  background-image: linear-gradient(.25turn, var(--second-color), var(--main-color));
+  color: #fff;
+  border: 1px solid #fff
 }
 .plans-container .pro {
   border-radius: 15px;
-  background-image:linear-gradient( var(--second-color), var(--main-color));
-  color: #FFF;
+  background-image: linear-gradient(var(--second-color), var(--main-color));
+  color: #fff;
   padding: 25px 0;
-  z-index: 1;
+  z-index: 1
 }
-.plans-container .pro button{
-  background-color: #FFF;
-  border:1px solid var(--main-color) ;
-  color: var(--main-color);
+.plans-container .pro button {
+  background-color: #fff;
+  border: 1px solid var(--main-color);
+  color: var(--main-color)
 }
-.plans-container .pro button:hover{
-  border:1px solid #FFF;
+.plans-container .pro button:hover {
+  border: 1px solid #fff;
   background-color: var(--main-color);
-  color: #FFF;
-}
-.plans-container .master{
-  border-radius: 15px;
-}
-.plans-container .master button{
-  background-image: linear-gradient(0.25turn,
-    var(--second-color),
-    var(--main-color));
-  color: #FFF;
-  border:1px solid #FFF;
-  
+  color: #fff
 }
 .plans-container .basic,
-.plans-container .master{
-  background-color: #FFF;
+.plans-container .master {
+  background-color: #fff
 }
 .plans-container .basic p,
-.plans-container .master p{
-  margin-top: 30px;
+.plans-container .master p {
+  margin-top: 30px
 }
 .plans-container .pro p {
-  margin: 30px 0 15px;
+  margin: 30px 0 15px
 }
-@media (min-width: 1023px) {
+@media (min-width:1023px) {
   .plans-container .basic {
-    border-radius: 15px 0 0 15px;
+    border-radius: 15px 0 0 15px
   }
-  .plans-container .master{
-    border-radius: 0 15px 15px 0;
+  .plans-container .master {
+    border-radius: 0 15px 15px 0
   }
 }
 .plans-container .basic button:hover,
-.plans-container .master button:hover{
-  background-color: #FFF;
+.plans-container .master button:hover {
+  background-color: #fff;
   background-image: none;
   border: 1px solid var(--main-color);
-  color: var(--main-color);
+  color: var(--main-color)
 }
 .plan h2 {
-  font-size: 70px;
+  font-size: 70px
 }
 .plan h2::first-letter {
   font-size: 45px;
   letter-spacing: 10px;
   position: static;
-  top: 5px;/*will change*/
+  top: 5px
 }
 .plan:not(.pro) h2 {
-  color: var(--Dark-Grayish-Blue);
+  color: var(--Dark-Grayish-Blue)
 }
 .plan:not(.pro) :not(h2, :last-child) {
-  color: var(--Grayish-Blue);
+  color: var(--Grayish-Blue)
 }
 .plan button {
   width: 285px;
@@ -226,5 +204,5 @@
   border-radius: 5px;
   padding: 15px;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  text-transform: uppercase
 }

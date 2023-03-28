@@ -1,5 +1,5 @@
 const userPlan = document.querySelector('.top-container .button');
-const planHeader = document.querySelectorAll('.plan h2');
+const planHeader = document.querySelectorAll('div h2');
 const initialPrices = [];
 
 planHeader.forEach(header => initialPrices.push(header.innerHTML));
