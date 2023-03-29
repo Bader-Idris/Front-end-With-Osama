@@ -2223,12 +2223,12 @@ console.log("3");
   Call Stack || Stack Trace
   -- JavaScript Engine Uses A Call Stack To Manage Execution Contexts
   -- Mechanism To Make The Interpreter Track Your Calls
-  -- When Function Called It Added To The Stack
-  -- When Function Executed It Removed From The Stack
-  -- After Function Is Finished Executing The Interpreter Continue From The Last Point
+  -- When Function Is Called, It's Been Added To The Stack
+  -- When Function Is Executed, It's Been Removed From The Stack
+  -- After Function Is Finished Executing, The Interpreter Continues From The Last Point
   -- Work Using LIFO Principle => Last In First Out
   -- Code Execution Is Synchronous.
-  -- Call Stack Detect Web API Methods And Leave It To The Browser To Handle It🔴🔴
+  -- Call Stack Detects Web API Methods And Leaves It To The Browser To Handle It🔴🔴
 
   Web API
   -- Methods Available From The Environment => Browser
@@ -2289,16 +2289,16 @@ console.log("Three");// both here and stacked functions output same results,
 
   Story
   - JavaScript Is A Single Threaded Language "All Operations Executed in Single Thread"
-  - Call Stack Track All Calls
+  - Call Stack Tracks All Calls
   - Every Function Is Done Its Popped Out
-  - When You Call Asynchronous Function It Sent To Browser API
-  - Asynchronous Function Like Settimeout Start Its Own Thread
+  - When You Call Asynchronous Function It Gets Sent To Browser API
+  - Asynchronous Functions As Settimeout Start Their Own Thread
   - Browser API Act As A Second Thread
   - API Finish Waiting And Send Back The Function For Processing
   - Browser API Add The Callback To Callback Queue
-  - Event Loop Wait For Call Stack To Be Empty
-  - Event Loop Get Callback From Callback Queue And Add It To Call Stack
-  - Callback Queue Follow FIFO "First In First Out" Rule
+  - Event Loop Waits For Call Stack To Get Empty
+  - Event Loop Gets Callback From Callback Queue And Adds It To Call Stack
+  - Callback Queue Follows FIFO "First In First Out" Rule
 */
 
 console.log("One");
