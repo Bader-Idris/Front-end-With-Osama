@@ -1,34 +1,22 @@
-const p = document.createElement('p');
-const div = document.createElement('div');
 let title = document.querySelector('.title-advice');
 let text = document.querySelector('.text-advice');
-title.innerHTML = `Advice # `//${} needs an Id, and randomize our results.
-// https://api.adviceslip.com/advice   //after advice/random-Id
-
 let dice = document.querySelector('.dice');
+
 dice.addEventListener('click', ev => {
-  let textObj = {};
-  fetch('https://api.adviceslip.com/advice')
-  .then(response => response.json())
-  .then(data => {
-    // title.innerHTML = `Advice #${data}`// get the id from data
-    textObj = data;
-    console.log(textObj['id']);
-    console.log(textObj['advice']);
-
-  })
-  .catch(error => console.error(error));
-
-  // title.innerHTML = `Advice # nigga`//${}
+  fetchData();
 });
 
-
-// Get From Server
-const myJsonObjectFromServer = "https://api.adviceslip.com/advice"//needs to know how to get this json from server
-// Convert To JS Object
-const myJsObject = JSON.parse(myJsonObjectFromServer);
-console.log(myJsObject);
-// Update Data
-myJsObject["Username"] = "Elzero";
-myJsObject["Age"] = 40;
-
+async function fetchData() {
+  let textObj = {};
+  try {
+    const response = await fetch('https://api.adviceslip.com/advice');
+    const data = await response.json();
+    textObj = data;
+    title.innerHTML = `Advice #${textObj['slip']['id']}`;
+    text.innerHTML = textObj['slip']['advice'];
+  } catch (error) {
+    console.error(error);
+  }
+}
+// fetchData();
+// You only need to make fetch iterable, what when user clicks on .dice the fetchDate function starts over
