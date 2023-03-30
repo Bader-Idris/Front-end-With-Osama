@@ -681,7 +681,7 @@ body {
 /* End contact */
 /* Start Grid System */
 /* Small */
-@media (min-width: 767px) {
+@media (min-width: 576px) {
   .container {
     max-width: 540px;
   }
@@ -692,10 +692,16 @@ body {
     max-width: 720px;
   }
 }
-/* Large */
+/* PCs */
 @media (min-width: 992px) {
   .container {
     max-width: 960px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
   }
 }
 /* End Grid System */
