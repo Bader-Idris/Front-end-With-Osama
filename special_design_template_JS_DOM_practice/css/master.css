@@ -200,17 +200,29 @@ body {
 }
 .header-area .links-container {
   width: 100%;
+  text-align: right;
+}
+@media (max-width: 991px) {
+  .header-area .links {
+    display: none;
+  } 
+  .header-area .links-container {
+    text-align: right;
+  }
+}
+@media (min-width: 992px) {
+  .header-area .toggle-menu {
+    display: none;
+  } 
 }
 .header-area .links {
   list-style: none;
   padding-left: 0;
-  padding-left: 20px;
-  text-align: right;
+  font-size: 15px;
 }
 .header-area .links li{
   display: inline-block;
   margin-left: 10px;
-  font-size: 15px;
 }
 .header-area .links li a{
   text-decoration: none;
@@ -220,6 +232,22 @@ body {
 .header-area .links li a:hover,
 .header-area .links li a.active {
   color: var(--main-color);
+}
+.header-area .toggle-menu {
+  background: none;
+  border: none;
+  width: 40px;
+  cursor:pointer;
+  margin-top: 10px;
+}
+.header-area .toggle-menu:focus {
+  outline:none;
+}
+.header-area .toggle-menu span {
+  display: block;
+  background-color: #FFF;
+  height: 4px;
+  margin-bottom: 4px;
 }
 .introduction-text {
   position: absolute;
