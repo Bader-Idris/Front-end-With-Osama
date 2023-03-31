@@ -202,10 +202,31 @@ body {
   width: 100%;
   text-align: right;
 }
+/* --------------------- 32nd lesson ------------------ */
 @media (max-width: 991px) {
   .header-area .links {
     display: none;
-  } 
+  }
+/* --------------------- 33rd lesson ------------------ */
+  .header-area .links.open {/*when it has open class*/
+    background-color: #FFF;
+    padding: 10px;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    border-radius: 4px;
+  }
+  .header-area .links.open li {
+    display: block;/*to become a pile*/
+    margin: 10px;
+  }
+  .header-area .links.open li a {
+    color: var(--main-color);
+    font-weight: bold;
+  }
+/* --------------------- 33rd lesson ------------------ */
   .header-area .links-container {
     text-align: right;
   }
@@ -215,6 +236,7 @@ body {
     display: none;
   } 
 }
+/* --------------------- 32nd lesson ------------------ */
 .header-area .links {
   list-style: none;
   padding-left: 0;
@@ -239,6 +261,17 @@ body {
   width: 40px;
   cursor:pointer;
   margin-top: 10px;
+  position: relative;
+}
+.header-area .toggle-menu::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  border: 10px solid;
+  border-color: transparent transparent #FFF transparent;
 }
 .header-area .toggle-menu:focus {
   outline:none;
