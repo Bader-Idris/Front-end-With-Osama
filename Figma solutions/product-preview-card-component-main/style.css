@@ -1,0 +1,101 @@
+:root {
+  /* --main-color:#ff9800; */
+  /* primary colors */
+  --Dark-cyan: hsl(158, 36%, 37%);
+  --Cream: hsl(30, 38%, 92%);
+  /* Neutral colors */
+  --Very-dark-blue: hsl(212, 21%, 14%);
+  --Dark-grayish-blue: hsl(228, 12%, 48%);
+  --White: hsl(0, 0%, 100%);
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /*
+  font-family: 'Fraunces', serif; 700
+  font-family: 'Montserrat', sans-serif; 500, 700
+  */
+}
+body {
+  background-color: var(--Cream);
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--White);
+}
+header :first-child {
+  /* display: none; */
+  width: 270px;
+  height: 100%;
+}
+header :last-child {
+  display: none;
+}
+nav h1 {
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--Dark-grayish-blue);
+}
+nav h2 {
+  font-size: 26px;
+}
+nav h2,
+main .prices {
+  font-family: 'Fraunces', serif;
+}
+nav h1,
+main p,
+main button {
+  font-family: 'Montserrat', sans-serif;
+}
+main  {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+main p {
+  font-size: 14px;
+  margin: 10px 0;
+
+}
+main .prices {
+  margin: 10px 0;
+  
+}
+main .prices :first-child{
+  color: var(--Dark-cyan);
+}
+main .prices :last-child{
+  color: var(--Very-dark-blue);
+  text-decoration: line-through;
+}
+
+main button {
+  border: none;
+  background-color: var(--Dark-cyan);
+  padding: 20px;
+  border-radius: 20px;
+  width: 300px;
+  cursor: pointer;
+  color: var(--White);
+}
+main button::before {
+  content: url("images/icon-cart.svg");
+  padding-right: 10px;
+}
+main button:focus {
+  outline: none;
+}
+footer .attribution {
+  display: none;
+  font-size: 11px;
+  text-align: center;
+}
+footer .attribution a { color: hsl(228, 45%, 44%); }
