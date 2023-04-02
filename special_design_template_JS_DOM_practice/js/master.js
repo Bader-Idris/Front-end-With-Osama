@@ -304,3 +304,5 @@ document.querySelector('.reset-options').addEventListener('click',(e)=>{
     // I have a bug, random background doesn't start when clearing items
   });
 });
+// in exercism, I learned that 'a' can be compared with 'A', and small is bigger than capital
+// as 'a' > 'A'; true, it's bigger as sorted comparison
