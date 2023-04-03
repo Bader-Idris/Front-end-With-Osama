@@ -297,6 +297,8 @@ body {
   color:#fff;
   text-align: center;
   width: 80%;
+  /* he set this width as 95 in 35th,
+    but I see 80% is great with all medias */
 }
 .introduction-text h1 {
   font-size: 34px;
@@ -317,9 +319,23 @@ body {
   padding-bottom: 50px;
   display: flex;
 }
+@media (max-width: 575px) {/*575px if smaller*/
+  .about-us {
+    display: block;
+    text-align: center;
+  }
+  .about-us .info-box {
+    padding: 0;
+  }
+}
 .about-us .info-box{
   flex: 1;
   padding: 30px;
+}
+@media (max-width: 575px) {
+  .about-us .info-box {
+    padding: 0;/*instead of adding important we know LIFO*/
+  }
 }
 .about-us .info-box h2 {
   font-weight: bold;
@@ -361,11 +377,22 @@ body {
   padding: 15px;
   margin-bottom: 15px;
 }
+@media (max-width: 575px) {
+  .skills .skill-box {
+    display: block;
+  }
+}
 .skills .skill-box .skill-name {
   font-weight: bold;
   width: 140px;
   text-align: center;
   line-height: 30px;
+}
+@media (max-width: 575px) {
+  .skills .skill-box .skill-name {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 .skills .skill-box .skill-progress {
   height: 30px;
@@ -514,6 +541,21 @@ body {
 }
 .timeline  .timeline-content .right::before {
   left: -35px;
+}
+@media (max-width: 767px) {
+  .timeline  .timeline-content .left,
+  .timeline  .timeline-content .right {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .timeline  .timeline-content .left::before,
+  .timeline  .timeline-content .right::before {
+    display: none;
+  }
+  .timeline  .timeline-content .left .content::before,
+  .timeline  .timeline-content .right .content::before {
+    display: none;
+  }
 }
 .timeline  .timeline-content .content {
   padding: 20px;
