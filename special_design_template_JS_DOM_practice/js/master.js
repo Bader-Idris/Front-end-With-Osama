@@ -306,3 +306,34 @@ document.querySelector('.reset-options').addEventListener('click',(e)=>{
 });
 // in exercism, I learned that 'a' can be compared with 'A', and small is bigger than capital
 // as 'a' > 'A'; true, it's bigger as sorted comparison
+
+// 34th lesson
+// Toggle Menu
+let toggleBtn = document.querySelector('.header-area .toggle-menu');
+let tLinks = document.querySelector('.links');
+
+toggleBtn.onclick = function (e) {
+  // this is when clicking on spans inside this button, to prevent overlooking 'em
+  //🔴 because without it, you'll click a lot to get same results
+  e.stopPropagation();// EXTREMELY IMPORTANT
+  this.classList.toggle('menu-active');
+  tLinks.classList.toggle('open');
+}
+
+document.addEventListener('click', (e) => {
+  //🔴this event listener's (e.target) works when you click on anything in the window🔴
+  // LOVELY
+  if (e.target !== toggleBtn && e.target !== tLinks) {
+    if(tLinks.classList.contains('open')) {
+      tLinks.classList.toggle('open');//toggle or remove, here does the same method
+      toggleBtn.classList.toggle('menu-active');
+    }
+  }
+});
+
+// Stop Propagation on .links li
+tLinks.onclick = e => {
+  e.stopPropagation();
+}
+
+//35 lesson
