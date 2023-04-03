@@ -335,5 +335,19 @@ document.addEventListener('click', (e) => {
 tLinks.onclick = e => {
   e.stopPropagation();
 }
+//38 lesson last Video, Tips and Tricks [task to me Bader]
+/* some themes to make it prettier
 
-//35 lesson
+  create a header that has position fixed, as nav bars, as an option in setting-box
+  🔴visit the nice library 🔴 [headroom js] at https://wicky.nillia.ms/headroom.js/
+
+  secondly: Osama said: you shouldn't do work without sketches as he did in this website
+  it'll not be too nice, see examples and implement the work converting its designs into code
+  same with icons, do pick things related to each other
+
+  another task: Do change the code and give it your touch, or you didn't learn anything
+  by simplifying it using functions, and -personal advice by me- ask support from CHAT GPT LOVE
+
+  DO SORT THE CODE, AND MAKE IT CLEANER TO OTHER PROGRAMMERS TO READ
+  he recorded the course in consecutive 2 days, my man [on the fly] [without preparation]
+*/
