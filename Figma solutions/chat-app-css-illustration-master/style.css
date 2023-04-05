@@ -24,7 +24,7 @@ body {
 .mega-menu::before,
 .mega-menu::after {
   content: '';
-  width: 40%;
+  width: 420px;
   height: 87.5%;
   background-color: #f9f4fa;/*will change*/
   position: absolute;

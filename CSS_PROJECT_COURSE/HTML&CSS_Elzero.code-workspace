@@ -18,7 +18,8 @@
 			"vlfy",
 			"yenku"
 		],
-		"liveServer.settings.port": 5501
+		"liveServer.settings.port": 5501,
+		"powershell.cwd": "e:\\coding_and_programming\\HTML_and_CSS_Elzero"
 	},
 	"launch": {
 		"configurations": [
