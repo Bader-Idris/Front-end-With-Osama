@@ -217,18 +217,34 @@ body {
   width: 100%;
 }
 /* 14th lesson */
-.border-left {
+.border-left,
+.border-top {/*2nd added in 15th*/
   background-color: #EEE;
   border-radius: 0 !important;
   color: #2980b9 !important;
   overflow: visible !important;/* all important crap here is because :not() up there, if for real biz, i'll fix it*/
 }
 .border-left span:first-child {
-  width: 100% ;
+  width: 0;
   height: 3px ;/*the effect is to move this little small line under Button*/
   background-color: #2980b9 ;
   top: auto !important;
   bottom: -3px ;
 }
-
+/* 15th lesson */
+.fifteenth-lesson {
+  background-color: #2980b9;
+}
+.border-top {
+  background-color: #EEE;
+  border-radius: 0 !important;
+  color: #2980b9 !important;
+  overflow: visible !important;
+}
+.border-top span:first-child {
+  width: 3px;
+  height: 0;
+  background-color: #2980b9 ;
+  left: -3px !important;
+}
 /* End Buttons With Effects */

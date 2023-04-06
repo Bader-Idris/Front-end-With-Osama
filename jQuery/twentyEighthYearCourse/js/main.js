@@ -149,7 +149,7 @@ $(()=>{
 // go to https://flatuicolors.com to see lovely results
 
 $(()=>{
-  $(".from-top").hover(function () {
+  $(".from-top, .border-top").hover(function () {//border-top is added in 15, to do DRY
     $(this).find('span').eq(0).animate({
       height: '100%',
     }, 500);
@@ -176,3 +176,14 @@ $(()=>{
   });
 });
 // 15th lesson buttons with effects part 4
+// window.onDOMContentLoaded = () => {// AYK, it's faster than onload!
+$(() => {
+  $('.fifteenth-lesson').prepend('<span></span>');
+  // instead of removing every span Osama added before
+  // he selected it as forEach loop: $('.buttons-effects button').each(function () {
+    // $(this).prepend('<span></span>');
+  // });
+  // instead of repeating hover function, he made $('.from-left, .border-left) instead, and removed the separated one
+  // see $(.from-top) hover above, instead of repeating it, we only added this class as $(.1stClass, .2ndClass)
+  // he advised to use wrap(), which is same as 
+});
