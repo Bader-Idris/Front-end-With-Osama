@@ -11,18 +11,21 @@ imageOpt.forEach((img, key) => {
     handleActiveState(e)
     currentImg.innerHTML = `<img src="images/${pickedImage[key]}" /alt="">`;
     // e.target.src.split('/').slice(-2).join('/'); // useful with long img.src attributes
-    // console.log(currentImg.innerHTML)
+    if (img.classList.contains('active')) {
+      const div = document.createElement('div');
+      div.setAttribute('class', 'light-box');
+      div.innerHTML = currentImg.innerHTML;
+      document.body.appendChild(div);
+    }
   })
-
-  // --------------------------------------------------------
-  // 🔴continue this task, as for creating a div appearing pics🔴
-  let imageOptActive = document.querySelectorAll('.img-opt img.active');
-  imageOptActive.forEach((dif) => {
-    dif.addEventListener('click', (evo) => {
-      console.log(evo);
-    })
-  })
-  // --------------------------------------------------------
+  // // --------------------------------------------------------
+  // let imageOptActive = document.querySelectorAll('.img-opt img.active');
+  // imageOptActive.forEach((dif) => {
+  //   dif.addEventListener('click', (evo) => {
+  //     console.log(evo);
+  //   })
+  // })
+  // // --------------------------------------------------------
 })
 
 function  handleActiveState(ev) {
@@ -32,28 +35,27 @@ function  handleActiveState(ev) {
   ev.target.classList.add("active");
 };
 
-// let cartDiv = document.querySelector('.cart div');🔴set it above, but I need to align 'em after all🔴
 
+// let cartDiv = document.querySelector('.cart div');🔴set it above, but I need to align 'em after all🔴
 
 let curCount = document.querySelector('.product-count .cur-count');
 curCount.children[0].onclick = ((e) => {
-  if (curCount.children[1].innerHTML > 0){
-    curCount.children[1].innerHTML = +curCount.children[1].innerHTML - 1;
-  curCount.children[1].dataset.count = +curCount.children[1].dataset.count - 1;
-  // little tiny mark above cart
-  cartCounter.dataset.count = +cartCounter.dataset.count - 1;
-  cartCounter.innerHTML = +cartCounter.innerHTML - 1;
-  }
-  if (cartCounter.dataset.count == 0) {
-    cartCounter.style.display = "none";
+  if (curCount.children[1].innerHTML > 0) {
+  updateCount(-1);
   }
 });
 curCount.children[2].onclick = ((e) => {
-  curCount.children[1].innerHTML = +curCount.children[1].innerHTML + 1;
-  curCount.children[1].dataset.count = +curCount.children[1].dataset.count + 1;
-  cartCounter.dataset.count = +cartCounter.dataset.count + 1;
-  cartCounter.innerHTML = +cartCounter.innerHTML + 1;
+  updateCount(1);
+});
+
+function updateCount(num) {
+  curCount.children[1].innerHTML = +curCount.children[1].innerHTML + num;
+  curCount.children[1].dataset.count = +curCount.children[1].dataset.count + num;
+  cartCounter.dataset.count = +cartCounter.dataset.count + num;
+  cartCounter.innerHTML = +cartCounter.innerHTML + num;
   if (cartCounter.dataset.count > 0) {
     cartCounter.style.display = "inline-block";
+  } else {
+    cartCounter.style.display = "none";
   }
-});
+}
