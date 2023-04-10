@@ -18,14 +18,6 @@ imageOpt.forEach((img, key) => {
       document.body.appendChild(div);
     }
   })
-  // // --------------------------------------------------------
-  // let imageOptActive = document.querySelectorAll('.img-opt img.active');
-  // imageOptActive.forEach((dif) => {
-  //   dif.addEventListener('click', (evo) => {
-  //     console.log(evo);
-  //   })
-  // })
-  // // --------------------------------------------------------
 })
 
 function  handleActiveState(ev) {
