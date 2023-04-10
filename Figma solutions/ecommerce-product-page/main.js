@@ -1,35 +1,29 @@
 let currentImg = document.querySelector('.images-container .current-img');
-let imageOpt = document.querySelectorAll('.img-opt div');
-let imageOpt2 = document.querySelector('.img-opt');
-let pickedImage = ['image-product-1.jpg', 'image-product-2.jpg','image-product-3.jpg','image-product-3.jpg'];
+let imageOpt = document.querySelectorAll('.img-opt img');
+let pickedImage = ['image-product-1.jpg', 'image-product-2.jpg','image-product-3.jpg','image-product-4.jpg'];
 let cartDiv = document.querySelector('.cart div');
 let cartCounter = document.querySelector('.cart > span');
 
+currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt="">`;
 
+imageOpt.forEach((img, key) => {
+  img.addEventListener('click', (e) => {
+    handleActiveState(e)
+    currentImg.innerHTML = `<img src="images/${pickedImage[key]}" /alt="">`;
+    // e.target.src.split('/').slice(-2).join('/'); // useful with long img.src attributes
+    // console.log(currentImg.innerHTML)
+  })
 
-// imageOpt.forEach((img) => {
-//   // img.classList.remove('active');
-//   img.addEventListener('click', (e) => {
-//     handleActiveState(e)
-//     // console.log(img.classList)
-//     // img.classList.add('active');
-//     console.log(e.target.parentElement)
-//   })
-// })
-
-// see e.stopPropagation();
-imageOpt2.addEventListener('click', (e) => {
-  console.log(e.target.parentElement)
-  e.target.parentElement.classList.remove('active');
-  e.target.addEventListener('click',(ev) => {
-    e.target.parentElement.classList.add('active');
-    
-  });
-});
-
-currentImg.innerHTML = `<img src="images/${pickedImage[1]}" alt="">`;
-
-
+  // --------------------------------------------------------
+  // 🔴continue this task, as for creating a div appearing pics🔴
+  let imageOptActive = document.querySelectorAll('.img-opt img.active');
+  imageOptActive.forEach((dif) => {
+    dif.addEventListener('click', (evo) => {
+      console.log(evo);
+    })
+  })
+  // --------------------------------------------------------
+})
 
 function  handleActiveState(ev) {
   ev.target.parentElement.querySelectorAll(".active").forEach(ele =>{
