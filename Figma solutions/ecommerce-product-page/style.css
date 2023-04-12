@@ -36,6 +36,24 @@ header div{
 header nav {
   flex-grow: 3;
 }
+@media (max-width:767px) {
+  header {
+    border-bottom: none;
+    height: 67px;
+  }
+  header nav {
+    display: none;
+  }
+  header .logo {
+    margin: 24px 15px 0;
+  }
+}
+@media (min-width:768px) {
+  header nav {
+    display: block;
+  }
+}
+
 header div {
   flex-grow: 1;
 }
@@ -58,8 +76,10 @@ header nav ul li a:hover {
   color: var(--Very-dark-blue);
   border-bottom: 4px solid var(--Orange);
 }
-header .logo {
-  margin: 40px 15px 0;
+@media (min-width:768px) {
+  header .logo {
+    margin: 40px 15px 0;
+  }
 }
 header .cart {
   margin-top: 40px;
@@ -144,22 +164,44 @@ header .avatar:hover img {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 80%;
   position: relative;
   margin: auto;
 }
-.main-section aside.images-container {
-  padding-top: 88px;
-  left: 10%;
-  position: relative;
+
+@media (max-width:767px) {
+  .images-container {
+    width: 100%;
+    padding-top: 0;
+  }
 }
-.images-container .img-opt {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 30px;
-  width: 445px;
+@media (min-width:768px) {
+  .main-section {
+    width: 80%;
+  }
+  .main-section aside.images-container {
+    left: 10%;
+    position: relative;
+  }
+  .images-container {
+    padding-top: 88px;
+  }
 }
+@media (max-width:767px) {
+  .images-container .img-opt {
+    display: none;
+  }
+}
+@media (min-width:768px) {
+  .images-container .img-opt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    width: 445px;
+  }
+}
+
+
 .images-container .img-opt div {
   /* border: 5px solid transparent;
   display: inline-block;
@@ -183,17 +225,34 @@ header .avatar:hover img {
 .images-container .img-opt img:hover {
   opacity: 0.6;
 }
-.main-section .current-img img{
-  height: 445px;
-  width: 445px;
-  border-radius: 10px;
+
+@media (max-width:767px) {
+  .main-section .current-img img{
+    width: 100%;
+  }
+}
+@media (min-width:768px) {
+  .main-section .current-img img{
+    height: 445px;
+    width: 445px;
+    border-radius: 10px;
+  }
 }
 
+@media (max-width:767px) {
+  article.main-article {
+    margin: 10px 0 25px 25px;
+  }
+}
+@media (min-width:768px) {
+  article.main-article {
+    margin-top: 135px;
+    margin-left: 200px;
+  }
+}
 article.main-article {
   position: relative;
   flex-basis: 445px;
-  margin-top: 135px;
-  margin-left: 200px;
   /* will change */
 }
 article.main-article p:first-of-type {
@@ -240,6 +299,21 @@ article.main-article .product-count {
   display: flex;
   width: 100%;
 }
+@media (max-width:767px) {
+  article.main-article .product-count {
+    flex-direction: column;
+  }
+  article.main-article .product-count {
+    width: 80%;
+  }
+  article.main-article .product-count > *{
+    margin: 20px auto 0;
+  }
+}
+@media (min-width:768px) {
+  
+}
+
 article.main-article .product-count .cur-count{
   background-color: var(--Light-grayish-blue);
   width: 160px;
@@ -287,20 +361,20 @@ article.main-article .product-count button {
 article.main-article .product-count button:hover {
   opacity: 0.6;
 }
-
-/* ---------------------Fix me please---------------------------- */
 .light-box {
-z-index: 999;
-height: 100%;
-width: 100%;
-position: relative;
-}
-.light-box img::before {
-  width: 100%;
+  z-index: 999;
   height: 100%;
-  position: absolute;
-  background-color: black;
-
+  width: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+}
+.light-box img::before,
+.light-box img::after {
+  content: '';
+  /* width: 15px;
+  height: 15px; */
 }
 .light-box img {
   height: 550px;
@@ -311,19 +385,12 @@ position: relative;
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
-/* ---------------------Fix me please-🔼-------------------------- */
 
 /*
   main media
   Mobile: 375px
   Desktop: 1440px
 */
-@media (max-width:767px) {
-  .images-container {
-    width: 100%;
-    padding-top: 0 !important;/*why it doesn't apply🔴without important🔴*/
-  }
-}
 footer{
   display: none;
 }

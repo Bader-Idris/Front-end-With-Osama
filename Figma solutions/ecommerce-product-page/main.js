@@ -19,6 +19,11 @@ imageOpt.forEach((img, key) => {
     }
   })
 })
+window.addEventListener('click', (e) => {
+  // if (e.target !== document.getElementsByClassName('light-box') ) {
+    // console.log('lightbox');
+  // }
+})
 
 function  handleActiveState(ev) {
   ev.target.parentElement.querySelectorAll(".active").forEach(ele =>{
