@@ -19,13 +19,7 @@
 
   --main-font:16px;
 }
-body {
-  /*
-  main media
-  Mobile: 375px
-  Desktop: 1440px
-  */
-}
+/* body {} */
 header {
   display: flex;
   height: 100px;
@@ -161,9 +155,10 @@ header .avatar:hover img {
 }
 .images-container .img-opt {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin-top: 30px;
+  width: 445px;
 }
 .images-container .img-opt div {
   /* border: 5px solid transparent;
@@ -293,7 +288,7 @@ article.main-article .product-count button:hover {
   opacity: 0.6;
 }
 
-
+/* ---------------------Fix me please---------------------------- */
 .light-box {
 z-index: 999;
 height: 100%;
@@ -316,7 +311,19 @@ position: relative;
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
+/* ---------------------Fix me please-🔼-------------------------- */
 
+/*
+  main media
+  Mobile: 375px
+  Desktop: 1440px
+*/
+@media (max-width:767px) {
+  .images-container {
+    width: 100%;
+    padding-top: 0 !important;/*why it doesn't apply🔴without important🔴*/
+  }
+}
 footer{
   display: none;
 }
