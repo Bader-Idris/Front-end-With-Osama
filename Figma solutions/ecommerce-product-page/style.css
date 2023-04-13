@@ -82,7 +82,6 @@ header nav ul li a:hover {
   }
 }
 header .cart {
-  margin-top: 40px;
   align-self: flex-end;
   position: relative;
 }
@@ -105,7 +104,7 @@ header .cart img {
   content: url("images/icon-cart.svg");
   background-image: var(--Dark-grayish-blue);
 } */
-header .cart img:hover{
+header .cart:hover img{
   color: var(--Very-dark-blue);
 }
 header .cart:hover > div {
@@ -148,7 +147,6 @@ header .cart div div:not(:first-child) {
 }
 header .avatar {
   margin-left: 40px;
-  margin-top: 27px;
   align-self: flex-end;
 }
 header .avatar img {
@@ -158,6 +156,29 @@ header .avatar img {
 }
 header .avatar:hover img {
   border: 2px solid var(--Orange);
+}
+@media (max-width:767px) {
+  header .avatar {
+    top: 8px;
+    transform: translateY(-50%);
+    position: relative;
+  }
+  header .avatar img {
+    width: 30px;
+  }
+  header .cart {
+    transform: translateY(-50%);
+    top: 57%;
+    left: -15%;
+  }
+}
+@media (min-width:768px) {
+  header .avatar {
+    margin-top: 27px;
+  }
+  header .cart {
+    margin-top: 40px;
+  }
 }
 
 .main-section {
@@ -241,7 +262,7 @@ header .avatar:hover img {
 
 @media (max-width:767px) {
   article.main-article {
-    margin: 10px 0 25px 25px;
+    margin: 10px 25px 25px;
   }
 }
 @media (min-width:768px) {
@@ -274,6 +295,22 @@ article.main-article .current-price {
   position: relative;
   margin-bottom: 20px;
 }
+
+@media (max-width:767px) {
+  article.main-article .current-price {
+    display: inline-block;
+  }
+  article.main-article .prev-price {
+    display: inline-block;
+    right: -60%;
+    position: relative;
+    transform: translateX(-50%);
+  }
+}
+@media (min-width:768px) {
+  
+}
+
 article.main-article .current-price span:first-of-type {
   font-size: 22px;
   font-weight: bold;
@@ -304,19 +341,23 @@ article.main-article .product-count {
     flex-direction: column;
   }
   article.main-article .product-count {
-    width: 80%;
   }
   article.main-article .product-count > *{
-    margin: 20px auto 0;
+    margin-bottom: 20px;
+    width: 100%;
   }
 }
 @media (min-width:768px) {
-  
+  article.main-article .product-count .cur-count {
+    width: 160px;
+  }
+  article.main-article .product-count button {
+    width: 270px;
+  }
 }
 
-article.main-article .product-count .cur-count{
+article.main-article .product-count .cur-count {
   background-color: var(--Light-grayish-blue);
-  width: 160px;
   margin-right: 20px;
   border-radius: 10px;
   text-align: center;
@@ -349,7 +390,6 @@ article.main-article .product-count .cur-count span:hover:last-of-type {
 }
 
 article.main-article .product-count button {
-  width: 270px;
   padding: 17px 0;
   background-color: var(--Orange);
   border: none;
