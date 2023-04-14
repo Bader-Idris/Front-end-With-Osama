@@ -11,12 +11,10 @@ imageOpt.forEach((img, key) => {
     handleActiveState(e)
     currentImg.innerHTML = `<img src="images/${pickedImage[key]}" /alt="">`;
     // e.target.src.split('/').slice(-2).join('/'); // useful with long img.src attributes
-    if (img.classList.contains('active')) {
-      const div = document.createElement('div');
-      div.setAttribute('class', 'light-box');
-      div.innerHTML = currentImg.innerHTML;
-      document.body.appendChild(div);
-    }
+    const div = document.createElement('div');
+    div.setAttribute('class', 'light-box');
+    div.innerHTML = currentImg.innerHTML;
+    document.body.appendChild(div);
   })
 })
 window.addEventListener('click', (e) => {

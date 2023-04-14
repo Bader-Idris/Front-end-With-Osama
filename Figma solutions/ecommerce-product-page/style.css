@@ -262,7 +262,8 @@ header .avatar:hover img {
 
 @media (max-width:767px) {
   article.main-article {
-    margin: 10px 25px 25px;
+    margin: 10px auto;
+    padding: 0 20px 0;
   }
 }
 @media (min-width:768px) {
@@ -346,7 +347,11 @@ article.main-article .product-count {
     margin-bottom: 20px;
     width: 100%;
   }
+  .product-count button span {
+  left: 24%;
+  }
 }
+
 @media (min-width:768px) {
   article.main-article .product-count .cur-count {
     width: 160px;
@@ -397,9 +402,24 @@ article.main-article .product-count button {
   color: #FFF;
   font-size: var(--main-font);
   font-weight: bold;
+  position: relative;
 }
 article.main-article .product-count button:hover {
   opacity: 0.6;
+}
+.product-count button span {
+  content: url("images/icon-cart.svg");
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 24%;
+  fill: #FFF;
+  /* a big MF issue, SVGs give me the creeps */
+}
+@media (max-width:767px) {
+  .product-count button span {
+  left: 32%;
+  }
 }
 .light-box {
   z-index: 999;

@@ -12,8 +12,16 @@
 </head>
 <body>
   <header>
+    <div class="toggle-menu">
+      <svg width="100" height="100">
+        <image xlink:href="images/icon-menu.svg" width="50" height="50" />
+      </svg>
+    </div>
     <div class="logo">
-      <img src="images/logo.svg" alt="">
+      <!-- <img src="images/logo.svg" alt=""> -->
+      <svg width="100" height="100">
+        <image xlink:href="images/logo.svg" width="50" height="50" alt="nigga fix me task"/>
+      </svg>
     </div>
     <nav>
       <ul>
@@ -26,7 +34,10 @@
     </nav>
     <div class="cart">
       <span data-count="0">0</span>
-      <img src="images/icon-cart.svg" alt="">
+      <!-- <img src="images/icon-cart.svg" alt=""> -->
+      <svg width="100" height="100"><!-- fix me task -->
+        <image xlink:href="images/icon-cart.svg" width="50" height="50" />
+      </svg>
       <div class="hidden">
         <div class="cart-title">Cart</div>
         <div class="empty-cart">Your cart is Empty.</div>
@@ -38,7 +49,10 @@
   </header>
   <section class="main-section">
     <aside class="images-container">
-      <div class="current-img"></div>
+      <div class="current-img">
+        <span></span>
+        <span></span>
+      </div>
       <div class="img-opt">
         <img src="images/image-product-1-thumbnail.jpg" alt="" class="active">
         <img src="images/image-product-2-thumbnail.jpg" alt="">
@@ -66,7 +80,7 @@
           <span data-count="0">0</span>
           <span>+</span>
         </div>
-        <button>Add to cart</button>
+        <button><span></span> Add to cart</button>
       </div>
     </article>
   </section>
