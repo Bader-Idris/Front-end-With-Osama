@@ -36,6 +36,13 @@ header div{
 header nav {
   flex-grow: 3;
 }
+header .toggle-menu {
+  padding: 24px 0;
+}
+.toggle-menu svg{
+  width: 20px;
+  height: 20px;
+}
 @media (max-width:767px) {
   header {
     border-bottom: none;
@@ -246,10 +253,34 @@ header .avatar:hover img {
 .images-container .img-opt img:hover {
   opacity: 0.6;
 }
+.current-img {
+  position: relative;
+}
+.current-img span {
+  content: url("images/icon-previous.svg");
+  width: 20px;
+  height: 20px;
+  padding: 20px;
+  background-color: #FFF;
+  color: var(--Very-dark-blue);
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 10px);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
 
 @media (max-width:767px) {
   .main-section .current-img img{
     width: 100%;
+  }
+  .current-img span:first-of-type {
+    left: 0;
+    margin-left: 20px;
+  }
+  .current-img span:last-of-type {
+    right: 0;
+    margin-right: 20px;
   }
 }
 @media (min-width:768px) {
@@ -257,6 +288,14 @@ header .avatar:hover img {
     height: 445px;
     width: 445px;
     border-radius: 10px;
+  }
+  .current-img span:first-of-type {
+    left: 0;
+    margin-left: -20px;
+  }
+  .current-img span:last-of-type {
+    right: 0;
+    margin-right: -20px;
   }
 }
 
@@ -395,7 +434,7 @@ article.main-article .product-count .cur-count span:hover:last-of-type {
 }
 
 article.main-article .product-count button {
-  padding: 17px 0;
+  padding: 17px 0 17px 40px;
   background-color: var(--Orange);
   border: none;
   border-radius: 5px;
@@ -408,17 +447,17 @@ article.main-article .product-count button:hover {
   opacity: 0.6;
 }
 .product-count button span {
-  content: url("images/icon-cart.svg");
+  content: url("images/icon-cart-white.svg");
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 24%;
+  left: 29%;
   fill: #FFF;
   /* a big MF issue, SVGs give me the creeps */
 }
 @media (max-width:767px) {
   .product-count button span {
-  left: 32%;
+  left: 35%;
   }
 }
 .light-box {

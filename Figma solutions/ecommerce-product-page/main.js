@@ -4,12 +4,12 @@ let pickedImage = ['image-product-1.jpg', 'image-product-2.jpg','image-product-3
 let cartDiv = document.querySelector('.cart div');
 let cartCounter = document.querySelector('.cart > span');
 
-currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt="">`;
+currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt=""><span></span><span></span>`;
 
 imageOpt.forEach((img, key) => {
   img.addEventListener('click', (e) => {
     handleActiveState(e)
-    currentImg.innerHTML = `<img src="images/${pickedImage[key]}" /alt="">`;
+    currentImg.innerHTML = `<img src="images/${pickedImage[key]}" /alt=""><span></span><span></span>`;
     // e.target.src.split('/').slice(-2).join('/'); // useful with long img.src attributes
     const div = document.createElement('div');
     div.setAttribute('class', 'light-box');
