@@ -42,34 +42,60 @@ header .toggle-menu {
 .toggle-menu svg{
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 @media (max-width:767px) {
   header {
     border-bottom: none;
     height: 67px;
   }
-  header nav {
-    display: none;
-  }
   header .logo {
     margin: 24px 15px 0;
   }
 }
 @media (min-width:768px) {
-  header nav {
+  header nav ul{
     display: block;
   }
+  header .toggle-menu {
+    display: none;
+  }
 }
-
+header .logo svg {
+  width: 140px;
+  height: 30px;
+}
 header div {
   flex-grow: 1;
 }
+
 header nav ul {
   display: flex;
   margin-top: 40px;
   list-style: none;
   margin-left: 50px;
 }
+@media (max-width:767px) {
+  header nav ul{
+    display: none;
+  }
+}
+header nav ul.open {
+  background-color: #FFF;
+  padding: 20px;
+  display: block;
+  position: fixed;
+  left: -50px;
+  top: -40px;
+  width: 250px;
+  z-index: 1;
+  height: 100%;
+}
+header nav ul.open li {
+  margin: 20px 15px;
+  padding: 20px;
+}
+
 header nav ul li {
   margin: 0 15px;
 }
@@ -107,10 +133,6 @@ header .cart > span {
 header .cart img {
   color: var(--Dark-grayish-blue);
 }
-/* header .cart svg {
-  content: url("images/icon-cart.svg");
-  background-image: var(--Dark-grayish-blue);
-} */
 header .cart:hover img{
   color: var(--Very-dark-blue);
 }
@@ -153,8 +175,7 @@ header .cart div div:not(:first-child) {
   /* dis */
 }
 header .avatar {
-  margin-left: 40px;
-  align-self: flex-end;
+  margin-left: 30px;
 }
 header .avatar img {
   width: 45px;
@@ -166,8 +187,7 @@ header .avatar:hover img {
 }
 @media (max-width:767px) {
   header .avatar {
-    top: 8px;
-    transform: translateY(-50%);
+    top: 18px;
     position: relative;
   }
   header .avatar img {
@@ -175,8 +195,8 @@ header .avatar:hover img {
   }
   header .cart {
     transform: translateY(-50%);
-    top: 57%;
-    left: -15%;
+    top: 86%;
+    right: -15px;
   }
 }
 @media (min-width:768px) {
@@ -194,6 +214,7 @@ header .avatar:hover img {
   flex-wrap: wrap;
   position: relative;
   margin: auto;
+  margin-bottom: 50px;
 }
 
 @media (max-width:767px) {
@@ -256,6 +277,7 @@ header .avatar:hover img {
 .current-img {
   position: relative;
 }
+.left-arrow,
 .current-img span {
   content: url("images/icon-previous.svg");
   width: 20px;
@@ -284,20 +306,31 @@ header .avatar:hover img {
   }
 }
 @media (min-width:768px) {
-  .main-section .current-img img{
+  .main-section .current-img img {
     height: 445px;
     width: 445px;
     border-radius: 10px;
   }
-  .current-img span:first-of-type {
-    left: 0;
-    margin-left: -20px;
-  }
-  .current-img span:last-of-type {
-    right: 0;
-    margin-right: -20px;
+  .current-img span {
+    display: none;
   }
 }
+/* 
+-------------------- for .left-arrow task-----------------------------------
+content: url("images/icon-previous.svg");
+  width: 20px;
+  height: 20px;
+  padding: 20px;
+  background-color: #FFF;
+  color: var(--Very-dark-blue);
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 10px);
+  transform: translateY(-50%);
+  cursor: pointer;
+----------------------------------------------------------------
+
+*/
 
 @media (max-width:767px) {
   article.main-article {
@@ -453,7 +486,6 @@ article.main-article .product-count button:hover {
   position: absolute;
   left: 29%;
   fill: #FFF;
-  /* a big MF issue, SVGs give me the creeps */
 }
 @media (max-width:767px) {
   .product-count button span {
@@ -484,14 +516,31 @@ article.main-article .product-count button:hover {
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
+.light-box span:first-of-type {/* I need a lot of fixes task*/
+  left: 0;
+  margin-left: -20px;
+}
+.light-box span:last-of-type {
+  right: 0;
+  margin-right: -20px;
+}
 
 /*
   main media
   Mobile: 375px
   Desktop: 1440px
 */
-footer{
-  display: none;
+
+footer.attribution {
+  font-size: 11px;
+  text-align: center;
+  bottom: 20px;
+  margin: 0 auto 20px;
 }
-footer.attribution { font-size: 11px; text-align: center; }
-footer.attribution a { color: hsl(228, 45%, 44%); }
+footer.attribution a {
+  color: hsl(228, 45%, 44%);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 15px;
+  vertical-align: -2px;
+}

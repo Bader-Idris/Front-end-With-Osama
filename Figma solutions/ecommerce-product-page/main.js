@@ -3,6 +3,7 @@ let imageOpt = document.querySelectorAll('.img-opt img');
 let pickedImage = ['image-product-1.jpg', 'image-product-2.jpg','image-product-3.jpg','image-product-4.jpg'];
 let cartDiv = document.querySelector('.cart div');
 let cartCounter = document.querySelector('.cart > span');
+const toggleSVG = document.querySelector('.toggle-menu svg');
 
 currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt=""><span></span><span></span>`;
 
@@ -14,13 +15,10 @@ imageOpt.forEach((img, key) => {
     const div = document.createElement('div');
     div.setAttribute('class', 'light-box');
     div.innerHTML = currentImg.innerHTML;
+    div.childNodes[1].classList.add('left-arrow');
+    div.childNodes[2].classList.add('right-arrow');
     document.body.appendChild(div);
   })
-})
-window.addEventListener('click', (e) => {
-  // if (e.target !== document.getElementsByClassName('light-box') ) {
-    // console.log('lightbox');
-  // }
 })
 
 function  handleActiveState(ev) {
@@ -54,3 +52,20 @@ function updateCount(num) {
     cartCounter.style.display = "none";
   }
 }
+
+
+let tLinks = document.querySelector('header nav ul');
+toggleSVG.onclick = function (e) {
+  e.stopPropagation();
+  this.classList.toggle('menu-active');
+  tLinks.classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (e.target !== toggleSVG && e.target !== tLinks) {
+    if(tLinks.classList.contains('open')) {
+      tLinks.classList.toggle('open');
+      toggleSVG.classList.toggle('menu-active');
+    }
+  }
+});
