@@ -1,9 +1,11 @@
 let currentImg = document.querySelector('.images-container .current-img');
 let imageOpt = document.querySelectorAll('.img-opt img');
 let pickedImage = ['image-product-1.jpg', 'image-product-2.jpg','image-product-3.jpg','image-product-4.jpg'];
-let cartDiv = document.querySelector('.cart div');
 let cartCounter = document.querySelector('.cart > span');
 const toggleSVG = document.querySelector('.toggle-menu svg');
+let cartDiv = document.querySelector('.hidden div:nth-child(2)');
+const productBtn = document.querySelector('.product-count button');
+
 
 currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt=""><span></span><span></span>`;
 
@@ -28,9 +30,6 @@ function  handleActiveState(ev) {
   ev.target.classList.add("active");
 };
 
-
-// let cartDiv = document.querySelector('.cart div');🔴set it above, but I need to align 'em after all🔴
-
 let curCount = document.querySelector('.product-count .cur-count');
 curCount.children[0].onclick = ((e) => {
   if (curCount.children[1].innerHTML > 0) {
@@ -44,14 +43,17 @@ curCount.children[2].onclick = ((e) => {
 function updateCount(num) {
   curCount.children[1].innerHTML = +curCount.children[1].innerHTML + num;
   curCount.children[1].dataset.count = +curCount.children[1].dataset.count + num;
-  cartCounter.dataset.count = +cartCounter.dataset.count + num;
-  cartCounter.innerHTML = +cartCounter.innerHTML + num;
+}
+// cartDiv // this cart div is there to put selected products by user.
+productBtn.onclick = (e) => {
+  cartCounter.dataset.count = curCount.children[1].innerHTML;
+  cartCounter.innerHTML = curCount.children[1].innerHTML;
   if (cartCounter.dataset.count > 0) {
     cartCounter.style.display = "inline-block";
   } else {
     cartCounter.style.display = "none";
   }
-}
+};
 
 
 let tLinks = document.querySelector('header nav ul');
