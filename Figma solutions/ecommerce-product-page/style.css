@@ -278,9 +278,7 @@ header .avatar:hover img {
 .current-img {
   position: relative;
 }
-.left-arrow,
 .current-img span {
-  content: url("images/icon-previous.svg");
   width: 20px;
   height: 20px;
   padding: 20px;
@@ -291,10 +289,20 @@ header .avatar:hover img {
   top: calc(50% - 10px);
   transform: translateY(-50%);
   cursor: pointer;
+  user-select: none;
 }
-
+.current-img span>img {
+  position: absolute;
+  bottom: 10px;
+}
+.current-img span:first-of-type img {
+  left: 30%;
+}
+.current-img span:last-of-type img {
+  right: 30%;
+}
 @media (max-width:767px) {
-  .main-section .current-img img{
+  .main-section .current-img > img{
     width: 100%;
   }
   .current-img span:first-of-type {
@@ -307,7 +315,7 @@ header .avatar:hover img {
   }
 }
 @media (min-width:768px) {
-  .main-section .current-img img {
+  .main-section .current-img > img {
     height: 445px;
     width: 445px;
     border-radius: 10px;
@@ -316,23 +324,7 @@ header .avatar:hover img {
     display: none;
   }
 }
-/* 
--------------------- for .left-arrow task-----------------------------------
-content: url("images/icon-previous.svg");
-  width: 20px;
-  height: 20px;
-  padding: 20px;
-  background-color: #FFF;
-  color: var(--Very-dark-blue);
-  border-radius: 50%;
-  position: absolute;
-  top: calc(50% - 10px);
-  transform: translateY(-50%);
-  cursor: pointer;
-----------------------------------------------------------------
-
-*/
-
+/* left arrow, and right-arrow are important */
 @media (max-width:767px) {
   article.main-article {
     margin: 10px auto;
@@ -502,12 +494,6 @@ article.main-article .product-count button:hover {
   top: 0;
   left: 0;
 }
-.light-box img::before,
-.light-box img::after {
-  content: '';
-  /* width: 15px;
-  height: 15px; */
-}
 .light-box img {
   height: 550px;
   width: 550px;
@@ -517,21 +503,47 @@ article.main-article .product-count button:hover {
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
-.light-box span:first-of-type {/* I need a lot of fixes task*/
-  left: 0;
-  margin-left: -20px;
+.light-box .left-arrow,
+.light-box .right-arrow {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: #FFF;
+  position: absolute;
+  z-index: 1000;
+  border-radius: 50%;
+  top: 50%;
+  cursor: pointer;
 }
-.light-box span:last-of-type {
-  right: 0;
-  margin-right: -20px;
+.light-box .left-arrow {
+  left: 22%;
+}
+
+.light-box .right-arrow {
+  right: 22%;
+}
+.light-box span:hover {
+  box-shadow: 0 0 5px 3px #000000c7;
+}
+.light-box span img {
+  position: absolute;
+  width: 13px;
+  height: 18px;
 }
 footer.attribution {
+  display: none;
+}
+/* footer.attribution {
   font-size: 11px;
-  bottom: 20px;
-  /* margin: 0 auto 20px; */
+  margin: 20px auto;
+  padding: 0 0 20px;
   position: relative;
-  transform: translateX(-50%);
-  left: 50%;
+  left: 25%;
+}
+@media (min-width: 768px) {
+  footer.attribution {
+    left: 46%;
+  }  
 }
 footer.attribution a {
   color: hsl(228, 45%, 44%);
@@ -539,4 +551,4 @@ footer.attribution a {
   text-decoration: none;
   font-size: 15px;
   vertical-align: -2px;
-}
+} */

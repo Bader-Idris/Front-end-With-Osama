@@ -1,19 +1,25 @@
-let currentImg = document.querySelector('.images-container .current-img');
-let imageOpt = document.querySelectorAll('.img-opt img');
-let pickedImage = ['image-product-1.jpg', 'image-product-2.jpg','image-product-3.jpg','image-product-4.jpg'];
-let cartCounter = document.querySelector('.cart > span');
-const toggleSVG = document.querySelector('.toggle-menu svg');
-let cartDiv = document.querySelector('.hidden div:nth-child(2)');
-const productBtn = document.querySelector('.product-count button');
 
+const $All = (s) => document.querySelectorAll(s);
+const $ = (s) => document.querySelector(s);
 
-currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt=""><span></span><span></span>`;
+const imageOpt = $All('.img-opt img');
+
+const currentImg = $('.images-container .current-img');
+const pickedImage = ['image-product-1.jpg', 'image-product-2.jpg', 'image-product-3.jpg', 'image-product-4.jpg'];
+const cartCounter = $('.cart > span');
+const cartDiv = $('.hidden div:nth-child(2)');
+const toggleSVG = $('.toggle-menu svg');
+const productBtn = $('.product-count button');
+
+const prevImg = `<img src="images\\icon-previous.svg" alt="">`;
+const nextImg = `<img src="images\\icon-next.svg" alt="">`;
+
+currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt=""><span>${prevImg}</span><span>${nextImg}</span>`;
 
 imageOpt.forEach((img, key) => {
   img.addEventListener('click', (e) => {
     handleActiveState(e)
-    currentImg.innerHTML = `<img src="images/${pickedImage[key]}" /alt=""><span></span><span></span>`;
-    // e.target.src.split('/').slice(-2).join('/'); // useful with long img.src attributes
+    currentImg.innerHTML = `<img src="images/${pickedImage[key]}" /alt=""><span>${prevImg}</span><span>${nextImg}</span>`;
     const div = document.createElement('div');
     div.setAttribute('class', 'light-box');
     div.innerHTML = currentImg.innerHTML;
@@ -23,6 +29,24 @@ imageOpt.forEach((img, key) => {
   })
 })
 
+currentImg.addEventListener('click', (e) => {
+  let currentIndex;
+  pickedImage.forEach((cur, ind) => {
+    if (currentImg.children[0].src.split('/').slice(-1).join('/') === cur) {
+      currentIndex = ind;
+    }
+  });
+  if (e.target === currentImg.children[1] || e.target.parentNode === currentImg.children[1]) {
+    if (currentIndex > 0) {
+      currentImg.children[0].src = `images/${pickedImage[currentIndex - 1]}`;
+    }
+  } else if (e.target === currentImg.children[2] || e.target.parentNode === currentImg.children[2]) {
+    if (currentIndex < pickedImage.length - 1) {
+      currentImg.children[0].src = `images/${pickedImage[currentIndex + 1]}`;
+    }
+  }
+});
+
 function  handleActiveState(ev) {
   ev.target.parentElement.querySelectorAll(".active").forEach(ele =>{
     ele.classList.remove("active");
@@ -30,7 +54,7 @@ function  handleActiveState(ev) {
   ev.target.classList.add("active");
 };
 
-let curCount = document.querySelector('.product-count .cur-count');
+let curCount = $('.product-count .cur-count');
 curCount.children[0].onclick = ((e) => {
   if (curCount.children[1].innerHTML > 0) {
   updateCount(-1);
@@ -40,10 +64,6 @@ curCount.children[2].onclick = ((e) => {
   updateCount(1);
 });
 
-function updateCount(num) {
-  curCount.children[1].innerHTML = +curCount.children[1].innerHTML + num;
-  curCount.children[1].dataset.count = +curCount.children[1].dataset.count + num;
-}
 // cartDiv // this cart div is there to put selected products by user.
 productBtn.onclick = (e) => {
   cartCounter.dataset.count = curCount.children[1].innerHTML;
@@ -54,9 +74,12 @@ productBtn.onclick = (e) => {
     cartCounter.style.display = "none";
   }
 };
+function updateCount(num) {
+  curCount.children[1].innerHTML = +curCount.children[1].innerHTML + num;
+  curCount.children[1].dataset.count = +curCount.children[1].dataset.count + num;
+}
 
-
-let tLinks = document.querySelector('header nav ul');
+let tLinks = $('header nav ul');
 toggleSVG.onclick = function (e) {
   e.stopPropagation();
   this.classList.toggle('menu-active');
@@ -71,3 +94,5 @@ document.addEventListener('click', (e) => {
     }
   }
 });
+
+// const $ = (s) => document.querySelector(s);
