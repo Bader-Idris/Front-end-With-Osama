@@ -25,22 +25,35 @@ imageOpt.forEach((img, key) => {
     div.innerHTML = currentImg.innerHTML;
     div.childNodes[1].classList.add('left-arrow');
     div.childNodes[2].classList.add('right-arrow');
+    
+    const overlay = document.createElement('div');
+    overlay.className = 'popup-overlay';
+    document.body.appendChild(overlay);
+
+    const closeButton = document.createElement("span");
+    const closeButtonText = document.createTextNode("X");
+    closeButton.appendChild(closeButtonText);
+    closeButton.className = 'close-button';
+    div.appendChild(closeButton);
     document.body.appendChild(div);
+
   })
 })
 
-currentImg.addEventListener('click', (e) => {
+document.addEventListener('click', (e) => {
+  const leftArrow = document.querySelector('.left-arrow');
+  const rightArrow = document.querySelector('.right-arrow');
   let currentIndex;
   pickedImage.forEach((cur, ind) => {
     if (currentImg.children[0].src.split('/').slice(-1).join('/') === cur) {
       currentIndex = ind;
     }
   });
-  if (e.target === currentImg.children[1] || e.target.parentNode === currentImg.children[1]) {
+  if (e.target === currentImg.children[1] || e.target.parentNode === currentImg.children[1] || e.target === leftArrow) {
     if (currentIndex > 0) {
       currentImg.children[0].src = `images/${pickedImage[currentIndex - 1]}`;
     }
-  } else if (e.target === currentImg.children[2] || e.target.parentNode === currentImg.children[2]) {
+  } else if (e.target === currentImg.children[2] || e.target.parentNode === currentImg.children[2] || e.target === rightArrow) {
     if (currentIndex < pickedImage.length - 1) {
       currentImg.children[0].src = `images/${pickedImage[currentIndex + 1]}`;
     }
@@ -93,6 +106,20 @@ document.addEventListener('click', (e) => {
       toggleSVG.classList.toggle('menu-active');
     }
   }
+  if (e.target.className == "close-button") {
+    e.target.parentNode.remove();
+    document.querySelector(".popup-overlay").remove();
+  }
 });
+
+// why it only works when added separately, not inhere
+if ($('.light-box') && $('.popup-overlay')) {
+  document.addEventListener('keydown', (e) => {
+    if (e.keyCode === 27){
+      $('.light-box').remove();
+      $('.popup-overlay').remove();
+    }
+  });
+};
 
 // const $ = (s) => document.querySelector(s);
