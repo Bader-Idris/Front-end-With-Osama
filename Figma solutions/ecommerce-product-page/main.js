@@ -59,7 +59,7 @@ document.addEventListener('click', (e) => {
     }
   }
 });
-
+// I need to create a looping when arriving at last index of array pickedImage to get into 0 index
 function  handleActiveState(ev) {
   ev.target.parentElement.querySelectorAll(".active").forEach(ele =>{
     ele.classList.remove("active");
