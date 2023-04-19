@@ -117,6 +117,7 @@ header nav ul li a:hover {
 header .cart {
   align-self: flex-end;
   position: relative;
+  cursor: pointer;
 }
 header .cart > span {
   color: #FFF;
@@ -133,16 +134,22 @@ header .cart > span {
 header .cart img {
   color: var(--Dark-grayish-blue);
 }
-header .cart:hover img{
+header .cart:hover img,
+header .cart.clicked img {
   color: var(--Very-dark-blue);
 }
-/* check me task will change */
 @media (max-width:767px) {
+  header .cart.clicked .hidden,
+  header .cart:hover .hidden {
+    left: 0;
+  }
+  /* fix me task */
 }
 @media (min-width:768px) {
 
 }
-header .cart:hover > div {
+header .cart.clicked .hidden,
+header .cart:hover .hidden {
   position: absolute;
   width: 360px;
   min-height: 255px;
@@ -157,9 +164,12 @@ header .cart:hover > div {
 header .cart .hidden {
   display: none;
 }
-header .cart:hover .hidden {
+header .cart:hover .hidden,
+header .cart.clicked .hidden {
   display: block;
+  cursor: auto;
 }
+
 header .cart div {
   position: relative;
 }
@@ -177,9 +187,46 @@ header .cart div .empty-cart {
   margin: 80px 0;
   padding-left: 110px;
 }
-header .cart div div:not(:first-child) {
-  /* dis */
+.hidden .product {
+  height: 188px;
+  width: 100%;
+  padding: 20px;
 }
+.hidden .product img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-left: 5px;
+}
+.hidden .product h4 {
+  color: var(--Dark-grayish-blue);
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+.hidden .product .prices {}
+.hidden .product .prices span:first-of-type{
+  color: var(--Dark-grayish-blue);
+}
+.hidden .product .prices span:last-of-type{
+  font-weight: bold;
+  color: var(--Very-dark-blue);
+  padding-left: 2px;
+}
+.hidden .product button {
+  width: 100%;
+  padding-left: 0;
+  margin-top: 25px;
+}
+.hidden .product .close-button {
+  content: url("images/icon-delete.svg");
+  height: 20px;
+  width: 15px;
+  border-radius: 0;
+  right: 30px;
+  top: 30px;
+}
+
 header .avatar {
   margin-left: 30px;
 }
@@ -272,6 +319,7 @@ header .avatar:hover img {
   height: 90px;
   border-radius: 10px;
   border: 5px solid transparent;
+  cursor: pointer;
 }
 .images-container .img-opt img.active {
   border: 2px solid var(--Orange);
@@ -464,6 +512,7 @@ article.main-article .product-count .cur-count span:hover:last-of-type {
   opacity: 0.7;
 }
 
+.button-yo,
 article.main-article .product-count button {
   padding: 17px 0 17px 40px;
   background-color: var(--Orange);
@@ -473,6 +522,7 @@ article.main-article .product-count button {
   font-size: var(--main-font);
   font-weight: bold;
   position: relative;
+  cursor: pointer;
 }
 article.main-article .product-count button:hover {
   opacity: 0.6;
@@ -490,7 +540,6 @@ article.main-article .product-count button:hover {
   left: 35%;
   }
 }
-/* my task is to fix this crazy light-box */
 .popup-overlay {
   position: fixed;
   background-color: #000000b2;
@@ -523,6 +572,7 @@ article.main-article .product-count button:hover {
   border-radius: 50%;
   top: 50%;
   cursor: pointer;
+  user-select: none;
 }
 .light-box .left-arrow {
   left: 0;

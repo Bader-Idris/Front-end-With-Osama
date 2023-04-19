@@ -1,18 +1,21 @@
 
-const $All = (s) => document.querySelectorAll(s);
-const $ = (s) => document.querySelector(s);
-
-const imageOpt = $All('.img-opt img');
-
-const currentImg = $('.images-container .current-img');
-const pickedImage = ['image-product-1.jpg', 'image-product-2.jpg', 'image-product-3.jpg', 'image-product-4.jpg'];
-const cartCounter = $('.cart > span');
-const cartDiv = $('.hidden div:nth-child(2)');
-const toggleSVG = $('.toggle-menu svg');
-const productBtn = $('.product-count button');
-
-const prevImg = `<img src="images\\icon-previous.svg" alt="">`;
-const nextImg = `<img src="images\\icon-next.svg" alt="">`;
+const $All = (s) => document.querySelectorAll(s),
+      $ = (s) => document.querySelector(s),
+      imageOpt = $All('.img-opt img'),
+      currentImg = $('.images-container .current-img'),
+      pickedImage = ['image-product-1.jpg', 'image-product-2.jpg', 'image-product-3.jpg', 'image-product-4.jpg'],
+      cartCounter = $('.cart > span'),
+      cart = $('.cart'),
+      cartDiv = $('.hidden div:nth-child(2)'),
+      hiddenCart = $('.hidden'),
+      toggleSVG = $('.toggle-menu svg'),
+      productBtn = $('.product-count button'),
+      IMG_PATH = "images\\",
+      prevImg = `<img src="${IMG_PATH}icon-previous.svg" alt="">`,
+      nextImg = `<img src="${IMG_PATH}icon-next.svg" alt="">`
+;
+let currentPrice = $('.current-price span:first-of-type');
+const priceText = currentPrice.innerHTML.substring(1).replace(/\.\d{2}/, '');
 
 currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt=""><span>${prevImg}</span><span>${nextImg}</span>`;
 
@@ -20,46 +23,36 @@ imageOpt.forEach((img, key) => {
   img.addEventListener('click', (e) => {
     handleActiveState(e)
     currentImg.innerHTML = `<img src="images/${pickedImage[key]}" /alt=""><span>${prevImg}</span><span>${nextImg}</span>`;
-    const div = document.createElement('div');
+    const div = currentImg.cloneNode(true);
     div.setAttribute('class', 'light-box');
-    div.innerHTML = currentImg.innerHTML;
     div.childNodes[1].classList.add('left-arrow');
     div.childNodes[2].classList.add('right-arrow');
-    
-    const overlay = document.createElement('div');
+      const overlay = document.createElement('div');
     overlay.className = 'popup-overlay';
     document.body.appendChild(overlay);
-
-    const closeButton = document.createElement("span");
+      const closeButton = document.createElement("span");
     const closeButtonText = document.createTextNode("X");
     closeButton.appendChild(closeButtonText);
     closeButton.className = 'close-button';
     div.appendChild(closeButton);
     document.body.appendChild(div);
-
   })
 })
 
+//🔴I want to make [.images-container .img-opt img] changes its active when exiting other clicked images🔴
 document.addEventListener('click', (e) => {
-  const leftArrow = document.querySelector('.left-arrow');
-  const rightArrow = document.querySelector('.right-arrow');
-  let currentIndex;
-  pickedImage.forEach((cur, ind) => {
-    if (currentImg.children[0].src.split('/').slice(-1).join('/') === cur) {
-      currentIndex = ind;
-    }
-  });
-  if (e.target === currentImg.children[1] || e.target.parentNode === currentImg.children[1] || e.target === leftArrow) {
-    if (currentIndex > 0) {
-      currentImg.children[0].src = `images/${pickedImage[currentIndex - 1]}`;
-    }
-  } else if (e.target === currentImg.children[2] || e.target.parentNode === currentImg.children[2] || e.target === rightArrow) {
-    if (currentIndex < pickedImage.length - 1) {
-      currentImg.children[0].src = `images/${pickedImage[currentIndex + 1]}`;
-    }
+  const leftArrow = $('.left-arrow');
+  const rightArrow = $('.right-arrow');
+  let currentIndex = pickedImage.indexOf(currentImg.children[0].src.split('/').slice(-1).join('/'));
+  if (e.target === currentImg.children[1] || e.target.parentNode === currentImg.children[1] || e.target === leftArrow || e.target.parentNode === leftArrow) {
+    currentIndex = (pickedImage.length + currentIndex - 1) % pickedImage.length;
+  } else if (e.target === currentImg.children[2] || e.target.parentNode === currentImg.children[2] || e.target === rightArrow || e.target.parentNode === rightArrow) {
+    currentIndex = (currentIndex + 1) % pickedImage.length;
   }
+  currentImg.children[0].src = `images/${pickedImage[currentIndex]}`;
+  if ($('.light-box')) $('.light-box img').src = `images/${pickedImage[currentIndex]}`;
 });
-// I need to create a looping when arriving at last index of array pickedImage to get into 0 index
+
 function  handleActiveState(ev) {
   ev.target.parentElement.querySelectorAll(".active").forEach(ele =>{
     ele.classList.remove("active");
@@ -77,16 +70,86 @@ curCount.children[2].onclick = ((e) => {
   updateCount(1);
 });
 
-// cartDiv // this cart div is there to put selected products by user.
-productBtn.onclick = (e) => {
-  cartCounter.dataset.count = curCount.children[1].innerHTML;
-  cartCounter.innerHTML = curCount.children[1].innerHTML;
-  if (cartCounter.dataset.count > 0) {
-    cartCounter.style.display = "inline-block";
-  } else {
-    cartCounter.style.display = "none";
+cart.onclick = (e) => {
+  if (e.target.closest('.cart')) {
+    // e.stopPropagation();
+    e.target.closest('.cart').classList.toggle('clicked');
   }
 };
+// was inside last function
+  // if (e.target.classList.contains('cart')) console.log('nigga');
+  // e.target.parentElement.parentElement.classList.toggle("clicked");
+
+// productBtn.onclick = (e) => {
+//   cartCounter.dataset.count = curCount.children[1].innerHTML;
+//   cartCounter.innerHTML = curCount.children[1].innerHTML;
+//   if (cartCounter.dataset.count > 0) {
+//     cartDiv.remove()
+//     cartCounter.style.display = "inline-block";
+
+//     if (!$All('.hidden .product')[0] || $('.hidden .product h4').innerHTML !== $All('.hidden .product')[0].children[0].innerHTML) {
+//       const h4 = document.createElement("h4"),
+//           div = document.createElement("div"),
+//           button = document.createElement("button"),
+//           closeButton = document.createElement("span");
+//     div.className = "product";
+//     closeButton.className = "close-button";
+//     h4.innerHTML = $('.main-article h1').innerHTML;
+//     div.appendChild(h4);
+
+//     const prices = div.cloneNode(false);
+//     prices.className = 'prices';
+//     for (let i = 0; i < 2; i++) {
+//       const span = document.createElement('span');
+//       prices.appendChild(span);
+//     }
+//     div.appendChild(prices);
+//     div.appendChild(closeButton);
+//     button.innerHTML = "Checkout";
+//     div.appendChild(button);
+    
+//     hiddenCart.appendChild(div);
+//     }
+
+//     if ($All('.product .prices span')[0] && $All('.product .prices span')[1]) {
+//       $All('.product .prices span')[0].innerHTML = `$${+priceText}.00 x ${+curCount.children[1].dataset.count}`;
+//       $All('.product .prices span')[1].innerHTML = `$${+priceText * +curCount.children[1].dataset.count}.00`;
+//     }
+//   } else {
+//     cartCounter.style.display = "none";
+//     hiddenCart.appendChild(cartDiv);
+//   }
+// };
+productBtn.onclick = (e) => {
+  const count = curCount.children[1].innerHTML;
+  cartCounter.dataset.count = count;
+  cartCounter.innerHTML = count;
+  if (count > 0) {
+    cartDiv.remove();
+    cartCounter.style.display = "inline-block";
+    const product = $All('.hidden .product')[0];
+    if (!product || product.querySelector('h4').innerHTML !== $('.main-article h1').innerHTML) {
+      const div = document.createElement("div");
+      div.className = "product";
+      div.innerHTML = `
+        <h4>${$('.main-article h1').innerHTML}</h4>
+        <div class="prices">
+          <span></span>
+          <span></span>
+        </div>
+        <button class="button-yo" >Checkout</button>
+        <span class="close-button"></span>`;
+      hiddenCart.appendChild(div);
+    }
+    const [priceSpan, totalSpan] = $All('.product .prices span');
+    priceSpan.innerHTML = `$${+priceText}.00 x ${+count}`;
+    totalSpan.innerHTML = `$${+priceText * +count}.00`;
+  } else {
+    cartCounter.style.display = "none";
+    hiddenCart.appendChild(cartDiv);
+  }
+};
+
 function updateCount(num) {
   curCount.children[1].innerHTML = +curCount.children[1].innerHTML + num;
   curCount.children[1].dataset.count = +curCount.children[1].dataset.count + num;
@@ -108,18 +171,15 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.className == "close-button") {
     e.target.parentNode.remove();
-    document.querySelector(".popup-overlay").remove();
+    if ($(".popup-overlay")) $(".popup-overlay").remove();
   }
 });
 
-// why it only works when added separately, not inhere
-if ($('.light-box') && $('.popup-overlay')) {
-  document.addEventListener('keydown', (e) => {
-    if (e.keyCode === 27){
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape'){
+    if ($('.light-box')) {
       $('.light-box').remove();
       $('.popup-overlay').remove();
-    }
-  });
-};
-
-// const $ = (s) => document.querySelector(s);
+    };
+  }
+});
