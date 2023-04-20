@@ -40,6 +40,7 @@ imageOpt.forEach((img, key) => {
 })
 
 //🔴I want to make [.images-container .img-opt img] changes its active when exiting other clicked images🔴
+// 🔴 I need to check if currentImg is same as opt-imgs is active or not, when clicking to be active 🔴
 document.addEventListener('click', (e) => {
   const leftArrow = $('.left-arrow');
   const rightArrow = $('.right-arrow');
@@ -128,8 +129,17 @@ document.addEventListener('click', (e) => {
   if (e.target.className == "close-button") {
     e.target.parentNode.remove();
     if ($(".popup-overlay")) $(".popup-overlay").remove();
+    if (hiddenCart.childElementCount < 2) {
+      cartCounter.style.display = "none";
+      hiddenCart.appendChild(
+      Object.assign(document.createElement("div"),
+      {innerHTML: 'Your cart is Empty.',
+      className: 'empty-cart'})
+      );
+    }
   }
 });
+
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape'){
