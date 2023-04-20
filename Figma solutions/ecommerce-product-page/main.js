@@ -72,54 +72,10 @@ curCount.children[2].onclick = ((e) => {
 
 cart.onclick = (e) => {
   if (e.target.closest('.cart')) {
-    // e.stopPropagation();
     e.target.closest('.cart').classList.toggle('clicked');
   }
 };
-// was inside last function
-  // if (e.target.classList.contains('cart')) console.log('nigga');
-  // e.target.parentElement.parentElement.classList.toggle("clicked");
 
-// productBtn.onclick = (e) => {
-//   cartCounter.dataset.count = curCount.children[1].innerHTML;
-//   cartCounter.innerHTML = curCount.children[1].innerHTML;
-//   if (cartCounter.dataset.count > 0) {
-//     cartDiv.remove()
-//     cartCounter.style.display = "inline-block";
-
-//     if (!$All('.hidden .product')[0] || $('.hidden .product h4').innerHTML !== $All('.hidden .product')[0].children[0].innerHTML) {
-//       const h4 = document.createElement("h4"),
-//           div = document.createElement("div"),
-//           button = document.createElement("button"),
-//           closeButton = document.createElement("span");
-//     div.className = "product";
-//     closeButton.className = "close-button";
-//     h4.innerHTML = $('.main-article h1').innerHTML;
-//     div.appendChild(h4);
-
-//     const prices = div.cloneNode(false);
-//     prices.className = 'prices';
-//     for (let i = 0; i < 2; i++) {
-//       const span = document.createElement('span');
-//       prices.appendChild(span);
-//     }
-//     div.appendChild(prices);
-//     div.appendChild(closeButton);
-//     button.innerHTML = "Checkout";
-//     div.appendChild(button);
-    
-//     hiddenCart.appendChild(div);
-//     }
-
-//     if ($All('.product .prices span')[0] && $All('.product .prices span')[1]) {
-//       $All('.product .prices span')[0].innerHTML = `$${+priceText}.00 x ${+curCount.children[1].dataset.count}`;
-//       $All('.product .prices span')[1].innerHTML = `$${+priceText * +curCount.children[1].dataset.count}.00`;
-//     }
-//   } else {
-//     cartCounter.style.display = "none";
-//     hiddenCart.appendChild(cartDiv);
-//   }
-// };
 productBtn.onclick = (e) => {
   const count = curCount.children[1].innerHTML;
   cartCounter.dataset.count = count;

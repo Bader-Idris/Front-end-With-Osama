@@ -138,28 +138,32 @@ header .cart:hover img,
 header .cart.clicked img {
   color: var(--Very-dark-blue);
 }
-@media (max-width:767px) {
-  header .cart.clicked .hidden,
-  header .cart:hover .hidden {
-    left: 0;
-  }
-  /* fix me task */
-}
-@media (min-width:768px) {
-
-}
 header .cart.clicked .hidden,
 header .cart:hover .hidden {
   position: absolute;
-  width: 360px;
-  min-height: 255px;
-  left: 50%;
-  top: 100px;
-  transform: translateX(-50%);
   border-radius: 10px;
-  box-shadow: 0 15px 25px 1px rgba(0, 0, 0, 0.7);
   z-index: 999;
   background-color: #FFF;
+  box-shadow: 0 15px 25px 1px rgba(0, 0, 0, 0.7);
+}
+@media (max-width:767px) {
+  header .cart.clicked .hidden,
+  header .cart:hover .hidden {
+    position: fixed;
+    left: 1%;
+    width: 98%;
+
+  }
+}
+@media (min-width:768px) {
+  header .cart.clicked .hidden,
+  header .cart:hover .hidden {
+    width: 360px;
+    min-height: 255px;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
+  }
 }
 header .cart .hidden {
   display: none;
@@ -170,7 +174,7 @@ header .cart.clicked .hidden {
   cursor: auto;
 }
 
-header .cart div {
+header .cart > div {
   position: relative;
 }
 header .cart div .cart-title{
@@ -183,14 +187,14 @@ header .cart div .cart-title{
 header .cart div .empty-cart {
   color: var(--Dark-grayish-blue);
   font-weight: bold;
-  position: absolute;
   margin: 80px 0;
-  padding-left: 110px;
+  padding-left: 30%;
 }
 .hidden .product {
   height: 188px;
   width: 100%;
   padding: 20px;
+  position: relative;
 }
 .hidden .product img {
   width: 50px;
