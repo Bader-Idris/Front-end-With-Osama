@@ -22,38 +22,36 @@ currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt=""><span>${prevI
 imageOpt.forEach((img, key) => {
   img.addEventListener('click', (e) => {
     handleActiveState(e)
-    currentImg.innerHTML = `<img src="images/${pickedImage[key]}" /alt=""><span>${prevImg}</span><span>${nextImg}</span>`;
+    currentImg.innerHTML = `<img src="images/${pickedImage[key]}" alt=""><span>${prevImg}</span><span>${nextImg}</span>`;
     const div = currentImg.cloneNode(true);
     div.setAttribute('class', 'light-box');
     div.childNodes[1].classList.add('left-arrow');
     div.childNodes[2].classList.add('right-arrow');
-      const overlay = document.createElement('div');
+    const overlay = document.createElement('div');
     overlay.className = 'popup-overlay';
     document.body.appendChild(overlay);
-      const closeButton = document.createElement("span");
-    const closeButtonText = document.createTextNode("X");
-    closeButton.appendChild(closeButtonText);
+    const closeButton = document.createElement("span");
+    closeButton.textContent = "X";
     closeButton.className = 'close-button';
     div.appendChild(closeButton);
     document.body.appendChild(div);
-  })
-})
+  });
+});
 
 //🔴I want to make [.images-container .img-opt img] changes its active when exiting other clicked images🔴
 // 🔴 I need to check if currentImg is same as opt-imgs is active or not, when clicking to be active 🔴
 document.addEventListener('click', (e) => {
-  const leftArrow = $('.left-arrow');
-  const rightArrow = $('.right-arrow');
-  let currentIndex = pickedImage.indexOf(currentImg.children[0].src.split('/').slice(-1).join('/'));
-  if (e.target === currentImg.children[1] || e.target.parentNode === currentImg.children[1] || e.target === leftArrow || e.target.parentNode === leftArrow) {
-    currentIndex = (pickedImage.length + currentIndex - 1) % pickedImage.length;
-  } else if (e.target === currentImg.children[2] || e.target.parentNode === currentImg.children[2] || e.target === rightArrow || e.target.parentNode === rightArrow) {
-    currentIndex = (currentIndex + 1) % pickedImage.length;
+  const l = $('.left-arrow');
+  const r = $('.right-arrow');
+  let i = pickedImage.indexOf(currentImg.children[0].src.split('/').slice(-1).join('/'));
+  if (e.target === currentImg.children[1] || e.target.parentNode === currentImg.children[1] || e.target === l || e.target.parentNode === l) {
+    i = (pickedImage.length + i - 1) % pickedImage.length;
+  } else if (e.target === currentImg.children[2] || e.target.parentNode === currentImg.children[2] || e.target === r || e.target.parentNode === r) {
+    i = (i + 1) % pickedImage.length;
   }
-  currentImg.children[0].src = `images/${pickedImage[currentIndex]}`;
-  if ($('.light-box')) $('.light-box img').src = `images/${pickedImage[currentIndex]}`;
+  currentImg.children[0].src = `images/${pickedImage[i]}`;
+  if ($('.light-box')) $('.light-box img').src = `images/${pickedImage[i]}`;
 });
-
 function  handleActiveState(ev) {
   ev.target.parentElement.querySelectorAll(".active").forEach(ele =>{
     ele.classList.remove("active");
