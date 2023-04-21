@@ -39,7 +39,6 @@ imageOpt.forEach((img, key) => {
 });
 
 //🔴I want to make [.images-container .img-opt img] changes its active when exiting other clicked images🔴
-// 🔴 I need to check if currentImg is same as opt-imgs is active or not, when clicking to be active 🔴
 document.addEventListener('click', (e) => {
   const l = $('.left-arrow');
   const r = $('.right-arrow');
@@ -52,7 +51,7 @@ document.addEventListener('click', (e) => {
   currentImg.children[0].src = `images/${pickedImage[i]}`;
   if ($('.light-box')) $('.light-box img').src = `images/${pickedImage[i]}`;
 });
-function  handleActiveState(ev) {
+function handleActiveState(ev) {
   ev.target.parentElement.querySelectorAll(".active").forEach(ele =>{
     ele.classList.remove("active");
   });
@@ -69,12 +68,9 @@ curCount.children[2].onclick = ((e) => {
   updateCount(1);
 });
 
-cart.onclick = (e) => {
-  if (e.target.closest('.cart')) {
-    e.target.closest('.cart').classList.toggle('clicked');
-  }
+cart.onclick = function() {//using this keyword, is only workable with this syntax, not arrow func
+  this.classList.toggle('clicked');// EXTREMELY IMPORTANT 
 };
-
 productBtn.onclick = (e) => {
   const count = curCount.children[1].innerHTML;
   cartCounter.dataset.count = count;
@@ -137,6 +133,8 @@ document.addEventListener('click', (e) => {
     }
   }
 });
+// add above in its proper place: handleActiveState(ev) for 🔽
+// 🔴 I need to check if currentImg is same as opt-imgs is active or not, when clicking to be active 🔴
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape'){
