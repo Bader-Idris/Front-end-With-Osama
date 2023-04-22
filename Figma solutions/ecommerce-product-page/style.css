@@ -188,7 +188,7 @@ header .cart div .empty-cart {
   color: var(--Dark-grayish-blue);
   font-weight: bold;
   margin: 80px 0;
-  padding-left: 30%;
+  text-align: center;
 }
 .hidden .product {
   height: 188px;
@@ -201,14 +201,17 @@ header .cart div .empty-cart {
   height: 50px;
   border-radius: 4px;
   display: inline-block;
-  margin-left: 5px;
+  margin-bottom: -50px;
 }
 .hidden .product h4 {
   color: var(--Dark-grayish-blue);
   margin-bottom: 5px;
   font-weight: 400;
+  margin-left: 65px;
 }
-.hidden .product .prices {}
+.hidden .product .prices {
+  margin-left: 65px;
+}
 .hidden .product .prices span:first-of-type{
   color: var(--Dark-grayish-blue);
 }
@@ -228,7 +231,7 @@ header .cart div .empty-cart {
   width: 15px;
   border-radius: 0;
   right: 30px;
-  top: 30px;
+  top: 50px;
 }
 
 header .avatar {

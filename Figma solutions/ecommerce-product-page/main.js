@@ -17,6 +17,7 @@ const $All = (s) => document.querySelectorAll(s),
 let currentPrice = $('.current-price span:first-of-type');
 const priceText = currentPrice.innerHTML.substring(1).replace(/\.\d{2}/, '');
 
+
 currentImg.innerHTML = `<img src="images/${pickedImage[0]}" alt=""><span>${prevImg}</span><span>${nextImg}</span>`;
 
 imageOpt.forEach((img, key) => {
@@ -38,7 +39,6 @@ imageOpt.forEach((img, key) => {
   });
 });
 
-//🔴I want to make [.images-container .img-opt img] changes its active when exiting other clicked images🔴
 document.addEventListener('click', (e) => {
   const l = $('.left-arrow');
   const r = $('.right-arrow');
@@ -59,12 +59,15 @@ function handleActiveState(ev) {
 };
 
 let curCount = $('.product-count .cur-count');
+let cur1 = curCount.children[1];
+let cur2 = curCount.children[2];
+
 curCount.children[0].onclick = ((e) => {
-  if (curCount.children[1].innerHTML > 0) {
+  if (cur1.innerHTML > 0) {
   updateCount(-1);
   }
 });
-curCount.children[2].onclick = ((e) => {
+cur2.onclick = ((e) => {
   updateCount(1);
 });
 
@@ -72,7 +75,7 @@ cart.onclick = function() {//using this keyword, is only workable with this synt
   this.classList.toggle('clicked');// EXTREMELY IMPORTANT 
 };
 productBtn.onclick = (e) => {
-  const count = curCount.children[1].innerHTML;
+  const count = cur1.innerHTML;
   cartCounter.dataset.count = count;
   cartCounter.innerHTML = count;
   if (count > 0) {
@@ -83,27 +86,34 @@ productBtn.onclick = (e) => {
       const div = document.createElement("div");
       div.className = "product";
       div.innerHTML = `
+        <img src="images/${imageOpt[0].src.split('/').slice(-1).join('/')}" alt="">
         <h4>${$('.main-article h1').innerHTML}</h4>
         <div class="prices">
           <span></span>
           <span></span>
         </div>
-        <button class="button-yo" >Checkout</button>
+        <button class="button-yo">Checkout</button>
         <span class="close-button"></span>`;
       hiddenCart.appendChild(div);
+      for (const child of hiddenCart.children) {
+        if (child.classList.contains('empty-cart')) {
+          child.remove();
+        }
+      }
     }
     const [priceSpan, totalSpan] = $All('.product .prices span');
     priceSpan.innerHTML = `$${+priceText}.00 x ${+count}`;
     totalSpan.innerHTML = `$${+priceText * +count}.00`;
+    cur1.innerHTML = 0;
+    cur1.dataset.count = 0;
   } else {
     cartCounter.style.display = "none";
-    hiddenCart.appendChild(cartDiv);
   }
 };
 
 function updateCount(num) {
-  curCount.children[1].innerHTML = +curCount.children[1].innerHTML + num;
-  curCount.children[1].dataset.count = +curCount.children[1].dataset.count + num;
+  cur1.innerHTML = +cur1.innerHTML + num;
+  cur1.dataset.count = +cur1.dataset.count + num;
 }
 
 let tLinks = $('header nav ul');
@@ -120,21 +130,8 @@ document.addEventListener('click', (e) => {
       toggleSVG.classList.toggle('menu-active');
     }
   }
-  //------------------------ Fix Me ------------------------------
-  // if (e.target.className == "close-button") {
-  //   imageOpt.forEach((img, ind) => {
-  //     if (img.classList.contains('active')) {
-  //       img.classList.remove('active');
-  //     }
-  //     if (img == pickedImage.indexOf(currentImg.children[0].src.split('/').slice(-1).join('/'))) {
-  //       img.classList.add('active');
-  //     }
-  //   })
-  //----------------------------------------------------------------
-
-
+  if (e.target.className == "close-button") {
     e.target.parentNode.remove();
-    // handleActiveState(e)
     if ($(".popup-overlay")) $(".popup-overlay").remove();
     if (hiddenCart.childElementCount < 2) {
       hiddenCart.appendChild(
@@ -144,10 +141,15 @@ document.addEventListener('click', (e) => {
         );
         cartCounter.style.display = "none";
     }
+    imageOpt.forEach((img, ind) => {// this was really tough to catch, dang bro👍🤯
+      if (img.classList.contains('active')) {
+        img.classList.remove('active');
+        let index = pickedImage.indexOf(currentImg.children[0].src.split('/').slice(-1).join('/'));
+        imageOpt[index].classList.add('active');
+      }
+    });
   }
 });
-// add above in its proper place: handleActiveState(ev) for 🔽
-// 🔴 I need to check if currentImg is same as opt-imgs is active or not, when clicking to be active 🔴
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape'){
