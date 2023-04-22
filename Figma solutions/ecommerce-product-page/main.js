@@ -71,8 +71,8 @@ cur2.onclick = ((e) => {
   updateCount(1);
 });
 
-cart.onclick = function() {//using this keyword, is only workable with this syntax, not arrow func
-  this.classList.toggle('clicked');// EXTREMELY IMPORTANT 
+cart.onclick = function() {//can't use [this keyword] with arrow functions❌
+  this.classList.toggle('clicked');
 };
 productBtn.onclick = (e) => {
   const count = cur1.innerHTML;
@@ -141,19 +141,22 @@ document.addEventListener('click', (e) => {
         );
         cartCounter.style.display = "none";
     }
-    imageOpt.forEach((img, ind) => {// this was really tough to catch, dang bro👍🤯
-      if (img.classList.contains('active')) {
-        img.classList.remove('active');
-        let index = pickedImage.indexOf(currentImg.children[0].src.split('/').slice(-1).join('/'));
-        imageOpt[index].classList.add('active');
-      }
-    });
+    activeWhenClosed();
   }
 });
-
+const activeWhenClosed = () => {
+  imageOpt.forEach((img, ind) => {
+    if (img.classList.contains('active')) {
+      img.classList.remove('active');
+      let index = pickedImage.indexOf(currentImg.children[0].src.split('/').slice(-1).join('/'));
+      imageOpt[index].classList.add('active');
+    }
+  });
+};
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape'){
     if ($('.light-box')) {
+      activeWhenClosed();
       $('.light-box').remove();
       $('.popup-overlay').remove();
     };
