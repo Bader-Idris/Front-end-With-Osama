@@ -120,8 +120,21 @@ document.addEventListener('click', (e) => {
       toggleSVG.classList.toggle('menu-active');
     }
   }
-  if (e.target.className == "close-button") {
+  //------------------------ Fix Me ------------------------------
+  // if (e.target.className == "close-button") {
+  //   imageOpt.forEach((img, ind) => {
+  //     if (img.classList.contains('active')) {
+  //       img.classList.remove('active');
+  //     }
+  //     if (img == pickedImage.indexOf(currentImg.children[0].src.split('/').slice(-1).join('/'))) {
+  //       img.classList.add('active');
+  //     }
+  //   })
+  //----------------------------------------------------------------
+
+
     e.target.parentNode.remove();
+    // handleActiveState(e)
     if ($(".popup-overlay")) $(".popup-overlay").remove();
     if (hiddenCart.childElementCount < 2) {
       hiddenCart.appendChild(
