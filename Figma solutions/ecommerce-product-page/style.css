@@ -19,7 +19,6 @@
 
   --main-font:16px;
 }
-/* body {} */
 header {
   display: flex;
   height: 100px;
@@ -29,9 +28,6 @@ header {
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
-}
-header div{
-  /* width: calc(100% /4); */
 }
 header nav {
   flex-grow: 3;
@@ -309,16 +305,6 @@ header .avatar:hover img {
     width: 445px;
   }
 }
-
-
-.images-container .img-opt div {
-  /* border: 5px solid transparent;
-  display: inline-block;
-  cursor: pointer;
-  height: 100px;
-  border-radius: 10px;
-  position: relative; */
-}
 .images-container .img-opt img {
   user-select: none;
   cursor: default;
@@ -384,7 +370,6 @@ header .avatar:hover img {
     display: none;
   }
 }
-/* left arrow, and right-arrow are important */
 @media (max-width:767px) {
   article.main-article {
     margin: 10px auto;
@@ -400,7 +385,6 @@ header .avatar:hover img {
 article.main-article {
   position: relative;
   flex-basis: 445px;
-  /* will change */
 }
 article.main-article p:first-of-type {
   color: var(--Orange);
@@ -421,7 +405,6 @@ article.main-article .current-price {
   position: relative;
   margin-bottom: 20px;
 }
-
 @media (max-width:767px) {
   article.main-article .current-price {
     display: inline-block;
@@ -433,10 +416,6 @@ article.main-article .current-price {
     transform: translateX(-50%);
   }
 }
-@media (min-width:768px) {
-  
-}
-
 article.main-article .current-price span:first-of-type {
   font-size: 22px;
   font-weight: bold;
@@ -466,8 +445,6 @@ article.main-article .product-count {
   article.main-article .product-count {
     flex-direction: column;
   }
-  article.main-article .product-count {
-  }
   article.main-article .product-count > *{
     margin-bottom: 20px;
     width: 100%;
@@ -476,7 +453,6 @@ article.main-article .product-count {
   left: 24%;
   }
 }
-
 @media (min-width:768px) {
   article.main-article .product-count .cur-count {
     width: 160px;
@@ -485,7 +461,6 @@ article.main-article .product-count {
     width: 270px;
   }
 }
-
 article.main-article .product-count .cur-count {
   background-color: var(--Light-grayish-blue);
   margin-right: 20px;
@@ -613,19 +588,14 @@ article.main-article .product-count button:hover {
   left: 18px;
 }
 footer.attribution {
-  display: none;
-}
-/* footer.attribution {
   font-size: 11px;
   margin: 20px auto;
   padding: 0 0 20px;
   position: relative;
-  left: 25%;
+  text-align: center;
 }
-@media (min-width: 768px) {
-  footer.attribution {
-    left: 46%;
-  }  
+footer.attribution p {
+  width: 100%;
 }
 footer.attribution a {
   color: hsl(228, 45%, 44%);
@@ -633,4 +603,4 @@ footer.attribution a {
   text-decoration: none;
   font-size: 15px;
   vertical-align: -2px;
-} */
+}
