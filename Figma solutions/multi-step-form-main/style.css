@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Ubuntu";
 }
 :root {
   /* Colors */
@@ -23,9 +24,56 @@
   --Family: [Ubuntu](https://fonts.google.com/specimen/Ubuntu);
   --Weights: 400, 500, 700;
 }
-/*
-The designs were created to the following widths:
 
+/*
+  in real life project these sizes are crazily big, so minify them using:
+  WOFF Converter, or WOFF2, they're good in compatibility,
+  and you can use both making v1 as a spare if 2nd -v falls
+  src: url("blab"),
+        url("blab2");
+*/
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 400;
+  src: url("assets/fonts/Ubuntu-Regular.ttf");
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("assets/fonts/Ubuntu-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("assets/fonts/Ubuntu-Bold.ttf");
+  font-weight: 700;
+}
+/*
+  @media widths:
 - Mobile: 375px
 - Desktop: 1440px
 */
+
+
+
+
+
+
+
+
+footer.attribution {
+  font-size: 11px;
+  margin: 20px auto;
+  padding: 0 0 20px;
+  position: relative;
+  text-align: center;
+}
+footer.attribution p {
+  width: 100%;
+}
+footer.attribution a {
+  color: hsl(228, 45%, 44%);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 15px;
+  vertical-align: -2px;
+}
