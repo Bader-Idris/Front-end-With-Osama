@@ -46,6 +46,9 @@
   src: url("assets/fonts/Ubuntu-Bold.ttf");
   font-weight: 700;
 }
+body {
+  background-color: #eef5ff;
+}
 /*
   @media widths:
 - Mobile: 375px
@@ -53,71 +56,213 @@
 */
 @media (max-width:767px) {
   main {
-    max-height: 172px;
+    flex-direction: column;
+  }
+  main,
+  main section {
+    width: 100%;
   }
   aside {
     background-image: url("assets/images/bg-sidebar-mobile.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    
+    height: 172px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  aside > div {
+    /* margin: 172px 0 0 ; */
+    height: 172px;
+  }
+  aside div > p {
+    display: none;
   }
 }
 @media (min-width:768px) {
   main {
-    max-height: 568px;
-
+    width: 830px;
+  }
+  main section {
+    width: calc(100% - 250px);
   }
   aside {
     background-image: url("assets/images/bg-sidebar-desktop.svg");
     background-repeat: no-repeat;
-    background-size: cover;
-    
+    background-size: contain;
+    max-height: 568px;
+    width: 260px;
   }
 }
+main section  {
+  position: relative;
+}
+aside .step1 {
+  margin-top: 30px;
+}
+aside div {
+  margin: 20px;
+  margin-left: 25px;
+  position: relative;
+}
+aside div span {
+  border-radius: 50%;
+  border: 1px solid var(--Alabaster);
+  padding: 5px 10px;
+  color: var(--White);
+  background-color: transparent;
+  font-weight: bold;
+  position: absolute;
+  bottom: 3px;
+}
+aside div span.active {
+  background-color: var(--Light-blue);
+  color: var(--Marine-blue);
+  border-color: var(--Light-blue);
+}
+aside div p:first-of-type {
+  margin-left: 50px;
+  color: var(--Cool-gray);
+}
+aside div p:last-of-type {
+  margin-left: 50px;
+  color: var(--White);
+  font-weight: bold;
+}
 main {
-  width: 80%;
   margin: 8% auto;
   display: flex;
+  height: 540px;
+  background-color: var(--White);
+  padding: 15px;
+  border-radius: 20px;
+  /* overflow: hidden; */
 }
-main form {}
-form button.back {}
+main form {
+  position: relative;
+  height: 100%;
+  width: 75%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form > h1,
+form > h2 {
+  font-size: 26px;
+  color: var(--Marine-blue);
+  margin: 10px 0;
+}
+form > p {
+  color: var(--Cool-gray);
+}
+form button {
+  cursor: pointer;
+}
+form button.back {
+  width: 95px;
+  color: var(--Marine-blue);
+  background-color: transparent;
+  border: transparent;
+  padding: 10px;
+  font-size: 15px;
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+  font-weight: bold;
+  /* there're many same properties, so shorten 'em after all */
+}
 form button.next {
   width: 95px;
-  font-weight: bold;
   color: var(--Alabaster);
   background-color: var(--Marine-blue);
   border-radius: 4px;
   border: transparent;
   padding: 10px;
   font-size: 15px;
+
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
 }
 main .first {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  padding: 20px;
 }
-main form div {
-  margin: 10px 0 ;
-}
+/* main form div {
+  margin: 10px 0 5px;
+} */
 main form input {
   padding: 10px;
   outline: none;
+  border-radius: 4px;
+  border: 1px solid var(--Light-gray);
 }
-main .second {
-  display: none;
+main .second,
+main .third,
+main .fourth,
+main .fifth {
+  /* display: none; */
   /* temporarily */
 }
 main .third {
-  display: none;
+  /* temporarily */
+}
+main .fourth{
+  /* temporarily */
+}
+main .fifth {
   /* temporarily */
 }
 
-.first h1 {
-  font-size: 28px;
+.first div {
+  color: var(--Marine-blue);
+  font-size: 14px;
+  margin: 20px 0 5px;
 }
-
+.first div:first-of-type {
+  margin-top: 30px;
+}
+main .first ::placeholder {
+  font-weight: bold;
+  color: var(--Cool-gray);
+}
+main .second {}
+main .second .mini-plans {
+  display: flex;
+  height: 250px;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.second .mini-plans div {
+  border: 1px solid var(--Pastel-blue);
+  border-radius: 4px;
+  padding: 20px;
+  background-color: var(--White);
+}
+.second .mini-plans div.active {
+  background-color: var(--Magnolia);
+}
+.second .plan-option {
+  background-color: var(--Magnolia);
+  padding: 10px;
+  position: relative;
+}
+.second .plan-option span {}
+.second .plan-option span:first-of-type {}
+.second .plan-option span:nth-of-type(2) {
+  background-color: var(--Marine-blue);
+  width: 50px;
+  height: 80%;
+  position: absolute;
+  border-radius: 20px;
+  top: 10%;
+  left: calc(50% - 25px);
+}
+.second .plan-option span:last-of-type {}
 
 
 

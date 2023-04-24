@@ -12,20 +12,24 @@
     <!-- Sidebar start -->
   <aside>
     <div class="step1">
-      Step 1
-      Your info
+      <span class="active">1</span>
+      <p>Step 1</p>
+      <p>Your info</p>
     </div>
     <div class="step2">
-      Step 2
-      Select plan
+      <span>2</span>
+      <p>Step 2</p>
+      <p>Select plan</p>
     </div>
     <div class="step3">
-      Step 3
-      Add-ons
+      <span>3</span>
+      <p>Step 3</p>
+      <p>Add-ons</p>
     </div>
     <div class="step4">
-      Step 4
-      Summary
+      <span>4</span>
+      <p>Step 4</p>
+      <p>Summary</p>
     </div>
   </aside>
   <!-- Sidebar end -->
@@ -35,11 +39,11 @@
       <h1>Personal info</h1>
       <p>Please provide your name, email address, and phone number.</p>
       <div>Name</div>
-      <input type="text" name="userNa" id="userNa" placeholder="e.g. Stephen King">
+      <input type="text" name="userNa" id="userNa" placeholder="e.g. Stephen King" required>
       <div>Email Address</div>
-      <input type="email" name="userEm" id="userEm" placeholder="e.g. stephenking@lorem.com">
+      <input type="email" name="userEm" id="userEm" placeholder="e.g. stephenking@lorem.com" required>
       <div>Phone Number</div>
-      <input type="phone" name="userPh" id="userPh" placeholder="e.g. +1 234 567 890">
+      <input type="phone" name="userPh" id="userPh" placeholder="e.g. +1 234 567 890" required>
       <button type="button" class="next">Next Step</button>
     </form>
     <!-- Step 1 end -->
@@ -47,20 +51,22 @@
     <form action="" class="second">
       <h2>Select your plan</h2>
       <p>You have the option of monthly or yearly billing.</p>
-      <div>
-        <img src="assets/images/icon-arcade.svg" alt="">
-        <h3>Arcade</h3>
-        <p>$9/mo</p>
-      </div>
-      <div>
-        <img src="assets/images/icon-advanced.svg" alt="">
-        <h3>Advanced</h3>
-        <p>$12/mo</p>
-      </div>
-      <div>
-        <img src="assets/images/icon-pro.svg" alt="">
-        <h3>Pro</h3>
-        <p>$15/mo</p>
+      <div class="mini-plans">
+        <div class="active">
+          <img src="assets/images/icon-arcade.svg" alt="">
+          <h3>Arcade</h3>
+          <p>$9/mo</p>
+        </div>
+        <div>
+          <img src="assets/images/icon-advanced.svg" alt="">
+          <h3>Advanced</h3>
+          <p>$12/mo</p>
+        </div>
+        <div>
+          <img src="assets/images/icon-pro.svg" alt="">
+          <h3>Pro</h3>
+          <p>$15/mo</p>
+        </div>
       </div>
       <div class="plan-option">
         <span class="active">Monthly</span>
@@ -98,7 +104,7 @@
     </form>
     <!-- Step 3 end -->
     <!-- Step 4 start -->
-    <form action="" class="third">
+    <form action="" class="fourth">
       <h2>Finishing up</h2>
       <p>Double-check everything looks OK before confirming.</p>
       <div class="summery">
@@ -112,7 +118,7 @@
     </form>
     <!-- Step 4 end -->
     <!-- Step 5 start -->
-    <form action="" class="third">
+    <form action="" class="fifth">
       <div class="thank-you">
         <img src="assets/images/icon-thank-you.svg" alt="">
       </div>
