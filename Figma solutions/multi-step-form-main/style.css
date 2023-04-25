@@ -97,6 +97,7 @@ body {
 }
 main section  {
   position: relative;
+  transition: all 1s ease-in-out 0s;
 }
 aside .step1 {
   margin-top: 30px;
@@ -137,7 +138,7 @@ main {
   background-color: var(--White);
   padding: 15px;
   border-radius: 20px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 main form {
   position: relative;
@@ -161,7 +162,7 @@ form button {
 }
 form button.back {
   width: 95px;
-  color: var(--Marine-blue);
+  color: var(--Cool-gray);
   background-color: transparent;
   border: transparent;
   padding: 10px;
@@ -171,6 +172,9 @@ form button.back {
   left: 20px;
   font-weight: bold;
   /* there're many same properties, so shorten 'em after all */
+}
+form button.back:hover {
+  color: var(--Marine-blue);
 }
 form button.next {
   width: 95px;
@@ -185,38 +189,27 @@ form button.next {
   bottom: 25px;
   right: 20px;
 }
+form button.next:hover {
+  opacity: 0.7;
+}
+form button.confirm {
+  background-color: var(--Purplish-blue);
+}
+form button.confirm:hover {
+  background-color: var(--Pastel-blue);
+}
 main .first {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
 }
-/* main form div {
-  margin: 10px 0 5px;
-} */
 main form input {
   padding: 10px;
   outline: none;
   border-radius: 4px;
   border: 1px solid var(--Light-gray);
 }
-main .second,
-main .third,
-main .fourth,
-main .fifth {
-  /* display: none; */
-  /* temporarily */
-}
-main .third {
-  /* temporarily */
-}
-main .fourth{
-  /* temporarily */
-}
-main .fifth {
-  /* temporarily */
-}
-
 .first div {
   color: var(--Marine-blue);
   font-size: 14px;
@@ -240,8 +233,21 @@ main .second .mini-plans {
 .second .mini-plans div {
   border: 1px solid var(--Pastel-blue);
   border-radius: 4px;
-  padding: 20px;
+  padding: 10px;
   background-color: var(--White);
+  cursor: pointer;
+  user-select: none;
+}
+.mini-plans img {
+  margin: 0 40px 40px 0;
+}
+.mini-plans div h3 {
+  color: var(--Marine-blue);
+  font-size: 18px;
+  font-weight: 500;
+}
+.mini-plans div p {
+  color: var(--Cool-gray);
 }
 .second .mini-plans div.active {
   background-color: var(--Magnolia);
@@ -250,23 +256,124 @@ main .second .mini-plans {
   background-color: var(--Magnolia);
   padding: 10px;
   position: relative;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 5px;
 }
 .second .plan-option span {}
-.second .plan-option span:first-of-type {}
+.second .plan-option span:first-of-type,
+.second .plan-option span:last-of-type {
+  color: var(--Cool-gray);
+  transition: .5s;
+}
+.second .plan-option span:first-of-type.active,
+.second .plan-option span:last-of-type.active {
+  color: var(--Marine-blue);
+}
 .second .plan-option span:nth-of-type(2) {
   background-color: var(--Marine-blue);
-  width: 50px;
-  height: 80%;
+  width: 40px;
+  height: 20px;
+  top: 30%;
   position: absolute;
   border-radius: 20px;
-  top: 10%;
+  top: 10px;
   left: calc(50% - 25px);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
 }
-.second .plan-option span:last-of-type {}
-
-
-
-
+.plan-option span:nth-of-type(2):before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--Alabaster);
+  position: absolute;
+  top: 10%;
+  left: 8%;
+  transition: .3s;
+}
+.plan-option span.active:nth-of-type(2):before {
+  left: 55%;
+  transform: scaleX(-100%);
+}
+main .third {}
+main .third .check-container:first-of-type {
+  margin-top: 40px;
+}
+main .third .check-container {
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 4px;
+  border: 1px solid var(--Pastel-blue);
+  position: relative;
+  user-select: none;
+}
+main .third .check-container .text {
+  margin-left: 50px;
+  padding: 10px 20px 10px 0;
+}
+main .third label {
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  position: absolute;
+}
+main .third input[type="checkbox"] {
+  display: none;
+}
+main .third input[type="checkbox"] + label::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+main .third input[type="checkbox"]:checked + label::before {
+  content: '✓';
+  text-align: center;
+  background-color: var(--Purplish-blue);
+  border-color: var(--Purplish-blue);
+  color: white;
+  font-weight: bold;
+}
+.check-container h4 {
+  color: var(--Marine-blue);
+}
+.check-container p {
+  color: var(--Cool-gray);
+  font-size: 14px;
+  margin-top: 5px;
+}
+.check-container span {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--Purplish-blue);
+  font-weight: 500;
+}
+main .fourth{}
+main .fifth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+main .fifth .thank-you {
+  margin-bottom: 30px;
+}
+main .fifth h4 {
+  font-size: 32px;
+  color: var(--Marine-blue);
+  margin: 10px 0;
+}
+main .fifth p {
+  line-height: 1.6;
+}
 footer.attribution {
   font-size: 11px;
   margin: 20px auto;
