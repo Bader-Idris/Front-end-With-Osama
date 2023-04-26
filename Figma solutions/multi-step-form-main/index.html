@@ -54,7 +54,7 @@
     </form>
     <!-- Step 1 end -->
     <!-- Step 2 start -->
-    <form action="" class="second">
+    <form action="" class="second" id="second">
       <h2>Select your plan</h2>
       <p>You have the option of monthly or yearly billing.</p>
       <div class="mini-plans">
@@ -74,7 +74,7 @@
           <p>$15/mo</p>
         </div>
       </div>
-      <div class="plan-option">
+      <div class="plan-either">
         <span class="active">Monthly</span>
         <span></span>
         <span>Yearly</span>
@@ -123,11 +123,9 @@
       <h2>Finishing up</h2>
       <p>Double-check everything looks OK before confirming.</p>
       <div class="summery">
-        <div class="arcade">Arcade <span>(Monthly)</span></div>
-        <div class="online">Online</div>
-        <div class="large">Large</div>
+        <div class="plan-option">Arcade <span>(Monthly)</span><a href="#">change</a></div>
       </div>
-      <div class="total">Total (per month/year) <span></span></div>
+      <div class="total"><span>Total (per month)</span> <span></span></div>
       <button type="button" class="back">Go Back</button>
       <button type="submit" class="confirm next">Confirm</button>
     </form>

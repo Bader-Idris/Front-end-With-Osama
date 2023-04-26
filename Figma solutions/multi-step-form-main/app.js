@@ -7,74 +7,76 @@ const $$ = (s) => document.querySelectorAll(s),
       submitBtn = $('form button[type="submit"]'),
       steps = $$('aside div span'),
       miniPlans = $$('.mini-plans div'),
-      planSpan = $('.plan-option span:nth-of-type(2)'),
+      planBtn = $('.plan-either span:nth-of-type(2)'),
       imgs = $$('img'),
-      checkContainer = $$('.third .check-container')
+      checkContainer = $$('.third .check-container'),
+      nameField = $('#userNa'),
+      usernamePattern = /^[a-zA-Z\s]+$/,
+      nameError = document.createElement('div'),
+      emailField = $('#userEm'),
+      emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      emailError = document.createElement('div'),
+      phoneField = document.querySelector('#userPh'),
+      phonePattern = /^(\+?\d{2,3})?\s?\d{2}\s?\d{3}\s?\d{4}$/,
+      phoneError = document.createElement('div'),
+      checkboxPrices = $$(" form.third span"),
+      planOptionSpan = $(" div.summery > .plan-option span"),
+      totalSpans = $$(".fourth .total span")
       ;
-// let error = $$('.first div .error');
+
 section.style.top = '0%';
 imgs.forEach((e)=> e.setAttribute('draggable', 'false'));
 
-//--------------------------------------------------------------------
-// with the love of crazy chat GPT bito: it needs hours of me to understand🤯😲
-const nameField = document.querySelector('#userNa');
-const usernamePattern = /^[a-zA-Z\s]+$/;
-const nameError = document.createElement('div');
-nameError.classList.add('error', 'name-field-error');
-nameError.innerText = 'Please enter a valid name containing only alphabetical characters and spaces';
+nameError.classList.add('error', 'name-err');
+nameError.innerText = 'Please enter a valid name';
+
+emailError.classList.add('error', 'email-err');
+emailError.innerText = 'Please enter a valid email address';
+
+phoneError.classList.add('error', 'phone-err');
+phoneError.innerText = 'Please enter a valid phone number';
 
 nameField.addEventListener('focus', () => {
   if (nameField.parentElement.contains(nameError)) {
     nameField.parentElement.removeChild(nameError);
+    nameField.classList.remove('invalid');
+  }
+});
+emailField.addEventListener('focus', () => {
+  if (emailField.parentElement.contains(emailError)) {
+    emailField.parentElement.removeChild(emailError);
+    nameField.classList.remove('invalid');
+  }
+});
+phoneField.addEventListener('focus', () => {
+  if (phoneField.parentElement.contains(phoneError)) {
+    phoneField.parentElement.removeChild(phoneError);
+    nameField.classList.remove('invalid');
   }
 });
 
 nameField.addEventListener('blur', () => {
   if (!usernamePattern.test(nameField.value)) {
     nameField.parentElement.appendChild(nameError);
+    nameField.classList.add('invalid');
   }
 });
-
-const emailField = document.querySelector('#userEm');
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const emailError = document.createElement('div');
-emailError.classList.add('error', 'email-field-error');
-emailError.innerText = 'Please enter a valid email address';
-
-emailField.addEventListener('focus', () => {
-  if (emailField.parentElement.contains(emailError)) {
-    emailField.parentElement.removeChild(emailError);
-  }
-});
-
 emailField.addEventListener('blur', () => {
   if (!emailPattern.test(emailField.value)) {
     emailField.parentElement.appendChild(emailError);
+    emailField.classList.add('invalid');
   }
 });
-
-const phoneField = document.querySelector('#userPh');
-const phonePattern = /^(\+?\d{2,3})?\s?\d{2}\s?\d{3}\s?\d{4}$/;
-const phoneError = document.createElement('div');
-phoneError.classList.add('error', 'phone-field-error');
-phoneError.innerText = 'Please enter a valid phone number';
-
-phoneField.addEventListener('focus', () => {
-  if (phoneField.parentElement.contains(phoneError)) {
-    phoneField.parentElement.removeChild(phoneError);
-  }
-});
-
 phoneField.addEventListener('blur', () => {
   if (!phonePattern.test(phoneField.value)) {
     phoneField.parentElement.appendChild(phoneError);
+    phoneField.classList.add('invalid');
   }
 });
-//--------------------------------------------------------------------
-let fieldValues = [nameField.value, emailField.value, phoneField.value];
+
 nextButton.forEach((e, ind) => {
   e.onclick = () => {
-    if ($$('.first div .error').length == 0 && fieldValues != '') {//nameField.value != ''
+    if ($$('.first div .error').length == 0 && nameField.value != '' && emailField.value != '' && phoneField.value != '') {
       section.style.top = +section.style.top.slice(0, -1) - 100 + "%";
     steps.forEach((ev, i, arr) => {
       arr[ind].classList.remove('active');
@@ -101,61 +103,114 @@ submitBtn.addEventListener('click', function(e) {
   // perform form validation and submission using JavaScript
 });
 
+let monthPrice = [];
+miniPlans.forEach(e => monthPrice.push(e.children[2].innerHTML))
+let yearPrice = ['$90/yr', '$120/yr', '$150/yr'];
+
+let checkboxMonthly = [];
+checkboxPrices.forEach(e => checkboxMonthly.push(e.innerHTML))
+let checkboxYearly = ['+$10/yr', '+$20/yr', '+$20/yr'];
+
 miniPlans.forEach((e) => {
   e.onclick = () => {
-    e.classList.toggle('active');
+    miniPlans.forEach((sibling) => {
+      sibling.classList.remove('active');
+    });
+    e.classList.add('active');
+    planOptionSpan.parentElement.childNodes[0].textContent = e.children[1].innerHTML + ' ';
   };
-})
-let monthPrice = [];
-miniPlans.forEach((ev, ind, arr) => {
-  monthPrice.push(arr[ind].children[2].innerHTML);
-})
-planSpan.onclick = (e) => {
-  e.target.classList.toggle('active');
-  let planOpts = e.target.parentElement.children;
-  planOpts[0].classList.toggle('active');
-  planOpts[2].classList.toggle('active');
+});
 
-  if (planOpts[2].classList.contains('active')) {
+
+planBtn.onclick = (e) => {
+  e.target.classList.toggle('active');
+  let planEither = e.target.parentElement.children;
+  planEither[0].classList.toggle('active');
+  planEither[2].classList.toggle('active');
+
+  if (planEither[2].classList.contains('active')) {
     miniPlans.forEach((ev, ind, arr) => {
       const discount = Object.assign(document.createElement('span'), {
         className: 'discount',
         innerHTML: '2 months free'
       });
-      if (ev.children.length < 4) {
-        ev.appendChild(discount);
-      }
+      if (ev.children.length < 4) ev.appendChild(discount);
+      ev.children[2].innerHTML = yearPrice[ind];
+      checkboxPrices[ind].innerHTML = checkboxYearly[ind];
 
-      // 🔴needs to be separated between months and years plans🔴
-      // if (ind == 0 && ev.classList.contains('active')) {
-      //   ev.children[2].innerHTML = '$90/yr';
-      // } else if (!ev.classList.contains('active')){
-      //   ev.children[2].innerHTML = monthPrice[0];
-      // }
-      // if (ind == 1 && ev.classList.contains('active')) {
-      //   ev.children[2].innerHTML = '$120/yr';
-      // } else if (!ev.classList.contains('active')){
-      //   ev.children[2].innerHTML = monthPrice[1];
-      // }
-      // if (ind == 2 && ev.classList.contains('active')) {
-      //   ev.children[2].innerHTML = '$150/yr';
-      // } else if (!ev.classList.contains('active')){
-      //   ev.children[2].innerHTML = monthPrice[2];
-      // }
+      planOptionSpan.innerHTML = '(Yearly)';
+      totalSpans[0].innerHTML = 'Total (per year)';
     });
   }
-  if (planOpts[0].classList.contains('active')) {
-    for (let i = 0; i < miniPlans[0].children.length; i++) {
-      if (miniPlans[i].children.length == 4)
-      miniPlans[i].children[3].remove()
-    }
-  }
+  if (planEither[0].classList.contains('active')) {
+    miniPlans.forEach((ev, ind, arr) => {
+      if (arr[ind].children.length == 4) miniPlans[ind].children[3].remove();
+      ev.children[2].innerHTML = monthPrice[ind];
+      checkboxPrices[ind].innerHTML = checkboxMonthly[ind]
 
+      planOptionSpan.innerHTML = '(Monthly)';
+      totalSpans[0].innerHTML = 'Total (per month)';
+    });
+  }
 }
 
+// let checkPricesSummery = document.createElement('span')
+// 🔴make this dynamic as in planBtn > miniPlans above🔴
+// checkPricesSummery.textContent = ; checkboxPrices[ind].innerHTML
+// or checkboxPrices[ind].innerHTML
 
+const summeryClasses = ['online', 'large', 'custom'],
+      summeryHead = [];
+checkContainer.forEach((e)=> {
+  summeryHead.push(e.children[2].children[0].innerHTML);
+});
+
+
+
+// needs fixes, as for not creating all divs, but clicked one and when it's active;
+// however when it's not active it should get removed
 checkContainer.forEach(e => e.onclick = () => {
   e.children[0].checked = !e.children[0].checked;
-  // a lot of work is here;
-}
-);
+  e.classList.toggle('active');
+  
+  if (e.classList.contains('active')) {
+    checkboxPrices.forEach((e,ind) => {
+      
+      let prices = document.createTextNode(checkboxPrices[ind].innerHTML);
+      let checkPricesSummery = document.createElement('span');
+      checkPricesSummery.appendChild(prices)
+
+      let plans = document.createElement('div');
+      plans.className = summeryClasses[ind];
+      plans.innerHTML = summeryHead[ind]
+      plans.appendChild(checkPricesSummery)
+      planOptionSpan.parentElement.parentElement.appendChild(plans)
+    })
+  }
+});
+
+// checkContainer.forEach(e => e.onclick = () => {
+//   e.children[0].checked = !e.children[0].checked;
+//   e.classList.toggle('active');
+
+//   // Get the index of the clicked check container
+//   const index = checkContainer.indexOf(e);
+
+//   // Check if the clicked check container is active
+//   if (e.classList.contains('active')) {
+//     // Create the plan summary div only for the clicked check container
+//     const prices = document.createTextNode(checkboxPrices[index].innerHTML);
+//     const checkPricesSummery = document.createElement('span');
+//     checkPricesSummery.appendChild(prices);
+
+//     const plans = document.createElement('div');
+//     plans.className = summeryClasses[index];
+//     plans.innerHTML = summeryHead[index];
+//     plans.appendChild(checkPricesSummery);
+//     planOptionSpan.parentElement.parentElement.appendChild(plans);
+//   } else {
+//     // Remove the plan summary div of the clicked check container
+//     const planSummaryDiv = document.querySelector(`.${summeryClasses[index]}`);
+//     planSummaryDiv && planSummaryDiv.remove();
+//   }
+// });
