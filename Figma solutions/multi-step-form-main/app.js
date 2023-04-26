@@ -11,13 +11,71 @@ const $$ = (s) => document.querySelectorAll(s),
       imgs = $$('img'),
       checkContainer = $$('.third .check-container')
       ;
-
+// let error = $$('.first div .error');
 section.style.top = '0%';
 imgs.forEach((e)=> e.setAttribute('draggable', 'false'));
 
+//--------------------------------------------------------------------
+// with the love of crazy chat GPT bito: it needs hours of me to understand🤯😲
+const nameField = document.querySelector('#userNa');
+const usernamePattern = /^[a-zA-Z\s]+$/;
+const nameError = document.createElement('div');
+nameError.classList.add('error', 'name-field-error');
+nameError.innerText = 'Please enter a valid name containing only alphabetical characters and spaces';
+
+nameField.addEventListener('focus', () => {
+  if (nameField.parentElement.contains(nameError)) {
+    nameField.parentElement.removeChild(nameError);
+  }
+});
+
+nameField.addEventListener('blur', () => {
+  if (!usernamePattern.test(nameField.value)) {
+    nameField.parentElement.appendChild(nameError);
+  }
+});
+
+const emailField = document.querySelector('#userEm');
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailError = document.createElement('div');
+emailError.classList.add('error', 'email-field-error');
+emailError.innerText = 'Please enter a valid email address';
+
+emailField.addEventListener('focus', () => {
+  if (emailField.parentElement.contains(emailError)) {
+    emailField.parentElement.removeChild(emailError);
+  }
+});
+
+emailField.addEventListener('blur', () => {
+  if (!emailPattern.test(emailField.value)) {
+    emailField.parentElement.appendChild(emailError);
+  }
+});
+
+const phoneField = document.querySelector('#userPh');
+const phonePattern = /^(\+?\d{2,3})?\s?\d{2}\s?\d{3}\s?\d{4}$/;
+const phoneError = document.createElement('div');
+phoneError.classList.add('error', 'phone-field-error');
+phoneError.innerText = 'Please enter a valid phone number';
+
+phoneField.addEventListener('focus', () => {
+  if (phoneField.parentElement.contains(phoneError)) {
+    phoneField.parentElement.removeChild(phoneError);
+  }
+});
+
+phoneField.addEventListener('blur', () => {
+  if (!phonePattern.test(phoneField.value)) {
+    phoneField.parentElement.appendChild(phoneError);
+  }
+});
+//--------------------------------------------------------------------
+let fieldValues = [nameField.value, emailField.value, phoneField.value];
 nextButton.forEach((e, ind) => {
   e.onclick = () => {
-    section.style.top = +section.style.top.slice(0, -1) - 100 + "%";
+    if ($$('.first div .error').length == 0 && fieldValues != '') {//nameField.value != ''
+      section.style.top = +section.style.top.slice(0, -1) - 100 + "%";
     steps.forEach((ev, i, arr) => {
       arr[ind].classList.remove('active');
       if (arr[ind + 1] !== undefined) {
@@ -26,6 +84,7 @@ nextButton.forEach((e, ind) => {
         arr[ind].classList.add('active');
       }
     });
+    }
   };
 })
 backButton.forEach((e, ind)=> {
@@ -41,6 +100,7 @@ submitBtn.addEventListener('click', function(e) {
   e.preventDefault();
   // perform form validation and submission using JavaScript
 });
+
 miniPlans.forEach((e) => {
   e.onclick = () => {
     e.classList.toggle('active');
@@ -58,11 +118,12 @@ planSpan.onclick = (e) => {
 
   if (planOpts[2].classList.contains('active')) {
     miniPlans.forEach((ev, ind, arr) => {
-      const discount = document.createElement('span');
-      discount.className = 'discount';
-      discount.innerHTML = "2 months free";// needs to be shortened as an object
+      const discount = Object.assign(document.createElement('span'), {
+        className: 'discount',
+        innerHTML: '2 months free'
+      });
       if (ev.children.length < 4) {
-        ev.appendChild(discount);//🔴needs to be removed with monthly plan🔴
+        ev.appendChild(discount);
       }
 
       // 🔴needs to be separated between months and years plans🔴
@@ -83,6 +144,13 @@ planSpan.onclick = (e) => {
       // }
     });
   }
+  if (planOpts[0].classList.contains('active')) {
+    for (let i = 0; i < miniPlans[0].children.length; i++) {
+      if (miniPlans[i].children.length == 4)
+      miniPlans[i].children[3].remove()
+    }
+  }
+
 }
 
 
@@ -91,26 +159,3 @@ checkContainer.forEach(e => e.onclick = () => {
   // a lot of work is here;
 }
 );
-
-
-/*
-Here are some of the best review websites for form validation using regular expressions 
-(regex) in JavaScript:
-1. MDN Web Docs - offers comprehensive documentation on JavaScript regex, as well as 
-tutorials and examples of how to use regex for form validation. It's a reliable and 
-authoritative source of information.
-2. Regex101 - is a website that lets you test and experiment with regex patterns in a 
-visual interface. You can input your JavaScript code and test your regex patterns to 
-ensure that they work as intended.
-3. Regexr - is a website that offers a regex tester and debugger, as well as a regex 
-cheat sheet showing common expressions and their syntax. It's a good resource for learning
-about regex and validating form data.
-4. Stack Overflow - is a popular community-driven question and answer website where 
-you can find answers to common regex questions and get help with your own regex code. 
-It's a great resource for troubleshooting and refining your regex expressions.
-5. Codecademy - is an online learning platform that offers courses on JavaScript and 
-regex. It's a good resource for beginners who want to learn how to use regex for form 
-validation and other applications in web development.
-These websites can provide helpful resources, tips, and solutions for form validation 
-using regex in JavaScript.
-*/
