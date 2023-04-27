@@ -152,65 +152,48 @@ planBtn.onclick = (e) => {
       totalSpans[0].innerHTML = 'Total (per month)';
     });
   }
+
+  /*
+  🔴now: check if these span.innerHTML has month prices or year prices, to convert them into the planBtn option🔴
+
+  Array.from(planOptionSpan.parentElement.parentElement.children).forEach((e, index)=> {
+  let elCount = planOptionSpan.parentElement.parentElement.childElementCount;
+  if (elCount > 1) {
+    if (index != 0) {
+      console.log(e.childNodes[1])
+    }
+  }
+  });
+  */
 }
-
-// let checkPricesSummery = document.createElement('span')
-// 🔴make this dynamic as in planBtn > miniPlans above🔴
-// checkPricesSummery.textContent = ; checkboxPrices[ind].innerHTML
-// or checkboxPrices[ind].innerHTML
-
 const summeryClasses = ['online', 'large', 'custom'],
       summeryHead = [];
 checkContainer.forEach((e)=> {
   summeryHead.push(e.children[2].children[0].innerHTML);
 });
 
-
-
-// needs fixes, as for not creating all divs, but clicked one and when it's active;
-// however when it's not active it should get removed
-checkContainer.forEach(e => e.onclick = () => {
+checkContainer.forEach((e,index) => e.onclick = () => {
   e.children[0].checked = !e.children[0].checked;
   e.classList.toggle('active');
   
   if (e.classList.contains('active')) {
-    checkboxPrices.forEach((e,ind) => {
-      
-      let prices = document.createTextNode(checkboxPrices[ind].innerHTML);
-      let checkPricesSummery = document.createElement('span');
-      checkPricesSummery.appendChild(prices)
-
-      let plans = document.createElement('div');
-      plans.className = summeryClasses[ind];
-      plans.innerHTML = summeryHead[ind]
-      plans.appendChild(checkPricesSummery)
-      planOptionSpan.parentElement.parentElement.appendChild(plans)
+    checkboxPrices.forEach((e,ind,arr) => {
+      if (index == ind) {
+        let prices = document.createTextNode(checkboxPrices[ind].innerHTML);
+        let checkPricesSummery = document.createElement('span');
+        checkPricesSummery.appendChild(prices)
+        let plans = document.createElement('div');
+        plans.className = summeryClasses[ind];
+        plans.innerHTML = summeryHead[ind]
+        plans.appendChild(checkPricesSummery)
+        planOptionSpan.parentElement.parentElement.appendChild(plans)
+      }
     })
+  }
+  if (!e.classList.contains('active')) {
+    Array.from(planOptionSpan.parentElement.parentElement.children).forEach((e)=> {
+      if (e.classList.contains(summeryClasses[index])) e.remove()
+    });
   }
 });
 
-// checkContainer.forEach(e => e.onclick = () => {
-//   e.children[0].checked = !e.children[0].checked;
-//   e.classList.toggle('active');
-
-//   // Get the index of the clicked check container
-//   const index = checkContainer.indexOf(e);
-
-//   // Check if the clicked check container is active
-//   if (e.classList.contains('active')) {
-//     // Create the plan summary div only for the clicked check container
-//     const prices = document.createTextNode(checkboxPrices[index].innerHTML);
-//     const checkPricesSummery = document.createElement('span');
-//     checkPricesSummery.appendChild(prices);
-
-//     const plans = document.createElement('div');
-//     plans.className = summeryClasses[index];
-//     plans.innerHTML = summeryHead[index];
-//     plans.appendChild(checkPricesSummery);
-//     planOptionSpan.parentElement.parentElement.appendChild(plans);
-//   } else {
-//     // Remove the plan summary div of the clicked check container
-//     const planSummaryDiv = document.querySelector(`.${summeryClasses[index]}`);
-//     planSummaryDiv && planSummaryDiv.remove();
-//   }
-// });
