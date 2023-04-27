@@ -20,8 +20,9 @@ const $$ = (s) => document.querySelectorAll(s),
       phonePattern = /^(\+?\d{2,3})?\s?\d{2}\s?\d{3}\s?\d{4}$/,
       phoneError = document.createElement('div'),
       checkboxPrices = $$(" form.third span"),
-      planOptionSpan = $(" div.summery > .plan-option span"),
-      totalSpans = $$(".fourth .total span")
+      planOptionSpan = $(" div.summery > .plan-option span:first-of-type"),
+      totalSpans = $$(".fourth .total span"),
+      changeLink = $('#change-link')
       ;
 
 section.style.top = '0%';
@@ -111,13 +112,18 @@ let checkboxMonthly = [];
 checkboxPrices.forEach(e => checkboxMonthly.push(e.innerHTML))
 let checkboxYearly = ['+$10/yr', '+$20/yr', '+$20/yr'];
 
-miniPlans.forEach((e) => {
+miniPlans.forEach((e, ind, arr) => {
+  if (ind == 0) {
+    planOptionSpan.parentElement.children[2].innerHTML = arr[0].children[2].innerHTML
+  }
+
   e.onclick = () => {
     miniPlans.forEach((sibling) => {
       sibling.classList.remove('active');
     });
     e.classList.add('active');
     planOptionSpan.parentElement.childNodes[0].textContent = e.children[1].innerHTML + ' ';
+    planOptionSpan.parentElement.children[2].innerHTML = e.children[2].innerHTML
   };
 });
 
@@ -146,25 +152,32 @@ planBtn.onclick = (e) => {
     miniPlans.forEach((ev, ind, arr) => {
       if (arr[ind].children.length == 4) miniPlans[ind].children[3].remove();
       ev.children[2].innerHTML = monthPrice[ind];
-      checkboxPrices[ind].innerHTML = checkboxMonthly[ind]
-
+      checkboxPrices[ind].innerHTML = checkboxMonthly[ind];
       planOptionSpan.innerHTML = '(Monthly)';
       totalSpans[0].innerHTML = 'Total (per month)';
     });
   }
+  miniPlans.forEach((ev) => {
+    if (ev.classList.contains('active')){
+      planOptionSpan.parentElement.children[2].innerHTML = ev.children[2].innerHTML;
+    }
+  })
 
-  /*
-  🔴now: check if these span.innerHTML has month prices or year prices, to convert them into the planBtn option🔴
 
-  Array.from(planOptionSpan.parentElement.parentElement.children).forEach((e, index)=> {
   let elCount = planOptionSpan.parentElement.parentElement.childElementCount;
   if (elCount > 1) {
-    if (index != 0) {
-      console.log(e.childNodes[1])
-    }
+    Array.from(planOptionSpan.parentElement.parentElement.children).forEach((e, index) => {
+      if (index != 0) {
+        if (e.childNodes[1].innerHTML !== checkboxYearly[index - 1] && planEither[2].classList.contains('active')) {
+          e.childNodes[1].innerHTML = checkboxYearly[index - 1];
+        }
+        if (e.childNodes[1].innerHTML !== checkboxMonthly[index - 1] && planEither[0].classList.contains('active')) {
+          e.childNodes[1].innerHTML = checkboxMonthly[index - 1];
+        }
+      }
+    });
   }
-  });
-  */
+
 }
 const summeryClasses = ['online', 'large', 'custom'],
       summeryHead = [];
@@ -197,3 +210,4 @@ checkContainer.forEach((e,index) => e.onclick = () => {
   }
 });
 
+// changeLink use me to go to step 2, and make steps active as 2, 😫🤢
