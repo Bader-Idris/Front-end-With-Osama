@@ -1,7 +1,0 @@
-01.png
-02.png
-03.jpg
-04.jpg
-05.jpg
-
-looks like their width is 800px 

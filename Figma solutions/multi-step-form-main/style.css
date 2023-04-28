@@ -170,7 +170,12 @@ main form {
     height: 57vh;
   }
   form .button-container {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: var(--White);
+    /*🔴looks like we're compiled to use window.innerWidth for phone, as slider, and for PC as slide Up&&down🔴*/
   }
 }
 @media (min-width:768px) {

@@ -40,19 +40,19 @@ phoneError.innerText = 'Please enter a valid phone number';
 nameField.addEventListener('focus', () => {
   if (nameField.parentElement.contains(nameError)) {
     nameField.parentElement.removeChild(nameError);
-    nameField.classList.remove('invalid');
+    borderInputVanish()
   }
 });
 emailField.addEventListener('focus', () => {
   if (emailField.parentElement.contains(emailError)) {
     emailField.parentElement.removeChild(emailError);
-    nameField.classList.remove('invalid');
+    borderInputVanish()
   }
 });
 phoneField.addEventListener('focus', () => {
   if (phoneField.parentElement.contains(phoneError)) {
     phoneField.parentElement.removeChild(phoneError);
-    nameField.classList.remove('invalid');
+    borderInputVanish()
   }
 });
 
@@ -74,6 +74,13 @@ phoneField.addEventListener('blur', () => {
     phoneField.classList.add('invalid');
   }
 });
+const borderInputVanish  = () => {
+  [nameField, emailField, phoneField].forEach((e)=> {
+    if (e.classList.contains('invalid') && e) {
+      e.classList.remove('invalid')
+    }
+  })
+};
 
 nextButton.forEach((e, ind) => {
   e.onclick = () => {
@@ -113,10 +120,12 @@ let checkboxMonthly = [];
 checkboxPrices.forEach(e => checkboxMonthly.push(e.innerHTML))
 let checkboxYearly = ['+$10/yr', '+$20/yr', '+$20/yr'];
 
+let testing ;
 miniPlans.forEach((e, ind, arr) => {
   if (ind == 0) {
     planOptionSpan.parentElement.children[2].innerHTML = arr[0].children[2].innerHTML
     totalSpans[1].innerHTML = arr[0].children[2].innerHTML
+    testing = arr[0].children[2].innerHTML;//🔴
   }
 
   e.onclick = () => {
@@ -128,8 +137,9 @@ miniPlans.forEach((e, ind, arr) => {
     planOptionSpan.parentElement.children[2].innerHTML = e.children[2].innerHTML;
 
     // here is your job for calculating total prices
-    // this is the main plan as arcade, 
+    // this is the main plan as arcade,
     let subTotalPlan = +planOptionSpan.parentElement.children[2].innerHTML.substring(1, planOptionSpan.parentElement.children[2].innerHTML.length - 3);
+    console.log(subTotalPlan)//🔴
 
     totalSpans[1].innerHTML = `$${subTotalPlan}`;
     // get /mo or /yr as dynamic
@@ -144,7 +154,7 @@ planBtn.onclick = (e) => {
   planEither[0].classList.toggle('active');
   planEither[2].classList.toggle('active');
 
-  if (planEither[2].classList.contains('active')) {
+  if (planEither[2].classList.contains('active')) {//when yearly is active🔴
     miniPlans.forEach((ev, ind, arr) => {
       const discount = Object.assign(document.createElement('span'), {
         className: 'discount',
@@ -156,9 +166,13 @@ planBtn.onclick = (e) => {
 
       planOptionSpan.innerHTML = '(Yearly)';
       totalSpans[0].innerHTML = 'Total (per year)';
+
+      if (ev.classList.contains('active')) {
+        totalSpans[1].innerHTML = `${ev.children[2].innerHTML.slice(1, -3)}/yr`//🔴
+      }
     });
   }
-  if (planEither[0].classList.contains('active')) {
+  if (planEither[0].classList.contains('active')) {//when monthly is active🔴
     miniPlans.forEach((ev, ind, arr) => {
       if (arr[ind].children.length == 4) miniPlans[ind].children[3].remove();
       ev.children[2].innerHTML = monthPrice[ind];
@@ -176,19 +190,20 @@ planBtn.onclick = (e) => {
 
 
   let elCount = planOptionSpan.parentElement.parentElement.childElementCount;
+  // this code doesn't count well, when planBtn is clicked
   if (elCount > 1) {
     Array.from(planOptionSpan.parentElement.parentElement.children).forEach((e, index) => {
       if (index != 0) {
+        // console.log(index)
         if (e.childNodes[1].innerHTML !== checkboxYearly[index - 1] && planEither[2].classList.contains('active')) {
           e.childNodes[1].innerHTML = checkboxYearly[index - 1];
         }
         if (e.childNodes[1].innerHTML !== checkboxMonthly[index - 1] && planEither[0].classList.contains('active')) {
           e.childNodes[1].innerHTML = checkboxMonthly[index - 1];
         }
-        // e.childNodes[1].innerHTML.slice(-3)// important for /mo or /yr
+        console.log(e.childNodes[1].innerHTML.slice(-3))// important for /mo or /yr🔴
+        console.log(totalSpans[1].innerHTML)// needs to be updated when planBtn is clicked
         // totalSpans[1].innerHTML = totalSpans[1].innerHTML + e.childNodes[1].innerHTML.slice(-3)
-        // console.log(e.childNodes[1].innerHTML) this is important for total price,
-        // but without clicking on planBtn
       }
       // totalSpans[1].innerHTML = totalSpans[1].innerHTML + e.childNodes[1].innerHTML.slice(-3)
 

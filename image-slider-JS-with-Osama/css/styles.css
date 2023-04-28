@@ -8,8 +8,8 @@ body {
 }
 .slider-container {
   margin: 10px auto;
-  width: 800px;
-  height: 250px;
+  width: 1200px;/*it's ugly, but I made them randomly without even caring about resolution*/
+  height: 500px;
   position: relative;
 }
 .slider-container img {
@@ -17,6 +17,8 @@ body {
   opacity: 0;
   transition: opacity 1s;
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 .slider-container img.active {
   opacity: 1;
@@ -80,6 +82,7 @@ body {
   margin: 0 2px;
   line-height: 28px;
   cursor: pointer;
+  user-select: none;
 }
 .slider-controls .indicators ul li.active {
   background-color: #009688;
