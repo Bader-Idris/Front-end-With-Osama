@@ -57,8 +57,9 @@ body {
 @media (max-width:767px) {
   main {
     flex-direction: column;
+    width: 90%;
+    margin: 155px auto;
   }
-  main,
   main section {
     width: 100%;
   }
@@ -71,6 +72,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* check if good will change */
+    position: fixed;
+    left: 0;
+    top: 0;
   }
   aside > div {
     /* margin: 172px 0 0 ; */
@@ -83,6 +89,7 @@ body {
 @media (min-width:768px) {
   main {
     width: 830px;
+    margin: 10% auto;
   }
   main section {
     width: calc(100% - 250px);
@@ -99,14 +106,26 @@ main section  {
   position: relative;
   transition: all 1s ease-in-out 0s;
 }
-aside .step1 {
-  margin-top: 30px;
+@media (max-width:767px) {
+  aside div {
+    top: 15px;
+    transform: translateY(-50%);
+    margin: 20px 0px 0 50px;
+    position: relative;
+    left: -15%;
+  }
 }
-aside div {
-  margin: 20px;
-  margin-left: 25px;
-  position: relative;
+@media (min-width:768px) {
+  aside div {
+    margin: 20px;
+    margin-left: 25px;
+    position: relative;
+  }
+  aside .step1 {
+    margin-top: 30px;
+  }
 }
+
 aside div span {
   border-radius: 50%;
   border: 1px solid var(--Alabaster);
@@ -132,22 +151,33 @@ aside div p:last-of-type {
   font-weight: bold;
 }
 main {
-  margin: 8% auto;
   display: flex;
   height: 540px;
   background-color: var(--White);
   padding: 15px;
   border-radius: 20px;
   /* overflow: hidden; */
+  /* will change, or maybe not*/
 }
 main form {
   position: relative;
-  height: 100%;
   width: 75%;
   margin: 0 auto;
   padding: 20px;
 }
-
+@media (max-width:767px) {
+  main form {
+    height: 57vh;
+  }
+  form .button-container {
+    position: relative;
+  }
+}
+@media (min-width:768px) {
+  main form {
+    height: 100%;
+  }
+}
 form > h1,
 form > h2 {
   font-size: 26px;

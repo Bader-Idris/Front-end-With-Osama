@@ -105,7 +105,8 @@ submitBtn.addEventListener('click', function(e) {
 });
 
 let monthPrice = [];
-miniPlans.forEach(e => monthPrice.push(e.children[2].innerHTML))
+miniPlans.forEach(e => monthPrice.push(e.children[2].innerHTML));
+// find an approach to make it more dynamic if possible
 let yearPrice = ['$90/yr', '$120/yr', '$150/yr'];
 
 let checkboxMonthly = [];
@@ -115,6 +116,7 @@ let checkboxYearly = ['+$10/yr', '+$20/yr', '+$20/yr'];
 miniPlans.forEach((e, ind, arr) => {
   if (ind == 0) {
     planOptionSpan.parentElement.children[2].innerHTML = arr[0].children[2].innerHTML
+    totalSpans[1].innerHTML = arr[0].children[2].innerHTML
   }
 
   e.onclick = () => {
@@ -123,7 +125,15 @@ miniPlans.forEach((e, ind, arr) => {
     });
     e.classList.add('active');
     planOptionSpan.parentElement.childNodes[0].textContent = e.children[1].innerHTML + ' ';
-    planOptionSpan.parentElement.children[2].innerHTML = e.children[2].innerHTML
+    planOptionSpan.parentElement.children[2].innerHTML = e.children[2].innerHTML;
+
+    // here is your job for calculating total prices
+    // this is the main plan as arcade, 
+    let subTotalPlan = +planOptionSpan.parentElement.children[2].innerHTML.substring(1, planOptionSpan.parentElement.children[2].innerHTML.length - 3);
+
+    totalSpans[1].innerHTML = `$${subTotalPlan}`;
+    // get /mo or /yr as dynamic
+    console.log()
   };
 });
 
@@ -152,6 +162,7 @@ planBtn.onclick = (e) => {
     miniPlans.forEach((ev, ind, arr) => {
       if (arr[ind].children.length == 4) miniPlans[ind].children[3].remove();
       ev.children[2].innerHTML = monthPrice[ind];
+
       checkboxPrices[ind].innerHTML = checkboxMonthly[ind];
       planOptionSpan.innerHTML = '(Monthly)';
       totalSpans[0].innerHTML = 'Total (per month)';
@@ -174,7 +185,13 @@ planBtn.onclick = (e) => {
         if (e.childNodes[1].innerHTML !== checkboxMonthly[index - 1] && planEither[0].classList.contains('active')) {
           e.childNodes[1].innerHTML = checkboxMonthly[index - 1];
         }
+        // e.childNodes[1].innerHTML.slice(-3)// important for /mo or /yr
+        // totalSpans[1].innerHTML = totalSpans[1].innerHTML + e.childNodes[1].innerHTML.slice(-3)
+        // console.log(e.childNodes[1].innerHTML) this is important for total price,
+        // but without clicking on planBtn
       }
+      // totalSpans[1].innerHTML = totalSpans[1].innerHTML + e.childNodes[1].innerHTML.slice(-3)
+
     });
   }
 
@@ -197,9 +214,9 @@ checkContainer.forEach((e,index) => e.onclick = () => {
         checkPricesSummery.appendChild(prices)
         let plans = document.createElement('div');
         plans.className = summeryClasses[ind];
-        plans.innerHTML = summeryHead[ind]
-        plans.appendChild(checkPricesSummery)
-        planOptionSpan.parentElement.parentElement.appendChild(plans)
+        plans.innerHTML = summeryHead[ind];
+        plans.appendChild(checkPricesSummery);
+        planOptionSpan.parentElement.parentElement.appendChild(plans);
       }
     })
   }
@@ -210,4 +227,33 @@ checkContainer.forEach((e,index) => e.onclick = () => {
   }
 });
 
-// changeLink use me to go to step 2, and make steps active as 2, 😫🤢
+changeLink.onclick = (e) => {
+  e.preventDefault();
+  section.style.top = +section.style.top.slice(0,-1) + 200 + "%";
+  steps.forEach((ev) => {
+    ev.classList.remove('active');
+  });
+  steps[1].classList.add('active');
+};
+
+// see 130 && 188 for it
+// let totalPlanCount = 0;
+// Array.from(planOptionSpan.parentElement.parentElement.children).forEach((cur, ind, arr) => {
+//   if (ind != 0) {
+//     // console.log(+cur.childNodes[1].innerHTML.slice(2, -3))// important
+//     let subSubTotal = +cur.childNodes[1].innerHTML.slice(2, -3);
+//     totalPlanCount += subSubTotal
+//   }
+// })
+
+// miniPlans.forEach((e, ind, arr) => {
+//   e.onclick = () => {
+//     console.log(totalSpans[1].innerHTML = `$${subTotalPlan}`);
+//     totalPlanCount += subTotalPlan
+//   };
+// });
+// console.log(totalPlanCount)
+
+
+//🔴there is a bug, when large storage and customizable are active, in summery
+// if customizable is above and yearly, it'll be 10 dollars instead of 20🔴🔴
