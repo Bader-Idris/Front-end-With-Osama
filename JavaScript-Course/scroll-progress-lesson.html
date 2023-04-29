@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scroll-progress-lesson as range usages</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      height: 5000px;
+      background-color: #888;
+    }
+    .scroller {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 0;/*0 because JS function downwards does the jobs*/
+      height: 10px;
+      background-color: #463ffd;
+      z-index: 9999;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="scroller"></div>
+  <script>
+    /*
+    scrollHeight: •Entire Content & Padding • (Visible or Not)
+    clientHeight: -Visible Content & Padding
+    */
+    let el = document.querySelector('.scroller');
+    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    // we do - document.documentElement.clientHeight above to count appearing height [clientHeight]
+    // height here counts all invisible height, because we decremented clientHeight
+      window.addEventListener('scroll', () => {
+        let scrollTop = document.documentElement.scrollTop
+        el.style.width = `${(scrollTop / height) * 100 }%`;
+      });
+  </script>
+</body>
+</html>

@@ -1,32 +1,60 @@
-const $$ = (s) => document.querySelectorAll(s),
-      $ = (s) => document.querySelector(s),
-      forms = $$('main form'),
+const $ = (selector) => {
+  const elements = document.querySelectorAll(selector);
+  return elements.length === 1 ? elements[0] : elements;
+};
+Element.prototype.$ = function (selector) {
+  const elements = this.querySelectorAll(selector);
+  return elements.length === 1 ? elements[0] : elements;
+};
+
+const forms = $('main form'),
       section = $('main section'),
-      nextButton = $$('form button.next'),
-      backButton = $$('form button.back'),
+      nextButton = $('form button.next'),
+      backButton = $('form button.back'),
       submitBtn = $('form button[type="submit"]'),
-      steps = $$('aside div span'),
-      miniPlans = $$('.mini-plans div'),
+      steps = $('aside div span'),
+      miniPlans = $('.mini-plans div'),
+      planEither = $('.plan-either'),
       planBtn = $('.plan-either span:nth-of-type(2)'),
-      imgs = $$('img'),
-      checkContainer = $$('.third .check-container'),
+      imgs = $('img'),
+      checkContainer = $('.third .check-container'),
       nameField = $('#userNa'),
-      usernamePattern = /^[a-zA-Z\s]+$/,
+      usernamePattern = /^[a-zA-Z ]{2,30}$/,
       nameError = document.createElement('div'),
       emailField = $('#userEm'),
-      emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-      emailError = document.createElement('div'),
-      phoneField = document.querySelector('#userPh'),
+      emailPattern = /^\S+@\S+\.\S+$/,
+      emailError = nameError.cloneNode(false),
+      phoneField = $('#userPh'),
       phonePattern = /^(\+?\d{2,3})?\s?\d{2}\s?\d{3}\s?\d{4}$/,
-      phoneError = document.createElement('div'),
-      checkboxPrices = $$(" form.third span"),
+      phoneError = nameError.cloneNode(false),
+      checkboxPrices = $(" form.third span"),
       planOptionSpan = $(" div.summery > .plan-option span:first-of-type"),
-      totalSpans = $$(".fourth .total span"),
+      summery = $('.summery'),
+      totalSpans = $(".fourth .total span"),
       changeLink = $('#change-link')
       ;
 
 section.style.top = '0%';
 imgs.forEach((e)=> e.setAttribute('draggable', 'false'));
+const addFieldError = (field, error, pattern) => {
+  field.addEventListener('blur', () => {
+    if (!pattern.test(field.value)) {
+      field.classList.add('invalid');
+      field.parentElement.appendChild(error);
+    }
+  });
+  field.addEventListener('focus', () => {
+    if (field.parentElement.contains(error)) {
+      field.parentElement.removeChild(error);
+      clearInvalidBorder(field);
+    }
+  });
+};
+const clearInvalidBorder = (field) => {
+  if (field.classList.contains('invalid')) {
+    field.classList.remove('invalid');
+  }
+};
 
 nameError.classList.add('error', 'name-err');
 nameError.innerText = 'Please enter a valid name';
@@ -37,54 +65,18 @@ emailError.innerText = 'Please enter a valid email address';
 phoneError.classList.add('error', 'phone-err');
 phoneError.innerText = 'Please enter a valid phone number';
 
-nameField.addEventListener('focus', () => {
-  if (nameField.parentElement.contains(nameError)) {
-    nameField.parentElement.removeChild(nameError);
-    borderInputVanish()
-  }
-});
-emailField.addEventListener('focus', () => {
-  if (emailField.parentElement.contains(emailError)) {
-    emailField.parentElement.removeChild(emailError);
-    borderInputVanish()
-  }
-});
-phoneField.addEventListener('focus', () => {
-  if (phoneField.parentElement.contains(phoneError)) {
-    phoneField.parentElement.removeChild(phoneError);
-    borderInputVanish()
-  }
-});
+addFieldError(nameField, nameError, usernamePattern);
+addFieldError(emailField, emailError, emailPattern);
+addFieldError(phoneField, phoneError, phonePattern);
 
-nameField.addEventListener('blur', () => {
-  if (!usernamePattern.test(nameField.value)) {
-    nameField.parentElement.appendChild(nameError);
-    nameField.classList.add('invalid');
-  }
-});
-emailField.addEventListener('blur', () => {
-  if (!emailPattern.test(emailField.value)) {
-    emailField.parentElement.appendChild(emailError);
-    emailField.classList.add('invalid');
-  }
-});
-phoneField.addEventListener('blur', () => {
-  if (!phonePattern.test(phoneField.value)) {
-    phoneField.parentElement.appendChild(phoneError);
-    phoneField.classList.add('invalid');
-  }
-});
-const borderInputVanish  = () => {
-  [nameField, emailField, phoneField].forEach((e)=> {
-    if (e.classList.contains('invalid') && e) {
-      e.classList.remove('invalid')
-    }
-  })
-};
+[nameField, emailField, phoneField].forEach(clearInvalidBorder);
+
+let yearlyActive = planEither.children[2].classList.contains('active'),
+  monthlyActive = planEither.children[0].classList.contains('active');
 
 nextButton.forEach((e, ind) => {
   e.onclick = () => {
-    if ($$('.first div .error').length == 0 && nameField.value != '' && emailField.value != '' && phoneField.value != '') {
+    if ($('.first div .error').length == 0 && nameField.value != '' && emailField.value != '' && phoneField.value != '') {
       section.style.top = +section.style.top.slice(0, -1) - 100 + "%";
     steps.forEach((ev, i, arr) => {
       arr[ind].classList.remove('active');
@@ -119,13 +111,14 @@ let yearPrice = ['$90/yr', '$120/yr', '$150/yr'];
 let checkboxMonthly = [];
 checkboxPrices.forEach(e => checkboxMonthly.push(e.innerHTML))
 let checkboxYearly = ['+$10/yr', '+$20/yr', '+$20/yr'];
+let shortMoYr = ['/mo','/yr']
 
-let testing ;
+let summeryMainPlanPrice = planOptionSpan.parentElement.children[2];
+
 miniPlans.forEach((e, ind, arr) => {
   if (ind == 0) {
-    planOptionSpan.parentElement.children[2].innerHTML = arr[0].children[2].innerHTML
+    summeryMainPlanPrice.innerHTML = arr[0].children[2].innerHTML
     totalSpans[1].innerHTML = arr[0].children[2].innerHTML
-    testing = arr[0].children[2].innerHTML;//🔴
   }
 
   e.onclick = () => {
@@ -134,27 +127,27 @@ miniPlans.forEach((e, ind, arr) => {
     });
     e.classList.add('active');
     planOptionSpan.parentElement.childNodes[0].textContent = e.children[1].innerHTML + ' ';
-    planOptionSpan.parentElement.children[2].innerHTML = e.children[2].innerHTML;
+    summeryMainPlanPrice.innerHTML = e.children[2].innerHTML;
 
     // here is your job for calculating total prices
     // this is the main plan as arcade,
-    let subTotalPlan = +planOptionSpan.parentElement.children[2].innerHTML.substring(1, planOptionSpan.parentElement.children[2].innerHTML.length - 3);
-    console.log(subTotalPlan)//🔴
-
-    totalSpans[1].innerHTML = `$${subTotalPlan}`;
-    // get /mo or /yr as dynamic
-    console.log()
+    let subTotalPlan = +summeryMainPlanPrice.innerHTML.substring(1, summeryMainPlanPrice.innerHTML.length - 3);
+    if (yearlyActive) {
+      totalSpans[1].innerHTML = `$${OptionalSummeryPricesCount() + subTotalPlan + shortMoYr[1]}`;//🔴
+    } else if (monthlyActive) {
+      totalSpans[1].innerHTML = `$${OptionalSummeryPricesCount() + subTotalPlan + shortMoYr[0]}`;
+    }
   };
 });
 
-
 planBtn.onclick = (e) => {
   e.target.classList.toggle('active');
-  let planEither = e.target.parentElement.children;
-  planEither[0].classList.toggle('active');
-  planEither[2].classList.toggle('active');
+  planEither.children[0].classList.toggle('active');
+  planEither.children[2].classList.toggle('active');
 
-  if (planEither[2].classList.contains('active')) {//when yearly is active🔴
+  yearlyActive = yearlyActive ? false : true;
+  monthlyActive = !yearlyActive;
+  if (yearlyActive) {//when yearly is active🔴
     miniPlans.forEach((ev, ind, arr) => {
       const discount = Object.assign(document.createElement('span'), {
         className: 'discount',
@@ -168,11 +161,12 @@ planBtn.onclick = (e) => {
       totalSpans[0].innerHTML = 'Total (per year)';
 
       if (ev.classList.contains('active')) {
-        totalSpans[1].innerHTML = `${ev.children[2].innerHTML.slice(1, -3)}/yr`//🔴
+        totalSpans[1].innerHTML = `$${ev.children[2].innerHTML.slice(1, -3)}/yr`//🔴
+        console.log(totalSpans[1].innerHTML)
       }
     });
   }
-  if (planEither[0].classList.contains('active')) {//when monthly is active🔴
+  if (monthlyActive) {//when monthly is active🔴
     miniPlans.forEach((ev, ind, arr) => {
       if (arr[ind].children.length == 4) miniPlans[ind].children[3].remove();
       ev.children[2].innerHTML = monthPrice[ind];
@@ -180,11 +174,16 @@ planBtn.onclick = (e) => {
       checkboxPrices[ind].innerHTML = checkboxMonthly[ind];
       planOptionSpan.innerHTML = '(Monthly)';
       totalSpans[0].innerHTML = 'Total (per month)';
+
+      if (ev.classList.contains('active')) {
+        totalSpans[1].innerHTML = `$${ev.children[2].innerHTML.slice(1, -3)}/mo`//🔴
+        console.log(totalSpans[1].innerHTML)
+      }
     });
   }
   miniPlans.forEach((ev) => {
     if (ev.classList.contains('active')){
-      planOptionSpan.parentElement.children[2].innerHTML = ev.children[2].innerHTML;
+      summeryMainPlanPrice.innerHTML = ev.children[2].innerHTML;
     }
   })
 
@@ -192,20 +191,18 @@ planBtn.onclick = (e) => {
   let elCount = planOptionSpan.parentElement.parentElement.childElementCount;
   // this code doesn't count well, when planBtn is clicked
   if (elCount > 1) {
-    Array.from(planOptionSpan.parentElement.parentElement.children).forEach((e, index) => {
+    Array.from(summery.children).forEach((e, index) => {
       if (index != 0) {
         // console.log(index)
-        if (e.childNodes[1].innerHTML !== checkboxYearly[index - 1] && planEither[2].classList.contains('active')) {
+        if (e.childNodes[1].innerHTML !== checkboxYearly[index - 1] && yearlyActive) {
           e.childNodes[1].innerHTML = checkboxYearly[index - 1];
         }
-        if (e.childNodes[1].innerHTML !== checkboxMonthly[index - 1] && planEither[0].classList.contains('active')) {
+        if (e.childNodes[1].innerHTML !== checkboxMonthly[index - 1] && monthlyActive) {
           e.childNodes[1].innerHTML = checkboxMonthly[index - 1];
         }
-        console.log(e.childNodes[1].innerHTML.slice(-3))// important for /mo or /yr🔴
-        console.log(totalSpans[1].innerHTML)// needs to be updated when planBtn is clicked
-        // totalSpans[1].innerHTML = totalSpans[1].innerHTML + e.childNodes[1].innerHTML.slice(-3)
+        //🔴 console.log(totalSpans[1].innerHTML)
+
       }
-      // totalSpans[1].innerHTML = totalSpans[1].innerHTML + e.childNodes[1].innerHTML.slice(-3)
 
     });
   }
@@ -242,7 +239,7 @@ checkContainer.forEach((e,index) => e.onclick = () => {
   }
 });
 
-changeLink.onclick = (e) => {
+changeLink.onclick = (e) => {// might change when working with phone
   e.preventDefault();
   section.style.top = +section.style.top.slice(0,-1) + 200 + "%";
   steps.forEach((ev) => {
@@ -252,23 +249,16 @@ changeLink.onclick = (e) => {
 };
 
 // see 130 && 188 for it
-// let totalPlanCount = 0;
-// Array.from(planOptionSpan.parentElement.parentElement.children).forEach((cur, ind, arr) => {
-//   if (ind != 0) {
-//     // console.log(+cur.childNodes[1].innerHTML.slice(2, -3))// important
-//     let subSubTotal = +cur.childNodes[1].innerHTML.slice(2, -3);
-//     totalPlanCount += subSubTotal
-//   }
-// })
-
-// miniPlans.forEach((e, ind, arr) => {
-//   e.onclick = () => {
-//     console.log(totalSpans[1].innerHTML = `$${subTotalPlan}`);
-//     totalPlanCount += subTotalPlan
-//   };
-// });
-// console.log(totalPlanCount)
-
 
 //🔴there is a bug, when large storage and customizable are active, in summery
 // if customizable is above and yearly, it'll be 10 dollars instead of 20🔴🔴
+
+const OptionalSummeryPricesCount = () => {
+  let summerySubPrices = 0;
+  Array.from(summery.children).forEach((cur, index) => {
+    if (cur != 0 && index > 0) {
+      summerySubPrices += parseInt(cur.children[0].innerHTML.substring(2, cur.children[0].innerHTML.length - 3))
+    }
+  })
+  return summerySubPrices
+}
