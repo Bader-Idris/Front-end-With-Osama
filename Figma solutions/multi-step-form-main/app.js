@@ -186,7 +186,7 @@ planBtn.onclick = (e, indexO) => {
     }
   })
 
-  if (summery.childElementCount > 1) {// this MF makes me nuts
+  if (summery.childElementCount > 1) {// this MF makes me nuts🤢🔴
     Array.from(summery.children).forEach((e, index) => {
       if (index > 0) {
         // if (e.classList.contains(summeryClasses[index]) && yearlyActive) {
