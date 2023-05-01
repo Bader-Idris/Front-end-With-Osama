@@ -28,11 +28,12 @@ function getQuestions() {
 
   myRequest.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200){
-      console.log(this.responseText);
+      let questionsObject = JSON.parse(this.responseText)//it's all text converted from JSON into JS Object
+      console.log(questionsObject)
     };
   };
 
-  myRequest.open('GET', './html_questions.json', true);
+  myRequest.open('GET', 'js/html_questions.json', true);
   myRequest.send();
 }
 getQuestions()
