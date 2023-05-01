@@ -23,3 +23,16 @@ Prerequisites
 * there are many things Osama thinks a lot to achieve,
 * so video's length is only as results not intuitively that cope
 */
+function getQuestions() {
+  let myRequest = new XMLHttpRequest();
+
+  myRequest.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200){
+      console.log(this.responseText);
+    };
+  };
+
+  myRequest.open('GET', './html_questions.json', true);
+  myRequest.send();
+}
+getQuestions()
