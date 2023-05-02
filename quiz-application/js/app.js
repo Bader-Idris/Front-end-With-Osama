@@ -28,12 +28,16 @@ let countSpan = $('.count span'),
     bulletsSpanContainer = $('.bullets .spans'),
     quizArea = $('.quiz-area'),
     answersArea = $('.answers-area'),
-    submitBtn = $('.submit-button')
+    submitBtn = $('.submit-button'),
+    bullets = $('.bullets'),
+    resultsContainer = $('.results'),
+    countdownElement = $('.countdown')
 ;
 
 // set Settings/Options
 let curInd = 0,
-    properAnswers = 0
+    properAnswers = 0,
+    countdownInterval
 ;
 
 function getQuestions() {
@@ -49,6 +53,9 @@ function getQuestions() {
       createBUllets(qCount);
 
       addQuestionData(questionsObject[curInd], qCount);
+
+        // setting the countdown function
+        countdown(180, qCount)
 
       // clicking On Submit Button
       submitBtn.onclick = (e) => {
@@ -73,7 +80,12 @@ function getQuestions() {
         // Handle Bullets Class
         handleBullets();
 
-        
+        // because it's a button, we have to clearInterval, before starting its Func
+        clearInterval(countdownElement);
+        countdown(180,qCount)
+
+        // Show Results
+        showResults(qCount);
       };
     };
   };
@@ -168,4 +180,48 @@ function handleBullets() {
       span.className = 'on';
     }
   });
+};
+
+function showResults(count) {
+  let theResults;
+  if (curInd === count) {
+    // console.log('Questions are finished');
+    [quizArea, answersArea, submitBtn, bullets].forEach(item => item.remove());
+    // instead of repeating same code, I used destructuring array
+
+    if (properAnswers > (count / 2) && properAnswers < count) {
+      theResults = `<span class='good'>Good Job</span>, ${properAnswers} From ${count} is Great`
+    } else if (properAnswers === count) {
+      theResults = `<span class='perfect'>Perfect</span>, That's Awesome!`;
+    } else {
+      theResults = `<span class='bad'>Try Next Time</span>,
+      ${properAnswers} From ${count} is Bad, You Need To Work On Yourself!`
+    }
+    resultsContainer.innerHTML = theResults
+    resultsContainer.style.padding = '10px';
+    resultsContainer.style.backgroundColor = '#FFF';
+    resultsContainer.style.marginTop = '10px';
+  }
+};
+
+function countdown(duration, count) {
+  if (curInd < count) {
+    let minutes, seconds;
+    countdownInterval = setInterval(() => {
+      minutes = parseInt(duration / 60);// same as floor, it makes float vanish,
+      //  so it's mainly for minutes
+      seconds = parseInt(duration % 60);// to get the rest of time, which is seconds
+
+      minutes = minutes < 10 ? `0${minutes}` : minutes;
+      seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+      countdownElement.innerHTML = `${minutes}:${seconds}`;
+      if (--duration < 0) {
+        clearInterval(countdownInterval);// stops the counter
+        // console.log('finished');
+        // instead of making a crazy function, just make this clicks
+        submitBtn.click();
+      }
+    },1000)
+  }
 };
