@@ -26,7 +26,9 @@ Prerequisites
 
 let countSpan = $('.count span'),
     bulletsSpanContainer = $('.bullets .spans'),
-    quizArea = $('.quiz-area')
+    quizArea = $('.quiz-area'),
+    answersArea = $('.answers-area'),
+    submitBtn = $('.submit-button')
 ;
 
 // set Settings/Options
@@ -45,6 +47,15 @@ function getQuestions() {
       createBUllets(qCount);
 
       addQuestionData(questionsObject[curInd], qCount);
+
+      // clicking On Submit Button
+      submitBtn.onclick = (e) => {
+        // catch the Proper Answer
+        let theProperAnswer = questionsObject[curInd].right_answer;
+        // console.log(theProperAnswer)
+        // if ()// I believe that when both clicked answer nad right_answer are same
+        // Osama will make this function goes to the next question
+      };
     };
   };
 
@@ -87,6 +98,11 @@ function addQuestionData(obj, count) {
     radioInput.type = 'radio';
     radioInput.id = 'answer_' + i;
     radioInput.dataset.answer = obj['answer_' + i];
+    // Selecting First Option
+    if (i === 1) {
+      radioInput.checked = true;
+    }
+
     // create Label
     let theLabel = document.createElement('label');
     theLabel.htmlFor = 'answer_' + i;
@@ -95,5 +111,7 @@ function addQuestionData(obj, count) {
     // add both into mainDiv
     mainDiv.appendChild(radioInput)
     mainDiv.appendChild(theLabel)
+
+    answersArea.appendChild(mainDiv)
   }
 };
