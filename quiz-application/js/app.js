@@ -32,7 +32,9 @@ let countSpan = $('.count span'),
 ;
 
 // set Settings/Options
-let curInd = 0;
+let curInd = 0,
+    properAnswers = 0
+;
 
 function getQuestions() {
   let myRequest = new XMLHttpRequest();
@@ -53,8 +55,25 @@ function getQuestions() {
         // catch the Proper Answer
         let theProperAnswer = questionsObject[curInd].right_answer;
         // console.log(theProperAnswer)
-        // if ()// I believe that when both clicked answer nad right_answer are same
-        // Osama will make this function goes to the next question
+        // increase current Index
+        curInd++;
+
+        // Osama said, making the questions as global, is better than his solution
+        // I think he meant global API
+        // Check The Answer
+        checkAnswer(theProperAnswer, qCount);
+
+        // needing to delete each innerHTML of prior Qs
+        quizArea.innerHTML = '';
+        answersArea.innerHTML = '';
+
+        // now, only invoke our function
+        addQuestionData(questionsObject[curInd], qCount);
+
+        // Handle Bullets Class
+        handleBullets();
+
+        
       };
     };
   };
@@ -78,40 +97,75 @@ function createBUllets(num) {
 }
 
 function addQuestionData(obj, count) {
-  // console.table(obj);
-  // console.log(count);
+  if (curInd < count) {// this condition is important to stop this function if obj length is at last index
+    // console.table(obj);
+    // console.log(count);
 
-  // Create H2 Q title
-  let questionTitle = document.createElement('h2');
-  // Create Question Text
-  let questionText = document.createTextNode(obj['title']);
-  // append it
-  questionTitle.appendChild(questionText);
-  quizArea.appendChild(questionTitle);
+    // Create H2 Q title
+    let questionTitle = document.createElement('h2');
+    // Create Question Text
+    let questionText = document.createTextNode(obj['title']);
+    // append it
+    questionTitle.appendChild(questionText);
+    quizArea.appendChild(questionTitle);
 
-  for (let i = 1; i <= 4; i++) {
-    // Create the Answers
-    let mainDiv = document.createElement('div');
-    mainDiv.className = 'answer';
-    let radioInput = document.createElement('input');
-    radioInput.name = 'question';
-    radioInput.type = 'radio';
-    radioInput.id = 'answer_' + i;
-    radioInput.dataset.answer = obj['answer_' + i];
-    // Selecting First Option
-    if (i === 1) {
-      radioInput.checked = true;
+    for (let i = 1; i <= 4; i++) {
+      // Create the Answers
+      let mainDiv = document.createElement('div');
+      mainDiv.className = 'answer';
+      let radioInput = document.createElement('input');
+      radioInput.name = 'question';
+      radioInput.type = 'radio';
+      radioInput.id = 'answer_' + i;
+      radioInput.dataset.answer = obj['answer_' + i];
+      // Selecting First Option
+      if (i === 1) {
+        radioInput.checked = true;
+      }
+
+      // create Label
+      let theLabel = document.createElement('label');
+      theLabel.htmlFor = 'answer_' + i;
+      let labelText = document.createTextNode(obj['answer_' + i])
+      theLabel.appendChild(labelText);
+      // add both into mainDiv
+      mainDiv.appendChild(radioInput)
+      mainDiv.appendChild(theLabel)
+
+      answersArea.appendChild(mainDiv)
     }
-
-    // create Label
-    let theLabel = document.createElement('label');
-    theLabel.htmlFor = 'answer_' + i;
-    let labelText = document.createTextNode(obj['answer_' + i])
-    theLabel.appendChild(labelText);
-    // add both into mainDiv
-    mainDiv.appendChild(radioInput)
-    mainDiv.appendChild(theLabel)
-
-    answersArea.appendChild(mainDiv)
   }
+};
+
+function checkAnswer(rAnswer, count) {
+  // console.log(aAnswer);
+  // console.log(count);
+  let answers = $('[name="question"]'),//can be as getElementsByName
+      theChosenAnswer
+  ;
+  for (let i = 0; i < answers.length; i++) {
+    if (answers[i].checked) {// no need to type == true
+      theChosenAnswer = answers[i].dataset.answer;
+    }
+  }
+  // console.log(`Proper Answer Is: ${rAnswer}`);
+  // console.log(`Chosen Answer Is: ${theChosenAnswer}`);
+
+  if (rAnswer === theChosenAnswer) {
+    properAnswers++;
+    // console.log('Correct Answer');
+  } else {
+    // console.log('wrong Answer');
+  }
+}
+
+function handleBullets() {
+  let bulletsSpans = $('.bullets .spans span'),
+      arrayOfSpans = Array.from(bulletsSpans)
+  ;
+  arrayOfSpans.forEach((span, index)=> {
+    if (curInd === index) {//this curInd solves a lot of your stupidities
+      span.className = 'on';
+    }
+  });
 };
