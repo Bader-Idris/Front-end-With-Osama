@@ -6,7 +6,6 @@ Element.prototype.$ = function (selector) {
   const elements = this.querySelectorAll(selector);
   return elements.length === 1 ? elements[0] : elements;
 };
-
 const forms = $('main form'),
       section = $('main section'),
       nextButton = $('form button.next'),
@@ -39,7 +38,6 @@ if (document.documentElement.offsetWidth > 767) {
 } else {
   section.style.left = '0%';
 }
-
 imgs.forEach((e)=> e.setAttribute('draggable', 'false'));
 const addFieldError = (field, error, pattern) => {
   field.addEventListener('blur', () => {
@@ -73,65 +71,71 @@ phoneError.innerText = 'Please enter a valid phone number';
 addFieldError(nameField, nameError, usernamePattern);
 addFieldError(emailField, emailError, emailPattern);
 addFieldError(phoneField, phoneError, phonePattern);
-
 [nameField, emailField, phoneField].forEach(clearInvalidBorder);
 
 let yearlyActive = planEither.children[2].classList.contains('active'),
   monthlyActive = planEither.children[0].classList.contains('active');
 
+const moveSection = (offset) => {
+  if (document.documentElement.offsetWidth > 767) {
+    section.style.top = +section.style.top.slice(0, -1) + offset + "%";
+  } else {
+    section.style.left = +section.style.left.slice(0, -1) + offset + "%";
+  }
+};
 nextButton.forEach((e, ind) => {
   e.onclick = () => {
     if ($('.first div .error').length == 0 && nameField.value != '' && emailField.value != '' && phoneField.value != '') {
-      if (document.documentElement.offsetWidth > 767){
-      section.style.top = +section.style.top.slice(0, -1) - 100 + "%";
+      moveSection(-100);
+      steps[ind].classList.remove('active');
+      if (steps[ind + 1] !== undefined) {
+        steps[ind + 1].classList.add('active');
       } else {
-        section.style.left = +section.style.left.slice(0, -1) - 100 + "%";
+        steps[ind].classList.add('active');
       }
-    steps.forEach((ev, i, arr) => {
-      arr[ind].classList.remove('active');
-      if (arr[ind + 1] !== undefined) {
-        arr[ind + 1].classList.add('active');
-      } else {
-        arr[ind].classList.add('active');
-      }
-    });
+    } else {
+      console.log('prevented')
+    }
+    if (ind === 0) {
+      fields.forEach(({ element, key }) => {
+        sessionStorage.setItem(key, element.value);
+      });
     }
   };
-})
+});
 backButton.forEach((e, ind)=> {
   e.onclick = () => {
-    if (document.documentElement.offsetWidth > 767){
-    section.style.top = +section.style.top.slice(0,-1) + 100 + "%";
-    } else {
-        section.style.left = +section.style.left.slice(0, -1) + 100 + "%";
-      }
-    steps.forEach((ev, i, arr) => {
-      arr[ind + 1].classList.remove('active');
-        arr[ind].classList.add('active');
-    });
+    moveSection(100);
+    steps[ind + 1].classList.remove('active');
+    steps[ind].classList.add('active');
   };
-})
+});
+
 submitBtn.addEventListener('click', function(e) {
   e.preventDefault();
   // perform form validation and submission using JavaScript
 });
+const fields = [
+  { element: nameField, key: 'name' },
+  { element: emailField, key: 'email' },
+  { element: phoneField, key: 'phone' },
+];
+fields.forEach(({ element, key }) => {
+  if (sessionStorage.getItem(key)) {
+    element.value = sessionStorage.getItem(key);
+  }
+});
 
-let monthPrice = [];
-miniPlans.forEach(e => monthPrice.push(e.children[2].innerHTML));
-// find an approach to make it more dynamic if possible
 let yearPrice = ['$90/yr', '$120/yr', '$150/yr'];
-
-let checkboxMonthly = [];
-checkboxPrices.forEach(e => checkboxMonthly.push(e.innerHTML))
+let monthPrice = [...miniPlans].map(e => e.children[2].innerHTML);
 let checkboxYearly = ['+$10/yr', '+$20/yr', '+$20/yr'];
-let moYr = ['/mo','/yr']
-
+let checkboxMonthly = [...checkboxPrices].map(e => e.innerHTML);
 let summeryMainPlanPrice = planOptionSpan.parentElement.children[2];
 
 miniPlans.forEach((e, ind, arr) => {
   if (ind == 0) {
-    summeryMainPlanPrice.innerHTML = arr[0].children[2].innerHTML
-    totalSpans[1].innerHTML = arr[0].children[2].innerHTML
+    summeryMainPlanPrice.innerHTML = arr[0].children[2].innerHTML;
+    totalSpans[1].innerHTML = arr[0].children[2].innerHTML;
   }
 
   e.onclick = () => {
@@ -152,7 +156,8 @@ planBtn.onclick = (e, indexO) => {
 
   yearlyActive = yearlyActive ? false : true;
   monthlyActive = !yearlyActive;
-  if (yearlyActive) {//when yearly is active🔴
+
+  if (yearlyActive) {
     miniPlans.forEach((ev, ind, arr) => {
       const discount = Object.assign(document.createElement('span'), {
         className: 'discount',
@@ -165,23 +170,16 @@ planBtn.onclick = (e, indexO) => {
       planOptionSpan.innerHTML = '(Yearly)';
       totalSpans[0].innerHTML = 'Total (per year)';
     });
-    // totalPlanPrices()
   }
-  if (monthlyActive) {//when monthly is active🔴
-    miniPlans.forEach((ev, ind, arr) => {
-      if (arr[ind].children.length == 4) miniPlans[ind].children[3].remove();
+  if (monthlyActive) {
+    miniPlans.forEach((ev, ind) => {
+      if (ev.children.length == 4) miniPlans[ind].children[3].remove();
       ev.children[2].innerHTML = monthPrice[ind];
 
       checkboxPrices[ind].innerHTML = checkboxMonthly[ind];
       planOptionSpan.innerHTML = '(Monthly)';
       totalSpans[0].innerHTML = 'Total (per month)';
-
-      if (ev.classList.contains('active')) {
-        // totalSpans[1].innerHTML = `$${ev.children[2].innerHTML.slice(1, -3)}/mo`//🔴
-        // console.log(totalSpans[1].innerHTML)
-      }
     });
-    // totalPlanPrices()
   }
   miniPlans.forEach((ev) => {
     if (ev.classList.contains('active')){
@@ -192,39 +190,39 @@ planBtn.onclick = (e, indexO) => {
   checkMeForTotalPrices()
   totalPlanPrices()
 }
+
 const summeryClasses = ['online', 'large', 'custom'],
       summeryHead = [];
 checkContainer.forEach((e)=> {
   summeryHead.push(e.children[2].children[0].innerHTML);
 });
 
-checkContainer.forEach((e,index) => e.onclick = () => {
+checkContainer.forEach((e, index) => e.onclick = () => {
   e.children[0].checked = !e.children[0].checked;
   e.classList.toggle('active');
 
-  if (index === 0) {
-    summery.children[1].classList.toggle('active');
+  switch (index) {
+    case 0:
+      summery.children[1].classList.toggle('active');
+      break;
+    case 1:
+      summery.children[2].classList.toggle('active');
+      break;
+    case 2:
+      summery.children[3].classList.toggle('active');
+      break;
+    default:
+      break;
   }
-  if (index === 1) {
-    summery.children[2].classList.toggle('active');
-  }
-  if (index === 2) {
-    summery.children[3].classList.toggle('active');
-  }
-
-  checkMeForTotalPrices()
-  totalPlanPrices()
+  checkMeForTotalPrices();
+  totalPlanPrices();
 });
 
 function checkMeForTotalPrices() {
-  Array.from(summery.children).forEach((e, index) => {
+  [...summery.children].forEach((e, index) => {
     if (index > 0 && summery.children[index].classList.contains('active')) {
-      if(yearlyActive){
-        e.childNodes[1].innerHTML = checkboxYearly[index -1];
-      }
-      if(monthlyActive){
-        e.childNodes[1].innerHTML = checkboxMonthly[index -1];
-      }
+      if(yearlyActive) e.childNodes[1].innerHTML = checkboxYearly[index -1];
+      if(monthlyActive) e.childNodes[1].innerHTML = checkboxMonthly[index -1];
     }
   })
 }
@@ -242,10 +240,9 @@ changeLink.onclick = (e) => {
   steps[1].classList.add('active');
 };
 
-
 const OptionalSummeryPricesCount = () => {
   let summerySubPrices = 0;
-  Array.from(summery.children).forEach((cur, index) => {
+  [...summery.children].forEach((cur, index) => {
     if (cur != 0 && index > 0 && cur.classList.contains('active')) {
       summerySubPrices += parseInt(cur.children[0].innerHTML.substring(2, cur.children[0].innerHTML.length - 3))
     }
