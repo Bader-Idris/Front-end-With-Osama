@@ -34,7 +34,12 @@ const forms = $('main form'),
       changeLink = $('#change-link')
       ;
 
-section.style.top = '0%';
+if (document.documentElement.offsetWidth > 767) {
+  section.style.top = '0%';
+} else {
+  section.style.left = '0%';
+}
+
 imgs.forEach((e)=> e.setAttribute('draggable', 'false'));
 const addFieldError = (field, error, pattern) => {
   field.addEventListener('blur', () => {
@@ -77,7 +82,11 @@ let yearlyActive = planEither.children[2].classList.contains('active'),
 nextButton.forEach((e, ind) => {
   e.onclick = () => {
     if ($('.first div .error').length == 0 && nameField.value != '' && emailField.value != '' && phoneField.value != '') {
+      if (document.documentElement.offsetWidth > 767){
       section.style.top = +section.style.top.slice(0, -1) - 100 + "%";
+      } else {
+        section.style.left = +section.style.left.slice(0, -1) - 100 + "%";
+      }
     steps.forEach((ev, i, arr) => {
       arr[ind].classList.remove('active');
       if (arr[ind + 1] !== undefined) {
@@ -91,7 +100,11 @@ nextButton.forEach((e, ind) => {
 })
 backButton.forEach((e, ind)=> {
   e.onclick = () => {
+    if (document.documentElement.offsetWidth > 767){
     section.style.top = +section.style.top.slice(0,-1) + 100 + "%";
+    } else {
+        section.style.left = +section.style.left.slice(0, -1) + 100 + "%";
+      }
     steps.forEach((ev, i, arr) => {
       arr[ind + 1].classList.remove('active');
         arr[ind].classList.add('active');
@@ -128,17 +141,7 @@ miniPlans.forEach((e, ind, arr) => {
     e.classList.add('active');
     planOptionSpan.parentElement.childNodes[0].textContent = e.children[1].innerHTML + ' ';
     summeryMainPlanPrice.innerHTML = e.children[2].innerHTML;
-
-    // let subTotalPlan = +summeryMainPlanPrice.innerHTML.substring(1, summeryMainPlanPrice.innerHTML.length - 3);//🔴
-    if (yearlyActive) {
-      // totalSpans[1].innerHTML = `$${OptionalSummeryPricesCount() + subTotalPlan + moYr[1]}`;//🔴
-      // totalPlanPrices()
-      // totalSpans[1].innerHTML = `$${totalPlanPrices()+ moYr[1]}`;//🔴
-    } else if (monthlyActive) {
-      // totalSpans[1].innerHTML = `$${OptionalSummeryPricesCount() + subTotalPlan + moYr[0]}`;
-      // totalPlanPrices()
-      // totalSpans[1].innerHTML = `$${totalPlanPrices() + moYr[0]}`;
-    }
+    totalPlanPrices()
   };
 });
 
@@ -186,38 +189,8 @@ planBtn.onclick = (e, indexO) => {
     }
   })
 
-  if (summery.childElementCount > 1) {// this MF makes me nuts🤢🔴
-    Array.from(summery.children).forEach((e, index) => {
-      if (index > 0) {
-        // if (e.classList.contains(summeryClasses[index]) && yearlyActive) {
-        if (yearlyActive) {
-          if (index == 1 && e.classList.contains(summeryClasses[0])){
-            e.childNodes[1].innerHTML = checkboxYearly[0];
-          }
-          if (index == 2 && e.classList.contains(summeryClasses[1])){
-            e.childNodes[1].innerHTML = checkboxYearly[1];
-          }
-          if (index == 3 && e.classList.contains(summeryClasses[2])){
-            e.childNodes[1].innerHTML = checkboxYearly[2];
-          }
-          // e.childNodes[1].innerHTML = checkboxYearly[index - 1];
-        }
-        // if (e.classList.contains(summeryClasses[index]) && monthlyActive) {
-        if (monthlyActive) {
-          if (index == 1 && e.classList.contains(summeryClasses[0])){
-            e.childNodes[1].innerHTML = checkboxMonthly[0];
-          }
-          if (index == 2 && e.classList.contains(summeryClasses[1])){
-            e.childNodes[1].innerHTML = checkboxMonthly[1];
-          }
-          if (index == 3 && e.classList.contains(summeryClasses[2])){
-            e.childNodes[1].innerHTML = checkboxMonthly[2];
-          }
-          // e.childNodes[1].innerHTML = checkboxMonthly[index - 1];
-        }
-      }
-    });
-  }
+  checkMeForTotalPrices()
+  totalPlanPrices()
 }
 const summeryClasses = ['online', 'large', 'custom'],
       summeryHead = [];
@@ -228,47 +201,52 @@ checkContainer.forEach((e)=> {
 checkContainer.forEach((e,index) => e.onclick = () => {
   e.children[0].checked = !e.children[0].checked;
   e.classList.toggle('active');
-  
-  if (e.classList.contains('active')) {
-    checkboxPrices.forEach((e,ind,arr) => {
-      if (index == ind) {
-        let prices = document.createTextNode(checkboxPrices[ind].innerHTML);
-        let checkPricesSummery = document.createElement('span');
-        checkPricesSummery.appendChild(prices)
-        let plans = document.createElement('div');
-        plans.className = summeryClasses[ind];
-        plans.innerHTML = summeryHead[ind];
-        plans.appendChild(checkPricesSummery);
-        planOptionSpan.parentElement.parentElement.appendChild(plans);
-      }
-    })
+
+  if (index === 0) {
+    summery.children[1].classList.toggle('active');
   }
-  if (!e.classList.contains('active')) {
-    Array.from(planOptionSpan.parentElement.parentElement.children).forEach((e)=> {
-      if (e.classList.contains(summeryClasses[index])) e.remove()
-    });
+  if (index === 1) {
+    summery.children[2].classList.toggle('active');
   }
-  // totalPlanPrices()//🔴
+  if (index === 2) {
+    summery.children[3].classList.toggle('active');
+  }
+
+  checkMeForTotalPrices()
+  totalPlanPrices()
 });
 
-changeLink.onclick = (e) => {// might change when working with phone
+function checkMeForTotalPrices() {
+  Array.from(summery.children).forEach((e, index) => {
+    if (index > 0 && summery.children[index].classList.contains('active')) {
+      if(yearlyActive){
+        e.childNodes[1].innerHTML = checkboxYearly[index -1];
+      }
+      if(monthlyActive){
+        e.childNodes[1].innerHTML = checkboxMonthly[index -1];
+      }
+    }
+  })
+}
+
+changeLink.onclick = (e) => {
   e.preventDefault();
-  section.style.top = +section.style.top.slice(0,-1) + 200 + "%";
+  if (document.documentElement.offsetWidth > 767){
+    section.style.top = +section.style.top.slice(0,-1) + 200 + "%";
+  } else {
+    section.style.left = +section.style.left.slice(0, -1) + 200 + "%";
+  }
   steps.forEach((ev) => {
     ev.classList.remove('active');
   });
   steps[1].classList.add('active');
 };
 
-// see 130 && 188 for it
-
-//🔴there is a bug, when large storage and customizable are active, in summery
-// if customizable is above and yearly, it'll be 10 dollars instead of 20🔴🔴
 
 const OptionalSummeryPricesCount = () => {
   let summerySubPrices = 0;
   Array.from(summery.children).forEach((cur, index) => {
-    if (cur != 0 && index > 0) {
+    if (cur != 0 && index > 0 && cur.classList.contains('active')) {
       summerySubPrices += parseInt(cur.children[0].innerHTML.substring(2, cur.children[0].innerHTML.length - 3))
     }
   })
@@ -276,5 +254,10 @@ const OptionalSummeryPricesCount = () => {
 }
 const totalPlanPrices = () => {
   let subTotalPlan = +summeryMainPlanPrice.innerHTML.substring(1, summeryMainPlanPrice.innerHTML.length - 3);
-  return subTotalPlan + OptionalSummeryPricesCount()
+  if (yearlyActive) {
+    totalSpans[1].innerHTML = `$${subTotalPlan + OptionalSummeryPricesCount()}/yr`;
+  }
+  if (monthlyActive) {
+    totalSpans[1].innerHTML = `$${subTotalPlan + OptionalSummeryPricesCount()}/mo`;
+  }
 }

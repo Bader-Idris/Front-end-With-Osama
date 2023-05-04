@@ -177,4 +177,5 @@ function startPlaying() {
 // Tasks for me, see above [04] they're 6 missions
 // saving score as 10fastFingers.com
 // put levels inside a select box
-// add more seconds to first click, to let player sees words, as doubling 'em
+// add more seconds to first click,
+//  to let player sees words, as doubling 'em
