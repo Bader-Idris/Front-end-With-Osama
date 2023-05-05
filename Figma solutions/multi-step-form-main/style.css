@@ -159,7 +159,7 @@ main {
   background-color: var(--White);
   padding: 15px;
   border-radius: 20px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 main form {
   position: relative;
@@ -247,6 +247,7 @@ main form input {
   border-radius: 4px;
   border: 1px solid var(--Light-gray);
   width: 100%;
+  font-weight: 500;
 }
 main form input.invalid {
   border: 1px solid var(--Strawberry-red);
@@ -290,8 +291,18 @@ main .second .mini-plans {
   cursor: pointer;
   user-select: none;
 }
-.mini-plans img {
-  margin: 0 40px 40px 0;
+@media (max-width:767px) {
+  main .second .mini-plans {
+    flex-direction: column;
+  }
+  .second .mini-plans div {
+    width: 100%;
+  }
+}
+@media (min-width:768px) {
+  .mini-plans img {
+    margin: 0 40px 40px 0;
+  }
 }
 .mini-plans div h3 {
   color: var(--Marine-blue);

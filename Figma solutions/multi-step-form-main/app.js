@@ -112,8 +112,14 @@ backButton.forEach((e, ind)=> {
 });
 
 submitBtn.addEventListener('click', function(e) {
-  e.preventDefault();//🔴
-  JSON.stringify(formValidatedFunctions())
+  e.preventDefault();
+  // trying to send the data using node.js and JSON methods
+  const fs = require('fs');
+  // JSON.stringify(formValidatedFunctions())
+  fs.writeFile('mydata.json', JSON.stringify(formValidatedFunctions()), err => {
+    if (err) throw err = Error('Could not write, You need To Install Node.js');
+    console.log('Data written to file');
+  });
 });
 const fields = [
   { element: nameField, key: 'name' },
