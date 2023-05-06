@@ -111,13 +111,18 @@ backButton.forEach((e, ind)=> {
   };
 });
 
-submitBtn.addEventListener('click', function(e) {
+submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
   // trying to send the data using node.js and JSON methods
   const fs = require('fs');
-  // JSON.stringify(formValidatedFunctions())
+  const { execSync } = require('child_process');
+  try {
+    execSync('node -v');
+  } catch (err) {
+    throw new Error('Node.js is not installed on your system');
+  }
   fs.writeFile('mydata.json', JSON.stringify(formValidatedFunctions()), err => {
-    if (err) throw err = Error('Could not write, You need To Install Node.js');
+    if (err) throw err;
     console.log('Data written to file');
   });
 });
@@ -279,7 +284,6 @@ const submittedMiniPlan = () =>
     ({ mainPlan: planOptionSpan.parentElement.childNodes[0].textContent.trim() });
 const subscriptionPlan = () => 
     ({ subscriptionPlan: yearlyActive ? 'yearly' : 'monthly' });
-// explain this function, it needs full concentration
 const submitOptionPlanClasses = () => [...summery.children]
   .filter((cur, index) => cur !== 0 && index > 0 && cur.classList.contains('active'))
   .flatMap((cur, index) => [...cur.classList].filter(item => item !== 'active').map(item => ({ [index]: item })))
