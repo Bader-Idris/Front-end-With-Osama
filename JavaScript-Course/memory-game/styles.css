@@ -25,6 +25,7 @@ body {
   text-align: center;
   border-radius: 6px;
   cursor: pointer;
+  user-select: none;
 }
 .info-container {
   width: 1080px;
@@ -61,6 +62,7 @@ body {
   position: relative;
   flex: 1 0 200px;
   margin: 0 10px 20px;
+  /* when .is-flipped is active, ir rotatesY 180deg */
 }
 .memory-game-blocks .game-block .front {
   background-color: #333;
@@ -95,8 +97,4 @@ body {
   -moz-transform: rotateY(180deg);
   transform: rotateY(180deg);
   pointer-events: none;
-}
-.face:not(.back) img {/*check me will change*/
-  width: 190px;
-  background: #03A9F4;
 }
