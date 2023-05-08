@@ -63,10 +63,24 @@ select:focus-visible {
   float: left;
   width: 40%;
 }
+.info-container .level {
+  text-align: center;
+  width: 20%;
+  display: inline-block;
+  text-transform: uppercase;
+
+}
 .info-container .tries {
   float: right;
   width: 40%;
   text-align: right;
+}
+.info-container .tries span {
+  color: #E91E63;
+}
+.info-container div {
+  color: #FF5722;
+  font-weight: bold;
 }
 .memory-game-blocks {
   display: flex;

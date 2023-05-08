@@ -15,7 +15,8 @@ const gameStartBtn = $('.control-buttons span'),
       triesElement = $('.tries span'),
       success = $('#success'),
       fail = $('#fail'),
-      failLevel = $('select option')
+      failLevel = $('select option'),
+      pickedLevel = $('.info-container .level')
 ;
 // images.draggable = false;// make it as this
 gameStartBtn.addEventListener('click', (e) => {
@@ -27,17 +28,18 @@ gameStartBtn.addEventListener('click', (e) => {
   setTimeout(() => {
     blocks.forEach(e => e.classList.remove('is-flipped'));
   }, duration);
+  appearingLevel();
 });
 // to make Game Works well, we need to Set Duration
 //  for preventing seeing more than 2 elements at a time
 let duration = 1000;
 shuffle(orderRange);
 
-// blocksContainer
 blocks.forEach((block, i) => {
   block.style.order = orderRange[i];
   block.onclick = (e) => {//via me
     flipBlock(block);
+    matchedFailure();
   };
 });
 
@@ -92,9 +94,6 @@ function checkMatchedBlocks(firstBlock, secondBlock) {
     }, duration);
     fail.play();
   }
-  if (+triesElement.innerHTML === parseInt([...failLevel][0].innerHTML.split(':')[1])){
-    gameOver();
-  }
 };
 function gameOver() {
   let div = document.createElement('div'),
@@ -111,11 +110,33 @@ function gameOver() {
   let restartGame = $('.restart-game')
   restartGame.onclick = ((e => location.reload()));
 };
+function matchedFailure() {
+  failLevel.forEach((e, ind, arr) => {
+    if (e.selected) {
+      if (parseInt(e.innerHTML.split(':')[1])) {
+        // pickedLevel.innerHTML = e.innerHTML.split(':')[0].toLowerCase()
+        if (+triesElement.innerHTML === parseInt(e.innerHTML.split(':')[1])) {
+          gameOver();
+        }
+      } else {
+        // pickedLevel.innerHTML = arr[0].innerHTML.split(':')[0].toLowerCase()
+        if (+triesElement.innerHTML === parseInt(arr[0].innerHTML.split(':')[1])) {
+          gameOver();
+        }
+      }
+    }
+  })
+};
+function appearingLevel() { 
+  failLevel.forEach((e, ind, arr) => {
+    if (!e.disabled && e.selected) pickedLevel.innerHTML = e.innerHTML.split(':')[0].toLowerCase();
+  })
+};
+
 /*
   tasks:
   add a starting audio
-  add a countdown, when user fails within, to create a div.innerHTML GAME OVER
-  add a restart the game button when user fails
+  add a countdown
 
   CHALLENGE:
   make prompt name sets in local storage, when we have two players to compare between them
