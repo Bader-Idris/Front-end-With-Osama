@@ -13,6 +13,29 @@ body {
   z-index: 2;
   background-color: rgba(3, 169, 244, 0.9);
 }
+select:focus-visible {
+  outline: none;
+}
+.control-buttons select {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 80px);
+  transform: translate(-50%, -50%);
+  background-color: #9E9E9E;
+  color: #FFF;
+  padding: 15px 25px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  /* this, 🔽 span, and .restart-game need to be shortened */
+}
+.control-buttons select option {
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #2196F3;
+}
 .control-buttons span {
   position: absolute;
   left: 50%;
@@ -38,11 +61,11 @@ body {
 }
 .info-container .name {
   float: left;
-  width: 50%;
+  width: 40%;
 }
 .info-container .tries {
   float: right;
-  width: 50%;
+  width: 40%;
   text-align: right;
 }
 .memory-game-blocks {
@@ -50,6 +73,7 @@ body {
   width: 1100px;
   flex-wrap: wrap;
   margin: 20px auto;
+  user-select: none;
 }
 .memory-game-blocks.no-clicking {
   pointer-events: none;
@@ -62,7 +86,6 @@ body {
   position: relative;
   flex: 1 0 200px;
   margin: 0 10px 20px;
-  /* when .is-flipped is active, ir rotatesY 180deg */
 }
 .memory-game-blocks .game-block .front {
   background-color: #333;
@@ -97,4 +120,41 @@ body {
   -moz-transform: rotateY(180deg);
   transform: rotateY(180deg);
   pointer-events: none;
+}
+.game-over {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #0011fded;
+}
+.game-over div,
+.game-over .restart-game {
+  position: absolute;
+  left: 50%;
+  background-color: #F44336;
+  color: #FFF;
+  padding: 15px 25px;
+  text-align: center;
+  border-radius: 6px;
+  user-select: none;
+  transform: translate(-50%, -50%);
+}
+.game-over div{
+  top: calc(50% - 80px);
+  font-size: 60px;
+  background-color: #333;
+  padding: 10px 50px;
+  text-transform: uppercase;
+}
+.game-over .restart-game {
+  top: calc(50%);
+  font-size: 22px;
+  background-color: #F44336;
+  cursor: pointer;
+}
+.game-over .restart-game:hover {
+  opacity: .8;
 }
