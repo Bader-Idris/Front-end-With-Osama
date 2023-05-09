@@ -12,10 +12,10 @@
   <body>
     <div class="control-buttons">
       <select title="Select an option...">
-        <option value="easy">Easy: 15 tries</option>
-        <option value="medium">Medium: 10 tries</option>
-        <option value="hard">Hard: 5 tries</option>
-        <option value="nightmare">Nightmare: 1 tries</option>
+        <option value="easy">Easy: 15 tries, 20 minutes</option>
+        <option value="medium">Medium: 10 tries, 15 minutes</option>
+        <option value="hard">Hard: 5 tries, 10 minutes</option>
+        <option value="nightmare">Nightmare: 2 tries, 5 minutes</option>
         <option value="" disabled selected>Select A Level</option>
       </select>
       <span>Start The Game</span>
@@ -23,6 +23,10 @@
     <div class="info-container">
       <div class="name">
         Hello: <span></span>
+      </div>
+      <div class="countdown">
+        <span class="minutes">##</span>
+        <span class="seconds">##</span>
       </div>
       <div class="level">easy</div>
       <div class="tries">
@@ -138,21 +142,24 @@
           <img decoding="async" src="images/touch.png" alt="">
         </div>
       </div>
-      <div class="game-block" data-organs="puzzle">
+      <div class="game-block" data-organs="baby.png">
         <div class="face front"></div>
         <div class="face back">
-          <img decoding="async" src="images/puzzle.png" alt="">
+          <img decoding="async" src="images/baby.png" alt="">
         </div>
       </div>
-      <div class="game-block" data-organs="puzzle">
+      <div class="game-block" data-organs="baby.png">
         <div class="face front"></div>
         <div class="face back">
-          <img decoding="async" src="images/puzzle.png" alt="">
+          <img decoding="async" src="images/baby.png" alt="">
         </div>
       </div>
     </div>
     <audio id="success" src="audio/success.mp3" preload="auto"></audio>
     <audio id="fail" src="audio/fail.mp3" preload="auto"></audio>
+    <audio id="funny-fail" src="audio/funny-Fail-effect.mp3" preload="auto"></audio>
+    <audio id="game-starting" src="audio/game-starts.mp3" preload="auto"></audio>
+    <audio id="clap-winning" src="audio/clap-sound-effect.mp3" preload="auto"></audio>
     <script src="app.js"></script>
   </body>
 </html>

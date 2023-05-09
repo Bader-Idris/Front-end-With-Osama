@@ -15,10 +15,13 @@ const gameStartBtn = $('.control-buttons span'),
       triesElement = $('.tries span'),
       success = $('#success'),
       fail = $('#fail'),
+      funnyFail = $('#funny-fail'),
+      Winning = $('#clap-winning'),
+      gameStarting = $('#game-starting'),
       failLevel = $('select option'),
-      pickedLevel = $('.info-container .level')
+      pickedLevel = $('.info-container .level'),
+      countdown = $('.info-container .countdown')
 ;
-// images.draggable = false;// make it as this
 gameStartBtn.addEventListener('click', (e) => {
   let uNameAsk = prompt('Enter your name: ');
   userName.innerHTML = uNameAsk === '' || uNameAsk === null ? 'Unknown' : uNameAsk;
@@ -29,6 +32,8 @@ gameStartBtn.addEventListener('click', (e) => {
     blocks.forEach(e => e.classList.remove('is-flipped'));
   }, duration);
   appearingLevel();
+  countdownTimer(levelTimeGen);
+  gameStarting.play();
 });
 // to make Game Works well, we need to Set Duration
 //  for preventing seeing more than 2 elements at a time
@@ -47,7 +52,6 @@ function flipBlock(pickedBlock) {
   pickedBlock.classList.add('is-flipped');
   let allFlippedBlocks = blocks.filter(flippedBlock => flippedBlock.classList.contains('is-flipped'));
   // when User Pick Two Choices
-  // if (allFlippedBlocks.length % 2 == 0) {
   if (allFlippedBlocks.length === 2) {
     // stopping clicking
     stopClicking();
@@ -108,6 +112,7 @@ function gameOver() {
   div.className = 'game-over';
   document.body.appendChild(div);
   let restartGame = $('.restart-game')
+  funnyFail.play()
   restartGame.onclick = ((e => location.reload()));
 };
 function matchedFailure() {
@@ -127,17 +132,48 @@ function matchedFailure() {
     }
   })
 };
+let levelTimer = {
+  "easy": 20,
+  "medium": 15,
+  "hard": 10,
+  "nightmare": 5,
+}
+let levelTimeGen = levelTimer['easy'];
 function appearingLevel() { 
-  failLevel.forEach((e, ind, arr) => {
-    if (!e.disabled && e.selected) pickedLevel.innerHTML = e.innerHTML.split(':')[0].toLowerCase();
+  failLevel.forEach((e) => {
+    if (!e.disabled && e.selected) {
+      pickedLevel.innerHTML = e.innerHTML.split(':')[0].toLowerCase();
+      Object.keys(levelTimer).forEach(event => {
+        if (e.innerHTML.split(':')[0].toLowerCase() === event) {
+          levelTimeGen = levelTimer[event];
+        }
+      })
+    }
   })
 };
+function countdownTimer(howMinutes) {
+  let countDownDate = new Date().getTime() + (howMinutes * 60000) + 2000;
+  let counter = setInterval(() => {
+    let dateNow = new Date().getTime(),
+        dateDiff = countDownDate - dateNow,
+        minutes = Math.floor((dateDiff % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds = Math.floor((dateDiff % (1000 * 60)) / 1000)
+    ;
+    $(".minutes").innerHTML = minutes < 10 ? `0${minutes}` : minutes;
+    $(".seconds").innerHTML = seconds < 10 ? `0${seconds}` : seconds;
+    if (dateDiff < 0) {
+      clearInterval(counter);
+      gameOver();
+    }
+    let allBlocksMatched = blocks.filter(flippedBlock => flippedBlock.classList.contains('has-match'));
+    if (allBlocksMatched.length === blocks.length) {
+      Winning.play();
+      clearInterval(counter);
+    }
+  }, duration);
+}
 
 /*
-  tasks:
-  add a starting audio
-  add a countdown
-
   CHALLENGE:
   make prompt name sets in local storage, when we have two players to compare between them
   and set a leader inside the leader board div
