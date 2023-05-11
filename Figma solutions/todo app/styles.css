@@ -1,0 +1,333 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Josefin Sans";
+}
+:root {
+  /* Colors */
+  /* primary */
+  --Bright-Blue: hsl(220, 98%, 61%);
+  --linear-gradient-one: hsl(192, 100%, 67%);
+  --linear-gradient-two: hsl(280, 87%, 65%);
+  /* Light colors */
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+  --Light-Grayish-Blue: hsl(233, 11%, 84%);
+  --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+  --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+  /* Dark Theme */
+  --Very-Dark-Blue: hsl(235, 21%, 11%);
+  --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+  --Light-Grayish-Blue: hsl(234, 39%, 85%);
+  --Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+  --Dark-Grayish-Blue: hsl(234, 11%, 52%);
+  --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+  --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+
+  --main-font:18px;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+  src: url("assets/fonts/JosefinSans-Italic-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("assets/fonts/JosefinSans-VariableFont_wght.ttf");
+  font-weight: 700;
+}
+body {
+  background-color: var(--Very-Dark-Blue);
+}
+.header {}
+.back-img {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+/* .back-img .light-pho,
+.back-img .dark-pho,
+.back-img .light-des,
+.back-img .dark-des {
+  display: none;
+} */
+.back-img div{
+  display: none;
+}
+@media (max-width:767px) {
+  .back-img .light-pho.active,
+  .back-img .dark-pho.active{
+    display: block;
+  }
+  .back-img .light-des.active,
+  .back-img .dark-des.active{
+    display: none;
+  }
+}
+@media (min-width:768px) {
+  .back-img .light-des.active,
+  .back-img .dark-des.active{
+    display: block;
+  }
+  .back-img .light-pho.active,
+  .back-img .dark-pho.active{
+    display: none;
+  }
+}
+.back-img div img {
+  background-repeat: none;
+  background-size: contain;
+  width: 100%;
+}
+
+.theme {
+  
+}
+.theme h1 {
+  font-size: 36px;
+  text-transform: uppercase;
+  float: left;
+  color: var(--Light-Grayish-Blue-hover);
+}
+@media (max-width:767px) {
+  .theme h1 {
+    letter-spacing: 10px;
+  }
+}
+  @media (min-width:768px) {
+  .theme h1 {
+    letter-spacing: 20px;
+  }
+}
+
+.theme .sun,
+.theme .moon {
+  display: none;
+  float: right;
+}
+.theme .active {
+  display: block;
+}
+
+.container {
+  position: relative;
+}
+@media (max-width:767px) {
+  .container {
+    margin: 50px auto 0 auto;
+    width: 325px;
+  }
+}
+@media (min-width:768px) {
+  .container {
+    margin: 80px auto 0 auto;
+    width: 540px;
+  }
+}
+.form {
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  border-radius: 6px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  top: 40px;
+  position: relative;
+}
+.input {
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  flex: 1;
+  background: transparent;
+
+  position: relative;
+}
+.form::before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  border: 1px solid var(--Dark-Grayish-Blue);
+}
+.form .input {
+
+}
+@media (max-width:767px) {
+  .form .input {
+    margin-left: 40px;
+  }
+  .form::before {
+    left: 15px;
+  }
+}
+@media (min-width:768px) {
+  .form .input {
+    margin-left: 55px;
+    font-size: 20px;
+  }
+  .form::before {
+    left: 25px;
+  }
+}
+.input:focus {
+  outline: none;
+}
+.add {
+  border: none;
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.tasks {
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  margin-top: 65px;
+  border-radius: 6px;
+}
+@media (max-width:767px) {
+  .tasks {
+    padding: 0 20px 0;
+  }
+  .tasks .task {
+    margin-left: 40px;
+  }
+  .tasks .task::before {
+    left: -45px;
+  }
+  .tasks .task::after {
+  left: -60px;
+  width: calc(100% + 80px);
+  }
+
+}
+@media (min-width:768px) {
+  .tasks {
+    padding: 15px 20px 0;
+  }
+  .tasks .task {
+    margin-left: 55px;
+  }
+  .tasks .task::before {
+    left: -50px;
+  }
+  .tasks .task::after {
+  left: -75px;
+  width: calc(100% + 95px);
+  }
+
+}
+
+.tasks .task {
+  padding: 15px 10px 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  border: none;
+
+  background-color: transparent;
+  color: var(--Very-Light-Gray);
+}
+.tasks .task::before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  border: 1px solid var(--Dark-Grayish-Blue);
+}
+.tasks .task::after {
+  content: '';
+  height: 100%;
+  bottom: 0;
+  border-bottom: 1px solid var(--Dark-Grayish-Blue);
+  border-radius: 0;
+  position: absolute;
+}
+.tasks .task:not(:last-child) {
+  margin-bottom: 15px;
+}
+.tasks .task:hover {
+  /* background-color: #f7f7f7; */
+}
+.tasks .task.done {
+  text-decoration: line-through;
+  color: var(--Dark-Grayish-Blue);
+}
+.tasks .task.done::before {
+  content: url("assets/images/icon-check.svg");
+  background: linear-gradient(135deg,
+    var(--linear-gradient-one),
+    var(--linear-gradient-two));
+  line-height: 28px;
+  text-align: center;
+}
+.tasks .task span {
+  font-weight: bold;
+  font-size: 10px;
+  background-color: red;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+aside {
+  display: flex;
+  flex-direction: column;
+  color: var(--Light-Grayish-Blue-hover);
+}
+.items-left {
+  padding: 20px 0;
+  width: 100%;
+}
+.items-left div:nth-child(1){
+  float: left;
+  padding-left: 25px;
+}
+.items-left span {
+  padding-right: 5px;
+}
+.items-left div:nth-child(2){
+  float: right;
+  padding-right: 25px;
+}
+.filtered-tasks {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+.drag-and-drop {
+  padding: 20px 0;
+  margin: 20px auto;
+  text-align: center;
+  color: var(--Light-Grayish-Blue-hover);
+}
+
+
+footer.attribution {
+  font-size: 11px;
+  margin: 50px auto 20px;
+  position: relative;
+  text-align: center;
+}
+footer.attribution p {
+  width: 100%;
+  bottom: 20px;
+  position: relative;
+}
+footer.attribution a {
+  color: hsl(228, 45%, 44%);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 15px;
+  vertical-align: -2px;
+}
