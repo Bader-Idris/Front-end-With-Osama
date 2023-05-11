@@ -38,7 +38,7 @@
   font-weight: 700;
 }
 body {
-  /* background-color: var(--Very-Dark-Blue); */
+  background-color: var(--Very-Light-Grayish-Blue);
 }
 body.dark {
   background-color: var(--Very-Dark-Blue);
@@ -74,10 +74,11 @@ body.dark {
   font-size: 36px;
   text-transform: uppercase;
   float: left;
-  /* color: var(--Light-Grayish-Blue-hover); */
-}
-body.dark .theme h1 {
   color: var(--Light-Grayish-Blue-hover);
+  cursor: pointer;
+}
+.theme h1:hover {
+  color: var(--Light-Grayish-Blue);
 }
 
 @media (max-width:767px) {
@@ -128,6 +129,7 @@ body.dark .theme h1 {
   align-items: center;
   width: 100%;
   position: relative;
+  background-color: var(--Very-Light-Gray);
 }
 body.dark .form {
   background-color: var(--Very-Dark-Desaturated-Blue);
@@ -169,14 +171,14 @@ body.dark .form {
   border-radius: 50%;
   background-color: transparent;
   position: absolute;
-  /* border: 1px solid var(--Dark-Grayish-Blue); */
+  border: 1px solid var(--Light-Grayish-Blue);
   cursor: pointer;
 }
 body.dark .add {
   border: 1px solid var(--Dark-Grayish-Blue);
 }
 .tasks {
-  /* background-color: var(--Very-Dark-Desaturated-Blue); */
+  background-color: var(--Very-Light-Gray);
   border-radius: 6px;
 }
 body.dark .tasks {
@@ -224,15 +226,20 @@ body.dark .tasks {
   cursor: pointer;
   position: relative;
   border: none;
-
   background-color: transparent;
-  /* color: var(--Very-Light-Gray); */
+  color: var(--Very-Dark-Grayish-Blue);
 }
 body.dark .tasks .task {
   color: var(--Very-Light-Gray);
 }
 body.dark .tasks .task::before {
   border: 1px solid var(--Dark-Grayish-Blue);
+}
+.tasks .task:hover:before {
+  border: 2px solid;
+  border-image: linear-gradient(135deg, 
+    var(--linear-gradient-one),
+    var(--linear-gradient-two)) 1;
 }
 .tasks .task::before {
   content: '';
@@ -241,7 +248,8 @@ body.dark .tasks .task::before {
   border-radius: 50%;
   background-color: transparent;
   position: absolute;
-  /* border: 1px solid var(--Dark-Grayish-Blue); */
+  border: 1px solid var(--Light-Grayish-Blue);
+  /* will change as for completed pile of 💩 */
 }
 .items-left::after,
 .tasks .task::after{
@@ -250,7 +258,7 @@ body.dark .tasks .task::before {
   bottom: 0;
   border-radius: 0;
   position: absolute;
-  /* border-bottom: 2px solid var(--Very-Dark-Grayish-Blue); */
+  border-bottom: 1px solid var(--Light-Grayish-Blue);
 }
 body.dark  .items-left::after,
 body.dark  .tasks .task::after{
@@ -267,6 +275,9 @@ body.dark  .tasks .task::after{
 .tasks .task.done {
   text-decoration: line-through;
   color: var(--Dark-Grayish-Blue);
+}
+body.dark .tasks .task.done {
+  /* color: var(--Dark-Grayish-Blue); */
 }
 .tasks .task.done::before {
   content: url("assets/images/icon-check.svg");
