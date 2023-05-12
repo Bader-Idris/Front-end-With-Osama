@@ -7,7 +7,12 @@ Element.prototype.$ = function (selector) {
   return elements.length === 1 ? elements[0] : elements;
 };
 const dayToggle = $('.theme div'),
-      backGrounds = $('.back-img div')
+      backGrounds = $('.back-img div'),
+      input = $('.input'),
+      submit = $('.add'),
+      tasksDiv = $('.tasks'),
+      deleteAll = $('.delete-all-btn'),
+      leftTaskSpan = $('.items-left div:nth-child(1) span')
   ;
 
 [...dayToggle].forEach(el => {
@@ -19,3 +24,111 @@ const dayToggle = $('.theme div'),
     [...backGrounds].forEach(bg => bg.classList.toggle('active'));
   });
 });
+let tasksArray = [];
+if (localStorage.getItem('tasks')) {
+  tasksArray = JSON.parse(localStorage.getItem('tasks'));
+}
+// if (localStorage.getItem('deleteAll') == 'appeared') {
+//   deleteAll.classList.add('active');
+// }
+function leftTasks() {
+  leftTaskSpan.innerHTML = tasksDiv.childElementCount
+};
+
+takeMeToLocStorage();
+submit.onclick = () => {
+  if (input.value !== '') {
+    addTaskToArray(input.value);
+    input.value = '';
+  }
+  // deleteAllAppearance();
+  leftTasks();
+};
+tasksDiv.addEventListener('click', (e) => {
+  if (e.target.classList.contains('del')) {
+    deleteTaskWith(e.target.parentElement.dataset.id);
+    e.target.parentElement.remove();
+  }
+  if (e.target.classList.contains('task')) {
+    toggleStatusTask(e.target.dataset.id);
+    e.target.classList.toggle('done');
+  }
+});
+input.onblur = () => {
+  submit.click();
+};
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    submit.click();
+  }
+});
+if ($('.del')) {
+  [...$('.del')].forEach((del) => {
+    del.onclick = () => {
+      leftTasks()
+    };
+  });
+}
+function addTaskToArray(taskTxt) {
+  const task = {
+    id: Date.now(),
+    title: taskTxt,
+    completed:false,
+  };
+  tasksArray.push(task);
+  appendMe(tasksArray);
+  addMeToLocStorage(tasksArray);
+};
+function appendMe(tasksArray) {
+  tasksDiv.innerHTML = '';
+  tasksArray.forEach(task => {
+    let div = document.createElement('div'),
+        span = document.createElement('span');
+    div.className = 'task';
+    div.dataset.id = task.id;
+    if (task.completed) {
+      div.className = 'task done';
+    }
+    div.appendChild(document.createTextNode(task.title));
+    span.className = 'del';
+    div.appendChild(span);
+    tasksDiv.appendChild(div);
+  });
+};
+function addMeToLocStorage(tasksArray) {
+  window.localStorage.setItem('tasks', JSON.stringify(tasksArray));
+};
+function takeMeToLocStorage() {
+  let data = window.localStorage.getItem('tasks');
+  if (data) {
+    let tasks = JSON.parse(data);
+    appendMe(tasks);
+  }
+};
+function deleteTaskWith(taskId) {
+  tasksArray = tasksArray.filter(e => e.id != taskId);
+  addMeToLocStorage(tasksArray)
+};
+function toggleStatusTask(taskId) {
+  for (let i = 0; i < tasksArray.length; i++) {
+    if (tasksArray[i].id == taskId) {
+      tasksArray[i].completed = !tasksArray[i].completed;
+    }
+  }
+  addMeToLocStorage(tasksArray)
+};
+function deleteAllAppearance() {
+  if (tasksDiv.childElementCount == 0) {
+    localStorage.setItem('deleteAll', 'vanished');
+    deleteAll.classList.remove('active');
+  } else {
+    localStorage.setItem('deleteAll', 'appeared');
+    deleteAll.classList.add('active');
+  }
+};
+deleteAll.onclick = () => {
+  tasksDiv.innerHTML = ''
+  localStorage.removeItem('tasks')
+  tasksArray = [];
+  deleteAllAppearance();
+};

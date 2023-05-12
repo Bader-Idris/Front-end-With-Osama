@@ -130,9 +130,12 @@ body.dark {
   width: 100%;
   position: relative;
   background-color: var(--Very-Light-Gray);
+  caret-color: var(--linear-gradient-two);
+  caret-width: 5px !important;
 }
 body.dark .form {
   background-color: var(--Very-Dark-Desaturated-Blue);
+  caret-color: white !important;
 }
 .input {
   border: 1px solid transparent;
@@ -143,7 +146,10 @@ body.dark .form {
   position: relative;
 }
 .form .input {
-
+  color: var(--Very-Dark-Blue);
+}
+body.dark .form .input {
+  color: var(--Light-Grayish-Blue);
 }
 @media (max-width:767px) {
   .form .input {
@@ -252,16 +258,25 @@ body.dark .tasks .task::before {
   /* will change as for completed pile of 💩 */
 }
 .items-left::after,
-.tasks .task::after{
+.tasks .task::after {
   content: '';
   height: 100%;
   bottom: 0;
   border-radius: 0;
   position: absolute;
+}
+.tasks .task::after {
   border-bottom: 1px solid var(--Light-Grayish-Blue);
 }
-body.dark  .items-left::after,
-body.dark  .tasks .task::after{
+@media (min-width: 768px) {
+  .items-left::after {
+    border-bottom: 1px solid var(--Light-Grayish-Blue);
+  }
+  body.dark .items-left::after {
+    border-bottom: 2px solid var(--Very-Dark-Grayish-Blue);
+  }
+}
+body.dark  .tasks .task::after {
   border-bottom: 2px solid var(--Very-Dark-Grayish-Blue);
 }
 @media (min-width:768px) {
@@ -288,15 +303,12 @@ body.dark .tasks .task.done {
   text-align: center;
 }
 .tasks .task span {
-  font-weight: bold;
-  font-size: 10px;
-  color: white;
-  padding: 2px 6px;
-  border-radius: 4px;
+  content: url("assets/images/icon-cross.svg");
   cursor: pointer;
-  background-color: red;
-  /* check me  */
+  z-index: 1;
+  user-select: none;
 }
+
 aside {
   display: flex;
   flex-direction: column;
@@ -308,12 +320,11 @@ body.dark aside {
   padding: 20px 0;
   width: 100%;
   position: relative;
-  /* background-color: var(--Very-Dark-Desaturated-Blue);
-  color: var(--Dark-Grayish-Blue); */
+  background-color: var(--Very-Light-Gray);
+  color: var(--Dark-Grayish-Blue);
 }
 body.dark .items-left {
   background-color: var(--Very-Dark-Desaturated-Blue);
-  color: var(--Dark-Grayish-Blue);
 }
 .items-left::after {
   width: 100%;
@@ -334,9 +345,10 @@ body.dark .items-left {
 .items-left span {
   padding-right: 5px;
 }
-.items-left div:nth-child(2){
+.items-left div:nth-child(2) {
   float: right;
   padding-right: 25px;
+  cursor: pointer;
 }
 .filtered-tasks {
   display: flex;
@@ -344,7 +356,8 @@ body.dark .items-left {
   padding: 20px 0;
   border-radius: 0 0 6px 6px;
   padding-left: 20px;
-  /* background-color: var(--Very-Dark-Desaturated-Blue); */
+  background-color: var(--Very-Light-Gray);
+  color: var(--Dark-Grayish-Blue);
 }
 body.dark .filtered-tasks {
   background-color: var(--Very-Dark-Desaturated-Blue);
@@ -360,10 +373,8 @@ body.dark .filtered-tasks span {
 .filtered-tasks span:nth-child(2) {
   padding-left: 10%;
 }
+body.dark .filtered-tasks span.active,
 .filtered-tasks span.active {
-  /* color: var(--Bright-Blue); */
-}
-body.dark .filtered-tasks span.active {
   color: var(--Bright-Blue);
 }
 @media (max-width:767px) {
@@ -383,9 +394,6 @@ body.dark .filtered-tasks span.active {
 .drag-and-drop {
   padding: 20px 0;
   text-align: center;
-  /* color: var(--Dark-Grayish-Blue); */
-}
-body.dark .drag-and-drop {
   color: var(--Dark-Grayish-Blue);
 }
 body.dark footer.attribution {
