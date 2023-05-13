@@ -11,12 +11,11 @@ const dayToggle = $('.theme div'),
       input = $('.input'),
       submit = $('.add'),
       tasksDiv = $('.tasks'),
-      deleteAll = $('.delete-all-btn'),
       leftTaskSpan = $('.items-left div:nth-child(1) span'),
-      clearCompleted = $('.items-left div:nth-child(2)'),
+      leftTaskTxt = $('.items-left div:nth-child(1) div'),
+      clearCompleted = $('.items-left > div:nth-child(2)'),
       filteredTasks = $('.filtered-tasks span')
-  ;
-
+;
 [...dayToggle].forEach(el => {
   el.addEventListener('click',(e) => {
     e.stopPropagation();
@@ -34,7 +33,6 @@ if (localStorage.getItem('tasks')) {
 function leftTasks() {
   leftTaskSpan.innerHTML = tasksDiv.childElementCount
 };
-
 takeMeToLocStorage();
 leftTasks();
 
@@ -50,7 +48,8 @@ submit.onclick = () => {
     filteredTasks.forEach((sibling) => {
       sibling.classList.remove('active');
     });
-    e.classList.add('active');
+    delClass.target.classList.add('active');
+    toggleActiveCompleted();
   };
 });
 tasksDiv.addEventListener('click', (e) => {
@@ -73,7 +72,13 @@ input.addEventListener('keydown', (e) => {
   }
 });
 clearCompleted.onclick = () => {
-  deleteCompleted()
+  [...tasksDiv.children].forEach((e) => {
+    if (e.classList.contains('done')) {
+      e.remove();
+      deleteCompleted(e.dataset.id)
+    }
+  });
+  leftTasks()
 }
 
 function addTaskToArray(taskTxt) {
@@ -124,32 +129,22 @@ function toggleStatusTask(taskId) {
   }
   addMeToLocStorage(tasksArray)
 };
-
-
-// -*---------------------------
-function deleteCompleted(taskCompleted) {
-  // clearCompleted.onclick = () => {
-  //   //
-  // };
+function deleteCompleted(taskCompletedId) {
   tasksArray = tasksArray.filter(e => e.completed == false);
-  addMeToLocStorage(tasksArray)
+  addMeToLocStorage(tasksArray);
 }
-// -*---------------------------
-
-
-
-function deleteAllAppearance() {
-  if (tasksDiv.childElementCount == 0) {
-    localStorage.setItem('deleteAll', 'vanished');
-    deleteAll.classList.remove('active');
-  } else {
-    localStorage.setItem('deleteAll', 'appeared');
-    deleteAll.classList.add('active');
+function toggleActiveCompleted() {
+  if (filteredTasks[0].classList.contains('active')) [...tasksDiv.children].forEach(e => e.style.display = 'flex');
+  if (filteredTasks[1].classList.contains('active')) {
+    [...tasksDiv.children].forEach((e) => {
+      e.style.display = 'none';
+      if (!e.classList.contains('done')) e.style.display = 'flex';
+    });
   }
-};
-deleteAll.onclick = () => {
-  tasksDiv.innerHTML = ''
-  localStorage.removeItem('tasks')
-  tasksArray = [];
-  deleteAllAppearance();
-};
+  if (filteredTasks[2].classList.contains('active')) {
+    [...tasksDiv.children].forEach((e) => {
+      e.style.display = 'none';
+      if (e.classList.contains('done')) e.style.display = 'flex';
+    });
+  }
+}

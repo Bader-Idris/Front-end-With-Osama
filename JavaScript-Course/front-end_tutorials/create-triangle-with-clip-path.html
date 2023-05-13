@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Triangle With Clip Path</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+  
+    body {
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
+      margin: 0;
+    }
+  
+    .parent {
+      background-color: #eee;
+      padding: 10px;
+      margin: 50px auto;
+      width: 220px;
+      height: 220px;
+      position: relative;
+    }
+  
+    .parent::after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      bottom: -20px;
+      border-style: solid;
+      border-width: 10px;
+      border-color: red green blue black;
+    }
+  
+    .parent span {
+      position: absolute;
+    }
+  
+    .parent .x-ax {
+      top: -35px;
+    }
+  
+    .parent .x-ax::before {
+      content: "";
+      width: 80px;
+      background-color: #009688;
+      height: 2px;
+      position: absolute;
+      left: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  
+    .parent .x-ax::after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      background-color: #009688;
+      position: absolute;
+      left: 130px;
+      top: 50%;
+      transform: translateY(-50%);
+      clip-path: polygon(0 0, 50% 50%, 0 100%);
+    }
+  
+    .parent .y-ax {
+      left: -35px;
+      writing-mode: vertical-lr;
+    }
+  
+    .parent .y-ax::before {
+      content: "";
+      width: 2px;
+      background-color: #009688;
+      height: 80px;
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+    .parent .y-ax::after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      background-color: #009688;
+      position: absolute;
+      top: 130px;
+      left: 50%;
+      transform: translateX(-50%);
+      clip-path: polygon(100% 0%, 50% 50%, 0% 0%);
+    }
+  
+    .c1 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      clip-path: circle(70px at 50% 50%);
+    }
+  
+    .tmain {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+    }
+  
+    .t1 {
+      background-color: indianred;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+  
+    .t2 {
+      background-color: violet;
+      clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
+    }
+  
+    .t3 {
+      background-color: rebeccapurple;
+      clip-path: polygon(100% 0%, 50% 50%, 0% 0%);
+    }
+  
+    .t4 {
+      background-color: olivedrab;
+      clip-path: polygon(50% 100%, 0% 50%, 100% 50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <span class="x-ax">X-Axis</span>
+    <span class="y-ax">Y-Axis</span>
+    <div class="c1"></div>
+  </div>
+  <div class="parent">
+    <span class="x-ax">X-Axis</span>
+    <span class="y-ax">Y-Axis</span>
+    <div class="tmain t1"></div>
+    <div class="tmain t2"></div>
+    <div class="tmain t3"></div>
+    <div class="tmain t4"></div>
+  </div>
+</body>
+</html>
