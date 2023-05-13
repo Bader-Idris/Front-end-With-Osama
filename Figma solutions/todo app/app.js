@@ -12,7 +12,9 @@ const dayToggle = $('.theme div'),
       submit = $('.add'),
       tasksDiv = $('.tasks'),
       deleteAll = $('.delete-all-btn'),
-      leftTaskSpan = $('.items-left div:nth-child(1) span')
+      leftTaskSpan = $('.items-left div:nth-child(1) span'),
+      clearCompleted = $('.items-left div:nth-child(2)'),
+      filteredTasks = $('.filtered-tasks span')
   ;
 
 [...dayToggle].forEach(el => {
@@ -25,25 +27,32 @@ const dayToggle = $('.theme div'),
   });
 });
 let tasksArray = [];
+let delSpan = $('.del');
 if (localStorage.getItem('tasks')) {
   tasksArray = JSON.parse(localStorage.getItem('tasks'));
 }
-// if (localStorage.getItem('deleteAll') == 'appeared') {
-//   deleteAll.classList.add('active');
-// }
 function leftTasks() {
   leftTaskSpan.innerHTML = tasksDiv.childElementCount
 };
 
 takeMeToLocStorage();
+leftTasks();
+
 submit.onclick = () => {
   if (input.value !== '') {
     addTaskToArray(input.value);
     input.value = '';
   }
-  // deleteAllAppearance();
   leftTasks();
 };
+[...filteredTasks].forEach(e => {
+  e.onclick = (delClass) => {
+    filteredTasks.forEach((sibling) => {
+      sibling.classList.remove('active');
+    });
+    e.classList.add('active');
+  };
+});
 tasksDiv.addEventListener('click', (e) => {
   if (e.target.classList.contains('del')) {
     deleteTaskWith(e.target.parentElement.dataset.id);
@@ -53,6 +62,7 @@ tasksDiv.addEventListener('click', (e) => {
     toggleStatusTask(e.target.dataset.id);
     e.target.classList.toggle('done');
   }
+  leftTasks();
 });
 input.onblur = () => {
   submit.click();
@@ -62,13 +72,10 @@ input.addEventListener('keydown', (e) => {
     submit.click();
   }
 });
-if ($('.del')) {
-  [...$('.del')].forEach((del) => {
-    del.onclick = () => {
-      leftTasks()
-    };
-  });
+clearCompleted.onclick = () => {
+  deleteCompleted()
 }
+
 function addTaskToArray(taskTxt) {
   const task = {
     id: Date.now(),
@@ -117,6 +124,20 @@ function toggleStatusTask(taskId) {
   }
   addMeToLocStorage(tasksArray)
 };
+
+
+// -*---------------------------
+function deleteCompleted(taskCompleted) {
+  // clearCompleted.onclick = () => {
+  //   //
+  // };
+  tasksArray = tasksArray.filter(e => e.completed == false);
+  addMeToLocStorage(tasksArray)
+}
+// -*---------------------------
+
+
+
 function deleteAllAppearance() {
   if (tasksDiv.childElementCount == 0) {
     localStorage.setItem('deleteAll', 'vanished');

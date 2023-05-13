@@ -1,7 +1,7 @@
 /*
  ** Countdown Timer
  ** Video URL: https://www.youtube.com/watch?v=eFsiOTJrrE8
- */
+*/
 
 // The End Of The Year Date
 // 1000 milliseconds = 1 Second
@@ -59,6 +59,34 @@ window.onscroll = function () {
   }
   // Stats Increase Number
   if (window.scrollY >= statsSection.offsetTop) {
+    if (!started) {
+      nums.forEach((num) => startCount(num));
+    }
+    started = true;
+  }
+};
+
+function startCount(el) {
+  let goal = el.dataset.goal;
+  let count = setInterval(() => {
+    el.textContent++;
+    if (el.textContent == goal) {
+      clearInterval(count);
+    }
+  }, 2000 / goal);
+}
+
+
+/*
+ ** Increase Numbers On Scrolling
+ ** Video URL: https://www.youtube.com/watch?v=PLsUdgLnzgQ
+*/
+let nums = document.querySelectorAll(".nums .num");
+let section = document.querySelector(".three");
+let started = false; // Function Started ? No
+
+window.onscroll = function () {
+  if (window.scrollY >= section.offsetTop) {
     if (!started) {
       nums.forEach((num) => startCount(num));
     }

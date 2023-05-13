@@ -242,10 +242,11 @@ body.dark .tasks .task::before {
   border: 1px solid var(--Dark-Grayish-Blue);
 }
 .tasks .task:hover:before {
-  border: 2px solid;
-  border-image: linear-gradient(135deg, 
+  /* border: 2px solid; */
+  /* border-image: linear-gradient(135deg, 
     var(--linear-gradient-one),
-    var(--linear-gradient-two)) 1;
+    var(--linear-gradient-two)) 1; */
+  /* border-radius: 50%; */
 }
 .tasks .task::before {
   content: '';
@@ -255,7 +256,6 @@ body.dark .tasks .task::before {
   background-color: transparent;
   position: absolute;
   border: 1px solid var(--Light-Grayish-Blue);
-  /* will change as for completed pile of 💩 */
 }
 .items-left::after,
 .tasks .task::after {
@@ -287,6 +287,7 @@ body.dark  .tasks .task::after {
 .tasks .task:hover {
   /* background-color: #f7f7f7; */
 }
+body.dark .tasks .task.done,
 .tasks .task.done {
   text-decoration: line-through;
   color: var(--Dark-Grayish-Blue);
@@ -349,6 +350,8 @@ body.dark .items-left {
   float: right;
   padding-right: 25px;
   cursor: pointer;
+  z-index: 1;
+  position: relative;
 }
 .filtered-tasks {
   display: flex;
