@@ -7,6 +7,7 @@
   --main-padding-top: 100px;
   --main-padding-bottom: 100px;
   --section-background: #ececec;
+  --light-gray: #777;
 }
 * {
   -webkit-box-sizing: border-box;
@@ -257,18 +258,20 @@ ul {
 /* Start Landing */
 .landing {
   position: relative;
+  overflow: hidden;
 }
 .landing::before {
   content: "";
   position: absolute;
   left: 0;
   top: -40px;
-  width: 100%;
+  width: 1000%;
   height: 100%;
-  background-color: #ECECEC;
+  background-color: var(--section-background);
   z-index: -1;
   transform: skewY(-6deg);
   transform-origin: top left;
+  animation: waving 5s ease-in-out infinite alternate;
 }
 .landing .container {
   min-height: calc(100vh - 72px);/*minus header height*/
@@ -384,7 +387,7 @@ ul {
 .articles .box .content p {
   margin: 10px 0 0;
   line-height: 1.5;
-  color:#777;
+  color:var(--light-gray);
 }
 .articles .box .info {
   padding: 20px;
@@ -519,7 +522,7 @@ ul {
   font-size: 20px;
   margin: 30px 0;
   padding: 25px;
-  color: #777;
+  color: var(--light-gray);
 }
 .features .box a {
   display: block;
@@ -611,7 +614,7 @@ ul {
   margin: 0 0 10px;
 }
 .testimonials .box .title {
-  color: #777;
+  color: var(--light-gray);
   margin-bottom: 10px;
   display: block;
 }
@@ -620,7 +623,7 @@ ul {
 }
 .testimonials .box p {
   line-height: 1.5;
-  color: #777;
+  color: var(--light-gray);
   margin-top: 10px;
   margin-bottom: 0;
 }
@@ -696,7 +699,7 @@ ul {
   color: var(--main-color);
 }
 .team .box .data .social i {
-  color: #777;
+  color: var(--light-gray);
   transition: var(--main-transition);
 }
 .team .box .info {
@@ -713,7 +716,7 @@ ul {
   margin-bottom: 25px;
 }
 .team .box:hover .info h3 {
-  color: #777;
+  color: var(--light-gray);
 }
 /* End Team */
 /* Start Services
@@ -921,12 +924,164 @@ ul {
   font-size: 22px;
 }
 .work-steps .info .box p {
-  color: #777;
+  color: var(--light-gray);
   line-height: 1.7;
   margin: 10px 0 0;
   font-size: 18px;
 }
 /* End Work Steps */
+/* Start 22 Events Section Part 1 03:01:18 */
+.events {
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+  position: relative;
+}
+.events .container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.events img {
+  max-width: 450px;
+}
+@media (max-width: 991px) {
+  .events img {
+    display: none;
+  }
+}
+.events .info {
+  flex: 1;
+}
+.events .info .time {
+  display: flex;
+  align-items: center;
+  margin: 20px auto;
+  gap: 10px;
+  justify-content: center;
+}
+.events .info .time .unit {
+  border: 1px solid #d4d4d4;
+  border-radius: 6px;
+  text-align: center;
+  width: 75px;
+  transition: var(--main-transition);
+}
+.events .info .time .unit span {
+  display: block;
+  transition: var(--main-transition);
+}
+.events .info .time .unit span:first-child {
+  font-size: 35px;
+  padding: 15px;
+  color: var(--main-color);
+  font-weight: bold;
+}
+.events .info .time .unit span:last-child {
+  padding: 8px 10px;
+  font-size: 13px;
+  border-top: 1px solid #d4d4d4;
+}
+.events .info .time .unit:hover,
+.events .info .time .unit:hover span:last-child {
+  border-color: var(--main-color);
+}
+.events .title {
+  text-align: center;
+  margin: 40px 0 0;
+  font-size: 30px;
+}
+.events .description {
+  text-align: center;
+  line-height: 1.7;
+  font-size: 19px;
+  color: #777;
+}
+.events .subscribe {
+  width: 100%;
+  margin-top: 50px;
+}
+.events .subscribe form {
+  width: 600px;
+  margin: 20px auto;
+  padding: 30px 40px;
+  background-color: #f6f5f5;
+  border-radius: 50px;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 767px) {
+  .events .subscribe form {
+    max-width: 100%;
+    padding: 20px;
+    flex-direction: column;
+    border-radius: 0;
+  }
+}
+.events .subscribe form input[type="email"] {
+  padding: 20px;
+  border-radius: 50px;
+  border: none;
+  flex: 1;
+  caret-color: var(--main-color);
+}
+@media (max-width: 767px) {
+  .events .subscribe form input[type="email"] {
+    border-radius: 0;
+  }
+}
+.events .subscribe form input[type="email"]:focus {
+  outline: none;
+}
+.events .subscribe form input[type="email"]::placeholder {
+  transition: opacity var(--main-transition);
+}
+.events .subscribe form input[type="email"]:focus::placeholder {
+  opacity: 0;
+}
+.events .subscribe form input[type="submit"] {
+  border-radius: 50px;
+  border: none;
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+@media (max-width: 767px) {
+  .events .subscribe form input[type="submit"] {
+    border-radius: 0;
+  }
+}
+.events .subscribe form input[type="submit"]:hover {
+  background-color: var(--main-color-alt);
+}
+/* End Events */
+
+/* Start Out of the Course */
+.scroller {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 10px;
+  background-color: var(--main-color);
+  z-index: 1000;
+}
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  background-color: #f6f6f6;
+  box-shadow: 0 0 10px #ddd inset;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--main-color);
+}
+/* End Out of the Course */
 /* Start Animation */
 @keyframes up-and-down {
   0%,
@@ -992,7 +1147,16 @@ ul {
     height: 200%;
   }
 }
-
+@keyframes waving {
+  from {
+    transform: skew(0, -10deg);
+    left: 0;
+  }
+  to {
+    transform: skew(10deg, 0);
+    left: -100%;
+  }
+}
 /* End Animation */
 
 /* 09 lesson 1:01:15 Creating The Main Title */
