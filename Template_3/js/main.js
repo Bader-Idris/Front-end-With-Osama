@@ -10,7 +10,8 @@ const ParentMegaMenu = $('.mega-menu').parentElement,
       progressSpans = $(".the-progress span"),
       section = $(".our-skills"),
       nums = $(".stats .number"),
-      statsSection = $(".stats")
+      statsSection = $(".stats"),
+      scroller = $('.scroller')
 ;
 
 ParentMegaMenu.onclick = (e) => {
@@ -70,13 +71,15 @@ let counter = setInterval(() => {
   scrollHeight: •Entire Content & Padding • (Visible or Not)
   clientHeight: -Visible Content & Padding
    */
-let el = $('.scroller'),
-    height = document.documentElement.scrollHeight - document.documentElement.clientHeight
-;
-window.addEventListener('scroll', function () {
-  let scrollTop = document.documentElement.scrollTop
-  el.style.width = `${(scrollTop / height ) * 100}%`;
+document.addEventListener('DOMContentLoaded', () => {
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  window.addEventListener('scroll', function () {
+    let scrollTop = document.documentElement.scrollTop
+    scroller.style.width = `${(scrollTop / height ) * 100}%`;
+  });
 });
+
+
 
 // use me when needed
 

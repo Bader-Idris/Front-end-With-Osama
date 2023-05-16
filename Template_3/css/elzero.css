@@ -271,7 +271,7 @@ ul {
   z-index: -1;
   transform: skewY(-6deg);
   transform-origin: top left;
-  animation: waving 5s ease-in-out infinite alternate;
+  animation: waving 4s ease-in-out infinite alternate;
 }
 .landing .container {
   min-height: calc(100vh - 72px);/*minus header height*/
@@ -1153,8 +1153,8 @@ ul {
     left: 0;
   }
   to {
-    transform: skew(10deg, 0);
-    left: -100%;
+    transform: skew(45deg, 0);
+    left: -200%;
   }
 }
 /* End Animation */
