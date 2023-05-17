@@ -7,7 +7,8 @@ readFile('./content/first.txt', 'utf8', (err, result) => {
     return
   }
   const first = result
-  readFile('./content/second.txt', 'utf8', (err, result) => {
+  readFile('./content/second.txt', 'utf8', (err, result) => {// (err, result) => ... here is a callback Func
+    // if you get weird number and buffer message, this means you didn't provide BufferEncoding 'utf8' or else
     if (err) {
       console.log(err)
       return
