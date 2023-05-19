@@ -36,4 +36,5 @@
 // we'll have a new dir named node-modules which includes dependencies
 
 // so package.json is tended to set macro-info about the project,
-//  we need to check the property {"dependencies":{""}}
+//  we need to check the property {"dependencies":{""}} inside [package.json]
+const _ = require('lodash');// see 35 above, you can type install instead of i in middle
