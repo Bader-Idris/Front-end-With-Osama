@@ -31,10 +31,12 @@
   font-family: "Josefin Sans";
   font-weight: 400;
   src: url("assets/fonts/JosefinSans-Italic-VariableFont_wght.ttf");
+  font-display: swap;
 }
 @font-face {
   font-family: "Josefin Sans";
   src: url("assets/fonts/JosefinSans-VariableFont_wght.ttf");
+  font-display: swap;
   font-weight: 700;
 }
 body {
