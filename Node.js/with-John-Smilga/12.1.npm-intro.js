@@ -24,7 +24,7 @@
 // npm i <packageName>
 
 // global dependency - use it in any project
-// npm install -g <packageName>
+// npm install -g <packageName> //! means global
 // sudo install -g <packageName> (mac)
 
 // package.json - manifest file (stores important info about project/package)
@@ -38,3 +38,76 @@
 // so package.json is tended to set macro-info about the project,
 //  we need to check the property {"dependencies":{""}} inside [package.json]
 const _ = require('lodash');// see 35 above, you can type install instead of i in middle
+
+const items = [1, [2,[3,[4]]]];
+const newItems = _.flattenDeep(items);// in js we use flat or flatMap
+console.log(newItems);
+
+// having package.json is so crucial, John said
+//  especially when sharing our project with others
+
+/* we create a gitignore module and then type:
+  /node_module
+
+  that means, git! ignore this module as for [/] symbol
+  then its name ...
+
+  a good question:
+  how git users will be able to use require('lodash') since we ignored its module?
+  🔴 the magic happens here 🔴
+  if user installed npm, and run `npm install`
+  the package.json which includes [[dependencies]] will retrieve tended files
+
+  John said: look at my react projects, I did the same with large directories
+  so I put them in package.json => dependencies
+  🔼⚠️🔴 CRUCIAL 🔴⚠️🔼
+
+  now, we're familiar with package.json and npm install command
+
+  we can install it as a simple dependency:
+  dev dependencies are as typed as: npm i nodemon -D [or --save-dev]
+*/
+
+/* let's look at "scripts" key now
+  instead of running [node app.js] we can set it inside the package.json
+  as "start":"node app.js",
+  so when we command `npm start` //! same functionality 
+
+  some commands are invalid when typing: node start, so we use: 🔼
+  npm run nameOfCommand,
+
+  */
+// we set dev command, so to invoke it //! we type: npm run dev
+
+/**
+ * * uninstalling the package
+ * !
+ * ? npm uninstall packageName
+ * TODO:
+ * // as npm uninstall bootstrap
+ * * the new clearer approach is
+ * ? deleting both required modules and package-lock.json 
+ * ? => we access package.json dependencies TO delete bootstrap as eg
+ * ? => we run code: //! npm install
+ * * globally, we use above as code: //! npm install -g nodemon
+ * ? installing it globally was in OS terminal, he used ISO, so used //! sudo
+ * ! John talked a bit about gatsby.js framework
+ * * before npx was arrived, we were compiled to install outsources globally
+ * ! He said, some students struggle using global -g, so try avoiding as you can
+ * ? 2 approaches are preferred: //! locally || npx
+ * ! npx stands for package runner[officially], and commonly as: execute
+ * 
+ * * the importance of dependencies is that we catch our version,
+ * * so when others install our version, we'll reduce no bugs
+ * ! jQuery is an example
+ * 
+ * ? to learn more about package.json //! John said see this post:
+ * ! https://nodesource.com/blog/the-basics-of-package-json-in-node-js-and-npm/
+ * 
+ * ? before accessing //! EXPRESS.js
+ * * learn more about these node topics to cover: [first two are in Elzero channel]
+ * ! Event loop
+ * ! async patterns
+ * ! events emitter and streams
+ * ? some John's explanation: https://www.course-api.com/
+*/

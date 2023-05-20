@@ -1,4 +1,11 @@
 {
+  "name": "with-John-Smilga",
+  "version": "1.0.0",
+  "main": "01-intro.js",
+  "scripts": {
+    "start":"node app.js",
+    "dev":"nodemon app.js"
+  },
   "dependencies": {
     "lodash": "^4.17.21"
   }

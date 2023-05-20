@@ -84,7 +84,9 @@
 	},
 	"extensions": {
 		"recommendations": [
-			"editorconfig.editorconfig"
+			"editorconfig.editorconfig",
+			"wrenchingdev.quantum-leap",
+			"aaron-bond.better-comments"
 		]
 	}
 }
