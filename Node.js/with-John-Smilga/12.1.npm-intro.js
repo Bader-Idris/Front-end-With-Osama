@@ -111,3 +111,37 @@ console.log(newItems);
  * ! events emitter and streams
  * ? some John's explanation: https://www.course-api.com/
 */
+
+// ! ------------------------------------------------
+// const { readFile } = require('fs')
+// readFile('./content/first.txt', 'utf8', (err, result) => {
+//   if (err) return
+//   else {
+//     console.log(result)
+//   }
+// })
+// this works well when only bringing data from one source, but how about 2 modules?  //! and write one
+// ? it'll output bugs
+// ! the better solution is to use promises
+
+const { readFile } = require('fs')
+
+const getText = (path) => {//'./content/first.txt'
+  return new Promise((resolve, reject) => {
+    readFile(path, 'utf8', (err, data) => {
+      if (err) reject(err)
+      else {
+        resolve(data)
+      }
+    })
+  });
+}
+// getText('./content/first.txt')
+//   .then(result => console.log(result))
+//   .catch((err) => {});
+
+// ? using async patterns instead of promises
+const start = async() => {
+  const first = await getText('./content/first.txt')
+};
+start()

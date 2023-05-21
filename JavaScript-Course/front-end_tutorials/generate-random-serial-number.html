@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Random Serial Number</title>
+  <style>
+    .serial {
+      width: 250px;
+      padding: 20px;
+      background-color: #eee;
+      margin: 40px auto 0;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      height: 66.5px;
+      line-height: 70px;
+      color: #191919;
+    }
+  
+    .generate {
+      display: block;
+      width: fit-content;
+      margin: 20px auto;
+      background-color: #ff5722;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      user-select: none;
+    }
+  
+    .generate:hover {
+      background-color: #f0440e;
+    }
+  </style>
+</head>
+<body>
+  <div class="serial"></div>
+  <span class="generate">Generate</span>
+  <script>
+    // [1] Set Characters To Create The Serial
+    // [2] Set Serial Characters Count
+    // [3] create empty variable to store the serial
+    // [4] create A Random Number + Access Sequence
+    // [5] Store The Random Number Element In the Empty Variable
+    // [6] Loop through Serial
+    // [7] Change Serial Element Count With The Serial Variable
+
+    let btnEl = document.querySelector(".generate"),
+        serialEl = document.querySelector(".serial");
+    
+    btnEl.onclick = function () {
+      let characters = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*",
+          charsCount = 10,
+          randomSerial = '';//can't remove this '', it'll output undefined
+      for (let i = 0; i < charsCount; i++) {
+        randomSerial += characters[Math.floor(Math.random() * characters.length)];
+      }
+      serialEl.innerHTML = randomSerial;
+    };
+
+    //! out sourced: =>⏬🔽
+    serialEl.addEventListener('click', copyInnerHTML);
+    function copyInnerHTML() {
+      const tempInput = document.createElement('input');
+      tempInput.style.position = 'fixed';
+      tempInput.style.opacity = '0';
+      tempInput.value = serialEl.innerHTML;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      // Display a success message
+      confirm('Copied to clipboard!');
+    }
+  </script>
+</body>
+</html>
