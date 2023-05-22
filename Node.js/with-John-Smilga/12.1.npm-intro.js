@@ -141,7 +141,19 @@ const getText = (path) => {//'./content/first.txt'
 //   .catch((err) => {});
 
 // ? using async patterns instead of promises
+// const start = async() => {
+//   const first = await getText('./content/first.txt')
+// };
+// start()
+// ! we have to rap it in a try-catch block
 const start = async() => {
-  const first = await getText('./content/first.txt')
+  try {
+    const first = await getText('./content/first.txt')
+    const second = await getText('./content/second.txt')// this is cleaner than 11th's lesson
+    console.log(first, second)
+  } catch (err) {
+    // new Error(err)
+    console.log(err)
+  }
 };
 start()
