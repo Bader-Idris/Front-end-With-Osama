@@ -17,10 +17,3 @@ c.fillStyle = 'white';
 c.fillRect(0, 0, canvas.width, canvas.height);
 c.fillStyle = '#463ffd';
 c.fillRect(100, 100, 100, 100);
-
-let helloLangs = ["hello", "ciao", "salut", "hallo", "hola", "ahoj", "czesc"];
-function validateHello(greetings) {
-  const regex = new RegExp(helloLangs.join("|"), "i");
-  return regex.test(greetings);
-}
-validateHello("hello baby");
