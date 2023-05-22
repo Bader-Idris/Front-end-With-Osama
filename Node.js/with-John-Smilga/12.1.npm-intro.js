@@ -124,8 +124,12 @@ console.log(newItems);
 // ? it'll output bugs
 // ! the better solution is to use promises
 
-const { readFile } = require('fs')
-
+const { readFile , writeFile} = require('fs')//! we wanna write so not only readFile
+// ! a cool module method which is called util
+const util = require('util');
+const readFilePromise = util.promisify(readFile);//? instead of getText func
+const writeFilePromise = util.promisify(writeFile);
+// !-**---**---**---**---**---**---**---**---**---**---**---
 const getText = (path) => {//'./content/first.txt'
   return new Promise((resolve, reject) => {
     readFile(path, 'utf8', (err, data) => {
@@ -136,6 +140,7 @@ const getText = (path) => {//'./content/first.txt'
     })
   });
 }
+// !--------------------------End of getTextFunc------------------------------
 // getText('./content/first.txt')
 //   .then(result => console.log(result))
 //   .catch((err) => {});
@@ -148,8 +153,13 @@ const getText = (path) => {//'./content/first.txt'
 // ! we have to rap it in a try-catch block
 const start = async() => {
   try {
-    const first = await getText('./content/first.txt')
-    const second = await getText('./content/second.txt')// this is cleaner than 11th's lesson
+    // const first = await getText('./content/first.txt')//! instead of getText func, we use new util one
+    // const second = await getText('./content/second.txt')// this is cleaner than 11th's lesson
+    const first = await readFilePromise('./content/first.txt', 'utf-8')//! we still add encoding here
+    const second = await readFilePromise('./content/second.txt', 'utf-8')
+    //! here we don't use a variable  calling writeFilePromise
+    await writeFilePromise('./content/result-mind-grenade.txt',
+      `THIS IS AWESOME[AND HARD🤪]:${first} ${second}`)//! if module's not existing, it creates it
     console.log(first, second)
   } catch (err) {
     // new Error(err)
