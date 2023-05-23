@@ -126,9 +126,13 @@ console.log(newItems);
 
 const { readFile , writeFile} = require('fs')//! we wanna write so not only readFile
 // ! a cool module method which is called util
-const util = require('util');
-const readFilePromise = util.promisify(readFile);//? instead of getText func
-const writeFilePromise = util.promisify(writeFile);
+const util = require('util').Promises
+
+// !-**---**---**---**---**---**---**---**---**---**---**---
+// const util = require('util');
+// const readFilePromise = util.promisify(readFile);//? instead of getText func
+// const writeFilePromise = util.promisify(writeFile);//! there's a better way than promisify
+// ? which is by removing the promise from writeFilePromise and readFilePromise down there
 // !-**---**---**---**---**---**---**---**---**---**---**---
 const getText = (path) => {//'./content/first.txt'
   return new Promise((resolve, reject) => {
@@ -155,8 +159,10 @@ const start = async() => {
   try {
     // const first = await getText('./content/first.txt')//! instead of getText func, we use new util one
     // const second = await getText('./content/second.txt')// this is cleaner than 11th's lesson
-    const first = await readFilePromise('./content/first.txt', 'utf-8')//! we still add encoding here
-    const second = await readFilePromise('./content/second.txt', 'utf-8')
+    // const first = await readFilePromise('./content/first.txt', 'utf-8')//! we still add encoding here
+    // const second = await readFilePromise('./content/second.txt', 'utf-8')
+    const first = await readFile('./content/first.txt', 'utf-8')//! we still add encoding here
+    const second = await readFile('./content/second.txt', 'utf-8')
     //! here we don't use a variable  calling writeFilePromise
     await writeFilePromise('./content/result-mind-grenade.txt',
       `THIS IS AWESOME[AND HARD🤪]:${first} ${second}`)//! if module's not existing, it creates it

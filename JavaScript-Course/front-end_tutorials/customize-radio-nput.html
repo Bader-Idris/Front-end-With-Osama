@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customize Radio Input</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+  
+    body {
+      font-family: Arial, Tahoma;
+    }
+  
+    form {
+      width: 400px;
+      margin: 20px auto;
+      background-color: #f9f9f9;
+      padding: 15px;
+    }
+  
+    form>div {
+      padding: 5px 0;
+    }
+  
+    form input[type="radio"] {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  
+    form label {
+      position: relative;
+      padding-left: 25px;
+    }
+  
+    form label::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      border: 1px solid #0075ff;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+    }
+  
+    form input[type="radio"]:checked+label::after,
+    form input[type="radio"]:not(:checked):hover+label::after {
+      content: "";
+      background-color: #0075ff;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      left: 4px;
+      top: 4px;
+    }
+  
+    form input[type="radio"]:not(:checked):hover+label::after {
+      opacity: 0.2;
+    }
+  
+    form input[type="radio"]:checked+label {
+      color: #0075ff;
+    }
+  </style>
+</head>
+<body>
+  <form action="">
+    <div>
+      <input id="mac" type="radio" name="os" />
+      <label for="mac">Mac</label>
+    </div>
+    <div>
+      <input id="lin" type="radio" name="os" />
+      <label for="lin">Linux</label>
+    </div>
+    <div>
+      <input id="win" type="radio" name="os" />
+      <label for="win">Windows</label>
+    </div>
+  </form>
+  <script>
+    //
+  </script>
+</body>
+</html>
