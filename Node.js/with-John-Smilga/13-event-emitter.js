@@ -19,3 +19,7 @@ customEmitter.on('response', () => {
 })
 
 customEmitter.emit('response', 'john', 34)
+
+//! on - listen for an event
+//! emit - emit an event
+// ? the order on => is important , so they're FIFO
