@@ -1,11 +1,17 @@
+//! module says: to make me work move all out of final folder
+//? first 2 modules are make with http requests, only node.js,
+//! but the crazy issue, is that we need to call each file separately🤪🤪
+//  so we'll use express in next files && lessons, to call it type
+//! npm install express --save || flag:save is for earlier node issues, can be skipped in new version
 const http = require('http')
 const { readFileSync } = require('fs')
 
 // get all files
 const homePage = readFileSync('./navbar-app/index.html')
-const homeStyles = readFileSync('./navbar-app/styles.css')
-const homeImage = readFileSync('./navbar-app/logo.svg')
-const homeLogic = readFileSync('./navbar-app/browser-app.js')
+const homeStyles = readFileSync('./navbar-app/styles.css')//! these three are for running sources from html module
+const homeImage = readFileSync('./navbar-app/logo.svg')// so instead of loading normally, it calls localStorage:.styles.css blab
+const homeLogic = readFileSync('./navbar-app/browser-app.js')//! important to create sources in html here
+//! we recall them down as in 32 styles.css
 
 const server = http.createServer((req, res) => {
   // console.log(req.method)

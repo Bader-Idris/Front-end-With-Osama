@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
   // SWITCH TO IF, ELSE IF, ELSE (BELOW)
   // WE COVER THE CAUSE, LATER IN EXPRESS TUTORIAL
   if (req.url === '/') {
-    console.log(req)// to see the resols of this useful info, after launching localhost as downwards,
+    console.log(req)// to see the result of this useful info, after launching localhost as downwards,
     //  refresh the page then come see terminal here:
     res.end('Welcome to our home page')
   } else if (req.url === '/about') {

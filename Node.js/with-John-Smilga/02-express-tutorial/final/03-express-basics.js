@@ -1,5 +1,8 @@
 const express = require('express')
 const app = express()
+//! you need to install express, John uses 4.17 version
+// to install type: //! npm install express --save
+// [--save] is optionally, only mandatory for earlier node versions
 
 app.get('/', (req, res) => {
   console.log('user hit the resource')
