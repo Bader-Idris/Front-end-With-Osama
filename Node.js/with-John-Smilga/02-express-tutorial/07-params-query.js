@@ -9,6 +9,8 @@ app.get('/api/products', (req, res) => {
   const newProducts = products.map((product) => {
     const { id, name, image } = product
     return { id, name, image }
+    // this approach is awesome to reduce expenses
+    //! compare it to 06 module
   })
 
   res.json(newProducts)

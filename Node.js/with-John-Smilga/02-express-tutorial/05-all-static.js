@@ -4,12 +4,13 @@ const path = require('path')
 const app = express()
 
 // setup static and middleware
-app.use(express.static('./public'))
+// app.use(express.static('./public'))
+app.use(express.static('./navbar-app'))// in my case
 
 // app.get('/', (req, res) => {
 //   res.sendFile(path.resolve(__dirname, './navbar-app/index.html'))
 //   adding to static assets
-//   SSR
+//   SSR //![Server-side rendering]
 // })
 
 app.all('*', (req, res) => {
