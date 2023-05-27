@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fill Element Background From Other Element</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+  
+    body {
+      font-family: Arial, Tahoma;
+    }
+  
+    .product {
+      width: 400px;
+      margin: 20px auto;
+      box-shadow: 0 0 10px #ddd;
+      padding: 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+  
+    .product .number {
+      background-color: #009688;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 26px;
+      transition: 0.6s;
+    }
+  
+    .product h3 {
+      margin: 15px 0;
+      font-size: 26px;
+      transition: 0.6s;
+    }
+  
+    .product p {
+      line-height: 1.6;
+      transition: 0.6s;
+      font-size: 18px;
+    }
+  
+    .product:hover .number {
+      box-shadow: 0 0 0 500px #009688;
+    }
+  
+    .product:hover h3,
+    .product:hover p {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="product">
+    <div class="number">01</div>
+    <h3>Product Title</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Expedita tenetur accusantium recusandae perspiciatis
+      laborum. Aspernatur optio itaque accusamus ex molestiae dolorem,
+      quas qui illo similique fugit unde error sit
+      ipsa.
+    </p>
+  </div>
+</body>
+</html>
