@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moving To Right Text Effect</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+  
+    body {
+      font-family: Arial, Tahoma;
+      background-color: #333;
+    }
+  
+    .link {
+      color: #8bc34a;
+      text-decoration: none;
+      display: block;
+      border: 2px solid #8bc34a;
+      margin: 20px auto;
+      position: relative;
+      width: 160px;
+      height: 40px;
+      line-height: 36px;
+      text-align: center;
+      overflow: hidden;
+    }
+  
+    .link:before {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      transform: translateX(-100%);
+      transition: 0.3s;
+    }
+  
+    .link span {
+      display: block;
+      transition: 0.3s;
+    }
+  
+    .link:hover:before {
+      transform: translateX(0);
+    }
+  
+    .link:hover span {
+      transform: translateX(100%);
+    }
+  </style>
+</head>
+<body>
+  <a href="#" class="link" data-text="Elzero Academy">
+    <span>Elzero Academy</span>
+  </a>
+</body>
+</html>

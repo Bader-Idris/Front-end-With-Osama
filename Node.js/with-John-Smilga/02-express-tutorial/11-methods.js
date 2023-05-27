@@ -1,6 +1,8 @@
+// this is a beloved lesson, because it makes your users' data more dynamic,
+//! using get, post, put and delete methods [http methods]
 const express = require('express')
 const app = express()
-let { people } = require('./data')
+let { people } = require('./data')// we use let, because it'll be changing
 
 // static assets
 app.use(express.static('./methods-public'))
@@ -14,6 +16,12 @@ app.get('/api/people', (req, res) => {
 })
 
 app.post('/api/people', (req, res) => {
+  // to send post http, we need to install a tool, as we'll install
+  // both Postman, or Insomnia || or you need to set up basically a working application
+  //! notice how we built form in index.html its action='/login' and its method=POST
+  //? it's appearing that action is for tended location
+  // even if we initially get a 404 error after adding a value to input, we can see it as:
+  // name: john, in the form data, when we click on the request [login]
   const { name } = req.body
   if (!name) {
     return res
