@@ -22,3 +22,4 @@ function PalinArray(arr,n){
   }
 }
 console.log(PalinArray([1,2,1],n))
+// needs maintenance
