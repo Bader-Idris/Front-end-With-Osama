@@ -8,8 +8,8 @@
 
 const bmi = (weight, height) => {
   if (weight / (height * 2) <= 18.5) return "Underweight"
-  else if (weight / (height * 2) <= 25) return "Normal"
-  else if (weight / (height * 2) <= 30) return "Overweight"
+  else if (weight / (height * 2) <= 25 && weight / (height * 2) > 18.5) return "Normal"
+  else if (weight / (height * 2) <= 30 && weight / (height * 2) > 25) return "Overweight"
   else if (weight / (height * 2) > 30) return "Obese"
 }
 console.log(bmi(20, 1.80))

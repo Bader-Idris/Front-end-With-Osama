@@ -1,14 +1,6 @@
 // pop-shift a[i] if exists in b[i]
 const arrayDiff = (a, b) => {
-  let result = [];
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] === b[i]){
-      a[i].pop();
-    } else {
-      result.push(a[i]);
-    }
-  }
-  return result;
+  return a.filter(num => !b.includes(num));
 };
-console.log(arrayDiff([1,2,2,2,3],[2]))
-// needs a lot of working
+console.log(arrayDiff([1,2,2,2,3],[2])); // Output: [1, 3]
+//! I didn't make it, Bito helped me!!! 😠
