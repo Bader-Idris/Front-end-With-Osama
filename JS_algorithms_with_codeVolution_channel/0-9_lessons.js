@@ -1,5 +1,15 @@
 /*
   1st lesson:
+  Course Topics
+  -- Algorithm
+  -- Measuring performance
+  -- Time & Space complexity
+  -- Big O notation
+  --- Math algorithms
+  --- Sort
+  --- Search
+  --- Misc. algorithms and problem solving
+
   How to represent complexity?
   Asymptotic notations
   - Mathematical tools to represent time and space complexity
