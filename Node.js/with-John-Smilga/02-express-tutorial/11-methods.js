@@ -62,11 +62,12 @@ app.post('/login', (req, res) => {
 //! in network, header see: content-type: application/x—www—form—urlencoded
 // in javascript.html we didn't add actions to from
 // if you're not familiar with js fetch you can 
-app.put('/api/people/:id', (req, res) => {
+app.put('/api/people/:id', (req, res) => {// id here as /api/people/1 or number of ids
   // install the tool axios as John uses in javascript.html
   const { id } = req.params
   const { name } = req.body
-
+  // console.log(id, name)// server console
+  // res.send('hello world') in client body
   const person = people.find((person) => person.id === Number(id))
 
   if (!person) {
@@ -83,7 +84,7 @@ app.put('/api/people/:id', (req, res) => {
   res.status(200).json({ success: true, data: newPeople })
 })
 
-app.delete('/api/people/:id', (req, res) => {
+app.delete('/api/people/:id', (req, res) => {//it's important to care after id and name here
   const person = people.find((person) => person.id === Number(req.params.id))
   if (!person) {
     return res
@@ -99,3 +100,23 @@ app.delete('/api/people/:id', (req, res) => {
 app.listen(5000, () => {
   console.log('Server is listening on port 5000....')
 })
+
+
+//! install free tool postman from its website => [for testing purposes]
+// https://postman.com download it freely
+/*
+  clicking on ➕ in main dashboard with add a new request
+   you can choose what type of request you want, post get put delete ...
+    to pick our url, we choose localhost:5000 and our normal path we created
+  we'll test some approaches as =>
+  localhost:5000/api/people
+  it returns fast results as status, size time, AND we can test it immediately
+  instead of building the whole front-end
+
+  in post req we go to body => raw && text:json
+    so we use json data as 
+    {
+      "name": "Bader",
+      "name": "Hanady baby"
+    }
+*/
