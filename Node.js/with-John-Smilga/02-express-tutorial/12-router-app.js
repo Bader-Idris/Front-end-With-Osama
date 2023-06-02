@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express')// John uses mvs as a common pattern in router express
 const app = express()
 
 const people = require('./routes/people')
@@ -17,3 +17,13 @@ app.use('/login', auth)
 app.listen(5000, () => {
   console.log('Server is listening on port 5000....')
 })
+
+// WE CREATED routes DIR FOR CONTAINING DYNAMIC MODULES
+/*
+  it includes auth and people
+  auth is stands for authentication it's mainly as a login module
+  instead of routing manually we require router in people, go look at it
+  then, we invoke it here 
+  then we copied all methods excluding login from 11 module, and changed app method to router in people.js
+
+*/
