@@ -1,64 +1,31 @@
 const express = require('express');
 // we'll call router instead of do the routing manually in our router.js as a middleware
 const router = express.Router();
-let { people } = require('../data')
+// let { people } = require('../data') needs to be in controllers dir
+const {
+  getPeople,
+  createPerson,
+  createPersonPostman,
+  updatePerson,
+  deletePerson
+} = require('../controllers/people')//Destructuring obj
 
-router.get('/', (req, res) => {
-  res.status(200).json({ success: true, data: people })
-})
+// router.get('/', getPeople)
+// router.post('/', createPerson)
+// router.post('/postman', createPersonPostman)
+// router.put('/:id', updatePerson)
+// router.delete('/:id', deletePerson)
+//! a shorter version with same functionality
+router.route('/').get(getPeople).post(createPerson)
+router.route('/postman').post(createPersonPostman)
+router.route('/:id').put(updatePerson).delete(deletePerson)
 
-router.post('/', (req, res) => {
-  const { name } = req.body
-  if (!name) {
-    return res
-      .status(400)
-      .json({ success: false, msg: 'please provide name value' })
-  }
-  res.status(201).json({ success: true, person: name })
-})
 
-router.post('/postman', (req, res) => {
-  const { name } = req.body
-  if (!name) {
-    return res
-      .status(400)
-      .json({ success: false, msg: 'please provide name value' })
-  }
-  res.status(201).json({ success: true, data: [...people, name] })
-})
-router.put('/:id', (req, res) => {
-  const { id } = req.params
-  const { name } = req.body
-  const person = people.find((person) => person.id === Number(id))
-
-  if (!person) {
-    return res
-      .status(404)
-      .json({ success: false, msg: `no person with id ${id}` })
-  }
-  const newPeople = people.map((person) => {
-    if (person.id === Number(id)) {
-      person.name = name
-    }
-    return person
-  })
-  res.status(200).json({ success: true, data: newPeople })
-})
-
-router.delete('/:id', (req, res) => {
-  const person = people.find((person) => person.id === Number(req.params.id))
-  if (!person) {
-    return res
-      .status(404)
-      .json({ success: false, msg: `no person with id ${req.params.id}` })
-  }
-  const newPeople = people.filter(
-    (person) => person.id !== Number(req.params.id)
-  )
-  return res.status(200).json({ success: true, data: newPeople })
-})
-
-// router.listen(5000, () => {
-//   console.log('Server is listening on port 5000....')
-// })
+// router.listen(5000, () => {})//! it's only for main module
 module.exports = router
+
+// he created a dir called controllers for the mvc pattern
+// which is to clean this module by making it only as an invoker
+
+// after finishing this course, I figured out that it's 1/4 of a full course [title was shiny]
+// next video 10H is named //! ` Node.js / Express Course - Build 4 Projects `
