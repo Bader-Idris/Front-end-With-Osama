@@ -13,11 +13,11 @@
   How to represent complexity?
   Asymptotic notations
   - Mathematical tools to represent time and space complexity
-  1. Big-O Notation (O-notation) — Worst case complexity
-  2. Omega Notation (Q-notation) — Best case complexity
-  3. Theta Notation (a-notation) Average case complexity
+  ✅ 1. Big-O Notation (O-notation) — Worst case complexity
+  ❎ 2. Omega Notation (Ω-notation) — Best case complexity
+  ❎ 3. Theta Notation (Θ-notation) Average case complexity
+  [emoji is for tended review questionnaires]
 
-  2nd lesson:
   [[Objects]] - Big-O
   An object is a collection of key value pairs
   Insert — 0(1)
@@ -28,7 +28,6 @@
   Object.values() — O(n)
   Object.entries() O(n)
 
-  3rd lesson:
   [[Array]] - Big-O
   An array is an ordered collection of values
   Insert / remove at end 0(1)

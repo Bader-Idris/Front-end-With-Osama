@@ -1,12 +1,13 @@
 const express = require('express');
-const router = express.Router();
+const auth = express.auth();
 
 
-app.post('/login', (req, res) => {
-  const { name } = req.body
-  if (name) {
-    return res.status(200).send(`Welcome ${name}`)
-  }
+// auth.post('/login', (req, res) => {
+//   const { name } = req.body
+//   if (name) {
+//     return res.status(200).send(`Welcome ${name}`)
+//   }
 
-  res.status(401).send('Please Provide Credentials')
-})
+//   res.status(401).send('Please Provide Credentials')
+// })
+// module.exports = auth;
