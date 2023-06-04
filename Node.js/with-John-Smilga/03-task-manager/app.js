@@ -95,5 +95,14 @@ start();
   then check our connection stream => //? data storage => Clusters => connect
   then we put the plain text in db dir => connect.js as var = connectionString
   
-  
+  John deploys his projects to heroku as full stack PROJECTS
+  once we deploy it, we will need to use access from anywhere option
+  ! up 2 lines are specific to heroku
+  https://www.digitalocean.com/ is another option
+  if locally, we should move ip address from local to PRODUCTION
+
+
+  then we access our collections
+  John created a dummy one as{databaseName: store, collectionName:products}
+  ! we're ready to create documents now ... [as tables]
 */
