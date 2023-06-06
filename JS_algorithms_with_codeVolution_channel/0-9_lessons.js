@@ -18,6 +18,7 @@
   ❎ 3. Theta Notation (Θ-notation) Average case complexity
   [emoji is for tended review questionnaires]
 
+  ! Important
   [[Objects]] - Big-O
   An object is a collection of key value pairs
   Insert — 0(1)
