@@ -105,4 +105,13 @@ start();
   then we access our collections
   John created a dummy one as{databaseName: store, collectionName:products}
   ! we're ready to create documents now ... [as tables]
+  it's very basic to modify documents in mongodb
+*/
+
+/*
+  after we finished mongodb intro we'll add mongoose.js framework
+  go to https://mongoosejs.com/ to access its site
+  we can require it as mongodb but best approach is to use mongoose instead
+  ? this framework is an object data modeling library
+  it's usage reason is as express, faster development process
 */

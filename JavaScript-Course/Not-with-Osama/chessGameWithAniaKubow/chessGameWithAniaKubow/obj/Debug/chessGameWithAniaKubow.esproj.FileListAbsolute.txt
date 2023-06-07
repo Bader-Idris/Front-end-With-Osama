@@ -1,0 +1,2 @@
+E:\coding_and_programming\HTML_and_CSS_Elzero\JavaScript-Course\Not-with-Osama\chessGameWithAniaKubow\chessGameWithAniaKubow\obj\Debug\chessGameWithAniaKubow.esproj.SuggestedBindingRedirects.cache
+E:\coding_and_programming\HTML_and_CSS_Elzero\JavaScript-Course\Not-with-Osama\chessGameWithAniaKubow\chessGameWithAniaKubow\obj\Debug\chessGameWithAniaKubow.esproj.CoreCompileInputs.cache
