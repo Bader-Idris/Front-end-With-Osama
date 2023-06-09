@@ -114,4 +114,9 @@ start();
   we can require it as mongodb but best approach is to use mongoose instead
   ? this framework is an object data modeling library
   it's usage reason is as express, faster development process
+
+  to install mongoDB framework we command: //todo: npm install mongoose@5.13.15
+  if version is 6 or higher, apis might be different!!//! @5.13.15 is optional version, to not add latest
+  so we can utilize mongoose's docs or stick to 5.XX version
+
 */
