@@ -1,5 +1,9 @@
 # this is a course for connecting PostgreSQL with Express app
 
+- lesson's title: Build a Rest Api with NodeJS (JavaScript), Express, and PostgreSQL
+- lesson's href:
+[check it here](https://www.youtube.com/watch?v=DihOP19LQdg&t=33s)
+
 ## required frameworks
 
 - Node.js
@@ -55,4 +59,37 @@
 #### writing code to get db data
 
 - initially, we import db.js code we typed before `22:00`, see requiring pool in controller.js
+- a crazy bug came, which is non-equality between my port: 5433 and default port: 5432, it wasted 2 hours of my life
+- to get user by id, we use `SELECT * FROM students WHERE id = 1;`, so we'll do it in queries.js, but we make id = 1 as `id = $1` **$** is a parameter, it's like a variable, but as we did in the shell, then see its usage in routes as :id
+- after we created a post request, we should send data when using it,
+- so in postman => `Body` => `raw` => `text = json` => `existing json as what id = 1 has for eg, don't include them in an array, only in one object` as this 🔽
+- ```{
+    "name": "Joe",
+    "email": "joe@gmail.com",
+    "age": 48,
+    "dob": "1973-04-03T22:00:00.000Z"
+    }
+  ```
+
+- the most important part is email, so if it exists it'll return our message, that's it's taken
+- to delete a student using psql: `DELETE FROM students WHERE id = 3;`, job's done
 - 
+
+
+##### **when deleting a non-existing student we get this error:**
+
+```
+  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+  at new NodeError (node:internal/errors:399:5)
+  at ServerResponse.setHeader (node:_http_outgoing:663:11)
+  at ServerResponse.header (E:\coding_and_programming\HTML_and_CSS_Elzero\JavaScript-Course\Not-with-Osama\PostgreSQL-Express-node\node_modules\express\lib\response.js:794:10)
+  at ServerResponse.send (E:\coding_and_programming\HTML_and_CSS_Elzero\JavaScript-Course\Not-with-Osama\PostgreSQL-Express-node\node_modules\express\lib\response.js:174:12)
+  at E:\coding_and_programming\HTML_and_CSS_Elzero\JavaScript-Course\Not-with-Osama\PostgreSQL-Express-node\src\student\controller.js:43:23
+  at Query.callback (E:\coding_and_programming\HTML_and_CSS_Elzero\JavaScript-Course\Not-with-Osama\PostgreSQL-Express-node\node_modules\pg-pool\index.js:423:18)
+  at Query.handleReadyForQuery (E:\coding_and_programming\HTML_and_CSS_Elzero\JavaScript-Course\Not-with-Osama\PostgreSQL-Express-node\node_modules\pg\lib\query.js:139:14)
+  at Client._handleReadyForQuery (E:\coding_and_programming\HTML_and_CSS_Elzero\JavaScript-Course\Not-with-Osama\PostgreSQL-Express-node\node_modules\pg\lib\client.js:312:19)
+  at Connection.emit (node:events:513:28)
+  at E:\coding_and_programming\HTML_and_CSS_Elzero\JavaScript-Course\Not-with-Osama\PostgreSQL-Express-node\node_modules\pg\lib\connection.js:117:12 {
+code: 'ERR_HTTP_HEADERS_SENT'
+}
+```
