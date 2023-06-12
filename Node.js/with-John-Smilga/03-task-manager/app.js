@@ -119,4 +119,20 @@ start();
   if version is 6 or higher, apis might be different!!//! @5.13.15 is optional version, to not add latest
   so we can utilize mongoose's docs or stick to 5.XX version
 
+  he doesn't stringify connectDB method in its module: connect.js, 
+  because we don't want to server to work without a DB, so John invokes it here by using start method
+  
+  ! instead of using connectionString, which is open API, we put it in .env file
+  ? so we install a package named: "dotenv" in our package.json
+  it's important to add .env in .gitignore to not upload it
+  ? it's best practice to even add package.json to .gitignore
+
+  John adds .env in root directory
+  then we require it here, and npm install dotenv, if not already
+  
 */
+
+
+
+
+// nodemon is to restart code on saving, after modifying code
