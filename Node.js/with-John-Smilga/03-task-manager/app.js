@@ -95,7 +95,7 @@ start();
   then check our connection stream => //? data storage => Clusters => connect
   then we put the plain text in db dir => connect.js as var = connectionString
   
-  John deploys his projects to heroku as full stack PROJECTS
+  John deploys his projects to 🔴 heroku 🔴 as full stack PROJECTS
   once we deploy it, we will need to use access from anywhere option
   ! up 2 lines are specific to heroku
   https://www.digitalocean.com/ is another option
@@ -129,10 +129,35 @@ start();
 
   John adds .env in root directory
   then we require it here, and npm install dotenv, if not already
-  
+  ? to access .env module we type following: process.env.VAR_NAME
+
+  to add new data we created models/Task
+  using schema will set up the structure for all the documents
+  that we'll have in our collection
+  task schema will be as tables in postgreSQL
+
+  you can search for models and schemas in mongoose website
+  when we add validators in Task schema, and outlaw it, we'll have an error
+  or it's still hanging, not coming to res, and sticking in req. error msg will be
+
+  Todo: learn more about validation, here: https://mongoosejs.com/docs/validation
+
+  ? unhandled promise rejection
+  ! it's caused in createTask func in controller
+  ? John wasn't using asyncWrapper function to fix it, when it was Thrown
+  to fix it: easily use try & catch condition, John will use the middleware next(error) in future
+
+
+  put that code in try, and make catch as res.status(500) it's a general server error
+  but it's lengthy, so to make it shorter we wait for rest of project🤓😲
+
+  to check other CRUD operations, after seeing model.create go to:
+  http://mongoosejs.com/docs/queries.html
 */
 
+/* validation catch
 
+*/
 
 
 // nodemon is to restart code on saving, after modifying code
