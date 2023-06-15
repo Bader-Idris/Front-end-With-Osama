@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use('/api/v1/tasks', tasks);
 
-app.use(notFound);
+app.use(notFound);//this is where we change our error as custom response
 app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 5000;
 
@@ -156,7 +156,13 @@ start();
 */
 
 /* validation catch
+  ! important to not stop server when user sends non-existing object
+  it's a good practice to make status(404) in try when not having single task in getTask method,
+    as if (!task) return res.status(404).json({msg: 'Task not found'}); 
+    and simultaneously adding catch(err) res.status(500).json({msg: err});
+  ? update[put/patch] task is a bit more complicated that delete one, so it'll be after it
 
+  
 */
 
 
