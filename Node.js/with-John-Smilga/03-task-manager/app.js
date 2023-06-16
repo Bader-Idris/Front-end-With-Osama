@@ -162,8 +162,30 @@ start();
     and simultaneously adding catch(err) res.status(500).json({msg: err});
   ? update[put/patch] task is a bit more complicated that delete one, so it'll be after it
 
+  go to express site => search for: [error] => [default error] to improve 500 error status
+  ! it's so powerful using next(), because of its built-in error handler
+  even if you don't add a costume error, and only using next() its built-in will pass the bug
+  it's the same reason we use next(error) inside middleware => async module
   
+  instead of seeing the long default error, by using:
+  re.status(500).json({msg:error}), make it as this
+  ! ({msg:`costume error`})
+  ?make sure you used error parameter as in try&catch or in express error handler
+
+  deployment:
+  ? it's a high risk deploying this this project th because of not setting good validation
+  but in future we'll be setting it in .env file, as you can see above [although it's a different scenario]
+  ! const port = process.env.PORT || 5000;
+
+  to test it out in localhost do this
+  stop the server => type: PORT=ANYPORT as [PORT=6000 node app.js] and it'll log port listens as 6000
+  ? it didn't work with me! I don't know why,
+  I asked Bito but set PORT=6000 and other solutions didn't work
+
+  whatever, now jump to next project, because it has an important validation strategy
 */
 
 
 // nodemon is to restart code on saving, after modifying code
+
+// I hate Backend 🤓, finished in 3:51 PM 6/16/2023
