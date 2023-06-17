@@ -26,3 +26,11 @@
 - he'll mimic the major ones, not all of them
 - his react store project does the front side of it
 - the front-end only make the http call, and the backend does `the heavy lifting`
+
+#### express-async-errors package
+
+- this package provides same async wrapper we used in previous project
+- it's on behalf of using try&catch with each request
+- all of what we do with it is installing it and provoking it in app.js
+- previously we was wrapping every request, you can go and see 03rd project, and with that, we were making every req as async inside of the fn
+- 
