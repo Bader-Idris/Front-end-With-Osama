@@ -78,3 +78,7 @@ go to populate.js to check sending JSON object info, to mongoDB website
 - comma is for adding price with it, if -price, it'll be z-a instead of a-z as expected
 - it's 🔴 important 🔴 to chain sort,select and limit right after find({})
 - when we sort inside controllers.js we don't use comma, but we separate them as CSS classes sort('-name price')
+- there will be a big **gotta** when having async and chaining sort() results, because sort needs to see data as plain not promise, check `results` var in controllers => func `getAllProducts`
+- he made await as a second step
+- although in this function we split(',').join(' '), because we're invoking it in node, not as URL bar
+- 
