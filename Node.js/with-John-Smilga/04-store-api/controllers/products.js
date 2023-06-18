@@ -2,7 +2,7 @@ const Product = require('../models/product');
 
 const getAllProductsStatic = async (req, res) => {
   const products = await Product.find({ price: { $gt: 30 } })//what inside find method, we can set specifiers
-    .sort('price')
+    .sort('price')//up $gt is as it's appearing greater than, and others down are easily perceived lt, lte less than equal
     .select('name price');
 
   res.status(200).json({ products, nbHits: products.length });
@@ -51,7 +51,7 @@ const getAllProducts = async (req, res) => {
     result = result.sort('createdAt');
   }
 
-  if (fields) {
+  if (fields) {//🔴 fields here is to limit exported keys 🔴
     const fieldsList = fields.split(',').join(' ');
     result = result.select(fieldsList);
   }

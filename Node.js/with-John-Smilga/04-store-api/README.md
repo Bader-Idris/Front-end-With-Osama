@@ -19,8 +19,8 @@
 
 ### Where did John got the idea from:
 
-- He got it from the search hacker News api
-[check it here](https://hn.algolia.com/api)
+- He got it from the search **`hacker News api`**🔴
+[**check it here**](https://hn.algolia.com/api)
 - because they offer quite a few search options for data user
 
 - he'll mimic the major ones, not all of them
@@ -81,4 +81,22 @@ go to populate.js to check sending JSON object info, to mongoDB website
 - there will be a big **gotta** when having async and chaining sort() results, because sort needs to see data as plain not promise, check `results` var in controllers => func `getAllProducts`
 - he made await as a second step
 - although in this function we split(',').join(' '), because we're invoking it in node, not as URL bar
-- 
+- when we use limit(10), to get the next set of products we use skip(10) the number of limited products we provided in limit()
+- to flick through pages, initially we include them in Number method, to convert their type to Number, check controllers
+- we set them as this🔽
+
+```javascript
+const page = Number(req.query.page) || 1;
+const limit = Number(req.query.limit) || 10;
+const skip = (page - 1) * limit;
+result = result.skip(skip).limit(limit);
+```
+
+- if we have 23 items, and limit each to 7 items, we divide them, so they're 4 => 7 7 7 2
+- `we'll skip 0 items for multiplying process`
+- `fields here is to limit exported keys` with the _id brought from mongoose
+- to convert the friendly ones from hacker news api to mongoose ones, we use regExp for it
+- check numericFilters to see how he destructed mongoose operators into the URL bar ones
+- /\b[boundaryIsAwesomeInRegExp]\b/
+
+#### **the rest is complicated, go read it with concentration**

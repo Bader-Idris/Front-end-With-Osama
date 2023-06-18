@@ -7,6 +7,11 @@ You need to write regex that will validate a password to make sure it meets the 
   contains a digit
   only contains alphanumeric characters (note that '_' is not alphanumeric)
 */
+//! it's important to know boundary ch in regExp to solve this, /\b\d{3}\b/
+//? that means only three digits, it's awesome for this challenge,
+//! and I consider it's the reason I wasn't able to solve it previously
+// \b[A-Z]\w*\b matches any word that starts with a capital letter, as Apple
+// and doesn't accept apple, starting with lowerCase ch
 
 // assign your RegExp to REGEXP
 // const REGEXP = /\w({6}A-Za-z\d^[0-9])/g;
