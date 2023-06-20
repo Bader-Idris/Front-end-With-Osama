@@ -2,6 +2,7 @@ import ListHeader from './components/ListHeader';
 import { useEffect } from 'react';// this useEffect is new to me
 const App = () => {
   const getData = async () => {
+    const userEmail = 'ania@test.com'//this is to pass it from Front to server
     try {
       const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
       const json = await response.json();

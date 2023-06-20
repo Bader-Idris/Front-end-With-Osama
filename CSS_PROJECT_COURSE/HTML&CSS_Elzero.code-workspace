@@ -19,7 +19,18 @@
 			"yenku"
 		],
 		"liveServer.settings.port": 5501,
-		"powershell.cwd": "e:\\coding_and_programming\\HTML_and_CSS_Elzero"
+		"powershell.cwd": "e:\\coding_and_programming\\HTML_and_CSS_Elzero",
+		"sqltools.connections": [
+			{
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 5433,
+				"driver": "PostgreSQL",
+				"database": "postgres",
+				"name": "Local PG",
+				"username": "postgres"
+			}
+		]
 	},
 	"launch": {
 		"configurations": [

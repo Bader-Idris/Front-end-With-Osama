@@ -103,5 +103,38 @@ CREATE TABLE todos (
 
 ---
 
+- we need to install some packages to run pg in our server
+- in server DIR do following: 
+
+```node
+npm i express cors bcrypt jsonwebtoken uuid dotenv nodemon pg
+
+```
+
+🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
+
+- cros here is for stopping cors error messages that don't allow us to communicate to our DB 
+- bcrypt help us essentially hash our passwords
+- jsonwebtoken helps creating a token to log in&out
+- uuid helps generating a random unique identifier
+- dotenv & nodemon & pg are known to you
+
+🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
+
+- then in server DIR => package.json => make inside scripts as: 
+
+```json
+"start": "nodemon server.js",
+"deploy": "node server.js",
+"build": "react-scripts build",
+"test":"react-scripts test",
+"eject":"react-scripts eject"
+```
+
+- then to start server command in CMD => 🔴`npm run start`🔴| looks like same as normal nodemon starting
+- then we set PORT in our server.js file, not `.env`
+- she'll provide the .env code in her `Kinsta platform`
+
+
 
 - then create two dotenv one for each
