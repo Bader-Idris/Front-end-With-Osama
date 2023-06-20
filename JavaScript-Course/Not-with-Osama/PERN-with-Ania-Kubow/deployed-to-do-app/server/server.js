@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/todos/:userEmail', async (req, res) => {//using controllers as John is much more cleaner
-  const userEmail = req.params//.user_email;
+  const { userEmail } = req.params;//! you can either do these 👈 or 🔽
+  //  userEmail = req.params.userEmail;//! both are valid
+  // if else, you'll get an empty []
   try {//using async wrapper or express error extension is much cleaner, John taught me
     const todos = await pool.query('SELECT * FROM todos WHERE user_email = $1', [userEmail])//using separate file is better
     res.json(todos.rows);//rows is important
