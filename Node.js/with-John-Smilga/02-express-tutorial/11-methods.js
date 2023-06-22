@@ -26,7 +26,7 @@ app.post('/api/people', (req, res) => {
   // name: john, in the form data, when we click on the request [login]
   // name because we added name='name' in HTML, //? so we can change the key name
   const { name } = req.body
-  if (!name) {
+  if (!name) {//Important to not stop the server when user adds a non-existing name
     return res
       .status(400)
       .json({ success: false, msg: 'please provide name value' })
@@ -62,8 +62,8 @@ app.post('/login', (req, res) => {
 //! in network, header see: content-type: application/x—www—form—urlencoded
 // in javascript.html we didn't add actions to from
 // if you're not familiar with js fetch you can 
+// install the tool axios as John uses in javascript.html
 app.put('/api/people/:id', (req, res) => {// id here as /api/people/1 or number of ids
-  // install the tool axios as John uses in javascript.html
   const { id } = req.params
   const { name } = req.body
   // console.log(id, name)// server console

@@ -159,4 +159,38 @@ ADD COLUMN country_of_birth VARCHAR(50);
 
 #### WHERE clause and AND
 
+- `WHERE` allows us to filter data based on conditions
+- ie: `SELECT * FROM person WHERE gender = 'Female';`only female results
+- to chain conditions use `AND` as
+- `SELECT * FROM person WHERE gender = 'Male' AND country_of_birth = 'Poland';`
+- Notice`male and female are case insensitive or capitalized`
+- 🔴A lovely combining approach is as to add condition inside`(a or b)` as
+
+```postgresql
+SELECT * FROM person WHERE gender = 'Female' AND (country_of_birth = 'Poland' OR country_of_birth = 'China');
+```
+
+- we can add more conditions as
+
+```postgresql
+SELECT * FROM person WHERE gender = 'Female' AND (country_of_birth = 'Poland' OR country_of_birth = 'China') AND last_name = 'Crim';
+```
+
+#### Comparison Operators
+
+- These are the operators we're allowed to perform
+- `arithmetic OPs`, `comparisons`,`bitwise`, And `logical OPs`
+- Most Common are `arithmetic`, `comparisons` operators
+
+---
+
+- `SELECT 1 = 1;` returns ?columns and `t`, this is the comparison operator instead of `==`
+- `f` => `false`, `t` => `true`
+- `<>` => `not equal` instead of `!=`
+- `<=` and `>=` are normal
+- 🔴don't forget to use `SELECT` before comparison
+- we can use them with string as JS, `SELECT 'ABC' <> 'ABC';` f, THEY'RE CAPITALIZED SO FALSE
+
+### LIMIT, Offset & Fetch
+
 - 
