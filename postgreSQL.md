@@ -139,4 +139,24 @@ ADD COLUMN country_of_birth VARCHAR(50);
 
 ```
 
--
+- if we use `SELECT FROM pesron;` without any condition, it'll appear how many rows are there
+- to select specific columns we write: `SELECT first_name, last_name FROM person;`
+
+#### Order By
+
+- it takes a column by ascending and descending orders
+- `ASC, DESC` are the keywords for that
+- ie: `SELECT * FROM person ORDER BY country_of_birth;` It'll return A-z Countries, which is awesome
+- with `ASC` it's optional to include it, because it's optional the default value
+- another ie `SELECT * FROM person ORDER BY id DESC`
+- we can combine many as `SELECT * FROM person ORDER BY id, email DESC;`
+
+#### Distinct
+
+- easily perceived `SELECT country_of_birth FROM person ORDER BY country_of_birth ASC;`we can order as expected
+- 🔴 to Distinct, meaning: to select unique values without repetition do 🔽 to remove duplicates🔴
+- `SELECT DISTINCT country_of_birth FROM person ORDER BY country_of_birth;`
+
+#### WHERE clause and AND
+
+- 
