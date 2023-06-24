@@ -1,3 +1,45 @@
+/*
+  #3b7d65
+  #1a3f30
+  #463ffd
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #1a3f30;
+}
+ul {
+  list-style-type: none;
+}
+nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #222;
+}
+nav ul {
+  display: flex;
+  width: 80%;
+}
+nav ul li a {
+  padding: 40px 20px;
+  display: block;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  position: relative;
+  z-index: 2;
+}
+nav ul li a.active,
+nav ul li a:hover {
+  color: #463ffd;
+  border-bottom: 1px solid #463ffd;
+}
+
 .div {
   padding: 20px;
   margin: 50px auto;
@@ -8,6 +50,7 @@
   text-align: center;
   font-family: 'Segoe UI', Tahoma;
 }
+.download-btn,
 .click {
   width: 300px;
   border: 2px solid #333;
@@ -17,7 +60,18 @@
   padding: 20px;
   display: block;
 }
+.download-btn:hover,
 .click:hover {
   border-color:  #33333367;
   background-color: #33333367;
+}
+a {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+a:hover {
+  color: #463ffd;
 }

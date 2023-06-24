@@ -16,17 +16,29 @@ app.use(express.static('./public'));
 app.get('/', (req, res) => {
   res.status(200).send('Hello Bader');
 });
-app.get('/link', (req, res) => {
-  res.status(200).send('<a href="/">Go to Home Page</a>');
-});
 
-app.post('/test', (req, res) => {
-  const { fname, lname } = req.body;
+app.get('/user_prompt', (req, res) => {
+  res.sendFile(__dirname + '/public/user-prompt.html',
+    { headers: { 'Content-Type': 'text/html' } });
+});
+app.post('/user_prompt',  async (req, res)  => {
+  const { fname, lname } = await req.body;
   console.log(fname, lname)
   res.send(`Hello ${fname +" "+ lname}`);
 });
 
+app.get('/downloadfile', (req, res) => {
+  res.sendFile(__dirname + '/public/download-file.html');
+});
+
+app.post('/download-pdf', async (req, res) => {
+  const filePath = __dirname + '/public/2nd-brain.pdf';
+  res.download(filePath);
+});
 
 
+app.get('/projects', (req, res) => {
+  res.sendFile(__dirname + '/public/projects.html');
+});
 
 app.listen(port, () => console.log(`Server is listening port ${port}...`));

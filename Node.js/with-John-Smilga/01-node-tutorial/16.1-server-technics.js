@@ -8,7 +8,7 @@
 //  so it reads && //!writes data in junk
 //? file still has same size,
 // but the transfer encoding is //!chunked
-//? we can find that in Network => headers => response headers => transfer-encoding
+//? we can find that in Network [click on file] => headers => response headers => transfer-encoding
 
 //! after all these 17 files and 3:40:00 hours, we are understanding fundamentals of node.js
 
