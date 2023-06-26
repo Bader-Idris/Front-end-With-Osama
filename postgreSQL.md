@@ -193,4 +193,57 @@ SELECT * FROM person WHERE gender = 'Female' AND (country_of_birth = 'Poland' OR
 
 ### LIMIT, Offset & Fetch
 
-- 
+- You've been using LIMIT before `selection FROM table LIMIT N`
+- 🔴 `OFFSET` 🔴 is CRUCIAL WHEN CREATING PAGES
+- `SELECT * FROM person OFFSET 5 LIMIT 5`
+- limit isn't a standard sql selector, it's become popular with its usage
+- Official limiting is by using `FETCH` as
+- `SELECT * FROM person OFFSET 5 FETCH FIRST 5 ROW ONLY;`
+
+### IN ('a','b','c') as array
+
+- It takes an array of values, to turn query matching the values
+- instead of repeating `country_of_birth` as
+- `SELECT * FROM person WHERE country_of_birth = 'China' OR country_of_birth = 'Brazil' OR country_of_birth = 'France'`
+
+---
+
+- we use `SELECT * FROM person WHERE country_of_birth IN ('China', 'Brazil', 'France');`
+
+### BETWEEN it's range selection
+
+- as `SELECT * FROM person WHERE date_of_birth BETWEEN DATE '2000-01-01' AND '2015-01-01';`
+
+### LIKE AND ILIKE
+
+- we can use it with substrings as ending in `.com` using patterns using wild cards `%` meaning: `modulo operator`
+- `%` modulo means `any character`, then we add out extension or substring  
+- see `SELECT * FROM person WHERE email LIKE '%.com';`
+- another ie: `'%@bloomberg.com';` and `%@google.com`
+- the beloved dynamic ones are when encapsulating it as
+- 🔴 `%@google.%` 🔴
+- `_` represents `\w` in regEXp, so it's any ch, see: for 8 characters, then 
+- `SELECT * FROM person WHERE email LIKE '________@%';`
+- `ILIKE` makes it case insensitive
+
+### GROUP BY
+
+- **👨‍🏫 said it's 💪 🔴**, it allows us to group data based on `columns`, isn't it similar to DISTINCT?
+- a great example is grouping by countries
+- to find out how many people are in each country we use `GROUP BY`, so it's important
+- this isn't gonna work!! `SELECT country_of_birth FROM person GROUP BY country_of_birth;`
+- why? **because** we need to use `COUNT(*)`, it's a function that counts all, so type:
+- `SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth;` sort it if you want, as
+- `SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth ORDER BY country_of_birth;`
+
+### GROUP BY HAVING
+
+- to get specific counted columns having  5 people for ie we use this group by having selector
+- the `having` keyword must be before `order by` one, `having` is another function as count, see how it's been used as:
+- `SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth HAVING COUNT(*) > 5 ORDER BY country_of_birth;`, here we asked for only greater than 5 counted results for selected country_of_birth
+- You can find these parameters named as `Aggregate functions` in the document of official PG website,
+[here:](https://www.postgresql.org/docs/current/functions-aggregate.html)
+
+### Adding New Table & Data Using Mockaroo
+
+<!-- -  -->

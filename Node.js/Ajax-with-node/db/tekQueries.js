@@ -1,5 +1,5 @@
-const getStudents = "SELECT * FROM students";// to migrate to controller
-const getStudentById = "SELECT * FROM students WHERE id = $1";//$1 is our parameter
+const getStudents = "SELECT * FROM students";
+const getStudentById = "SELECT * FROM students WHERE id = $1";
 // s is aliased 🔽
 const checkEmailExists = "SELECT s FROM students s WHERE s.email = $1";
 //$ 1234 are vars inside controller 🔽

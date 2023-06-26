@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="http://localhost:8000/" method="post" enctype="multipart/form-data">
+    <label>Name: <input name="myTextField" value="Test" /></label>
+    <label><input type="checkbox" name="myCheckBox" /> Check</label>
+    <label>
+      Upload file: <input type="file" name="myFile" value="test.txt" />
+    </label>
+    <button>Send the file</button>
+  </form>
+  <p>
+    this form is brought from this <a
+      href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#multipartform-data">MDN link</a>
+  </p>
+  they're saying it'll provide this:
+  <pre>
+    <code>HTTP/1.1 206 Partial Content</code>
+    <code>Accept-Ranges: bytes</code>
+    <code>Content-Type: multipart/byteranges; boundary=3d6b6a416f9b5</code>
+    <code>Content-Length: 385</code>
+    <code></code>
+    <code>--3d6b6a416f9b5</code>
+    <code>Content-Type: text/html</code>
+    <code>Content-Range: bytes 100-200/1270</code>
+    <code>eta http-equiv="Content-type" content="text/html; charset=utf-8" /></code>
+    <code><meta name="viewport" content --3d6b6a416f9b5 Content-Type: text/html Content-Range: bytes 300-400/1270 -color: #f0f0f2;</code>
+    <code>  margin: 0; padding: 0; font-family: "Open Sans" , "Helvetica</code>
+    <code>--3d6b6a416f9b5--</code>
+  </pre>
+</body>
+</html>

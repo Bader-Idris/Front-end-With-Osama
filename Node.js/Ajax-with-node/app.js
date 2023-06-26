@@ -1,8 +1,7 @@
 const port = process.env.PORT || 5000;
 const express = require('express');
 const app = express();
-const pool = require('./db');
-
+const BeaufortTek = require('./routes/Beaufort-Tek');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))// body parser, for POST requests
@@ -40,5 +39,8 @@ app.post('/download-pdf', async (req, res) => {
 app.get('/projects', (req, res) => {
   res.sendFile(__dirname + '/public/projects.html');
 });
+// Beaufort Tek project
+app.use('/projects/Beaufort_Tek', BeaufortTek)
+
 
 app.listen(port, () => console.log(`Server is listening port ${port}...`));
