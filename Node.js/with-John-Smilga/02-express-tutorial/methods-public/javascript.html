@@ -50,7 +50,7 @@
         try {
           const { data } = await axios.get('/api/people')
           // we make our req as get, because we're launching this file in same server,
-          //  so no need to use post, and the path here is for same reason
+          //  it's fetching, to see post go down after changing json response data
           const people = data.data.map((person) => {
             return `<h5>${person.name}</h5>`
           })

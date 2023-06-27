@@ -1,5 +1,17 @@
 const pool = require('../db/db');
 const queries = require('../db/tekQueries');
+/*
+  ! it's important to use this if null, because server will stop if not with POST
+  const { name } = req.body
+  if (!name) {
+    return res
+      .status(400)
+      .json({ success: false, msg: 'please provide name value' })
+  }
+  11th in express course with John is awesome for solving these bugs here!!
+  12 is more neat, so I thought it's useless, but It's not, //! it's powerful
+*/
+
 const getStudents = (req, res) => {
   // this query method has two parameters, 1st is SQL statement
   pool.query(queries.getStudents, (err, results) => {
