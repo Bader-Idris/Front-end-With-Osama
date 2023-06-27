@@ -142,4 +142,34 @@ console.log(add(10, 20));
 console.log(add(10, "20"));// string is an error it'll response
 ```
 
+### 06- Type Annotations With Arrays
+
+- we can use regExp approach of `if or` with data anatotation as 
+
+```typescript
+let all: (string | number | boolean) = 'first value';// () => allowed
+all = "hello";
+all = 100;
+all = true;
+```
+
+- when you add strings to array, it'll return string[], use this: 
+
+```typescript
+let myParts = ["hand", "leg", "head", "whatnot", 10]
+// when you add numbers to it it'll become (string | number)
+```
+
+- let's add a for loop with some bugs
+
+```typescript
+// check index.ts file
+for (let i = 0; i < myParts.length; i++) {
+  console.log(myParts[i].repeat(3)); // bug because only works with string
+  // you can fix the number | add string[] as we did
+}
+```
+
+### 07 - Type Annotations With Multidimensional Arrays
+
 - 

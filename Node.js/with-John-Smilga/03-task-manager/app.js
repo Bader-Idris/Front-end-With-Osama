@@ -131,7 +131,7 @@ start();
   then we require it here, and npm install dotenv, if not already
   ? to access .env module we type following: process.env.VAR_NAME
 
-  to add new data we created models/Task
+  to add new data we created models/Task //! ▶️ MVC design pattern: model => DB
   using schema will set up the structure for all the documents
   that we'll have in our collection
   task schema will be as tables in postgreSQL

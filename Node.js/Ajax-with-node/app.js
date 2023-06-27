@@ -1,6 +1,7 @@
 const port = process.env.PORT || 5000;
 const express = require('express');
 const app = express();
+require('dotenv').config();
 const subMime = require('./routes/main-nav')
 const BeaufortTek = require('./routes/Beaufort-Tek');
 app.use(express.json());
