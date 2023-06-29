@@ -151,7 +151,7 @@ start();
   put that code in try, and make catch as res.status(500) it's a general server error
   but it's lengthy, so to make it shorter we wait for rest of project🤓😲
 
-  to check other CRUD operations, after seeing model.create go to:
+  to check other CRUD operations, after seeing model.create go to: [🔴 search for 🔴]
   http://mongoosejs.com/docs/queries.html
 */
 
@@ -163,14 +163,15 @@ start();
   ? update[put/patch] task is a bit more complicated that delete one, so it'll be after it
 
   go to express site => search for: [error] => [default error] to improve 500 error status
+  todo: https://expressjs.com/en/guide/error-handling.html#the-default-error-handler
   ! it's so powerful using next(), because of its built-in error handler
   even if you don't add a costume error, and only using next() its built-in will pass the bug
   it's the same reason we use next(error) inside middleware => async module
-  
+
   instead of seeing the long default error, by using:
-  re.status(500).json({msg:error}), make it as this
+  res.status(500).json({msg:error}), make it as this
   ! ({msg:`costume error`})
-  ?make sure you used error parameter as in try&catch or in express error handler
+  ?make sure you've used error parameter as in try&catch or in express error handler
 
   deployment:
   ? it's a high risk deploying this this project th because of not setting good validation
