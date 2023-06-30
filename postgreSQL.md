@@ -274,4 +274,44 @@ create table car (
 
 ### Calculating Min, Max & average
 
+- `SELECT MAX(price) FROM car;` to get only the max price
+- `MIN` and `AVG` are the same, we can ues ROUND() as in JS to get rid of floating nums
+- `SELECT ROUND(AVG(price)) FROM car;`
+- `SELECT make, model, ROUND(MIN(price)) FROM car GROUP BY make, model;`
+- this is how we get two columns and grouped by them, minimally
+
+### SUM operator
+
+- to sum all prices we easily type:
+- `SELECT SUM(price) FROM car;`
+
+---
+
+- to see the sum of each make ⚠️ command following:
+- `SELECT make, SUM(price) FROM car GROUP BY make;`
+- this is great when the Company wants to know each product set's prices
+
+### Basics Of arithmetic Operators
+
+- `SELECT 5 + 5;` => To sum/increment numbers
+- `SELECT 15 - 5;` => To decrement numbers, multiply and divide operators and modules are normal
+- power is `^` as normal mathematics, not as programming languages with `**`: `SELECT 10^6;` == 1e6
+- to preform the factorial operator we use `!` as  `SELECT 5!;` it'll /o 120, so `5! = 5*4*3*2*1 = 120`
+- factorial in math is the same: after watch `permutations` set in Khan Academy
+
+### Arithmetic OPs ROUND
+
+- when we wanna have a discount, by 50% or 10% we can do the following:
+- `SELECT id, make, model, price, price * .10 FROM car;` we got 10% of it in old fashion mathematics
+- so the new column named: `?column?` has it, ! I think it's un-named column
+- `SELECT id, make, model, price, ROUND(price * .10, 2) FROM car;`
+- the `Round(n, 2)` is as `10.55555.toFixed(2)` in JS, so we return only two partial digits 
+- to get only the remaining 90% we add comma after prior ROUND() then following
+- `SELECT id, make, model, price, ROUND(price * .10, 2), ROUND(price - (price * .10), 2) FROM car;`
+- saying ( price * .90, 2) is better, but Nelson's weird
+
+### Alias => variable names for used Fns
+
+- instead of having `?column?` or `round` to each column, we can name it as alias
+- we simply use `AS` after each Fn as `ROUND(price * .10, 2) AS ten_percent` before its comma
 - 
