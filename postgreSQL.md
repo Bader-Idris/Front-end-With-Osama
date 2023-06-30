@@ -1,6 +1,7 @@
 # PostgreSQL Course from FreeCodeCamp channel
 
 - Title: Learn postgreSQL Tutorial
+- Teacher's name: Nelson
 
 ## connecting to DB server
 
@@ -246,4 +247,31 @@ SELECT * FROM person WHERE gender = 'Female' AND (country_of_birth = 'Poland' OR
 
 ### Adding New Table & Data Using Mockaroo
 
-<!-- -  -->
+- 🔴One Of the Most useful aggregate operators `to use` Nelson said🔴
+- `max(expression)`, `min(expression)`, and `sum(expression)`
+- see `01:53:08` for details inside Mockaroo to create a `car` table
+- after creating it, we'll modify its creation as we learned, to give some conditions
+
+```postgresql
+create table car (
+ id INT,
+ make VARCHAR(50),
+ model VARCHAR(50),
+ price VARCHAR(50)
+);
+<!-- make this table creating as -->
+create table car (
+ id BIGSERIAL NOT NULL PRIMARY KEY,
+ make VARCHAR(100) NOT NULL,
+ model VARCHAR(100) NOT NULL,
+ price NUMERIC(19, 2) NOT NULL
+);
+```
+
+- I amended having $ sign using the beloved ctrl + H in VS code
+- go to line 127 to see details of migrating sql file into thy array
+- `\i E:/TutorialsElzero/DB/car.sql`
+
+### Calculating Min, Max & average
+
+- 
