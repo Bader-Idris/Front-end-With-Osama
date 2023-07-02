@@ -80,4 +80,5 @@ try {
 - so instead of repeating same coding we'll do: DRY, by making it as middleware named auth
 - to handle errors we invoked them all inside index.js in their DIR, and modified them
 - with the new used package `http-status-codes` it's easier to read and as objects, clicking space will appear tended status code to set, awesome to get to advanced LEVEL 🤪 I HATE BACKEND 🤪, well, John requires the package in BAD-request module
-- 
+- 🔴 we can require entire DIRs as in middleware->auth Module 🔴
+
