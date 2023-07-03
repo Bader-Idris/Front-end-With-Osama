@@ -210,7 +210,7 @@ res.status(StatusCodes.CREATED).json({
 - in postman or front-end
 - make sure email and password are the same (or change the front-end)
 
-```js
+```json
 {
     "name":"demo user",
     "email":"testUser@test.com",

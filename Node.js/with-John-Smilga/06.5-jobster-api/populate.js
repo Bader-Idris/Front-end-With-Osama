@@ -2,7 +2,8 @@ require('dotenv').config();
 const mockData = require('./mock-data.json');
 const Job = require('./models/Job');
 const connectDB = require('./db/connect');
-
+// this is a mock users data,
+//  similar to what you learned in PG course
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
