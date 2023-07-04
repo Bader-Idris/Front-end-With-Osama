@@ -314,4 +314,41 @@ create table car (
 
 - instead of having `?column?` or `round` to each column, we can name it as alias
 - we simply use `AS` after each Fn as `ROUND(price * .10, 2) AS ten_percent` before its comma
+- It's as easy as that: `SELECT id, make, model, price, ROUND(price * .10, 2) AS tenth, ROUND(price - (price * .10), 2) AS ninth FROM car;`
+
+### Coalesce Fn (prior, nextValue)
+
+- this Coalesce is to handle `null` data in PG
+- it allows us to have a default value, in case isn't present
+- `SELECT COALESCE(1);`
+- `SELECT COALESCE(null, 1) AS number;` here we used coalesce to parse null value into 1;
+- we can have multi-parameters as `COALESCE(null, null, 1)` that means: if 1st val isn't present, try 2nd one, if not though, use 3rd, and so on, as rest param (...var)
+- to use Coalesce in our database do the following:
+- If you find a null email data, because we allowed that when setting our constraints `NOT NULL`, we can use this coalesce function:
+- 🔴 `SELECT first_name, COALESCE(email, 'email not provided') email FROM person;` 🔴
+
+### NULLIF Fn
+
+- We'll tackle the division by zero with this method
+- in default PG, it returns an ERROR: `division by zero`, so nullif => if (2nd arg != 1st arg) return 1st arg; else return null;
+- look at this ie: `SELECT NULLIF(10, 10)`; returns null, null in PG is empty string!! 😲
+- an example of division by zero:
+- `SELECT 10 / NULLIF(2, 9);`
+- we can combine nullif with its prior Fn, coalesce
+- `SELECT COALESCE(10 / NULLIF(0, 0), 0);`, but how to turn it into a string!😡
+
+### Timestamps & Dates
+
+- we learned that timestamp is more specific than date
+- selecting `now()` will return now timestamp as: `SELECT now();`
+- So, timestamps are date with time, in ms;
+- to get only date from now function we can pass `::` to it, similar to CSS pseudo elements with DATE keyword:
+- `SELECT now()::DATE;`
+- to get only time we simply use TIME keyword as:
+- `SELECT now()::TIME;`
+- to learn more search for it [here:](https://www.postgresql.org/docs/current/datatype-datetime.html)
+- you basically need to go to it for timezone issues
+
+### adding and subtracting with dates
+
 - 
