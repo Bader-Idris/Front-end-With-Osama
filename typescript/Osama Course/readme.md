@@ -172,4 +172,12 @@ for (let i = 0; i < myParts.length; i++) {
 
 ### 07 - Type Annotations With Multidimensional Arrays
 
-- 
+- it's simple logic and easily perceived
+
+```ts
+let arrayFour: (string| number| (number|string)[] | boolean[])[] = [ 1, 2, "A", "B", [ 3, 4,"C","D"], [true, false]];
+```
+
+### 08 - Type Annotations With Function
+
+- removeMe

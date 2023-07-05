@@ -15,7 +15,7 @@ const register = async (req, res) => {
     },
   });
 };
-
+// little register took an hour from John to explain [token, jwt, salt & bcrypt]
 const login = async (req, res) => {
   const { email, password } = req.body;
 
