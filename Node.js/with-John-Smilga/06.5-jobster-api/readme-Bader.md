@@ -50,4 +50,58 @@ pm.globals.set("accessToken", jsonData.token)
 - then we  disable Authentication in `create job` req, or `get all jobs` one, -> go to the panel and choose `Authorization` beside `Headers`
 - then we change its `Type` to what we used `Bearer Token`
 - then pick up our new global Var named `{{accessToken}}` and send it, with its prior data: `"company"` & `"position"` keys
-- 
+
+### deploying
+
+- as we know: we need to set the ip => `access from anywhere` in mongoDB
+- John uses heroku & digitalOcean, as hosting providers, but it's a personal preference, you can choose what you want| I'll compare them to Hostinger
+- with heroku wee need to use `git shell`
+- and it needs an account and `heroku CLI`
+- `heroku CLI` is a deployment tool directly from our PC
+- check heroku docks for the entire setup
+
+Here are some common commands to utilize:
+
+- init, commit
+- after checking for the installation of heroku 
+- we use common check command as `heroku -v`
+- it's suggested using the deployed DIR as a separated one from edited one
+
+check these steps
+
+- access Documentations on the left bottom
+- choose your Language -> Nodejs
+- Deploying Node.js Apps on Heroku
+- Declare app dependencies
+[here](https://devcenter.heroku.com/articles/deploying-nodejs)
+- set node version in the key named engines of package.json
+- change the start command from nodemon to `node app.js`
+- check out the procFile [here:](https://devcenter.heroku.com/articles/procfile)
+- then John make this procfile values as: `web: node app.js`
+
+---
+
+Then cleaned the git command then the following:
+
+- `rm -rf .git` for clearing
+- `git init` => `git add .`
+- `git commit -m "initial commit"`
+
+Some Heroku commands
+
+- `heroku login` -> continue login process
+- `heroku create project-name` to create a new heroku application
+- `git remove -v` to check if it's out of the stash stage or not
+
+Sending secret .env values
+
+- instead of spinning data by the command line
+- `heroku config:set JWT_LIFETIME=30d` do it for each variable
+- `git push heroku master` important to push, main/master is the name of your branch
+- then we'll see dummy page instead of our project, we set our config vars by ...
+- go to the settings page of your project in heroku, set all of your non-added .env variables
+- then to refresh site click on `more` then `Restart All Dynos`
+- you can see the option `view logs` in same `more` panel
+- access that 🔴 `view logs`🔴 to see the port, was purple, in Johns video
+- then it changed after the update,
+- in postMan instead of removing our url var, we set the new https://project-name.heroku.com/ `api/v1 <= as before`
