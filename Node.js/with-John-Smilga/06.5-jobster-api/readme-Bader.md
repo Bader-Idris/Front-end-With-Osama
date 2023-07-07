@@ -104,4 +104,48 @@ Sending secret .env values
 - you can see the option `view logs` in same `more` panel
 - access that 🔴 `view logs`🔴 to see the port, was purple, in Johns video
 - then it changed after the update,
-- in postMan instead of removing our url var, we set the new https://project-name.heroku.com/ `api/v1 <= as before`
+- in postMan instead of removing our url var, we set the new `https://project-name.heroku.com/`, John made <= as {{PROD_URL}} `api/v1 <= as before`
+- Heroku expects `process.env.POST` variable
+
+Good api documentations
+
+- one of the good to learn from api docs is [Swagger](https://swagger.io/)
+- instead of utilizing the docs, John said this is a shortcut to save 3 hours, `to automate the process`
+- and to keep the project on the cloud instead of local machine
+
+---
+
+- he stars by commanding this in git in selected DIR: `desktop heroku git:clone -a project-name` desktop is ie
+- that's to be pushed to heroku, when making changes, as other git pushes
+- to fix the lack of `.env` and `node_modules`, we'll go to the settings in the `config Vars` field, we'll `reveal Config Vars`
+- then install packages.json
+- make sure it starts with node app not nodemon, because you finished setting up the project, or set nodemon in dev dependencies
+
+in postMan
+
+- then make sure global vars are all same
+- because if not you'll get weird unstable bugs
+- postMan has its own api docs, but when when publishing, it'll send it to a separate file
+- next John exported the requests for all 6th project, by clicking on the `...` button, then export, beside the name of the project, `to be on the same server`
+- it'l totally free
+
+3rd party api documentation
+
+- we cannot pass postman docs directly into `swagger UI`, we need to format our data first
+- so we'll use this third party; free as all used in 6thProject, John's no affiliation to them
+- [APImatic Dashboard](https://apimatic.io/dashboard)
+- upload/import postman docs json file
+- John changed the name
+- then in server Configurations section, he put the real project domain name,`heroku one` into the url of 1st server option, then added our route `api/v1` so it became as:
+- `https://jobs-api-06.herokuapp.com/api/v1`
+- then checked the authentication to be as we set, Oauth2.0 Bearer token
+- then John checked the `Endpoints` to configure it with swagger ui options
+- so `auth` route won't be under authentication, they're gonna be public
+- so John clicked on `skip authentication` for that Group of route paths
+- Auth dir has `Register, login user` reqs, to skip auth
+- jobs route will be protected, in a separate DIR, as `jobs`
+- if yr confused check course `09:45:15`
+- then John got out of `Import API` DIR 🔴 to export API
+- 🔴 Choose export Format,🔴 he used `openAPI v3.0 (YAML)` 🔴
+- should be like as`09:46:57`, it's important for swagger ui
+- then look for `swagger ui editor`, they use: `boilerplate code`
