@@ -30,6 +30,9 @@
 				"name": "Local PG",
 				"username": "postgres"
 			}
+		],
+		"cSpell.words": [
+			"Procfile"
 		]
 	},
 	"launch": {

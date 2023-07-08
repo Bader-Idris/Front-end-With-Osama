@@ -149,3 +149,31 @@ in postMan
 - 🔴 Choose export Format,🔴 he used `openAPI v3.0 (YAML)` 🔴
 - should be like as`09:46:57`, it's important for swagger ui
 - then look for `swagger ui editor`, they use: `boilerplate code`
+- for single job, update and delete, these are parameters, **search for** `Swagger ui parameters`
+- to start testing our APIs we click on the tended Req, then `try it out` then `execute`
+- for protected requests we go to the top of the page, then paste the token into `Authorize`
+
+Adding tested Swagger to app on Server
+
+- to do so, we'll need two packages:
+  - - `"yamljs"`
+  - - `"swagger-ui-express"` 🔴
+- then beside `Procfile`, we'll create our file.yaml as `swagger.yaml`
+- then we'll requrie our packages, and load the created `yaml` file; then pass it on to swagger-ui
+
+```js
+// Swagger
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+// then we use it above main path or directly underneath it, it's up to you
+app.use('/api-docs', swaggerUI.server,swaggerUI.setup(swaggerDocument));
+//John used it below it
+// and he made a link to it from main page.textContent('Documentation')
+```
+
+- 🔴 now if you test it on your machine, it's not gonna work 🔴
+- then we use git to add, commit -m, then push our changes
+- done with this course, to continue John made next 4 projects only for paid plan
+
+11:55 AM 7/8/2023
