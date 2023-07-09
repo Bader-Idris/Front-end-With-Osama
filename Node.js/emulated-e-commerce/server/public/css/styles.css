@@ -1,0 +1,132 @@
+:root {
+  --main-color: #2196f3;
+  --main-color-alt: #1787e0;
+  --main-transition: 0.3s;
+  --main-pd-top: 100px;
+  --main-pd-bottom: 100px;
+  --section-bg: #ececec;
+  --light-gray: #777;
+}
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--section-bg);
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.main-title {
+  text-transform: uppercase;
+  margin: 0 auto 80px;
+  border: 2px solid black;
+  padding: 10px 20px;
+  font-size: 30px;
+  width: fit-content;
+  position: relative;
+  /*to connect the circles*/
+  z-index: 1;
+  transition: var(--main-transition);
+}
+.main-title::before,
+.main-title::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background-color: var(--main-color);
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.main-title::before {
+  left: -30px;
+}
+.main-title::after {
+  right: -30px;
+}
+.main-title:hover::before {
+  z-index: -1;
+  animation: left-moving 0.5s linear forwards;
+}
+.main-title:hover::after {
+  z-index: -1;
+  animation: right-moving 0.5s linear forwards;
+}
+.main-title:hover {
+  color: white;
+  border: 2px solid white;
+  /*🔴 To not lose some pixels*/
+  transition-delay: 0.5s;
+}
+
+header {}
+header .logo-container {}
+section {}
+section > .container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+section.sec-1 {}
+section.sec-2 {}
+section.sec-3 {}
+section.sec-4 {}
+section.sec-5 {}
+footer {}
+footer .keywords-container{}
+
+button {
+  padding: 10px 20px;
+  background-color: var(--main-color);
+}
+.scroll-to-top {
+  display: none;
+  text-decoration: none;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  background: #333;
+  padding: 15px;
+  border-radius: 50%;
+  color: #FFF;
+  transition: 0.5s;
+}
+/* select {
+  appearance: menulist-button;
+} */
