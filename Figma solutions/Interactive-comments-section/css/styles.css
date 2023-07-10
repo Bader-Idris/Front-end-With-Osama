@@ -12,6 +12,24 @@
   --Very-light-gray: hsl(228, 33%, 97%);
   --White: hsl(0, 0%, 100%);
 }
+@font-face {
+  font-family: "Rubik";
+  font-weight: 400 500 700;
+  src: url("../Rubik-font/dist/Rubik-Italic-VariableFont_wght.woff2") format('woff2'),
+    url("../Rubik-font/dist/Rubik-Italic-VariableFont_wght.woff") format('woff');
+}
+@font-face {
+  font-family: "Rubik";
+  font-weight: 400 500 700;
+  src: url("../Rubik-font/dist/Rubik-VariableFont_wght.woff2") format('woff2'),
+    url("../Rubik-font/dist/Rubik-VariableFont_wght.woff") format('woff');
+  /*
+  src:
+      local("Trickster"),
+      url("trickster-COLRv1.otf") format("opentype") tech(color-COLRv1),
+      url("trickster-outline.otf") format("opentype");
+  */
+}
 *,
 ::before,
 ::after {
@@ -20,27 +38,4 @@
 body {
   /* font-size: 16px */
   font-family: 'Rubik', sans-serif;
-}
-/* Weights: 400, 500, 700 */
-/*
-src: url("blab"),
-url("blab2");
-*/
-@font-face {
-  font-family: "Rubik";
-  font-weight: 400 500 700;
-  src: url("../Rubik-font/dist/Rubik-Italic-VariableFont_wght.woff2"),
-  url("../Rubik-font/dist/Rubik-Italic-VariableFont_wght.woff");
-}
-
-@font-face {
-  font-family: "Rubik";
-  src: url("assets/fonts/Ubuntu-Medium.ttf");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Rubik";
-  src: url("assets/fonts/Ubuntu-Bold.ttf");
-  font-weight: 700;
 }

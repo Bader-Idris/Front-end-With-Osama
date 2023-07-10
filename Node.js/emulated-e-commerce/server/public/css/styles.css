@@ -6,6 +6,14 @@
   --main-pd-bottom: 100px;
   --section-bg: #ececec;
   --light-gray: #777;
+  /* box shadow*/
+    --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 *,
 ::before,
@@ -19,6 +27,7 @@ html {
 }
 body {
   background-color: var(--section-bg);
+  font-family: Arial, Helvetica, sans-serif;
 }
 a {
   text-decoration: none;
@@ -53,51 +62,59 @@ ul {
   }
 }
 .main-title {
-  text-transform: uppercase;
+  /* text-transform: uppercase;
   margin: 0 auto 80px;
   border: 2px solid black;
   padding: 10px 20px;
   font-size: 30px;
   width: fit-content;
-  position: relative;
-  /*to connect the circles*/
-  z-index: 1;
-  transition: var(--main-transition);
-}
-.main-title::before,
-.main-title::after {
-  content: '';
-  width: 12px;
-  height: 12px;
-  background-color: var(--main-color);
-  position: absolute;
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.main-title::before {
-  left: -30px;
-}
-.main-title::after {
-  right: -30px;
-}
-.main-title:hover::before {
-  z-index: -1;
-  animation: left-moving 0.5s linear forwards;
-}
-.main-title:hover::after {
-  z-index: -1;
-  animation: right-moving 0.5s linear forwards;
-}
-.main-title:hover {
-  color: white;
-  border: 2px solid white;
-  /*🔴 To not lose some pixels*/
-  transition-delay: 0.5s;
+  position: relative; */
 }
 
-header {}
-header .logo-container {}
+header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: #ddd;
+  box-shadow: var(--shadow-1) ;
+}
+header .logo-container {
+  font-family: 'Segoe UI', Tahoma;
+  text-transform: uppercase;
+  color: var(--main-color);
+  font-size: 15px;
+  line-height: 5px;
+  width: 20%;
+}
+header .logo-container p {
+  font-size: 12px;
+}
+header .search-bar {
+  margin: 20px auto;
+  padding: 15px 20px;
+  background-color: #f6f5f5;
+  border-radius: 50px;
+  display: flex;
+  gap: 20px;
+  width: 80%;
+}
+header .search-bar .input-group {
+  /* display: flex; */
+}
+header .search-bar input {
+  /* padding: 20px;
+  border-radius: 50px;
+  border: none;
+  flex: 1;
+  caret-color: var(--main-color); */
+}
+header .search-bar select {
+  /* appearance: button; */
+
+}
+
+
 section {}
 section > .container {
   padding-top: 80px;
@@ -108,13 +125,31 @@ section.sec-2 {}
 section.sec-3 {}
 section.sec-4 {}
 section.sec-5 {}
-footer {}
+footer {
+  background-color: #191919;
+  padding: 70px 0 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+footer nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  color: #b9b9b9;
+}
 footer .keywords-container{}
 
 button {
   padding: 10px 20px;
-  background-color: var(--main-color);
+  color: #fff;
+  background-color: var(--main-color-alt);
+  border-radius: 20px;
+  border: none;
 }
+
 .scroll-to-top {
   display: none;
   text-decoration: none;
