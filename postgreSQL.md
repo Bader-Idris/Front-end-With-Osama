@@ -35,7 +35,7 @@
 - `\l` list of all databases, it appears in the command above them
 - `CREATE DATABASE our_name;` 🔴 to create databases,
 
-### PG SQL allow lowerCase Commands, but it's not perferred to USE IT
+### PG SQL allow lowerCase Commands, but it's not preferred to USE IT
 
 - `psql --help` on mac returns a bunch of help, it didn't work in Windows, maybe because of `11 -v`
 - `\c createdDB` as you know, to access it, we might need `\conninfo` to have privileges
@@ -350,5 +350,99 @@ create table car (
 - you basically need to go to it for timezone issues
 
 ### adding and subtracting with dates
+
+- to subtract a year for instance of a timestamp, we do the following:
+- `SELECT NOW() - INTERVAL '1 YEAR';`,or `2 YEARS` or `'5 MONTHS'`, in days, both works as `10 DAY` or `10 DAYS`
+- to increase instead of subtracting a year we add a plus sign instead of a minus one.
+- `SELECT NOW() + INTERVAL '1 DAY';`
+- we can use SECOND, MINUTE, HOUR, DAY, WEEK, MONTH, YEAR, DECADE, CENTURY
+- we can use prior separation as `NOW()::DATE`
+- to return DATE statements we wrap the statement, then `::DATE` as:
+- `SELECT (NOW() + INTERVAL '1 YEAR')::DATE;`
+
+### Extracting Fields
+
+- 🔴 this is a good method, 🔴 it brings back tended value of timestamps
+- `SELECT EXTRACT(YEAR FROM NOW());`, as well as: century, year, month even ms, etc.
+- `SELECT EXTRACT(DOW FROM NOW());` DOW => `dayOfWeek`
+- starts with Sunday as(0), ends with Saturday(6)
+
+### Age function
+
+- AGE(Current Timestamp as NOW(), actualDate as saved date_of_birth)
+- `SELECT first_name, last_name, gender, country_of_birth, date_of_birth, AGE(NOW(), date_of_birth) AS age FROM person LIMIT 20;`
+
+### Primary Keys
+
+- assume you have a table with two people, they both have same fName, lName, gender, DOB, but with different emails.
+- because we can't distinguish between both of them, we'll have to use primary keys, as `passport_number: X89732`,
+- primary keys => `PK` => Uniquely identify a record in tables
+- we used bigSerial numbers as primary keys before, with id column, we'll learn the guaranteed to be unique, but bigSerial is fine
+
+## 🔴  Understanding Primary Keys
+
+- when `\d person` our table we see: "person_pkey" PRIMARY KEY, btree (id)
+- and we have the sequence of `nextval('person_id_seq'::regclass)` for our `id` column
+- Nelson copied an insert statement from our created person table, and added (id) key, and its value (1) in same insert copied table.
+- as `insert into person (id, first_name, last_name, email, gender, date_of_birth, country_of_birth) values (1, 'Beatrice', 'Lohoar', 'blohoar0@state.gov', 'Female', '2022-09-18', 'Philippines');`
+- then run it in our database 
+- 🔴 it didn't work, because id's duplicated, as primary key, same as passport_number we can't duplicate them
+- to replace it we drop the preventing condition called `constraint`, by using the `ALTER` key,
+- `ALTER TABLE person DROP CONSTRAINT person_pkey;`
+- here: we removed the primary key condition from id
+- so, it accepts duplicated values when re-adding, we check by using the WHERE id = condition as:
+- `SELECT * FROM person WHERE id = 1;`
+
+### Adding Primary Key
+
+- with same `ALTER` method we `ADD`, see:
+- `ALTER TABLE person ADD PRIMARY KEY (array of values);`
+- the array of values is because we can compose a primary key based on multiple columns
+- search for it `array of values with ALTER` for more complicated expressions.
+- will it work, because of duplicated rows?
+- `ALTER TABLE person ADD PRIMARY KEY (id);`
+- 🔴 No, it's not gonna work 🔴
+- it's awesome seeing the `DETAIL:` as msg: error
+- We'll have to delete all duplicated records, explained in further section, as:
+- `DELETE FROM person WHERE id = 1;`As 1 is the duplicated record;
+
+### Unique Constraints
+
+- it allows us to have a unique value for a given column
+- `SELECT email, count(*) FROM person GROUP BY email;`, it'll allocate null email fields
+- we see nullish values as:
+- `SELECT email, count(*) FROM person GROUP BY email HAVING COUNT(*) > 1;`, use 2 because we have a duplicate email
+- select the duplicated email by:
+- `SELECT * FROM person WHERE email = 'checked_duplicated';`
+- because we have duplicated emails, it's a trouble sending email to both instead of one of them, here `UNIQUE constraint` comes
+- **`unique != primary keys`**
+- `ALTER TABLE person ADD CONSTRAINT unique_email_address UNIQUE (email);`🔴🔴🔴
+- in UNIQUE parenthesis, we can pass multiple columns to be unique
+- because we're having duplicated emails, it'll return an ERROR;
+- we can either delete a duplicated, or change its value -> null || alteredAddress
+- I delete it, then re-try above unique code;
+- if we insert an existing email, while having unique constraint, insertion will fail
+- another approach to create `unique constraint` is as:
+- `ALTER TABLE person ADD UNIQUE (email);`, But this approach makes Postgres create the name of our unique constraint
+
+## Check constraints, based on boolean
+
+- instead of only knowing the values of a column by using `DISTINCT` keyword, we use this `CHECK` one to make gender accepts only two values, binary way.
+- `ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male');`
+- It'll throw an ERROR, because of having more than those two values, me because of case sensitivity, Nelson: because he added a `hello` testing gender
+- we'll delete it, to continue the course
+- `DELETE FROM person WHERE gender = 'MALE';`
+- It'll prevent clients to add other than those two options
+
+### Delete Records
+
+- 🔴⚠️ if you say: `DELETE FROM person;`, It'll crazily delete all records;⚠️🔴
+- after Nelson deleted everything and re-inserted them, he spoke about the id starting after 1K, said: `that is because we didn't reset the sequence`, will do later!
+- deleting one record/row is as: `DELETE FROM person WHERE id = 10;`
+- can do with many conditions as we learned, see:
+- `DELETE FROM person WHERE gender = 'Female' AND country_of_birth = 'England';`
+- ⚠️ Nelson says: **`You never want to do this in production DBs`** it's extremely risky ⚠️.
+
+### Update Records
 
 - 

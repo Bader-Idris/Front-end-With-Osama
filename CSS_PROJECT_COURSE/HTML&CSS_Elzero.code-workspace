@@ -32,7 +32,11 @@
 			}
 		],
 		"cSpell.words": [
-			"Procfile"
+			"BIGSERIAL",
+			"conninfo",
+			"Procfile",
+			"psql",
+			"VARCHAR"
 		]
 	},
 	"launch": {
