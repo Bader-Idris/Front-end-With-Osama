@@ -445,4 +445,14 @@ create table car (
 
 ### Update Records
 
+- The update command allows us to update a column or multiple columns, based on our `WHERE clause`
+- `SET` allows us to set an array of columns, including the new values
+- `UPDATE person SET email = 'handay@gmail.com' WHERE id = 909;` if we don't add where clause, it'll update all email values
+- To update multiple columns as in fName and lName, do the following:
+- `UPDATE person SET first_name = 'Omar', last_name = 'Montana', email = 'omar.montana@hotmail.com' WHERE first_name = 'Ab';`
+- comma is to separate columns to-update
+
+### On Conflict Do Nothing
+
+- how to deal with duplicate key errors, or exceptions
 - 
