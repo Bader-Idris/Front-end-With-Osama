@@ -2,6 +2,7 @@
 
 - Title: Learn postgreSQL Tutorial
 - Teacher's name: Nelson
+- His slogan is [AMIGOS CODE](https://www.youtube.com/@amigoscode)
 
 ## connecting to DB server
 
@@ -455,4 +456,40 @@ create table car (
 ### On Conflict Do Nothing
 
 - how to deal with duplicate key errors, or exceptions
+- we know that when trying to insert a row with its values, when it's already existing, it'll throw and error: duplicate key etc...
+- to avoid having conflicts when constrains are existing, we'll do the following when inserting:
+
+```SQL
+INSERT INTO person (id, first_name, last_name, email, gender, date_of_birth, country_of_birth)
+VALUES (1009, 'Beatrice', 'Lohoar', 'blohoar0@state.gov', 'Female', '2022-09-18', 'Philippines')
+ON CONFLICT (id) DO NOTHING;
+-- this will prevent insertion when id exists
+-- same as having email instead of id, because we set a constraint for it though
+```
+
+- but it does not work when not having `unique or exclusive constraints` as this code:
+
+```SQL
+INSERT INTO person (id, first_name, last_name, email, gender, date_of_birth, country_of_birth) VALUES (1009, 'Beatrice', 'Lohoar', 'blohoar0@state.gov', 'Female', '2022-09-18', 'Philippines') ON CONFLICT (first_name) DO NOTHING;
+```
+
+### Upsert
+
+- consider user is preforming a request to your server, if user submits his/her details, then changes his mind and updates his email with same detail, meaning: everything says same but the email
+- You might want to take the latest client insert, it usually happens when working in a `distributed system, when having two servers setting above a load balancer`
+- me: 🔴⚠️ search for **`distributed system architecture`** ⚠️🔴
+- wow: that's a crazily huge section
+- instead of `DO NOTHING` as above, when user re-insert his data into our DB, we can make an expiresIn variable, to allow user changing his/her email, for 5M as ie. see =>
+- user inserted his data!
+- user tries again with changing email field:
+
+```SQL
+INSERT INTO person (id, first_name, last_name, email, gender, date_of_birth, country_of_birth) VALUES (1009, 'Beatrice', 'Lohoar', 'blohoar0@state.gov', 'Female', '2022-09-18', 'Philippines') ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email;`
+```
+
+- `EXCLUDED` => the new inserted one, `blohoar...`
+- we can send many updates separating 'em with comma, as `, last_name = EXCLUDED.last_name` after `SET clause`, DON'T FORGET TO MAKE ITS VALUE DIFFER
+
+## Foreign Keys, Joins & Relationships
+
 - 
