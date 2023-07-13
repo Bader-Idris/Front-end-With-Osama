@@ -26,11 +26,106 @@ to get answers to thy questions, Lane recommends three places:
 
 - You might be familiar with tutorial hell, because of the content everywhere
 - to get the maximum value out of this course:
-- - watch the explanation of the concepts and coding challenges
-- - But into typing the code manually!
+  - - watch the explanation of the concepts and coding challenges
+  - - But into typing the code manually!
 
 - take your time watch the lesson, not in a shot!
 
 ## Ch 1 Why HTTP
 
 - http => hyper text transfer protocol
+- there're exercises on the boot.dev platform for many topics, 10 chapters and 13 for HTTP 1st one when I'm writing this.
+- FE => front-end, BE- Back-end
+- If YouTube has a server exclusively for videos, and client sends req for video and its commends, the server has videos, send its own http requests for receive comments. so it acts as a client,`but servers are not FE Clients` when requesting
+- a lovely example of using fetch with await and async in front-end JS
+
+```js
+const itemURL = 'https://api.boot.dev/v1/courses_rest_api/learn-http/items'
+
+const items = await getData(itemURL)
+
+console.log(items)
+
+async function getData(url) {
+  const response = await fetch(url, {//settings are awesome here
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'X-API-Key': 'Testing',
+      'Content-Type': 'application/json'
+    }
+  })
+  return response.json()
+}
+```
+
+- when we use fetch we do need to await it, Lane said,
+- as
+
+```js
+const response = await fetch(url, settings)
+const responseData = await response.json()
+```
+
+- the bug: TypeError: `response.json is not a function` in 8th assignment in Ch 1, is because of the lack of `await` before `response = fetch`. 🔴 awesome 🔴
+
+## Ch 2 DNS
+
+- Web Addresses:
+- IPv4 => **4** fields with 0-255 for each, as: `192.168.233.1`
+- IPv6 => **8** fields with 16bits hexadecimal for each one `0000` to `ffff` as: `fe80::5c6a:6218:20a1:1806%9`, triggered with cmd: ipconfig
+- but that's when problematic issues come
+- It isn't helpful to know amazon's ip address, we don't have Amazon.com server's ip address memorized
+- That's where DNS => **`Domain Name system`**, comes:
+- one of its main purposes is: to map human readable read names as `Amazon.com` to `IP Addresses`
+- it looks up for IP address that's associated with Amazon.com when I search for it!
+- 🔴so: our computers under the hood resolve DNSs to IPs🔴
+- `aside benefit`: if Amazon wants to change its IP address, or it isn't stable, because of internet service providers swaps out on them
+- they can Update it under the hood, without changing their DNS/domain name
+- **so: there's essentially two steps on each http request to the server on a given Domain name**
+
+```shell
+# 1- Resolve DNS
+# 2- use obtained IP address
+# 🔴it uses the obtained resolved DNS converted into IP address🔴
+```
+
+- the first assignment of DNS has a popular API `cloudflare-dns.com` for looking up IP addresses when providing it with a domain
+- if you wanna see json readable use JSONlint site. or just postMan
+- first assignment's answer was: `return respObject.Answer[0].data`
+- 🔴 people who provide domain names are called **`registrars`**, as goDaddy is; in their software you tell them what's your IP address is. 🔴
+- JS has a built-in `URL` object.
+
+```js
+// const urlObj = new URL('https://example.com/example-path')
+let urlObj = new URL('https://github.com/Bader-idris')
+// remember url location with Osama?!
+const urlObj.hostname
+```
+
+- 🔴 `.com` OR `.dev` OR `.org` OR whatnot are all `TLDs` => `Top level Domain`
+- `boot` in boot.dev is the `domainName`
+- a `subDomain` prefixes a domain name as: `api` in `api.boot.dev`
+- Bito: You can Set your own subDomainNames using express!
+- we use sub domains for: **`fetching data`** and `updating user records passwords` etc..
+- we can use `blog.boot.dev` to host a separate website to host the blog
+
+<s>new to me🔴</s>
+
+- *Me:* I see facebook and Amazon recognize my device and automatically refer me as a client to a subdomain depending on my OS, if mobile, for Fb it creates a `M` subdomain to fetch its requirements. see amazon, and aliExpress etc
+- subdomains lesses expenses, allowing us not to repay domain names
+
+```shell
+# in chapter 3, Lane prevented my to continue his assignments or I pay.
+# NOT GONNA HAPPEN
+# But I'm still able to read articles
+```
+
+- URI stands for: `Uniform Resource Identifiers`,[see](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) !! been used with express process.env.MODEL_VAR !!
+- `URIs` => *`identifier`* contain both `URLs` => *`location`*, and `URNs` =>  *`name`*
+
+[see URLs](https://en.wikipedia.org/wiki/URL)
+
+[see URNs](https://en.wikipedia.org/wiki/Uniform_Resource_Name)
+
+- 
