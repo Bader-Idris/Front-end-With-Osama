@@ -492,4 +492,216 @@ INSERT INTO person (id, first_name, last_name, email, gender, date_of_birth, cou
 
 ## Foreign Keys, Joins & Relationships
 
-- 
+- we wanna be able to have a query that returns a **combination of both** person and car details for a single person, we wanna have a select query where we select the person and the car tables
+- the naive approach is to put them all in same table, which is inconvenient, person details and car info
+- ⚠️ foreign keys come to help us connecting multiple tables, which is the purpose of the entire relational databases ⚠️
+- we wanna present three choices:
+- 1- **Person has car**, 2- **Person can only have one car**3- **Car can belong to one person only**
+- we need to have relationships.
+- look at: `03:18:40` in the course, to see the foreign key `car_id`, which references a primary key in another table as:
+- in person table: `car_id BIGINT REFERENCES car(id) UNIQUE (car_id)`
+- in car table: `id BIGINT NOT NULL`
+- **PK -> primary key, FK -> foreign key**
+
+## Adding Relationships Between Tables
+
+- one person can only have one car, and one car can only belong to one person
+- `\dt` display tables
+- we drop and recreate our tables, DROP TABLE car; | person
+- he starts it with:
+
+```sql
+create table person (
+id BIGSERIAL NOT NULL PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+gender VARCHAR(7) NOT NULL,
+email VARCHAR(100),
+date_of_birth DATE NOT NULL,
+country_of_birth VARCHAR(50) NOT NULL,
+):
+create table car (
+id BIGSERIAL NOT NULL PRIMARY KEY,
+make VARCHAR(100) NOT NULL,
+model VARCHAR(100) NOT NULL,
+price NUMERIC(19, 2) NOT NULL
+);
+-- then inset into person some values
+```
+
+- to create a foreign key we add this to person
+
+```sql
+car_id BIGINT REFERENCES car(id),
+UNIQUE (car_id)
+-- We can't set bigserial, because it's a data type managed by sequences
+-- we don't provide NOT NULL because some people may have no cars at all
+-- REFERENCES is to add the foreign key
+-- car(id) is the id from car table
+-- UNIQUE stops the duplication of this id
+```
+
+- if we insert only the first table containing the constrains of car_id, it'll fail asking for possessing it, so we need to create them together
+- `ERROR: relation "car" does not exist`
+- Nelson moved the second table:`car` to be created initially, then the main table: `person`, to not have this bug.
+- I created a mixed one by my self
+
+## Updating Foreign Keys Columns
+
+- until this point, we're having null values for car_id column
+- we'll simply update the first id with 1st car's id, as:
+- `UPDATE person SET car_id = 1 WHERE id = 1;`
+
+## Inner Joins, 🔴 selecting updated connected tables🔴
+
+- this inner joins is an effective way to combining two tables
+- to make the two tables in one table
+- A + B = C
+- we wanna preform a join based on car-foreign key, to person's main primary key id
+
+```sql
+SELECT * FROM person
+JOIN car ON person.car_id = car.id;
+-- to have a nice show for them press Q
+-- then \x
+```
+
+- 🔴 IMPORTANT 🔴, this join only works when foreign key is set between table A, and table B
+
+```sql
+-- this is to select specific columns
+SELECT person.first_name, car.make, car.model, car.price
+FROM person
+JOIN car ON person.car_id = car.id;
+-- to turn off the expanded display we use same key \x
+```
+
+## left Joins
+
+- it allows us to combine two tables like inner joins, but it's it includes all joins from left table -A- as well as records from table -B- that have a corresponding relationship, also the one who have no corresponding relationship, **`it returns all records even without matching`**, then gives results `C` instead of migrating both into third one.
+
+```sql
+SELECT * FROM person
+LEFT JOIN car ON car.id = person.car_id;
+-- this is to select people who have a car, and people who don't
+```
+
+- to select only people who doesn't have car_id we do following:
+
+```SQL
+SELECT * FROM person WHERE car_id IS NULL;
+-- or this
+SELECT * FROM person
+LEFT JOIN car ON car.id = person.car_id
+WHERE car.* IS NULL;
+```
+
+## Deleting Records with Foreign Keys 🔴
+
+- If you delete an assigned car, it won't work;
+- foreign key constraint will prevent it, so we need to easily remove the foreign constraint before deleting the attached table's record
+- we can update the car_id to null, then delete the car's table id
+- you can use `CASTCADE` to ignore foreign key constraints, as bito's response:
+
+```sql
+DELETE FROM table1
+USING table2
+WHERE table1.id = table2.table1_id
+CASCADE;
+```
+
+- 🔴 But Nelson says: CASTCADE'S BAD PRACTICE 🔴
+
+## Exporting Query Results To CSV
+
+- initially we preform a selection:
+
+```sql
+-- \? to help, remember!, look for input/output -> i/o
+-- copy command is to export
+\copy (SELECT * FROM person LEFT JOIN car ON car.id = person.car_id) TO '/your_destination/file_name.csv' DELIMITER ',' CSV HEADER;
+-- this () is to specify what to send in that copy
+-- csv is the extension of excel files, but not excel one
+```
+
+- as this real example:
+
+```sql
+
+\copy (SELECT * FROM person LEFT JOIN car ON car.id = person.car_id) TO 'E:/TutorialsElzero/DB/results.csv' DELIMITER ',' CSV HEADER;
+```
+
+- HEADER is to include headers
+- it did it in some milliseconds.
+
+## Serial & Sequences
+
+- bigserial data type:
+- as we learned, it increments automatically
+- in PSQL it returns bigint, but its default is a nextval, representing the incrementing.
+- let's select those sequences:
+- `SELECT * FROM person_id_seq;`
+- it returns the last_value, and the log_cnt => count, and is_called as t => true;
+- `log_cnt` means how many times it's been invoked
+- let's select the function nextval
+- `SELECT nextval('person_id_seq'::regclass);` we increase the log_cnt and even the last value!!, when selecting it.
+- 🔴 Because we selected the nextval, next inserted with have an id of next upcoming one, as if last one was 1008, inserting will make it 1009 🔴
+- to restart the sequence type:
+
+```sql
+ALTER SEQUENCE person_id_seq RESTART WITH 10;-- 10 as the actual value, pick the last have been used.
+```
+
+## [Extensions](https://www.postgresql.org/docs/current/external-extensions.html)
+
+- these extensions can be helpful as express to node.js
+- to see the list of available extensions do the following:
+- `SELECT * FROM pg_available_extensions;`
+- in macOS on pg_a tab it fills automatically
+- look at them, some might be awesome. 🔴⚠️ task
+- each has its one comment, so it's awesome to read fastly
+- Nelson mentioned some:
+
+```shell
+# refInt, xml2, pg_visibility, hStore, plv8, sslinfo, autoinc, uuid-ossp
+# hstore might be useful with sets in JS
+# Nelson loves this, plv8, doesn't exist in my 14v, maybe it's full of vulnerabilities
+# it's awesome because it allows us to write JavaScript functions
+
+# 🔴 uuid-ossp this one is really awesome to generate universally unique identifiers exactly as mongoDB does, use it with your primary keys🔴🔴
+```
+
+## Understanding [UUID Data Type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+
+- **`Universally unique identifier`** means that collisions are impossible, 💥💥
+- we need to add the extension **`uuid-ossp`** to use it!
+
+```sql
+-- CREATE EXTENSION IF NOT EXISTS "our-extension-name" has to be double not single quotes
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+```
+
+- to generate our uuid we have to invoke a function
+- use the help \? to learn about functions
+- we can see the list of functions existing by:
+- `\df`
+- Nelson uses version 4, because it's completely ⚠️ random ⚠️
+- then `SELECT` Fn_name
+
+```sql
+SELECT uuid_generate_v4();
+```
+
+### some benefits to use uuid
+
+- to prevent or make it difficult for attackers to mind in our DBs, attackers will try to exploit all the numbers, to manipulate
+- because it's universally unique, you can easily migrate other DBs without any Conflicts and clashes as in bigSerials
+
+## UUID As Primary Keys
+
+- open the sql file you created, and change the id into this, in car and person
+- in the documentation of PG [see this](https://www.postgresql.org/docs/current/datatype.html) => data types => uuid
+
+```sql
+id 
+```

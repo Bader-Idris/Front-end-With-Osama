@@ -34,6 +34,7 @@
 		"cSpell.words": [
 			"BIGSERIAL",
 			"conninfo",
+			"nextval",
 			"Procfile",
 			"psql",
 			"VARCHAR"

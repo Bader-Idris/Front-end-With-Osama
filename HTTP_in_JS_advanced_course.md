@@ -112,6 +112,8 @@ const urlObj.hostname
 
 <s>new to me🔴</s>
 
+## ch 3 URIs and URLs
+
 - *Me:* I see facebook and Amazon recognize my device and automatically refer me as a client to a subdomain depending on my OS, if mobile, for Fb it creates a `M` subdomain to fetch its requirements. see amazon, and aliExpress etc
 - subdomains lesses expenses, allowing us not to repay domain names
 
@@ -128,4 +130,46 @@ const urlObj.hostname
 
 [see URNs](https://en.wikipedia.org/wiki/Uniform_Resource_Name)
 
-- 
+- look at these sections that a URL can handle, from Sections of a URL page:
+- `http://testuser:testpass@testdomain.com:8080/testpath?testsearch=testvalue#testhash`
+- this is how its sections are made of:
+
+```shell
+protocol: http:
+username: testuser
+password: testpass
+hostname: testdomain.com
+port: 8080
+pathname: /testpath
+search: ?testsearch=testvalue
+hash: #testhash
+```
+
+- can say in js:
+
+```js
+const fullURL = 'http://testuser:testpass@testdomain.com:8080/testpath?testsearch=testvalue#testhash'
+const url = new URL(fullURL)
+url.hostname
+```
+
+- Lane uses username and password in urls to access: `resources in code` like `accessing DBs` named as `infrastructure data`
+- it's used when requesting, so clients aren't gonna see it commonly
+- we `need '@' at symbol` only when including uName&passwd, it's an `optional delimiter`
+- hash/fragment are usually used to link to a specific section on the page
+- http default port is 80, and https' one is 443, and I know some as 404 200 201, 500 these are too popular
+- protocols as `http` are referred to as **`schemes`**, some out there are: `ftp` and `mailto` and the secured http `https`
+- not all of schemes require double slashes `//`, mailto is an ie
+- `mailto:noreply@fantasyquest.app`
+
+### Ports
+
+- ports are virtual little hubs managed by the OS allow us to segment incoming requests and incoming data streams
+- as when having DBs and WSs => web-servers on the same server. a port for DB and another for WS
+- exactly as when I used pg with Ania and Beaufort-Tek. and even John Smilga.
+- OSs can handle 65535 ports
+- if we don't provide the port as clients, it'll use the default one. `depending on the protocol`
+- Lane installed `caddy` on his Mac-os by:`brew install caddy`, instal. [go to it](https://caddyserver.com)
+- in the project DIR command: `caddy file-server`, he has index.html file and name.txt in same dir
+
+<!-- ## Ch 4 async JavaScript -->
