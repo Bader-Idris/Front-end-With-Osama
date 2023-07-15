@@ -14,14 +14,14 @@
 ### GUI E.gs:-
 
 - [DataGrip](https://www.jetbrains.com/datagrip/) but its license is paid
-- [Postico](https://www.eggerapps.at/postico/) mac users only *free*
+- [postIco](https://www.eggerapps.at/postico/) mac users only *free*
 - [pgAdmin](https://www.pgadmin.org) official but not as nice as priors
 
 ## 🔴 psql connection 🔴
 
-- when starting our psql terminal and having `server` parameter, instead of leaving it as default => 
+- when starting our psql terminal and having `server` parameter, instead of leaving it as default =>
 
-- when we deploy our application, we put our **`url`** 
+- when we deploy our application, we put our **`url`**
 - if we didn't set a database, and provide a random name, server won't start nor connect
 
 ---
@@ -76,7 +76,7 @@ CREATE TABLE person (
 
 ---
 
-#### with Constraints:
+#### with Constraints:-
 
 ```postgresql
 CREATE TABLE person (
@@ -137,11 +137,11 @@ VALUES ('Anne','Smith', 'FEMALE', DATE '1988-01-09');
 ALTER TABLE person
 ADD COLUMN country_of_birth VARCHAR(50);
 
-\i C:/Users/wwwba_/Downloads/person.sql
+\i C:/Users/wwwBa_/Downloads/person.sql
 
 ```
 
-- if we use `SELECT FROM pesron;` without any condition, it'll appear how many rows are there
+- if we use `SELECT FROM person;` without any condition, it'll appear how many rows are there
 - to select specific columns we write: `SELECT first_name, last_name FROM person;`
 
 #### Order By
@@ -224,7 +224,7 @@ SELECT * FROM person WHERE gender = 'Female' AND (country_of_birth = 'Poland' OR
 - another ie: `'%@bloomberg.com';` and `%@google.com`
 - the beloved dynamic ones are when encapsulating it as
 - 🔴 `%@google.%` 🔴
-- `_` represents `\w` in regEXp, so it's any ch, see: for 8 characters, then 
+- `_` represents `\w` in regEXp, so it's any ch, see: for 8 characters, then
 - `SELECT * FROM person WHERE email LIKE '________@%';`
 - `ILIKE` makes it case insensitive
 
@@ -276,7 +276,7 @@ create table car (
 ### Calculating Min, Max & average
 
 - `SELECT MAX(price) FROM car;` to get only the max price
-- `MIN` and `AVG` are the same, we can ues ROUND() as in JS to get rid of floating nums
+- `MIN` and `AVG` are the same, we can ues ROUND() as in JS to get rid of floating NUMs
 - `SELECT ROUND(AVG(price)) FROM car;`
 - `SELECT make, model, ROUND(MIN(price)) FROM car GROUP BY make, model;`
 - this is how we get two columns and grouped by them, minimally
@@ -306,7 +306,7 @@ create table car (
 - `SELECT id, make, model, price, price * .10 FROM car;` we got 10% of it in old fashion mathematics
 - so the new column named: `?column?` has it, ! I think it's un-named column
 - `SELECT id, make, model, price, ROUND(price * .10, 2) FROM car;`
-- the `Round(n, 2)` is as `10.55555.toFixed(2)` in JS, so we return only two partial digits 
+- the `Round(n, 2)` is as `10.55555.toFixed(2)` in JS, so we return only two partial digits
 - to get only the remaining 90% we add comma after prior ROUND() then following
 - `SELECT id, make, model, price, ROUND(price * .10, 2), ROUND(price - (price * .10), 2) FROM car;`
 - saying ( price * .90, 2) is better, but Nelson's weird
@@ -386,7 +386,7 @@ create table car (
 - and we have the sequence of `nextval('person_id_seq'::regclass)` for our `id` column
 - Nelson copied an insert statement from our created person table, and added (id) key, and its value (1) in same insert copied table.
 - as `insert into person (id, first_name, last_name, email, gender, date_of_birth, country_of_birth) values (1, 'Beatrice', 'Lohoar', 'blohoar0@state.gov', 'Female', '2022-09-18', 'Philippines');`
-- then run it in our database 
+- then run it in our database
 - 🔴 it didn't work, because id's duplicated, as primary key, same as passport_number we can't duplicate them
 - to replace it we drop the preventing condition called `constraint`, by using the `ALTER` key,
 - `ALTER TABLE person DROP CONSTRAINT person_pkey;`
@@ -659,7 +659,7 @@ ALTER SEQUENCE person_id_seq RESTART WITH 10;-- 10 as the actual value, pick the
 - `SELECT * FROM pg_available_extensions;`
 - in macOS on pg_a tab it fills automatically
 - look at them, some might be awesome. 🔴⚠️ task
-- each has its one comment, so it's awesome to read fastly
+- each has its one comment, so it's awesome to read rapidly
 - Nelson mentioned some:
 
 ```shell
@@ -701,7 +701,104 @@ SELECT uuid_generate_v4();
 
 - open the sql file you created, and change the id into this, in car and person
 - in the documentation of PG [see this](https://www.postgresql.org/docs/current/datatype.html) => data types => uuid
+- this is the location of the sql in [my machine](E:\TutorialsElzero\DB\person-car.sql), it's beside the video lecture
 
 ```sql
-id 
+-- id UUID ...same_for_car_&_person, change id to iud as so =>
+person_uid UUID NOT NULL PRIMARY KEY -- in person
+car_uid UUID REFERENCES car(car_uid) -- car_id as foreign key in person
+car_uid UUID NOT NULL PRIMARY KEY-- in car
+-- 💥🔴 we need to be explicitly adding uuid to each record🔴💥 as
+insert into person (person_uid, first_name, last_name, email, gender, date_of_birth, country_of_birth) values (uuid_generate_v4(), 'Beatrice', 'Lohoar', 'blohoar0@state.gov', 'Female', '2022-09-18', 'Philippines');
+-- we added person_uid to each insert, and made its value as uuid_generate_v4()
+-- the name of our function => uuid_generate_v4()
+-- in car do this!
+-- look at the file, a lot of changed are made
+```
+
+- it became slower, the inserting operation, because of the uuid creation
+- with \x look at one of the results:
+
+```sql
+person_uid       | 4ab68990-29be-44ae-a005-88c518d4c7ce
+first_name       | Ailey
+last_name        | Jozefczak
+email            | ajozefczakn@mtv.com
+gender           | Female
+date_of_birth    | 2021-05-03
+country_of_birth | Russia
+car_uid          |
+-----------------+-------------------------------------
+```
+
+- let's assign some cars
+
+```sql
+UPDATE person SET car_uid = 'pick car_uid as 2c22-79ec97d0...' WHERE person_uid = 'pick person_uid';
+-- as this
+UPDATE person SET car_uid = 'bab10331-3725-4775-9ce1-476ef476d378' WHERE person_uid = '79ec97d0-2c22-41ca-bb6d-bab37e5bcbbc';
+SELECT * FROM person
+JOIN car ON person.car_uid = car.car_uid;
+-- because of this code: ON person.car_uid = car.car_uid;
+-- we have two columns with same info, so use this instead
+SELECT * FROM person
+JOIN car USING (car_uid);
+-- for selecting all, use left as
+SELECT * FROM person
+LEFT JOIN car USING (car_uid);
+```
+
+## Conclusion
+
+- Now: you should be aware of working with postgres, and this course is set in order
+- everything you learned is very valuable
+- next Step take Nelson or any other backend course as: Spring Boot or nodejs&express. I took an express with John, 18 hours, without searching and impaction I did.
+- SQL is the foundation of your backend
+- Nelson has Advanced PostgreSQL course
+- he uses indexes, functions, more complex queries, common table expressions, triggers, views look for more to know what to [search for](https://www.amigoscode.com/p/advanced-databases)
+
+## advanced course topics:-
+
+```shell
+# Joins
+  Joins
+  Inner Joins
+  Left Joins
+  Right Join
+  Full Join
+  Inner & Outer Joins
+# Database Transactions
+  why Transactions
+  Begin, Commit and Rollback
+  Nested Transactions
+# Indexes
+  Primary Keys and Indexes
+  View Indexes Trough Terminal
+  Create and Drop Indexes
+  Indexes in action
+  Multi Column Indexes
+  Unique Indexes
+  Partial Indexes
+# Functions
+  Function skeleton
+  Create functions
+  View and Drop Functions
+# Database Administration
+  Roles
+  View Roles
+  Creating roles
+  Privileges
+  Revoking Permissions
+  Member Roles
+# Schemas
+  What are Schemas
+  Create Schemas
+  Schema Search Path
+  Grant Schema Usage
+# Database Backups and Restores
+Backing up Databases
+Restore Database
+Backup All databases
+# Next Step
+  MongoDB
 ```

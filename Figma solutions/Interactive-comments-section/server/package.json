@@ -1,0 +1,31 @@
+{
+  "name": "comments-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Bader",
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-fileupload": "^1.2.1",
+    "express-rate-limit": "^5.4.1",
+    "http-status-codes": "^2.1.4",
+    "joi": "^17.4.0",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.22",
+    "pg": "^8.11.0",
+    "pug": "2.0.0-beta11",
+    "xss-clean": "^0.1.1"
+  }
+}

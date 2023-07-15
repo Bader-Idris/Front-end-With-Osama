@@ -5,7 +5,8 @@ let firstComment = async () => {
   try {
     let firstComment = await fetch('./data.json');
     let data = await firstComment.json();
-    // Do something with the fetched data
+
+    console.log(data)
     let comments = data.comments
     let uName = data.currentUser.username
     return `Hello ${uName}, your comment is ${comments[1].content}`
