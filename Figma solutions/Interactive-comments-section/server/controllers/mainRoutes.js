@@ -11,3 +11,4 @@ const getUsers = (req, res) => {//statusCode.OK
 module.exports = {
   getUsers
 }
+// E:\coding_and_programming\HTML_and_CSS_Elzero\Node.js\Ajax-with-node\controllers\Beaufort-Tek.js

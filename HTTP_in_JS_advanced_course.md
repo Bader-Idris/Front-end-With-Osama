@@ -169,7 +169,9 @@ url.hostname
 - exactly as when I used pg with Ania and Beaufort-Tek. and even John Smilga.
 - OSs can handle 65535 ports
 - if we don't provide the port as clients, it'll use the default one. `depending on the protocol`
-- Lane installed `caddy` on his Mac-os by:`brew install caddy`, instal. [go to it](https://caddyserver.com)
+- Lane installed `caddy` on his Mac-os by:`brew install caddy`, install. [go to it](https://caddyserver.com)
 - in the project DIR command: `caddy file-server`, he has index.html file and name.txt in same dir
+- one of the great benefits for caddy is Reverse proxy capabilities => `can be a load balancer`
+- 
 
 <!-- ## Ch 4 async JavaScript -->
