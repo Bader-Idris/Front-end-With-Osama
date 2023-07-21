@@ -62,3 +62,4 @@ JOIN follows ON follows.followee_id = users.id
 WHERE follows.follower_id = current_user;
 ```
 */
+// lost the consecutive days after nearly 240 days, what ever, I was using data science, SQl DBs
