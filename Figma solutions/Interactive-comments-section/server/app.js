@@ -34,7 +34,7 @@ app.use('/', mainRoutes)
 // }
 async function startServer() {
   try {
-    // await createDatabase();
+    await createDatabase();
     app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`));
   } catch (error) {
