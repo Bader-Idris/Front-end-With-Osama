@@ -803,3 +803,23 @@ Backup All databases
   MongoDB
 ```
 <!-- what are the popular ORMs and their usages with PG, learn above advanced topics and this one!-->
+
+---
+
+## out of the course:-
+
+- to select records that are not under specific column on behalf of using IN as in 205, we use the following
+- `selecing ... => subject NOT IN ('chemistry', 'medicine')`
+- meaning, `NOT IN` on behalf of `IN`, easy and powerful
+- this code is good to order specific fields, see:
+
+```sql
+SELECT winner, subject
+  FROM nobel
+ WHERE yr=1984
+ ORDER BY subject IN ('physics','chemistry'), subject, winner;
+--  last line is the tended to observer at: subject IN ('physics','chemistry')
+```
+
+- look for it in this great practical [website:](<https://sqlzoo.net/wiki/SELECT_from_Nobel_Tutorial>)
+- 
