@@ -12,4 +12,5 @@ const {
 
 mainPage.route('/').get(getUsers);//dang
 
+// life is tough when learning CRAZY BE
 module.exports = mainPage;
