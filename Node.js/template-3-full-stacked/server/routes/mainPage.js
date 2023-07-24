@@ -10,9 +10,6 @@ const {
 
 } = require('../controllers/mainPage')
 
-mainPage.route('/').get(getUsers)
-// mainPage.route('/').get(getUserPrompt).post(postUserPrompt)
-// mainPage.route('/').post(postDownloadPage)
-// mainPage.route('/').get(projectsPage)
+mainPage.route('/').get(getUsers);//dang
 
 module.exports = mainPage;
