@@ -112,4 +112,5 @@ let postComments = async () => {
 
 window.addEventListener('DOMContentLoaded', () => {
   postComments()
+  // pg practices are sincerely complex when using nested selections and joins, you can make it as graphQL, but it's awkward 
 });
