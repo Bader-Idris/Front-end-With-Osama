@@ -822,4 +822,20 @@ SELECT winner, subject
 ```
 
 - look for it in this great practical [website:](<https://sqlzoo.net/wiki/SELECT_from_Nobel_Tutorial>)
-- 
+- on behalf of using if-else in programming languages as js: in PG we use
+
+### CASE THEN
+
+- it's awesome using case then declaratively as in PG other than imperatively as in JS, you need to consider processing issues though!
+- this is an ie of using case then:
+
+```sql
+SELECT month,
+       CASE
+           WHEN month % 3 = 0 THEN month / 3
+           ELSE (month / 3) + 1
+       END AS res
+FROM quarterof;
+```
+
+- this can be used in sql as well as PG
