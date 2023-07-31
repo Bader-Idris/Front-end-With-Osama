@@ -42,6 +42,11 @@ app.post('/create-database', isAdmin, async (req, res) => {
 It's crucial to ensure that sensitive or private data is not cached or exposed through a CDN.
 - **web hooks** mentioned by the api teacher: **Craig Dennis**, and look for the website: **Twilio**, its api are for contacting via sms and phone topics
 - Using Continuous Deployment (CD), it's important with huge projects, including scalability, maintainability, and reliability issues
+- what's the relationship between  implement CSRF protection as in Helmet.js and JWTs
+- in deployment: server configurations, load balancing and scalability
+- what's the usages of express-handlebar package, is it useful, mentioned in web-app book by O'Reilly
+- it's connected with the concept of template engine
+- learn more about semVer -> semantic versioning as with npm: (caret)^9.xx.xx means to stick to that version, accepting its sub-versions
 - 
 
 ### how to use Near Field Communication (NFC) for payments inside of our app?
