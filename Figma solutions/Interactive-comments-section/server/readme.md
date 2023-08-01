@@ -46,7 +46,16 @@ It's crucial to ensure that sensitive or private data is not cached or exposed t
 - in deployment: server configurations, load balancing and scalability
 - what's the usages of express-handlebar package, is it useful, mentioned in web-app book by O'Reilly
 - it's connected with the concept of template engine
-- learn more about semVer -> semantic versioning as with npm: (caret)^9.xx.xx means to stick to that version, accepting its sub-versions
+- learn more about semVer -> semantic versioning as with npm: (caret)^9.xx.xx means to stick to that version, accepting its sub-versions, npm calls its parts as `Major.Minor.Patch.`, version ranges contains '~', '^', '*', and without any symbol means, the exact V
+
+```txt
+Version Format
+- Major: Incremented when incompatible changes are introduced.
+- Minor: Incremented when backward-compatible functionality is added.
+- Patch: Incremented for backward-compatible bug fixes.
+```
+
+- what's the multi-factor authentication(MFA). with logging service
 - 
 
 ### how to use Near Field Communication (NFC) for payments inside of our app?
