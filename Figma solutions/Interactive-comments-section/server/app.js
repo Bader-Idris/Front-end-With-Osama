@@ -12,26 +12,14 @@ app.use(express.urlencoded({ extended: false }))// body parser, for POST request
 const mainRoutes = require('./routes/mainRoutes.js');
 app.use('/', mainRoutes)
 
-// if there's no database existing this will work
-// async function createDatabase() {
-//   try {
-//     await client.connect();
-//     // Check if the database exists
-//     const result = await client.query(
-//       `SELECT * FROM pg_database WHERE datname = "${process.env.PGDATABASE}";`
-//     );
-//     if (result.rows.length === 0 || error.code === '3D000') {
-//       await client.query(`CREATE DATABASE ${process.env.PGDATABASE};`);
-//       console.log('Database created successfully.');
-//     } else {
-//       console.log('Database already exists.');
-//     }
-//   } catch (error) {
-//     console.error('Error creating database:', error);
-//   } finally {
-//     await client.end();
-//   }
-// }
+//? this little req/res object is for seeing headers in client's position
+// app.get('/headers', (req, res) => {
+//   res.type('text/plain')
+//   const headers = Object.entries(req.headers)
+//     .map(([key, value]) => `${key}: ${value}`)
+//   res.send(headers.join('\n'))
+// })
+
 async function startServer() {
   try {
     // await createDatabase();

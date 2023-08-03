@@ -833,8 +833,9 @@ SELECT winner, subject
 SELECT month,
        CASE
            WHEN month % 3 = 0 THEN month / 3
+          --  we can create many conditions by adding when then before else, == as if else
            ELSE (month / 3) + 1
-       END AS res
+       END AS res-- this as means the new column, after generating conditions
 FROM quarterof;
 ```
 
