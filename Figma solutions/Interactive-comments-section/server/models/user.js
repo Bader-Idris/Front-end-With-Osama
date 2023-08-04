@@ -64,6 +64,66 @@ WHERE follows.follower_id = current_user;
 */
 
 ```
+a whole article website guidance from bito
+
+for an article that attracts millions of views, what are the crucial parts I need, for it, i will use pure js, and express and pg db, and jwt, but explain in details, things like packages, tables that are needed sdks, what to buid in those control, model, view pattern, what to use in cdns, what to use for security, I will make it for production, so be serios about it and take your time assumming the tended results, I want it to be explained in little tiny details that to be applied for
+
+----------------------------------------------------
+Performance Optimization, for compressing FE and using some caching
+CORS policies, learn more:   handling CORS, and logging
+Sign up for a CDN provider, do it with static 
+----------------------------------------------------
+6. Security:
+- Implement secure coding practices to prevent common vulnerabilities like SQL injection, cross - site scripting(XSS), and cross - site request forgery(CSRF).
+- Use libraries like Helmet.js to enhance security headers, such as Content Security Policy(CSP), Strict - Transport - Security(HSTS), and XSS protection.
+
+7. Deployment and Production Setup:
+- Set up a production environment with a reliable hosting provider like AWS, Google Cloud, or Heroku.
+- Configure server settings, such as environment variables, port binding, and SSL certificates if necessary.
+- Consider using containerization technologies like Docker for easier deployment and scalability.
+- Implement load balancing mechanisms to distribute traffic across multiple servers for better performance and availability.
+
+8. Performance Optimization:
+- Minify and bundle your frontend assets(CSS, JavaScript) to reduce file sizes and improve loading speed.
+- Enable server - side and client - side caching for static assets and API responses.
+- Use tools like webpack or Gulp to automate asset optimization tasks.
+- Profile your application using tools like Chrome DevTools or Node.js Profiler to identify and resolve performance bottlenecks.
+
+9. SEO and Analytics:
+- Implement SEO best practices, such as adding meta tags, using descriptive URLs, and providing relevant content.
+- Integrate Google Analytics or other analytics tools to track user behavior, page views, and conversion rates.
+- Use tools like Google Search Console to monitor and optimize your website's presence in search engine results.
+
+10. Testing and Monitoring:
+- Write automated tests using frameworks like Jest or Mocha to ensure the correctness of your application's functionality.
+  - Implement unit tests, integration tests, and end - to - end tests to cover different aspects of your application.
+- Set up monitoring tools like New Relic, Datadog, or Prometheus to track application performance, errors, and uptime.
+- Implement logging mechanisms to record important events and errors for debugging and analysis purposes.
+WCAG 2.0 or 2.1 for accessibility
+
+Test your application using accessibility tools like screen readers (e.g., NVDA, VoiceOver) to identify and fix accessibility issues.
+
+----------------------------------------------------
+
+12. Logging:
+- Implement logging mechanisms to record important events, errors, and application behavior.
+- Use libraries like Winston or Bunyan to log events to files or external services like Elasticsearch or Loggly.
+- Log relevant information such as request details, error stack traces, and performance metrics.
+- Configure log levels to control the verbosity of logging based on different environments(development, production).
+
+13. Internationalization(i18n):
+- Implement internationalization support to make your article accessible to users from different languages and regions.
+- Use libraries like i18next or react - i18next to handle translations and language switching.
+- Extract translatable strings from your frontend and backend code, and provide translation files for different languages.
+
+14. Scalability and Performance:
+- Design your application to be horizontally scalable by using techniques like load balancing and clustering.
+- Consider using caching mechanisms like Redis or Memcached to cache frequently accessed data and reduce database load.
+- Optimize database queries by creating indexes, denormalizing data, or using query optimization techniques.
+- Implement asynchronous processing for time - consuming tasks using technologies like message queues(e.g., RabbitMQ, Kafka) or task schedulers(e.g., Celery).
+
+---------------
+
 Use tools like Grafana, Kibana, or Datadog to visualize and analyze monitoring data.
 Continuously optimize your application based on monitoring insights, such as identifying and resolving performance bottlenecks or memory leaks.
 
