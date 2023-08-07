@@ -22,11 +22,27 @@ const projectsPage = (req, res) => {
   res.status(200).sendFile(parentDir + '/public/projects.html');
 }
 
+const getBitoForm =  (req, res) => {
+  res.status(200).sendFile(parentDir + '/public/form-by-bito.html');
+}
+
+const bitoForm = (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+
+  console.log(req.body)
+  // try sending it to PG DB
+  console.log("Received data:", name, email);
+
+  res.json({ message: "Data received successfully!" });
+};
+
 module.exports = {
   getUserPrompt,
   postUserPrompt,
   downloadPage,
   postDownloadPage,
   projectsPage,
-  
+  getBitoForm,
+  bitoForm
 }

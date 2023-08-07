@@ -840,3 +840,13 @@ FROM quarterof;
 ```
 
 - this can be used in sql as well as PG
+
+### TRANSACTIONS
+
+- transactions group multiple database operations into a single unit of work, ensures that either all the operations within it are successfully completed, or none of them are applied to the database. This helps maintain data integrity and consistency, *Bito response*
+- it has many benefits and main four are:
+- `Atomicity`, `Consistency`, `Isolation`, `Durability`
+- Atomicity => for making multiple operations as single unit of working
+- Consistency =>
+- Isolation =>
+- Durability =>

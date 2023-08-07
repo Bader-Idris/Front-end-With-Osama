@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "C:/Users/wwwba_/Downloads/web-development-express-book-git/web-development-with-node-and-express-2e"
+		},
+		{
+			"path": "D:/learning-helmet-with-freeCodeCamp"
 		}
 	],
 	"settings": {
@@ -109,7 +112,8 @@
 		"recommendations": [
 			"editorconfig.editorconfig",
 			"wrenchingdev.quantum-leap",
-			"aaron-bond.better-comments"
+			"aaron-bond.better-comments",
+			"snyk-security.snyk-vulnerability-scanner"
 		]
 	}
 }
