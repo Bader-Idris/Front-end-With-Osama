@@ -846,7 +846,52 @@ FROM quarterof;
 - transactions group multiple database operations into a single unit of work, ensures that either all the operations within it are successfully completed, or none of them are applied to the database. This helps maintain data integrity and consistency, *Bito response*
 - it has many benefits and main four are:
 - `Atomicity`, `Consistency`, `Isolation`, `Durability`
-- Atomicity => for making multiple operations as single unit of working
-- Consistency =>
-- Isolation =>
-- Durability =>
+- to undo we use `ROLLBACK;` or longer syntaxes, this is the shortest
+- 🔴 one of the most important usages of this transaction is transferring money bank accounts 
+- good example [from](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-transaction/)
+
+```sql
+-- after we created accounts table and inserted the amount of money for both accounts
+
+-- start a transaction
+BEGIN;
+
+-- deduct 1000 from account 1
+UPDATE accounts 
+SET balance = balance - 1000
+WHERE id = 1;
+
+-- add 1000 to account 2
+UPDATE accounts
+SET balance = balance + 1000
+WHERE id = 2; 
+
+-- select the data from accounts
+SELECT id, name, balance
+FROM accounts;
+
+-- commit the transaction
+COMMIT;
+```
+
+- this is when accidentally transferring money to a mistaken account, and tending to retrieve it
+
+```sql
+-- begin the transaction
+BEGIN;
+
+-- deduct the amount from the account 1
+UPDATE accounts 
+SET balance = balance - 1500
+WHERE id = 1;
+
+-- add the amount from the account 3 (instead of 2)
+UPDATE accounts
+SET balance = balance + 1500
+WHERE id = 3; 
+
+-- roll back the transaction
+ROLLBACK;
+```
+
+### put sth here
