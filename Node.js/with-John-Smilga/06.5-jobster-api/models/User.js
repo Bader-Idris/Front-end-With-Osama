@@ -61,3 +61,28 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
 };
 
 module.exports = mongoose.model('User', UserSchema);
+
+
+
+
+
+
+/*
+----------------------------------------------------------------------------------
+form as a test of your front-end powers.
+level: easy-peasy
+content:
+background -> image
+title -> h1
+p -> thank you for taking the time to help us improve the platform
+form ->
+  label:name-> type:text
+  label:email-> type:email
+  label:age-> type:number default 10
+  p:asking about opts-> type:select
+  label:why recommend us-> type:radio 3 options
+  p:best opt? -> type:select
+  label:improve us-> type:radio 11 opts
+  label:speak out -> textarea
+  button-> type:submit
+*/
