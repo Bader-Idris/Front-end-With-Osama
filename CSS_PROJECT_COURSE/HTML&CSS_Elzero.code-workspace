@@ -1,19 +1,28 @@
 {
 	"folders": [
 		{
+			"name": "HTML_and_CSS_Elzero",
 			"path": ".."
 		},
 		{
+			"name": "PHP_course",
 			"path": "C:/xampp/htdocs/PHP_course"
 		},
 		{
+			"name": "web-development-with-node-and-express-2e",
 			"path": "C:/Users/wwwba_/Downloads/web-development-express-book-git/web-development-with-node-and-express-2e"
 		},
 		{
+			"name": "learning-helmet-with-freeCodeCamp",
 			"path": "D:/learning-helmet-with-freeCodeCamp"
 		},
 		{
+			"name": "freeCodeCamp",
 			"path": "../../freeCodeCamp"
+		},
+		{
+			"name": "BE-with-free-code-camp",
+			"path": "../../BE-with-free-code-camp"
 		}
 	],
 	"settings": {

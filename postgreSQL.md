@@ -188,7 +188,7 @@ SELECT * FROM person WHERE gender = 'Female' AND (country_of_birth = 'Poland' OR
 
 - `SELECT 1 = 1;` returns ?columns and `t`, this is the comparison operator instead of `==`
 - `f` => `false`, `t` => `true`
-- `<>` => `not equal` instead of `!=`
+- `<>` => `not equal` instead of `!=`, although, we can use `!=`
 - `<=` and `>=` are normal
 - 🔴don't forget to use `SELECT` before comparison
 - we can use them with string as JS, `SELECT 'ABC' <> 'ABC';` f, THEY'RE CAPITALIZED SO FALSE
