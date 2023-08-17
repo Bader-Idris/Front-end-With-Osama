@@ -847,7 +847,7 @@ FROM quarterof;
 - it has many benefits and main four are:
 - `Atomicity`, `Consistency`, `Isolation`, `Durability`
 - to undo we use `ROLLBACK;` or longer syntaxes, this is the shortest
-- 🔴 one of the most important usages of this transaction is transferring money bank accounts 
+- 🔴 one of the most important usages of this transaction is transferring money bank accounts
 - good example [from](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-transaction/)
 
 ```sql
@@ -894,4 +894,36 @@ WHERE id = 3;
 ROLLBACK;
 ```
 
-### put sth here
+### Installing psql on windows & git bash in windows
+
+- after PG installation, we need to set its [path](C:\Program Files\PostgreSQL\14\bin) in our `system environment variables`. then we need to use these variables to access from normal terminal:
+
+#### {#psql_command}
+
+- `psql -U postgres -h localhost -p 5433 -W`
+
+- `-U` -> username, `-h`-> host, `-p` -> port`knew it by trying -p🤓`, `-W` -> password.
+- it'll ask you what password is it then.
+- in git bash, we might need to set the path manually as
+
+```sh
+export PATH=$PATH:/c/'Program Files'/PostgreSQL/14/bin
+# so you knew that spaces needs '' even with path, unlike URL paths who use 20% instead
+```
+
+- then restart it.
+- to get the password secretly we can create a `.pgpass`.
+- then add this into that file: `localhost:5433:*:postgres:your_password`
+- Save the `.pgpass` file:
+  - Save the file in your user's home directory. For example, on Linux, the file path would be `/home/your_username/.pgpass`, and on Windows, it would be `C:\Users\your_username\.pgpass`.
+- Set appropriate permissions for the `.pgpass` file:
+  - On Linux, run the command `chmod 0600 ~/.pgpass` to set read and write permissions for the owner only.
+  - On Windows, no additional permissions adjustments are required.
+- Modify the command to include the `-w` flag:
+  - Update the command `psql -U postgres -h localhost -p 5433 -W` to `psql -U postgres -h localhost -p 5433 -w`.
+
+---
+
+- you should always use this [command:](#psql_command)
+
+### add another topic

@@ -17,12 +17,11 @@
 			"path": "D:/learning-helmet-with-freeCodeCamp"
 		},
 		{
-			"name": "freeCodeCamp",
-			"path": "../../freeCodeCamp"
-		},
-		{
 			"name": "BE-with-free-code-camp",
 			"path": "../../BE-with-free-code-camp"
+		},
+		{
+			"path": "../../freeCodeCampSolutions"
 		}
 	],
 	"settings": {
