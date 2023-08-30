@@ -16,9 +16,12 @@
     "express": "^4.18.2",
     "mongoose": "^5.13.15",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.22",
     "pg": "^8.11.0",
     "pug": "2.0.0-beta11",
+    "sweetalert2": "^11.7.27",
     "typescript": "^5.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

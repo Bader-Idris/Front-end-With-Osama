@@ -4,6 +4,9 @@ const app = express();
 require('dotenv').config();
 const subMime = require('./routes/main-nav')
 const BeaufortTek = require('./routes/Beaufort-Tek');
+const freeCodeCamp = require('./routes/freeCodeCamp');
+const sweetAlert2 = require('sweetalert2')
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))// body parser, for POST requests
 
@@ -18,5 +21,7 @@ app.use('/', subMime);//because I used |this| const path = require('path'); |and
 // Beaufort Tek project
 app.use('/projects/Beaufort_Tek', BeaufortTek)
 
+
+app.use('/freecodecamp/v1/', freeCodeCamp)
 
 app.listen(port, () => console.log(`Server is listening port ${port}...`));
