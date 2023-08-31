@@ -5,7 +5,6 @@ require('dotenv').config();
 const subMime = require('./routes/main-nav')
 const BeaufortTek = require('./routes/Beaufort-Tek');
 const freeCodeCamp = require('./routes/freeCodeCamp');
-const sweetAlert2 = require('sweetalert2')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))// body parser, for POST requests

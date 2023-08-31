@@ -4,57 +4,32 @@ const parentDir = path.dirname(__dirname);
 
 const getTest = (req, res) => {
   // console.log(req.body)
-  //! how to make it work! Swal sweetalert2
 
-  // let wow = Swal.fire({
-  //   title: 'How old are you?',
-  //   icon: 'question',
-  //   input: 'range',
-  //   inputLabel: 'Your age',
-  //   inputAttributes: {
-  //     min: 8,
-  //     max: 120,
-  //     step: 1
-  //   },
-  //   inputValue: 25
-  // })
-  // res.send(wow)
-
-  res.send(`<h2>Hi mom</h2>
-            <h3>awesome</h3>
-            <style>
-              body {background-color:#222}
-              h2 {color: #007acc;
-                font-size: 32px;
-                text-align: center;
-                position: relative;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                width: 200px;
-                height: 200px;
-                background-color: #ccc;
-                line-height: 200px;
-                border-radius: 5px;
-                user-select: none;
-              }
-            </style>
-          `)
-
+  if () {
+    return res.send(expressSweetAlert())
+  }
+  res.send(`
+    <h2>Hi mom</h2>
+    <h3>awesome</h3>
+    <style>
+      body {background-color:#222}
+      h2 {color: #007acc;
+        font-size: 32px;
+        text-align: center;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+        line-height: 200px;
+        border-radius: 5px;
+        user-select: none;
+      }
+    </style>
+  `)
 }
-Swal.fire({
-  title: 'How old are you?',
-  icon: 'question',
-  input: 'range',
-  inputLabel: 'Your age',
-  inputAttributes: {
-    min: 8,
-    max: 120,
-    step: 1
-  },
-  inputValue: 25
-})
-
 const postTest = async (req, res) => {
   console.log(req.body)
   if (req.body && req.body.msg == "hi mom") {
@@ -64,9 +39,21 @@ const postTest = async (req, res) => {
   res.json({msg: "I'm the res Yo"})
 }
 
+
+const sweetAlertGet = (req, res) => {
+  res.status(200).sendFile(parentDir + '/public/complicated_e.gs/sweetalertfile.html');
+}
+const sweetAlertPost = async (req, res) => {
+  // await 
+};
+
+
 module.exports = {
   getTest,
-  postTest
+  postTest,
+
+  sweetAlertGet,
+  sweetAlertPost
 }
 
 /*

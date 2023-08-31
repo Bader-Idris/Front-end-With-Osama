@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>SweetAlert2 Example</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+</head>
+
+<body>
+  <h1>SweetAlert2 Example</h1>
+  
+  <button onclick="showAlert()">example with cdn sweet Alert2</button>
+  
+  <div>
+    <h3>to containerize express E.Gs</h3>
+    <p>example with express server sweet Alert2</p>
+    <button onclick="expressSweetAlert()">Click on me</button>
+  </div>
+  
+  <!--  -->
+  <!-- Node.js/Ajax-with-node/node_modules/sweetalert2/dist/sweetalert2.all.min.js -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+  <script>
+    function showAlert() {
+      Swal.fire({
+        title: 'Hello!',
+        text: 'that\'s awesome you\'re the best',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+    }
+
+    const expressSweetAlert = () => {
+      // fetch
+    }
+    </script>
+</body>
+
+</html>
