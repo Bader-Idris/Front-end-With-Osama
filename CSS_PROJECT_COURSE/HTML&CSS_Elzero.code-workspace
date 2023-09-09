@@ -22,6 +22,9 @@
 		},
 		{
 			"path": "../../freeCodeCampSolutions"
+		},
+		{
+			"path": "../../docker/docker_course_freecodecamp"
 		}
 	],
 	"settings": {
