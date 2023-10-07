@@ -25,6 +25,9 @@
 		},
 		{
 			"path": "../../docker/docker_course_freecodecamp"
+		},
+		{
+			"path": "../../portfolio"
 		}
 	],
 	"settings": {
@@ -57,6 +60,7 @@
 			"nextval",
 			"Procfile",
 			"psql",
+			"sess",
 			"sslinfo",
 			"VARCHAR"
 		]
