@@ -180,4 +180,68 @@ let arrayFour: (string| number| (number|string)[] | boolean[])[] = [ 1, 2, "A", 
 
 ### 08 - Type Annotations With Function
 
-- removeMe
+1. noImplicitAny
+2. noImplicitReturns
+3. noUnusedLocals
+4. noUnusedParameters
+
+```ts
+let showMsg = true;
+function showDetails(name, age, salary) {
+  if (showMsg) {
+    return `Hello ${name}, Age Is ${age}, Salary is`//ts will help us instead of explicit this salary!
+  }
+}
+console.log(showDetails("Osama", 40, 5000));
+```
+
+Because we see an error appearing our type any, we can disable that with 1st `noImplicitAny`: disable, it'll become as quick fix, which is awesome! it can also detect on usage, 😲
+
+2nd option: `noImplicitReturns` will throw an error when a function doesn't have a default option you create with no conditions!
+
+As adding this at last of our function:
+
+```ts
+function priorFn(a,b) : string {
+  // prior conditions
+  return 'some text'
+}
+// : string means, only returning string! useful lessing XSS
+```
+
+If we add an unused var, we can use an error for showing it, called: `noUnusedLocals`, same with params via: `noUnusedParameters`
+
+### 09 - Function Optional and Default Parameters
+
+When we use default values with parameters as (a = 'hi'), to get that without passing any value with ts, we use the undefined when running the Fn, view:
+
+```ts
+function showDetails(name: string = "Pedro", age: number, salary: number) {
+  if (showMsg) {//so we put it after datatype, in ts
+    return `${name} - ${age} - ${salary}`;
+  }
+}
+console.log(showDetails(undefined, 40, 5000));
+```
+
+> to make that param optional, we use the regExp question mark, as salary? : string = 50
+
+Logically, optionals will be at last descending!
+
+### 10 - Function Rest Parameter
+
+```ts
+function addAll(...nums: number[]) : number {//array of numbers, so only numbers!
+  let result = 0;
+  for (let i = 0; i < nums.length ; i++) {
+    result += nums[i]
+  }
+  // can use forEach instead
+  return result;
+}
+console.log(addAll(10, 20, 30, 100))//adding float is number in ts
+```
+
+Now, we command: `tsc` to extract files -> node  ourFile.js
+
+### 11 - Type Annotations With Anonymous And Arrow Function
