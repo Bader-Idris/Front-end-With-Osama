@@ -245,3 +245,48 @@ console.log(addAll(10, 20, 30, 100))//adding float is number in ts
 Now, we command: `tsc` to extract files -> node  ourFile.js
 
 ### 11 - Type Annotations With Anonymous And Arrow Function
+
+little small video, 2m
+
+```ts
+const add = function(num1: number, num2: number) : number {
+  return num1 + num2;
+};
+console.log(add(10,20));
+
+const addWithArrow = () : number => num1 + num2;
+console.log(addWithArrow(10,20));
+```
+
+then command: `tsc` => node fileName
+
+### 13 - Data Types - Type Alias Advanced
+
+We use this when possessing many types for same param:
+
+```ts
+type Buttons = {
+  up: string,
+  right: string,
+  down: string,
+  left: string,
+};
+// this namedLast will be added to getAction Fn
+type Last = Buttons &&  {x?: boolean}//put ? to be optional, as we learned
+
+function getActions(btns: Last) {//made btns as Last instead of only Buttons
+  console.log(`Action for Button up Is: ${btns.up}`);
+  console.log(`Action for Button right Is: ${btns.right}`);
+  console.log(`Action for Button down Is: ${btns.down}`);
+  console.log(`Action for Button left Is: ${btns.left}`);
+};
+getActions({
+  up: `Jump`,
+  right: `go right`,
+  down: `get down`,
+  left: `go left`,
+})
+```
+
+### 14 - Data Types - Literal Types
+
