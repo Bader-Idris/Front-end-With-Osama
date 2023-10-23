@@ -290,3 +290,253 @@ getActions({
 
 ### 14 - Data Types - Literal Types
 
+Data Types -> literal Types:
+
+```ts
+type nums = 0 | 1 | -1;
+
+function compare(num1: number, num2: number) : nums {//🔴 instead of adding many constainet types, we added an Obj called nums 🔴
+  if (num1 === num2) {
+    return 0;
+  } else if ( num1 > num2 ) return 1;
+  else return -1;
+}
+console.log(compare(20,20))//0
+console.log(compare(20,15))//1
+console.log(compare(20,30))//-1
+```
+
+we can use these things with measurement degrees, range units, it's as mapping in backend, I said.
+awesome for preventing attackers to add more headers to post bodies for ie!
+
+### 15 - Data Types - Tuple
+
+This Tuple will be useful with frameworks, it's similar to arrays, but it's too specific, and preset to both length and type, I believe it's same as stack then!
+
+consider we're having an article, it has id, title, status: public | private;
+
+```ts
+// let article: [number, string, boolean];//can use it directly as is! or initializing its values
+let article: readonly [number, string, boolean]; = [11, "Title One", true];
+article[0].//adding this will appear string data, as its type was string
+article = [12, "Title Two", false];
+
+// to prevent issues as appending/depending to our array, there isn't any restriction in ts for push, shift etc methods, but we can do following:
+article.push(100);//added readonly after article setting above!🔴
+
+// destructuring
+const [id, title, status] = article;
+console.log(id);
+console.log(title);
+console.log(status);
+```
+
+### 16 - Data Types - Void And Never
+
+```ts
+/*
+  Data Types
+  - Void
+  --- Function That Will Return Nothing
+  --- Function In JavaScript That Not Return A Value Will Show undefined
+  --- undefined is not void
+  - Never
+  --- Return Type Never Returns
+  --- The Function Doesn't Have A Normal Completion
+  --- It Throws An Error Or Never Finishes Running At All "Infinite Loop"
+*/
+
+function logging(msg: string) : void {
+  console.log(msg);
+  return;
+}
+
+console.log(logging("Iam A Message"));
+console.log("Test");
+
+const fail = (msg: string) => {
+  throw new Error(msg);
+  // return 10;
+}
+
+function alwaysLog(name: string) : never {
+  while(true) {
+    console.log(name);
+  }
+}
+
+alwaysLog("Osama");
+// console.log("Test");
+```
+
+### 17 - Data Types - Enums Part 1
+
+```ts
+/*
+  Data Types
+  - Enums => Enumerations
+  --- Allow Us To Declare A Set Of Named Constants
+  --- Used For Logical Grouping Collection Of Constants "Collection Of Related Values"
+  --- It Organize Your Code
+  --- By Default Enums Are Number-Based, First Element Is 0
+  --- Theres A Numeric Enums
+  --- Theres A String-Based Enums
+  --- Theres Heterogeneous Enums [String + Number]
+*/
+
+const KIDS = 15;
+const EASY = 9;
+const MEDIUM = 6;
+const HARD = 3;
+
+enum Level {
+  Kids = 15,
+  Easy = 9,
+  Medium = 6,
+  Hard = 3
+}
+
+let lvl: string = "Easy";
+
+if (lvl === "Easy") {
+  console.log(`The Level Is ${lvl} And Number Of Seconds Is ${Level.Easy}`);
+}
+```
+
+in tsconfig, we uncommented this and made it to false:`"allowUnreachableCode": false,`, to make it as a warning!
+
+
+### 18 - Data Types - Enums Part 2
+
+in tsconfig we uncommented this: `"preserveConstEnums": true,`, so it preserves enum with `const enum {}`, instad of only compiling its result
+
+```ts
+/*
+  Data Types
+  - Enums => Enumerations
+  --- Enum Can Refer To Other Enum
+  --- Enum Can Refer To Same Enum
+  --- Enum Can Have Calculations
+  --- Enum Can Have Functions
+*/
+
+function getHardSeconds() : number {
+  return 3;
+}
+
+enum Kids {
+  Five = 25,
+  Seven = 20,
+  Ten = 15
+}
+
+enum Level {
+  Kid = Kids.Ten,//referred from above kids
+  Easy = 9,
+  Medium = Easy - 3,//from same enum
+  Hard = getHardSeconds()
+}
+
+let lvl: string = "Easy";
+
+if (lvl === "Easy") {
+  console.log(`The Level Is ${lvl} And Number Of Seconds Is ${Level.Hard}`);
+}
+```
+
+### 19 - Data Types - Type Assertions
+
+```ts
+/*
+  Data Types
+  - Type Assertions
+  --- Sometime Compiler Doesnt Know The Information We Do
+  --- TypeScript Is Not Performing Any Check To Make Sure Type Assertion Is Valid
+*/
+
+// let myImg = document.getElementById("my-img") as HTMLImageElement;
+let myImg = <HTMLImageElement> document.getElementById("my-img");
+console.log(myImg.src);
+
+let data: any = 1000;
+console.log((data as string).repeat(3));
+```
+
+### 20 - Data Types - Union And Intersection Type
+
+```ts
+/*
+  Data Types
+  - Union And Intersection Types
+  --- Union Type
+  ------ The | Symbol Is Used To Create The Union => "Or"
+
+  --- Intersection Type
+  ------ Is A Type That Combines Several Types Into One
+  ------ The & Symbol Is Used To Create An Intersection => "And"
+
+  --- If A Union Is An OR, Then An Intersection Is An AND.
+*/
+
+// let all: number | string = 100;
+
+type A = {
+  one: string,
+  two: number,
+  three: boolean
+}
+
+type B = A & {
+  four: number
+}
+
+type C = {
+  five: boolean
+}
+
+type mix = A & C;
+
+function getActions(btns: mix) {
+  console.log(`Hello ${btns.one}`);
+  console.log(`Hello ${btns.two}`);
+  console.log(`Hello ${btns.three}`);
+  console.log(`Hello ${btns.five}`);
+}
+
+getActions({ one: "String", two: 100, three: true, five: true });
+```
+
+### 21 - Type Annotations With Object
+
+```ts
+/*
+  Type Annotations With Object
+*/
+
+let myObject: {
+  readonly username: string,
+  id: number,
+  hire?: boolean,
+  skills: {
+    one: string,
+    two: string
+  }
+} = {
+  username: "Elzero",
+  id: 100,
+  hire: true,
+  skills: {
+    one: "HTML",
+    two: "CSS"
+  }
+};
+
+// myObject.username = "Osama";
+myObject.id = 101;
+myObject.hire = false;
+
+console.log(myObject.username);
+console.log(myObject.id);
+console.log(myObject.hire);
+console.log(myObject.skills.one);
+```
