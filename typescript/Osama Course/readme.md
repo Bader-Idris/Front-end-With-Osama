@@ -513,11 +513,11 @@ getActions({ one: "String", two: 100, three: true, five: true });
   Type Annotations With Object
 */
 
-let myObject: {
+let myObject: { //this obj is the Annotations options
   readonly username: string,
   id: number,
   hire?: boolean,
-  skills: {
+  skills: {//nested {}
     one: string,
     two: string
   }
@@ -539,4 +539,207 @@ console.log(myObject.username);
 console.log(myObject.id);
 console.log(myObject.hire);
 console.log(myObject.skills.one);
+```
+
+🔴 check object define property, in js which is similar to ts annotations 🔴
+
+### 22 - Interface Declaration
+
+```ts
+/*
+  Interface
+  - Interface Declaration
+  --- Serve Like Types
+  --- The Interface Describes The Shape Of An Object
+  --- It Defines The Syntax To Follow
+
+  --- Use With Object
+  --- Use With Function
+  --- Use Read Only And Optional Operator
+*/
+
+interface User {
+  id?: number,
+  readonly username: string,
+  country: string
+}
+
+let user: User = {
+  id: 100,
+  username: "Elzero",
+  country: "Egypt"
+}
+
+user.country = "Syria";
+
+console.log(user);
+
+function getData(data: User) {
+  console.log(`Id Is ${data.id}`);
+  console.log(`Username Is ${data.username}`);
+  console.log(`Country Is ${data.country}`);
+}
+
+getData({ id: 200, username: "Osama", country: "KSA" });
+```
+
+### 23 - Interface Method And Parameters
+
+```ts
+/*
+  Interface
+  - Interface Method And Parameters
+*/
+
+interface User {
+  id: number;// can be comma as semicolon between properties
+  username: string;
+  country: string;
+  sayHello() : string;
+  sayWelcome: () => string;
+  getDouble(num: number) : number;
+}
+
+let user: User = {
+  id: 100,
+  username: "Elzero",
+  country: "Egypt",
+  sayHello() {
+    return `Hello ${this.username}`;
+  },
+  sayWelcome: () => {
+    return `Welcome ${user.username}`;
+  },
+  getDouble(n) {
+    return n * 2;
+  }
+}
+
+console.log(user.id);
+console.log(user.sayHello());
+console.log(user.sayWelcome());
+console.log(user.getDouble(100));
+```
+
+### 24 - Interface Reopen And Use Cases
+
+```ts
+/*
+  Interface
+  - ReOpen The Interface And Use Cases
+*/
+
+// Homepage
+interface Settings {
+  readonly theme: boolean;// 🔴⚠️ good when disabling user from changing it⚠️🔴
+  font: string;
+}
+
+// Articles Page
+interface Settings {
+  sidebar: boolean;
+}
+
+// Contact Page
+interface Settings {
+  external: boolean;
+}
+
+let userSettings: Settings = {
+  theme: true,
+  font: "Open Sans",
+  sidebar: false,
+  external: true
+}
+```
+
+### 25 - Interface Extend
+
+```ts
+/*
+  Interface
+  - Extending Interfaces
+*/
+
+interface User {
+  id: number;
+  username: string;
+  country: string;
+}
+
+interface Moderator {
+  role: string | number;
+}
+
+interface Admin extends User,Moderator {//extends as super in js => oop
+  protect?: boolean;
+}
+
+let user: Admin = {
+  id: 100,
+  username: "Elzero",
+  country: "Egypt",
+  role: "Mod",
+  protect: true
+}
+
+console.log(user.id);
+```
+
+### 26 - Interface Final Discussion
+
+```ts
+/*
+  Interface
+  - Interface vs Type Aliases
+  - Take A Look On HTMLElement Interface
+*/
+
+let el = document.getElementById("id") as HTMLElement;//🔴 discover other interfaces via this HTMLElement
+
+// Homepage
+type Settings {
+  readonly theme: boolean;
+  font: string;
+  sidebar: boolean;
+  external: boolean;
+}//interface doesn't duplicate as this type {}, we can use many interfaces as in prior lesson, which is the most important difference from using type {}
+
+let userSettings: Settings = {
+  theme: true,
+  font: "Open Sans",
+  sidebar: false,
+  external: true
+}
+```
+
+### 27 - Class Type Annotations
+
+```ts
+/*
+  Type Annotations With Class
+*/
+
+class User {
+  u: string;
+  s: number;
+  msg: () => string;
+  constructor(username: string, salary: number) {
+    this.u = username;
+    this.s = salary;
+    this.msg = function () {
+      return `Hello ${this.u} Your Salary Is ${this.s}`;
+    }
+  }
+  sayMsg() {
+    return `Hello ${this.u} Your Salary Is ${this.s}`;
+  }
+}
+
+let userOne = new User("Elzero", 6000);
+
+console.log(userOne.u);
+console.log(userOne.s);
+console.log(userOne.msg());
+console.log(userOne.sayMsg());
 ```
