@@ -1,0 +1,333 @@
+.article .child {
+  font-size: 15px;
+}
+
+body .parent {
+  background-color: #222;
+}
+body .parent .child > .direct {
+  font-weight: bold;
+  font-size: 15px;
+}
+body .parent .child > .direct background {
+  color: black;
+}
+body div {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.main-box, .ads {
+  background-color: #222;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.ads {
+  font-size: 15px;
+}
+
+.box {
+  font-size: 15px;
+}
+
+.page {
+  background-color: while;
+  color: aqua;
+}
+
+.box::before {
+  content: "";
+}
+
+/*
+Learn SASS In Arabic 2021 - #08 - Create Triangle With If And Else
+https://www.youtube.com/watch?v=8OEJRjwoNwg&list=PLDoPjvoNmBAzlpyFHOaB3b-eubmF0TAV2&index=8
+
+teaches how to create a dynamic arrow direction with pseudo css elements
+and sass
+*/
+.ad-bader {
+  font-size: 10px;
+  background-image: url("imgs/bader.png");
+  left: left;
+}
+
+ul.links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.circle-100 {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.circle-200 {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+.class1 {
+  font-size: 11px;
+}
+
+.class2 {
+  font-size: 12px;
+}
+
+.class3 {
+  font-size: 13px;
+}
+
+.class4 {
+  font-size: 14px;
+}
+
+.class5 {
+  font-size: 15px;
+}
+
+.class6 {
+  font-size: 16px;
+}
+
+.class7 {
+  font-size: 17px;
+}
+
+.class8 {
+  font-size: 18px;
+}
+
+.class9 {
+  font-size: 19px;
+}
+
+.class10 {
+  font-size: 20px;
+}
+
+.circle100 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.circle200 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.circle300 {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.circle400 {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+}
+
+.circle500 {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+}
+
+.circle600 {
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+}
+
+.circle700 {
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+}
+
+.circle800 {
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+}
+
+.circle900 {
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+}
+
+.circle1000 {
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+}
+
+.red-theme .product {
+  background-color: white;
+  border-bottom: 2px solid red;
+}
+.red-theme .product .title {
+  color: red;
+  font-weight: bold;
+}
+
+.green-theme .product {
+  background-color: white;
+  border-bottom: 2px solid green;
+}
+.green-theme .product .title {
+  color: green;
+  font-weight: bold;
+}
+
+.blue-theme .product {
+  background-color: white;
+  border-bottom: 2px solid blue;
+}
+.blue-theme .product .title {
+  color: blue;
+  font-weight: bold;
+}
+
+.facebook {
+  background-color: blue;
+  color: white;
+}
+.facebook::before {
+  content: name;
+}
+
+.youtube {
+  background-color: red;
+  color: white;
+}
+.youtube::before {
+  content: name;
+}
+
+.github {
+  background-color: black;
+  color: white;
+}
+.github::before {
+  content: name;
+}
+
+.width-1 {
+  width: 100px;
+  height: 50px;
+}
+
+.width-2 {
+  width: 200px;
+  height: 100px;
+}
+
+.width-3 {
+  width: 300px;
+  height: 150px;
+}
+
+.width-4 {
+  width: 400px;
+  height: 200px;
+}
+
+.width-5 {
+  width: 500px;
+  height: 250px;
+}
+
+.width-6 {
+  width: 600px;
+  height: 300px;
+}
+
+.width-7 {
+  width: 700px;
+  height: 350px;
+}
+
+.width-8 {
+  width: 800px;
+  height: 400px;
+}
+
+.width-9 {
+  width: 900px;
+  height: 450px;
+}
+
+.width-10 {
+  width: 1000px;
+  height: 500px;
+}
+
+.col-1 {
+  width: 8.3333333333%;
+}
+
+.col-2 {
+  width: 16.6666666667%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.3333333333%;
+}
+
+.col-5 {
+  width: 41.6666666667%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-7 {
+  width: 58.3333333333%;
+}
+
+.col-8 {
+  width: 66.6666666667%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-10 {
+  width: 83.3333333333%;
+}
+
+.col-11 {
+  width: 91.6666666667%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.element {
+  width: 200px;
+  height: 100px;
+}
+
+.el-yo {
+  width: 200px;
+  height: 100px;
+  top: calculate(100px, 200px, 50px);
+}/*# sourceMappingURL=main.css.map */

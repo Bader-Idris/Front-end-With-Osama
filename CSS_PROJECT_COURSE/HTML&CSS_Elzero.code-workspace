@@ -13,10 +13,6 @@
 			"path": "C:/Users/wwwba_/Downloads/web-development-express-book-git/web-development-with-node-and-express-2e"
 		},
 		{
-			"name": "learning-helmet-with-freeCodeCamp",
-			"path": "D:/learning-helmet-with-freeCodeCamp"
-		},
-		{
 			"name": "BE-with-free-code-camp",
 			"path": "../../BE-with-free-code-camp"
 		},
@@ -28,6 +24,9 @@
 		},
 		{
 			"path": "../../portfolio"
+		},
+		{
+			"path": "../../template3_vue"
 		}
 	],
 	"settings": {

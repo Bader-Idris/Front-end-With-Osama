@@ -1,0 +1,318 @@
+
+@use './helpers/functions' as *;
+
+/// online compiler https: //www.sassmeister.com
+
+@use './pages/article';// _ before the name means partial, and tells it to not watch it
+// and we don't import _ sass understands that automatically
+:root {
+  // $main: 15px;
+}
+
+body {
+  .parent {
+    background-color: #222;
+    .child {
+      > .direct {
+        font: {
+          weight: bold;
+          size: 15px;
+        }
+        background {
+          color: black
+        }
+      }
+    }
+    // + aside {
+    //   font-size: $main;
+    // }
+  }
+  div {
+    margin: auto {
+      top: 10px;
+      bottom: 15px;
+    }
+  }
+}
+
+.main-box {
+  background-color: #222;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.ads {
+  // this extend is called placeholder, it groups them
+  // to make used object as only for sass, we use % instead of . or $
+  // as %main-box {}
+  @extend .main-box;
+  font-size: 15px;
+  
+}
+%hidden {
+  font-size: 15px;//i'm hidden and my values will be shared when imported with @extend
+}
+$theme: "light";
+.page {
+  @if $theme == "light" {
+    background-color: while;
+    color: aqua;
+  } @else {
+    background-color: #222;
+    color: magenta;
+  }
+}
+
+$rounded: false;
+.box {
+  @extend %hidden;
+  border-radius: if($rounded, 6px, null);// 3rd: null is the else condition
+  &::before {
+    // adding & means this.
+    content: "";
+
+  }
+}
+/*
+Learn SASS In Arabic 2021 - #08 - Create Triangle With If And Else
+https://www.youtube.com/watch?v=8OEJRjwoNwg&list=PLDoPjvoNmBAzlpyFHOaB3b-eubmF0TAV2&index=8
+
+teaches how to create a dynamic arrow direction with pseudo css elements
+and sass
+*/
+
+
+// 09 - Interpolation
+$company-name: "bader";
+$position: "left";
+.ad-#{$company-name} {
+  // this is how to add the interpolation class
+  font-size: 10px;
+  background-image: url("imgs/#{$company-name}.png");
+  #{$position}: left;// it's awesome
+}
+// unique-id() a function does its name
+
+
+// 10 - Comments And Documenting
+
+// only for dev [//]
+// for uncompressed [/**/]
+// For all [/*! */]
+
+// even comments can be interpolated as #{$position}
+
+/// docs comments
+/// good with md documenting
+
+// 11 - Mixin And Include as Fn(param) in JS
+@mixin list-reset {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+ul.links {
+  @include list-reset;// why not @extend because this is dynamic
+}
+@mixin circle($dimensions) {
+  border-radius: 50%;
+  width: $dimensions;//this is awesome
+  height: $dimensions;
+}
+.circle-100 {
+  @include circle(100px);
+}
+.circle-200 {
+  @include circle(200px);//it'll change both vars
+}
+// instead of prior triangle long lesson, with mixin we can nest many vars, so much less coding
+
+// check our newly created helpers/mixins.scss
+// @use "./helpers/mixins" as *;
+
+// Osama says, there're many libraries with awesome mixins
+// and this is one of them: npm install @7ninjas/scss-mixins on github
+
+
+// 12 - Loop - For
+@for $i from 1 through 10 {
+  // if we use from n to n it excludes last i, but through adds it
+  .class#{$i} {
+    font-size: 10px + $i;
+  }
+}
+
+$increaseMe: 0;
+@for $i from 1 through 10 {
+  .circle#{100 + $increaseMe} {
+    width: $increaseMe + 100px;// we use calc without invoking its syntax in sass
+    height: $increaseMe + 100px;
+    border-radius: 50%;
+  }
+  $increaseMe: $increaseMe + 100;// this is how var changes while running
+}
+
+// 13 - Loop - Each And Maps
+
+$themes: red, green, blue;
+
+@each $theme in $themes {
+  .#{$theme}-theme {
+    .product {
+      background-color: white;
+      border-bottom: 2px solid $theme;
+      .title {
+        color: $theme;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+$socials: (
+  "facebook": blue,
+  "youtube": red,
+  "github": black,
+  // so we can add new keys here and up in colors
+);
+@each $name, $color in $socials {
+  .#{$name} {
+    background-color: $color;
+    color: white;
+    &::before {
+      content: #{name};
+    }
+  }
+}
+
+// we can destructue in same approach, but by only defining values as:
+// $classes: "one" 20px red, "two" 15px green, "three" 22px blue;// then invokes with @each same as above invoking
+
+// 14 - Loop - While
+
+$start: 1;
+
+@while $start <= 10 {
+  .width-#{$start} {
+    width: $start * 100px;
+    height: ($start * 100px) / 2;
+  }
+  $start: $start + 1;
+}
+
+// 15 - Create Bootstrap Grid System
+$grid_cols: 12;
+
+@for $i from 1 through $grid_cols {
+  .col-#{$i} {
+    width: percentage($i / $grid_cols);
+  }
+}
+// we used built-in Fn in sass percentage()
+
+
+// 16 - Function
+
+// we created a separate file for it, then import it above
+$width: 200px;
+
+.element {
+  width: $width;
+  height: half($width);
+}
+
+// using rest/keyword params
+
+.el-yo {
+  width: $width;
+  height: half($width);
+  top: calculate(100px, 200px, 50px);
+}
+
+@function calculate($sizes...) {
+  $total: 0;
+  @each $size in $sizes {
+    $total: $total + $size;
+  }
+  @return $total;
+}
+
+// 17 - Practice Mixin With Content
+// create a layout in mixin file, which fill a transparent black color above elements especially imgs
+@mixin overlay($color, $opacity) {//put this in helpers/_mixin.scss
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color, $opacity);
+}
+
+// invoke it in main.scss
+
+.black-overlay {
+  @include overlay(black, 0.5);
+}
+
+@mixin keyF($anim-name) {
+  @-webkit-keyframes #{$anim-name} {//animation's name
+      @content;
+    }
+    @mixin  #{$anim-name} {
+      @content;
+  }
+}
+
+// to invoke it:
+@include keyF(fade-in) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// 18 - Practice Create Media Queries Mixin
+/// if condition + mixin + content
+
+// mixin file
+@mixin breakpoints($point) {
+  @if $point == moblie {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $point == small {
+    @media (mix-width: 768px) and (max-width: 991px) {
+      @content;
+    }
+  } @else if $point == medium {
+    @media (mix-width: 992px) and (max-width: 1199px) {
+      @content;
+    }
+  } @else if $point == large {
+    @media (mix-width: 1200px) {
+      @content;
+    }
+  }
+}
+// -----------
+// main.scss
+.media {
+  @include breakpoints(mobile) {
+    font-size: 15px;
+  }
+  @include breakpoints(small) {
+    font-size: 18px;
+  }
+  @include breakpoints(medium) {
+    font-size: 20px;
+  }
+  @include breakpoints(large) {
+    font-size: 22px;
+  }
+}
+
+/// great resources to practice and common use
+
+// 🔴👾one good elaborated article👾🔴
+// https://github.com/drublic/Sass-Mixins

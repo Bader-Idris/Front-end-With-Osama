@@ -976,4 +976,226 @@ barOne.attack();
 console.log(barOne.axeDurability);
 ```
 
-### 34
+### 34 - Generics Introduction
+
+```ts
+/*
+  Generics
+  - Help Write A Reusable Code
+  - Allow To Pass Type As A Parameter To Another Type
+  - You Will Be Able To Deal With Multiple Types Without Using ": Any Type"
+  - We Can Create:
+  --- Generic Classes
+  --- Generic Functions
+  --- Generic Methods
+  --- Generic Interfaces
+*/
+
+function returnNumber(val: number) : number {
+  return val;
+}
+function returnString(val: string) : string {
+  return val;
+}
+function returnBoolean(val: boolean) : boolean {
+  return val;
+}
+
+console.log(returnNumber(100));
+console.log(returnString("Elzero"));
+console.log(returnBoolean(true));
+
+function returnType<T>(val: T) : T {// T is an alias to GenericType
+  return val;
+}
+
+console.log(returnType<number>(100));
+console.log(returnType<string>("Elzero"));
+console.log(returnType<boolean>(true));
+console.log(returnType<number[]>([1, 2, 3, 4]));
+```
+
+### 35 - Generics Multiple Types
+
+```ts
+/*
+  Generics
+  - Arrow Function
+  - Multiple Types
+  - Discussion
+*/
+
+function returnType<T>(val: T): T {
+  return val;
+}
+
+console.log(returnType<number>(100));
+console.log(returnType<string>("Elzero"));
+
+const returnTypeArrowSyntax = <T>(val: T): T => val;
+
+console.log(returnTypeArrowSyntax<number>(100));
+console.log(returnTypeArrowSyntax<string>("Elzero"));
+
+function testType<T>(val: T): string {
+  return `The Value Is ${val} And Type Is ${typeof val}`;
+}
+
+console.log(testType<number>(100));
+console.log(testType<string>("Elzero"));
+
+function multipleTypes<T, S>(valueOne: T, valueTwo: S): string {
+  return `The First Value Is ${valueOne} And Second Value ${valueTwo}`;
+}
+
+console.log(multipleTypes<string, number>("Osama", 100));
+console.log(multipleTypes<string, boolean>("Elzero", true));
+```
+
+### 36 - Generics Classes
+
+```ts
+/*
+  Generics
+  - Classes
+*/
+
+class User<T = string> {
+  constructor(public value: T) {}
+  show(msg: T) : void {
+    console.log(`${msg} - ${this.value}`);
+  }
+}
+
+let userOne = new User<string>("Elzero");
+console.log(userOne.value);
+userOne.show("Message");
+
+let userTwo = new User<number | string>(100);
+console.log(userTwo.value);
+userTwo.show("Message");
+```
+
+### 37 - Generics And Interfaces
+
+```ts
+/*
+  Generics
+  - Classes And Interfaces
+*/
+
+interface Book {
+  itemType: string;
+  title: string;
+  isbn: number;
+}
+
+interface Game {
+  itemType: string;
+  title: string;
+  style: string;
+  price: number;
+}
+
+class Collection<T> {
+  public data: T[] = [];
+  add(item: T) : void {
+    this.data.push(item);
+  }
+}
+
+let itemOne = new Collection<Book>();
+itemOne.add({ itemType: "Book", title: "Atomic Habits", isbn: 150510 });
+itemOne.add({ itemType: "Book", title: "Follow Your Heart", isbn: 650650 });
+console.log(itemOne);
+
+let itemTwo = new Collection<Game>();
+itemTwo.add({ itemType: "Game", title: "Uncharted", style: "Action", price: 150 });
+console.log(itemTwo);
+```
+
+### 38
+
+How To Continue
+
+- Practice
+- Other Topics Not In The Course
+- [JSDocs](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
+- TsConfig
+
+---
+
+# FreeCodeCamp Full TS Course
+
+check the [video](https://www.youtube.com/watch?v=30LWjhZzg50), with our teacher: **Hitesh Choudhary**
+
+Index:
+
+```txt
+⭐️ Contents ⭐️
+⌨️ (0:00:00) Why to learn TypeScript
+⌨️ (0:07:08) TypeScript is not what you think
+⌨️ (0:15:25) How to install TypeScript
+⌨️ (0:27:33) Your first intro to TypeScript docs
+⌨️ (0:39:21) Number, boolean, and type inference
+⌨️ (0:39:21) Number, boolean, and type inference
+⌨️ (0:46:52) Don't use ANY
+⌨️ (0:51:30) Do you really know functions
+⌨️ (1:02:55) A better way to write function
+⌨️ (1:15:38) Bad behavior of objects
+⌨️ (1:25:14) Type Aliases
+⌨️ (1:32:28) READONLY and optional
+⌨️ (1:42:13) Array
+⌨️ (1:50:03) Union Types in TS
+⌨️ (2:04:46) Tuples
+⌨️ (2:14:33) Enums
+⌨️ (2:24:03) interface
+⌨️ (2:33:52) Interface vs Type
+⌨️ (2:39:08) How to setup Typescript for real projects
+⌨️ (2:53:44) Classes
+⌨️ (3:02:06) Private Public
+⌨️ (3:08:12) Getters and Setters
+⌨️ (3:15:25) Protected
+⌨️ (3:19:34) Why Interface is important
+⌨️ (3:26:05) Abstract class
+⌨️ (3:35:36) Generics
+⌨️ (3:47:58) Generics in Array and Arrow functions
+⌨️ (3:56:07) Generic Classes
+⌨️ (4:07:16) Type Narrowing
+⌨️ (4:17:04) The in operator narrowing
+⌨️ (4:22:17) Instanceof and Type Predicates
+⌨️ (4:31:35) Discriminated Union and Exhaustiveness Checking with never
+⌨️ (4:42:54) TypeScript End
+```
+
+## intro
+
+We can put typescript in one context: **Type safety**, same as `Static checking`
+
+to use console it's preferred in docs to use:
+
+```ts
+function randomFn (babe) : void {
+  console.log("hi" + babe)
+};
+```
+
+if for errors we use `never` instead as:
+
+```ts
+function handleError(errMsg: string): never {
+  throw new Error(errMsg);
+}
+```
+
+to prevent clients from manipulating _ids in mongo, we cna use the keyword `readonly` as:
+
+```ts
+type User = {
+  readonly _id: string
+  name: string
+  email: string
+  isActive: boolean
+  credcardDetails?: number
+}
+```
