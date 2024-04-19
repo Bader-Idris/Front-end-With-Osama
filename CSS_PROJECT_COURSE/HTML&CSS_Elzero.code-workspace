@@ -5,10 +5,6 @@
 			"path": ".."
 		},
 		{
-			"name": "PHP_course",
-			"path": "C:/xampp/htdocs/PHP_course"
-		},
-		{
 			"name": "web-development-with-node-and-express-2e",
 			"path": "C:/Users/wwwba_/Downloads/web-development-express-book-git/web-development-with-node-and-express-2e"
 		},
@@ -27,6 +23,9 @@
 		},
 		{
 			"path": "../../template3_vue"
+		},
+		{
+			"path": "../../elzero-50-paid-project"
 		}
 	],
 	"settings": {
