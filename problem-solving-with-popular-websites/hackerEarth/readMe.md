@@ -1,1 +1,0 @@
-[access the website](https://www.hackerearth.com/)

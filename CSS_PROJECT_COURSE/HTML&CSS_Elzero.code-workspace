@@ -13,23 +13,32 @@
 			"path": "../../BE-with-free-code-camp"
 		},
 		{
+			"name": "freeCodeCampSolutions",
 			"path": "../../freeCodeCampSolutions"
 		},
 		{
+			"name": "docker_course_freecodecamp",
 			"path": "../../docker/docker_course_freecodecamp"
 		},
 		{
-			"path": "../../portfolio"
-		},
-		{
+			"name": "template3_vue",
 			"path": "../../template3_vue"
 		},
 		{
+			"name": "Problem_solving",
+			"path": "../../Problem_solving"
+		},
+		{
+			"name": "capacitor",
+			"path": "../../ionic-capacitor/capacitor"
+		},
+		{
+			"name": "elzero-50-paid-project",
 			"path": "../../elzero-50-paid-project"
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "HTML_and_CSS_Elzero",
+		"liveServer.settings.multiRootWorkspaceName": "elzero-50-paid-project",
 		"cSpell.ignoreWords": [
 			"Hjelm",
 			"Patrik",
